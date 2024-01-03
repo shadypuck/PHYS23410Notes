@@ -3,7 +3,14 @@
 \usepackage{fancyhdr}
 \usepackage{marginnote}
 \usepackage{enumitem}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
+\usepackage[style=apa]{biblatex}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{subcaption,float}
 \usepackage{amsmath,amssymb}
+\usepackage{bm,physics}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subfiles}
 
@@ -23,3 +30,20 @@
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
 
 \reversemarginpar
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[1.8em]{0em}{0em}{\textsuperscript{\thefootnote}}
+
+\addbibresource{\subfix{../main.bib}}
+\DefineBibliographyStrings{english}{bibliography={References}}
+
+\sisetup{range-phrase=-,range-units=single}
+
+\usetikzlibrary{decorations.pathmorphing,angles,backgrounds,decorations.pathreplacing}
+\colorlet{blx}{blue!90!green!80}
+\colorlet{rex}{red!80!black!90!orange!80}
+\colorlet{rey}{red!80!black!90!orange!40}
+\colorlet{grx}{green!50!black!90!yellow!80}
+\colorlet{orx}{orange!80!black!90!yellow!80}
+
+\newcommand{\e}[1][]{\text{e}^{#1}}
