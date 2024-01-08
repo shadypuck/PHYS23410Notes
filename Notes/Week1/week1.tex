@@ -444,7 +444,7 @@
     \begin{itemize}
         \item Recall from last time that
         \begin{equation*}
-            \int_V|\psi|^2\dd^3r
+            \int_V|\psi|^2\dd^3\vec{r}
         \end{equation*}
         represents the probability of finding the particle in the volume $V$.
         \item In particular, this means that we must have
@@ -485,7 +485,7 @@
     \end{itemize}
     \item What if we want to find the mean value of the \emph{momentum} of the particle defined by $\psi$? We have to do something less obvious:
     \begin{equation*}
-        \Exp{\hat{\vec{p}}} = \int\dd^3r\psi^*(-i\hbar\vec{\nabla}\psi)
+        \Exp{\hat{\vec{p}}} = \int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi)
     \end{equation*}
     \begin{itemize}
         \item Is there a rationale for this construction??
@@ -509,8 +509,8 @@
         \item We now use this equation.
         \item Differentiate both sides of the $\Exp{\hat{\vec{r}}}$ equation to get
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\vec{r}\pdv{t}|\psi(\vec{r},t)|^2\\
-            &= \int\dd^3r\vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi) \right]
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3\vec{r}\ \vec{r}\pdv{t}|\psi(\vec{r},t)|^2\\
+            &= \int\dd^3\vec{r}\ \vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi) \right]
         \end{align*}
         \item We now integrate by parts using
         \begin{equation*}
@@ -523,8 +523,8 @@
         where $\delta$ denotes the Kronecker delta function.
         \item Thus, continuing from the above, we have that
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\left[ \frac{i\hbar}{2m}\psi\vec{\nabla}\psi^*-\frac{i\hbar}{2m}\psi^*\vec{\nabla}\psi \right]\\
-            &= \int\dd^3r\left[ -\frac{i\hbar}{m}\psi^*\vec{\nabla}\psi \right]\\
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3\vec{r}\ \left[ \frac{i\hbar}{2m}\psi\vec{\nabla}\psi^*-\frac{i\hbar}{2m}\psi^*\vec{\nabla}\psi \right]\\
+            &= \int\dd^3\vec{r}\ \left[ -\frac{i\hbar}{m}\psi^*\vec{\nabla}\psi \right]\\
             &= \frac{\Exp{\hat{\vec{p}}}}{m}
         \end{align*}
     \end{itemize}
@@ -539,7 +539,7 @@
     \end{itemize}
     \item \textbf{Hermitian} (operator): An operator satisfying the following equation. \emph{Constraint}
     \begin{equation*}
-        \int\psi^*\hat{\typical}\psi\dd^3x = \left( \int\psi\typical\psi^*\dd^3r \right)^*
+        \int\psi^*\hat{O}\psi\dd^3\vec{r} = \left( \int\psi O\psi^*\dd^3\vec{r} \right)^*
     \end{equation*}
     \begin{itemize}
         \item As with matrices, we have some kind of equality with the complex conjugate.

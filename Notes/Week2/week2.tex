@@ -1,0 +1,137 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\stepcounter{chapter}
+
+\begin{document}
+
+
+
+
+\chapter{The Schr\"{o}dinger Equation}
+\section{Ehrenfest Theorem and Uncertainty Principle}
+\begin{itemize}
+    \item \marginnote{1/8:}Announcement: PSet 1 due Friday at midnight.
+    \item Recap.
+    \begin{itemize}
+        \item $\psi(\vec{r},t)$ is a wave function to which we associate a \textbf{probability density}.
+        \begin{itemize}
+            \item Integrating this probability density over a volume yields the probability that the particle is in $V$.
+            \item Moreover, $\psi$ is not arbitrary but must satisfy the Schr\"{o}dinger equation.
+        \end{itemize}
+        \item $\hat{\vec{p}}$ is the momentum operator, defined as the differential operator $-i\hbar\vec{\nabla}$.
+        \item Expressing the Schr\"{o}dinger equation in terms of $\hat{\vec{p}}$, we see that it represents the application of a Hamiltonian operator in the usual form from last quarter (i.e., kinetic plus potential energy) to a certain function.
+        \item $\Exp{\hat{\vec{r}}}$ is the mean position, and $\Exp{\hat{\vec{p}}}$ is the mean momentum.
+        \begin{itemize}
+            \item The mean position and mean momentum satisfy the classical relation, i.e., $\dd{\Exp{\hat{\vec{r}}}}/\dd{t}=\Exp{\hat{\vec{p}}}/m$.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Probability density}: The quantity given as follows. \emph{Given by}
+    \begin{equation*}
+        |\psi(\vec{r},t)|^2
+    \end{equation*}
+    \item We now prove something even more amazing than the classical relation result: An analogy to the classical Newton's law.
+    \item \textbf{Ehrenfest's theorem}: The time derivative of the expectation value of the momentum operator is related to the expectation value of the force $F:=-\vec{\nabla}V$ on a massive particle moving in a scalar potential $V(\vec{r},t)$ as follows.
+    \begin{equation*}
+        \dv{\Exp{\hat{\vec{p}}}}{t} = \Exp{-\vec{\nabla}V(\vec{r},t)}
+    \end{equation*}
+    \begin{proof}
+        Consider the Schr\"{o}dinger equation:
+        \begin{equation*}
+            -i\hbar\pdv{\psi}{t} = \frac{\hbar^2}{2m}\vec{\nabla}^2\psi-V(\vec{r},t)\psi
+        \end{equation*}
+        Take the complex conjugate of it. This means that we're sending $i\mapsto -i$, keeping $V$ fixed (it's real), and sending $\psi\mapsto\psi^*$ (the inclusion of $i$ in the Schr\"{o}dinger equation means that $\psi$ is complex in general and thus has a nontrivial complex conjugate).
+        \begin{equation*}
+            -i\hbar\pdv{\psi^*}{t} = -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi^*+V(\vec{r},t)\psi^*
+        \end{equation*}
+        We will use the above two equations to substitute into the following algebraic derivation.
+        \begin{align*}
+            \dv{\Exp{\hat{\vec{p}}}}{t} ={}& \dv{t}(\int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi))\\
+            ={}& \int\dd^3\vec{r}\ {\pdv{\psi^*}{t}}(-i\hbar\vec{\nabla}\psi)+\int\dd^3\vec{r}\ \psi^*\left( -i\hbar\vec{\nabla}\pdv{\psi}{t} \right)\\
+            ={}& \int\dd^3\vec{r}\,\left[ -i\hbar{\pdv{\psi^*}{t}}(\vec{\nabla}\psi) \right]+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( -i\hbar\pdv{\psi}{t} \right)\\
+            \begin{split}
+                ={}& \int\dd^3\vec{r}\,\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi^*(\vec{\nabla}\psi) \right]+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( \frac{\hbar^2}{2m}\vec{\nabla}^2\psi \right)\\
+                & +\int\dd^3\vec{r}\,\left[ V(\vec{r},t)\psi^*(\vec{\nabla}\psi)+\psi^*\vec{\nabla}(-V(\vec{r},t)\psi) \right]
+            \end{split}\\
+            ={}& \int\dd^3\vec{r}\ \psi^*\vec{\nabla}(-V(\vec{r},t)\psi)\\
+            ={}& \int\dd^3\vec{r}\ \psi^*(-\vec{\nabla}V(\vec{r},t))\psi\\
+            ={}& \Exp{-\vec{\nabla}V(\vec{r},t)}
+        \end{align*}
+        as desired.
+    \end{proof}
+    \item How does everything cancel from the long line to the following line in the above proof??
+    \item In quantum mechanics, we have \textbf{observables} which are in one-to-one correspondence with operators.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.4}
+        \begin{tabular}{c|c}
+            \textbf{Observables} & \textbf{Operators ($\bm{\hat{O}}$)}\\
+            \hline
+            $\vec{r}$ & $\hat{\vec{r}}$\\
+            $V(\vec{r},t)$ & $\hat{V}(\vec{r},t)$\\
+            $\hat{\vec{p}}$ & $-i\hbar\vec{\nabla}$\\
+            $\hat{H}$ & $-\dfrac{\hbar^2}{2m}\vec{\nabla}^2+V(\vec{r},t)$\\
+        \end{tabular}
+        \caption{Observables vs. operators.}
+        \label{tab:observablesOperators}
+    \end{table}
+    \begin{itemize}
+        \item Recall that any Hermitian operator has a real observable.
+    \end{itemize}
+    \item Define
+    \begin{equation*}
+        \hat{O}_{ij} := \int\dd^3\vec{r}\ \psi_i^*\hat{O}\psi_j
+    \end{equation*}
+    \begin{itemize}
+        \item Then note that
+        \begin{equation*}
+            \hat{O}_{ij} = (\hat{O}_{ji})^*
+        \end{equation*}
+        \item Thus, an equivalent definition of a Hermitian operator is one such that the above equation is satisfied for all relevant $i,j$.
+    \end{itemize}
+    \item Recall that the Schr\"{o}dinger equation is linear.
+    \begin{itemize}
+        \item Let $\psi=\sum_ic_i\psi_i$.
+        \item Then
+        \begin{equation*}
+            \int\dd^3\vec{r}\ \psi^*\hat{O}\psi = \sum_{i,j}\int\dd^3\vec{r}\ c_i^*\psi_i^*\hat{O}c_j\psi_j
+            = \sum_{i,j}c_i^*c_j\hat{O}_{ij}
+        \end{equation*}
+        is real.
+        \item Takeaway: Averages over arbitrary wavefunctions are real.
+        \item Similarly, suppose that $\vec{r}$ is Hermitian. Then any function $V(\vec{r})$ of it is also Hermitian.
+        \item Once again,
+        \begin{equation*}
+            \int\dd^3\vec{r}\ \psi_i^*(-i\hbar\vec{\nabla}\psi_j) = \left( \int\dd^3\vec{r}\ \psi_j^*(-i\hbar\vec{\nabla}\psi_i) \right)^*
+            = \int\dd^3\vec{r}\ \psi_j(i\hbar\vec{\nabla}\psi_i^*)
+            \to -\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)
+        \end{equation*}
+        Involves integration by parts?? Perhaps via
+        \begin{align*}
+            \int\dd^3\vec{r}\ \psi_j(i\hbar\vec{\nabla}\psi_i^*) &= i\hbar\int\dd^3\vec{r}\ \vec{\nabla}(\psi_j\psi_i^*)-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
+            &= i\hbar\vec{\nabla}\int\dd^3\vec{r}\ (\psi_j\psi_i^*)-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
+            &= i\hbar\vec{\nabla}0-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
+            &= -\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)
+        \end{align*}
+        What is the takeaway??
+    \end{itemize}
+    \item Linear algebra analogy.
+    \begin{itemize}
+        \item Recall that we can write any vector $\vec{v}$ componentwise as $\vec{v}=v_x\vec{x}+v_y\vec{y}+v_z\vec{z}$.
+        \item We can apply matrices $A$ to such vectors to generate other vectors via $A\vec{v}=\vec{v}{\,}'$ and the like.
+        \item Lastly, we have an inner product $\cdot$ such that $\vec{a}\cdot\vec{b}=\delta_{ab}$, where $a,b=x,y,z$.
+        \item On an infinite-dimensional vector space, such as that containing all the $\psi$, we still can decompose $\psi=\sum_nc_n\psi_n$ into an infinite sum of basis components, apply operators $\hat{O}\psi=\psi'$, and have an inner product $\int\dd^3\vec{r}\ \psi^*_m\psi_n=\delta_{mn}$.
+        \item Another analogy: Like the inner product of a vector and unit vector is the component of the vector in that direction (e.g., $\vec{v}\cdot\vec{x}=v_x$), we have
+        \begin{equation*}
+            \int\dd^3\vec{r}\ \psi_m^*\psi = \int\dd^3\vec{r}\psi_m^*\sum_nc_n\psi_n = c_m
+        \end{equation*}
+        \item One more analogy: $\vec{x}^TA\vec{x}=A_{xx}$ is like $\ev{\hat{O}}{\psi_i}=\hat{O}_{ii}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
