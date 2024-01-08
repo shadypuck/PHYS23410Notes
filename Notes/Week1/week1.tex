@@ -89,7 +89,7 @@
     \begin{itemize}
         \item Planck, however, thought of light emitted in quanta as a description of the emission process and not as the nature of light. In Planck's derivation, the average energy of the radiation emitted at a given frequency and temperature was given by a simple average weighted by Boltzmann factors:
         \begin{equation*}
-            \langle E \rangle = \frac{\sum nh\nu\e[-hn\nu/kT]}{\sum\e[-hn\nu/kT]}
+            \Exp{E} = \frac{\sum nh\nu\e[-hn\nu/kT]}{\sum\e[-hn\nu/kT]}
             = \frac{h\nu}{\e[h\nu/kT]-1}
         \end{equation*}
         \begin{itemize}
@@ -365,6 +365,184 @@
         \begin{itemize}
             \item That being said, \textcite{bib:Landau} is far more advanced and not at all suitable for a first brush with the material, but it is beautiful and Wagner highly recommends it. \textcite{bib:Landau} provides great intuition.
         \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{The Wave Function and the Schr\"{o}dinger Equation}
+\begin{itemize}
+    \item \marginnote{1/5:}Announcements.
+    \begin{itemize}
+        \item Largely reiterates from last time.
+        \item 50-60\% of the grade is related to PSet solutions.
+    \end{itemize}
+    \item Last time:
+    \begin{itemize}
+        \item We talked about both light \emph{and} particles as waves.
+        \item We defined $\vec{p}=\hbar\vec{k}$ and $E=\vec{p}{\,}^2/2m=\hbar\omega$.
+        \item The general form for a free wave is
+        \begin{equation*}
+            \Psi = A\exp[i(\vec{k}\cdot\vec{r}-\omega t)]
+            = A\exp[\frac{i}{\hbar}(\vec{p}\cdot\vec{r}-Et)]
+        \end{equation*}
+    \end{itemize}
+    \item If we evaluate $-i\hbar\vec{\nabla}\Psi$ with $\Psi$ defined as above, then we get
+    \begin{equation*}
+        -i\hbar\vec{\nabla}\Psi = \vec{p}\,\Psi
+    \end{equation*}
+    \item In this course, we will denote differential operators with hats, e.g., the momentum operator is
+    \begin{equation*}
+        \hat{\vec{p}} = -i\hbar\vec{\nabla}
+    \end{equation*}
+    \item Observe that if we apply the momemtum operator twice, we obtain
+    \begin{equation*}
+        (-i\hbar\vec{\nabla})\cdot(-i\hbar\vec{\nabla})=-\hbar^2\vec{\nabla}^2
+    \end{equation*}
+    \begin{itemize}
+        \item Recall that the gradient operator is defined via
+        \begin{equation*}
+            \vec{\nabla} := \vec{x}\pdv{x}+\vec{y}\pdv{y}+\vec{z}\pdv{z}
+        \end{equation*}
+        where $\vec{x}{\,}^2=\vec{y}{\,}^2=\vec{z}{\,}^2=1$.
+        \item Hence, by the definition of the dot product,
+        \begin{equation*}
+            \vec{\nabla}^2 = \pdv[2]{x}+\pdv[2]{y}+\pdv[2]{z}
+        \end{equation*}
+    \end{itemize}
+    \item Observe that if we evaluate $i\hbar\dv*{\Psi}{t}$ with $\Psi$ defined as above, then we get
+    \begin{equation*}
+        i\hbar\dv{\Psi}{t} = E\Psi
+    \end{equation*}
+    \item \textbf{Hamiltonian operator} (for a free particle): The operator defined as follows. \emph{Denoted by} $\bm{\hat{H}}$. \emph{Given by}
+    \begin{equation*}
+        \hat{H} = \frac{\hat{\vec{p}}{\,}^2}{2m}
+    \end{equation*}
+    \item Thus,
+    \begin{equation*}
+        \hat{H}\Psi = \frac{\vec{p}{\,}^2}{2m}\Psi
+        = \frac{p^2}{2m}\Psi
+        = E\Psi
+        = i\hbar\pdv{\Psi}{t}
+    \end{equation*}
+    which implies by transitivity that for a free particle,
+    \begin{equation*}
+        \frac{\vec{p}{\,}^2}{2m}\Psi = E\Psi
+    \end{equation*}
+    \item Recall that normally,
+    \begin{equation*}
+        \hat{H} := \frac{\hat{\vec{p}}{\,}^2}{2m}+V(\vec{r},t)
+        = -\frac{\hbar^2}{2m}\vec{\nabla}^2+V(\vec{r},t)
+    \end{equation*}
+    \item Schr\"{o}dinger postulated the \textbf{Schr\"{o}dinger equation}.
+    \item \textbf{Schr\"{o}dinger equation}: The equation defined as follows. \emph{Given by}
+    \begin{align*}
+        \hat{H}\Psi &= i\hbar\pdv{t}\Psi\\
+        -\frac{\hbar^2}{2m}\vec{\nabla}^2\Psi+V(\vec{r},t)\Psi &= i\hbar\pdv{t}\Psi
+    \end{align*}
+    \item What do we know about $\Psi$?
+    \begin{itemize}
+        \item Recall from last time that
+        \begin{equation*}
+            \int_V|\Psi|^2\dd^3r
+        \end{equation*}
+        represents the probability of finding the particle in the volume $V$.
+        \item In particular, this means that we must have
+        \begin{equation*}
+            \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\Psi|^2 = 1
+        \end{equation*}
+    \end{itemize}
+    \item This greatly diverges from classical mechanics, where particles followed a well-defined path for which you could define a position and momentum at each point along the path.
+    \item The Schr\"{o}dinger equation has many nice properties. Examples:
+    \begin{enumerate}
+        \item \underline{Linearity part 1 (scalability)}: If $\Psi$ is a solution, then $k\Psi$ is a solution where $k$ is a constant.
+        \begin{itemize}
+            \item This follows directly from the definition:
+            \begin{equation*}
+                -\frac{\hbar^2}{2m}\vec{\nabla}^2(k\Psi)+V(\vec{r},t)k\Psi = k\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\Psi+V(\vec{r},t)\Psi \right] = k\left[ i\hbar\pdv{t}\Psi \right] = i\hbar\pdv{t}(k\psi)
+            \end{equation*}
+        \end{itemize}
+        \item \underline{Linearity part 2 (additivity)}: If $\Psi_1,\Psi_2$ are solutions, then $\Psi_1+\Psi_2$ is a solution.
+        \begin{itemize}
+            \item This is --- once again --- because of the linearity of the differential operators involved:
+            \begin{equation*}
+                \hat{H}(\Psi_1+\Psi_2) = i\hbar\pdv{t}(\Psi_1+\Psi_2)
+            \end{equation*}
+        \end{itemize}
+    \end{enumerate}
+    \item Because of linearity, quantum mechanics is \emph{easier} than classical mechanics in some sense.
+    \item It follows from the two parts of linearity that if $\Psi_1,\dots,\Psi_n$ are solutions and $c_1,\dots,c_n$ are complex constants, then
+    \begin{equation*}
+        \Psi = \sum_{i=1}^nc_i\Psi_i
+    \end{equation*}
+    is a solution.
+    \item What if I want to find the mean value of the \emph{position} of the particle defined by $\Psi$? Integrate over all space (I know that the particle will be somewhere there), and scale the probability of it being at each point by the distance to that point:
+    \begin{equation*}
+        \Exp{\hat{\vec{r}}} = \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\Psi(\vec{r},t)|^2\vec{r}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $\hat{\vec{r}}=\vec{r}$, i.e., the position operator is just the position!
+    \end{itemize}
+    \item What if we want to find the mean value of the \emph{momentum} of the particle defined by $\Psi$? We have to do something less obvious:
+    \begin{equation*}
+        \Exp{\hat{\vec{p}}} = \int\dd^3r\Psi^*(-i\hbar\vec{\nabla}\Psi)
+    \end{equation*}
+    \begin{itemize}
+        \item Is there a rationale for this construction??
+    \end{itemize}
+    \item Why is it the mean value of the operator, not the quantity?
+    \begin{itemize}
+        \item We will define the mean value of the quantity to be the mean value of the operator.
+    \end{itemize}
+    \item Now let's relate mean momentum and position!
+    \begin{itemize}
+        \item Recall from classical mechanics that $\vec{p}=m\dv*{\vec{r}}{t}$. Is there an analogy?
+        \item Recall from E\&M that $\pdv*{\rho}{t}+\vec{\nabla}\cdot\vec{J}=0$; this is a relationship between density and current density.
+        \item The analogous equation in quantum mechanics is
+        \begin{equation*}
+            \pdv{|\Psi|^2}{t}+\vec{\nabla}\left[ \frac{i\hbar}{2m}(\Psi\vec{\nabla}\Psi^*-\Psi^*\vec{\nabla}\Psi) \right] = 0
+        \end{equation*}
+        \begin{itemize}
+            \item In PSet 1, we will derive this equation from from the Schr\"{o}dinger equation by multiplying by $\Psi,\Psi^*$ to the two sides and adding.
+            \item The derivation should be pretty straightforward.
+        \end{itemize}
+        \item We now use this equation.
+        \item Differentiate both sides of the $\Exp{\hat{\vec{r}}}$ equation to get
+        \begin{align*}
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\vec{r}\pdv{t}|\Psi(\vec{r},t)|^2\\
+            &= \int\dd^3r\vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\Psi\vec{\nabla}\Psi^*-\Psi^*\vec{\nabla}\Psi) \right]
+        \end{align*}
+        \item We now integrate by parts using
+        \begin{equation*}
+            \int_{-\infty}^\infty\dd{x}f(x)\cdot\dv{x}g(x) = \int_{-\infty}^\infty\dd{x}\dv{x}[f(x)\cdot g(x)]-\int\dd{x}g(x)\cdot\dv{x}f(x)
+        \end{equation*}
+        \item In the three dimensional setting, we'll need the fact that
+        \begin{equation*}
+            \pdv{x_i}r_j = \delta_{ij}
+        \end{equation*}
+        where $\delta$ denotes the Kronecker delta function.
+        \item Thus, continuing from the above, we have that
+        \begin{align*}
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\left[ \frac{i\hbar}{2m}\Psi\vec{\nabla}\Psi^*-\frac{i\hbar}{2m}\Psi^*\vec{\nabla}\Psi \right]\\
+            &= \int\dd^3r\left[ -\frac{i\hbar}{m}\Psi^*\vec{\nabla}\Psi \right]\\
+            &= \frac{\Exp{\hat{\vec{p}}}}{m}
+        \end{align*}
+    \end{itemize}
+    \item Ask about instances of notation changing.
+    \item Note that in this course, $\Psi^*$ denotes the complex conjugate of $\Psi$.
+    \begin{itemize}
+        \item We don't use $\bar{\Psi}$ here because bars often indicate something else in physics.
+    \end{itemize}
+    \item Last note: All observables are real in quantum mechanics!
+    \begin{itemize}
+        \item This is because all operators associated with quantum mechanics are \textbf{Hermitian}.
+    \end{itemize}
+    \item \textbf{Hermitian} (operator): An operator satisfying the following equation. \emph{Constraint}
+    \begin{equation*}
+        \int\Psi^*\hat{\typical}\Psi\dd^3x = \left( \int\Psi\typical\Psi^*\dd^3r \right)^*
+    \end{equation*}
+    \begin{itemize}
+        \item As with matrices, we have some kind of equality with the complex conjugate.
     \end{itemize}
 \end{itemize}
 
