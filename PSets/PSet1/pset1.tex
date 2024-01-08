@@ -8,9 +8,63 @@
 
 
 
-\section{???}
+\section{Formalism of Quantum Mechanics}
 \begin{enumerate}
-    \item \marginnote{1/??:}
+    \item \marginnote{1/12:}The Schr\"{o}dinger equation is given by
+    \begin{equation*}
+        \left( -\frac{\hbar^2}{2m}\vec{\nabla}^2+V(\vec{r},t) \right)\psi(\vec{r},t) = i\hbar\pdv{\psi(\vec{r},t)}{t}
+    \end{equation*}
+    \begin{enumerate}
+        \item Use this equation, and its complex conjugate, to demonstrate the \textbf{continuity equation}
+        \begin{equation*}
+            \pdv{|\psi(\vec{r},t)|^2}{t}+\vec{\nabla}\left( \frac{i\hbar}{2m} \right)\left( \psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi \right) = 0
+        \end{equation*}
+        where the first term, with $|\psi|^2=\psi^*\psi$, is the partial derivative of the probability density, while the second term is the divergence of the probability current density.
+        \item Discuss the physical interpretation of this equation. What happens if you integrate the first and second terms over a region of space, defined by a finite volume $V$ and separated by the rest of space by a boundary area $S$?\par
+        \emph{Hint}: Use the analogy with the case of electromagnetic charge. If you integrate over the whole volume of space, the continuity equation leads to charge conservation. The probability current density, just as the charge current density, is assumed to vanish sufficiently fast at infinity, so that there is no ﬂow of probability (charge) at infinity.
+    \end{enumerate}
+    \item Consider the expectation value of the operator $\hat{\vec{p}}{\,}^2=-\hbar^2\vec{\nabla}^2$, namely
+    \begin{equation*}
+        \int\dd^3\vec{r}\ \psi(\vec{r},t)^*\left( -\hbar^2\vec{\nabla}^2\psi(\vec{r},t) \right)
+    \end{equation*}
+    \begin{enumerate}
+        \item Using integration by parts, demonstrate that this can be rewritten as the integral of the modulus square of the gradient of $\hbar\psi(\vec{r},t)$ and that it is therefore a positive quantity. As before, assume that the wave functions go sufficiently fast to zero at infinity.
+        \item Now consider the expectation value of the Hamiltonian $\hat{\vec{p}}{\,}^2/2m+V(\vec{r},t)$ and assume that the function $\psi(\vec{r},t)$ is an eigenfunction of the Hamiltonian. In such a case,
+        \begin{equation*}
+            \hat{H}\psi(\vec{r},t) = E\psi
+        \end{equation*}
+        and the particle therefore has a well-defined energy, equal to $E$. Demonstrate, based on the result of part (a), that $E$ must be larger than the minimum value of $V(\vec{r},t)$.\par
+        \emph{Hint}: Use $(\hat{\vec{p}}{\,}^2/2m)\psi=(E-V)\psi$, and the fact that the mean value of V should be larger than its minimum value.\par
+        The lesson is that the particle can enter regions of space where its energy is lower than the potential, but this is not possible everywhere in space. The fact that the particle can go through regions of space where its energy is lower than the potential (the wave function does not vanish in those regions of space) leads to the famous phenomenon of tunneling, namely a particle can go through a \emph{finite region of space where the potential is higher than its energy} and has a probability of being transmitted to the other side.
+    \end{enumerate}
+    \item We shall define \textbf{Hermitian operators} as those ones $\hat{O}$ satisfying the property
+    \begin{equation}\label{eqn:HermitianDef}
+        \int\dd^3\vec{r}\ \psi_m^*(\vec{r},t)\hat{O}\psi_n(\vec{r},t) = \left( \int\dd^3\vec{r}\ \psi_n^*(\vec{r},t)\hat{O}\psi_m(\vec{r},t) \right)^*
+    \end{equation}
+    where $\psi_m$ is a particular solution of the Schr\"{o}dinger equation. Observe that when you identify $\psi_n=\psi_m$, you obtain that the mean value of a Hermitian operator is real and thus can be associated with an observable.\par
+    Observe also that, in general, this could be written as
+    \begin{equation*}
+        \int\dd^3\vec{r}\ \psi_m^*(\vec{r},t)\hat{O}\psi_n(\vec{r},t) = \int\dd^3\vec{r}\ [\hat{O}\psi_m(\vec{r},t)]^*\psi_n(\vec{r},t)
+    \end{equation*}
+    Therefore, in the case of a Hermitian operator, I can "transfer" the application of the operator from the right to the left.
+    \begin{enumerate}
+        \item Use this property to demonstrate that if you take two different Hermitian operators
+        and you transfer them in the proper order, then
+        \begin{equation*}
+            \mel{\psi_m}{\hat{O}_1\hat{O}_2}{\psi_n} = \left( \mel{\psi_n}{\hat{O}_2\hat{O}_1}{\psi_m} \right)^*
+        \end{equation*}
+        where I used the Dirac notation. Observe that if I take $\hat{O}_2$ to be a real constant, this equation reduces to Equation \ref{eqn:HermitianDef}.
+        \item Use this relation to demonstrate that the mean value of the \textbf{commutator} of two Hermitian operators, which is given by
+        \begin{equation*}
+            [\hat{O}_1,\hat{O}_2] = \hat{O}_1\hat{O}_2-\hat{O}_2\hat{O}_1
+        \end{equation*}
+        is a pure imaginary number, and hence (unless it is multiplied by an imaginary factor), cannot be associated with a physical observable. In the particular example of momentum and position, for instance, $[\hat{p}_i,\hat{r}_j]=-i\hbar\delta_{ij}$, where $\delta_{ij}$ is the \textbf{Kronecker delta}. Do it for the mean value of the commutator in a particular state with wave function $\psi_n$.
+        \item Demonstrate that the above relation remains true if you compute the mean value of the commutator for an arbitrary wave function
+        \begin{equation*}
+            \Psi = \sum_{i=1}^nc_i\psi_i
+        \end{equation*}
+        \emph{Hint}: Organize the total sum that you obtain in pairs that share the same values of $m$ and $n$, and demonstrate that when you add up the two terms with the same values of $m$ and $n$, you obtain a purely imaginary number. The terms in the total sum for which $m=n$ don't have pairs, but you can use the result of part (b) to show that they are indeed imaginary.
+    \end{enumerate}
 \end{enumerate}
 
 

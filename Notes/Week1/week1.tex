@@ -227,15 +227,15 @@
     \item We now look into some implications of electrons being waves.
     \item The wave function for a free electron of momentum $\vec{p}$ will be
     \begin{equation*}
-        \Psi_e \sim \e[i(\vec{k}\cdot\vec{r}-\omega t)]
+        \psi_e \sim \e[i(\vec{k}\cdot\vec{r}-\omega t)]
     \end{equation*}
     where $\omega=2\pi\nu$.
     \begin{itemize}
         \item But if electrons are waves, then they can be represented in states that include the superposition of many wave functions.
-        \item Take two such waves $\Psi_1(\vec{r},t)$ and $\Psi_2(\vec{r},t)$.
+        \item Take two such waves $\psi_1(\vec{r},t)$ and $\psi_2(\vec{r},t)$.
         \item Then
         \begin{equation*}
-            \Psi = \alpha_1\e[i(\vec{k}_1\vec{r}-\omega_1t)]+\alpha_2\e[i(\vec{k}_2\vec{r}-\omega_2t)]
+            \psi = \alpha_1\e[i(\vec{k}_1\vec{r}-\omega_1t)]+\alpha_2\e[i(\vec{k}_2\vec{r}-\omega_2t)]
         \end{equation*}
         is an acceptable electron wave function.
         \item If we interpret $\hbar\vec{k}_1$ and $\hbar\vec{k}_2$ as momentum, we see an important difference between classical and quantum mechanics: The electrons may be \emph{simultaneously in two different momentum states}.
@@ -324,30 +324,30 @@
             \item If both are uncovered, the humps will add to a big hump.
             \item This is what's happening in Figure \ref{fig:doubleSlita}.
         \end{itemize}
-        \item If electrons behave as waves, however, the wave function $\Psi=\Psi_{S1}+\Psi_{S2}$ will be the superpositions of the waves coming from $S1$ and $S2$.
+        \item If electrons behave as waves, however, the wave function $\psi=\psi_{S1}+\psi_{S2}$ will be the superpositions of the waves coming from $S1$ and $S2$.
         \begin{itemize}
-            \item $|\Psi|^2=I$ --- next class, we will justify this, but for now we just accept it.
+            \item $|\psi|^2=I$ --- next class, we will justify this, but for now we just accept it.
         \end{itemize}
         \item The intensity, proportional to the number of electrons, will be given by
         \begin{equation*}
-            |\Psi|^2 = |\Psi_{S1}+\Psi_{S2}|^2
-            = |\Psi_{S1}|^2+|\Psi_{S2}|^2+(\Psi_{S1}^*\Psi_{S2}+\Psi_{S2}^*\Psi_{S1})
+            |\psi|^2 = |\psi_{S1}+\psi_{S2}|^2
+            = |\psi_{S1}|^2+|\psi_{S2}|^2+(\psi_{S1}^*\psi_{S2}+\psi_{S2}^*\psi_{S1})
         \end{equation*}
-        \item Calling $I_i:=|\Psi_{Si}|^2$, the above equation transforms into
+        \item Calling $I_i:=|\psi_{Si}|^2$, the above equation transforms into
         \begin{equation*}
-            |\Psi|^2 = I_1+I_2+2\sqrt{I_1I_2}\cos\delta
+            |\psi|^2 = I_1+I_2+2\sqrt{I_1I_2}\cos\delta
         \end{equation*}
         where $\delta$ is the phase difference that will depend on the waves' wavelength and the difference of the distances of the screens to the slits.
         \item We will therefore see an interference pattern.
         \item The observations are in full agreement with this prediction.
     \end{itemize}
-    \item What is this mysterious $\Psi$?
+    \item What is this mysterious $\psi$?
     \begin{itemize}
-        \item We know that $|\Psi|^2$ is the density of probability of finding an electron in a given point.
-        \item Essentially, if you take a small volume $\Delta V=\Delta x\Delta y\Delta z$, then $|\Psi|^2\Delta V$ is the probability of finding the electron in $\Delta V$.
+        \item We know that $|\psi|^2$ is the density of probability of finding an electron in a given point.
+        \item Essentially, if you take a small volume $\Delta V=\Delta x\Delta y\Delta z$, then $|\psi|^2\Delta V$ is the probability of finding the electron in $\Delta V$.
         \item Therefore, since the sum of all probabilities should be normalized to 1, we know that
         \begin{equation*}
-            \int_{-\infty}^\infty|\Psi|^2\dd{x}\dd{y}\dd{z} = 1
+            \int_{-\infty}^\infty|\psi|^2\dd{x}\dd{y}\dd{z} = 1
         \end{equation*}
     \end{itemize}
     \item Typical lectures will be 100\% blackboard-based, not this format.
@@ -383,13 +383,13 @@
         \item We defined $\vec{p}=\hbar\vec{k}$ and $E=\vec{p}{\,}^2/2m=\hbar\omega$.
         \item The general form for a free wave is
         \begin{equation*}
-            \Psi = A\exp[i(\vec{k}\cdot\vec{r}-\omega t)]
+            \psi = A\exp[i(\vec{k}\cdot\vec{r}-\omega t)]
             = A\exp[\frac{i}{\hbar}(\vec{p}\cdot\vec{r}-Et)]
         \end{equation*}
     \end{itemize}
-    \item If we evaluate $-i\hbar\vec{\nabla}\Psi$ with $\Psi$ defined as above, then we get
+    \item If we evaluate $-i\hbar\vec{\nabla}\psi$ with $\psi$ defined as above, then we get
     \begin{equation*}
-        -i\hbar\vec{\nabla}\Psi = \vec{p}\,\Psi
+        -i\hbar\vec{\nabla}\psi = \vec{p}\,\psi
     \end{equation*}
     \item In this course, we will denote differential operators with hats, e.g., the momentum operator is
     \begin{equation*}
@@ -410,9 +410,9 @@
             \vec{\nabla}^2 = \pdv[2]{x}+\pdv[2]{y}+\pdv[2]{z}
         \end{equation*}
     \end{itemize}
-    \item Observe that if we evaluate $i\hbar\dv*{\Psi}{t}$ with $\Psi$ defined as above, then we get
+    \item Observe that if we evaluate $i\hbar\dv*{\psi}{t}$ with $\psi$ defined as above, then we get
     \begin{equation*}
-        i\hbar\dv{\Psi}{t} = E\Psi
+        i\hbar\dv{\psi}{t} = E\psi
     \end{equation*}
     \item \textbf{Hamiltonian operator} (for a free particle): The operator defined as follows. \emph{Denoted by} $\bm{\hat{H}}$. \emph{Given by}
     \begin{equation*}
@@ -420,14 +420,14 @@
     \end{equation*}
     \item Thus,
     \begin{equation*}
-        \hat{H}\Psi = \frac{\vec{p}{\,}^2}{2m}\Psi
-        = \frac{p^2}{2m}\Psi
-        = E\Psi
-        = i\hbar\pdv{\Psi}{t}
+        \hat{H}\psi = \frac{\vec{p}{\,}^2}{2m}\psi
+        = \frac{p^2}{2m}\psi
+        = E\psi
+        = i\hbar\pdv{\psi}{t}
     \end{equation*}
     which implies by transitivity that for a free particle,
     \begin{equation*}
-        \frac{\vec{p}{\,}^2}{2m}\Psi = E\Psi
+        \frac{\vec{p}{\,}^2}{2m}\psi = E\psi
     \end{equation*}
     \item Recall that normally,
     \begin{equation*}
@@ -437,55 +437,55 @@
     \item Schr\"{o}dinger postulated the \textbf{Schr\"{o}dinger equation}.
     \item \textbf{Schr\"{o}dinger equation}: The equation defined as follows. \emph{Given by}
     \begin{align*}
-        \hat{H}\Psi &= i\hbar\pdv{t}\Psi\\
-        -\frac{\hbar^2}{2m}\vec{\nabla}^2\Psi+V(\vec{r},t)\Psi &= i\hbar\pdv{t}\Psi
+        \hat{H}\psi &= i\hbar\pdv{t}\psi\\
+        -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi+V(\vec{r},t)\psi &= i\hbar\pdv{t}\psi
     \end{align*}
-    \item What do we know about $\Psi$?
+    \item What do we know about $\psi$?
     \begin{itemize}
         \item Recall from last time that
         \begin{equation*}
-            \int_V|\Psi|^2\dd^3r
+            \int_V|\psi|^2\dd^3r
         \end{equation*}
         represents the probability of finding the particle in the volume $V$.
         \item In particular, this means that we must have
         \begin{equation*}
-            \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\Psi|^2 = 1
+            \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\psi|^2 = 1
         \end{equation*}
     \end{itemize}
     \item This greatly diverges from classical mechanics, where particles followed a well-defined path for which you could define a position and momentum at each point along the path.
     \item The Schr\"{o}dinger equation has many nice properties. Examples:
     \begin{enumerate}
-        \item \underline{Linearity part 1 (scalability)}: If $\Psi$ is a solution, then $k\Psi$ is a solution where $k$ is a constant.
+        \item \underline{Linearity part 1 (scalability)}: If $\psi$ is a solution, then $k\psi$ is a solution where $k$ is a constant.
         \begin{itemize}
             \item This follows directly from the definition:
             \begin{equation*}
-                -\frac{\hbar^2}{2m}\vec{\nabla}^2(k\Psi)+V(\vec{r},t)k\Psi = k\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\Psi+V(\vec{r},t)\Psi \right] = k\left[ i\hbar\pdv{t}\Psi \right] = i\hbar\pdv{t}(k\psi)
+                -\frac{\hbar^2}{2m}\vec{\nabla}^2(k\psi)+V(\vec{r},t)k\psi = k\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi+V(\vec{r},t)\psi \right] = k\left[ i\hbar\pdv{t}\psi \right] = i\hbar\pdv{t}(k\psi)
             \end{equation*}
         \end{itemize}
-        \item \underline{Linearity part 2 (additivity)}: If $\Psi_1,\Psi_2$ are solutions, then $\Psi_1+\Psi_2$ is a solution.
+        \item \underline{Linearity part 2 (additivity)}: If $\psi_1,\psi_2$ are solutions, then $\psi_1+\psi_2$ is a solution.
         \begin{itemize}
             \item This is --- once again --- because of the linearity of the differential operators involved:
             \begin{equation*}
-                \hat{H}(\Psi_1+\Psi_2) = i\hbar\pdv{t}(\Psi_1+\Psi_2)
+                \hat{H}(\psi_1+\psi_2) = i\hbar\pdv{t}(\psi_1+\psi_2)
             \end{equation*}
         \end{itemize}
     \end{enumerate}
     \item Because of linearity, quantum mechanics is \emph{easier} than classical mechanics in some sense.
-    \item It follows from the two parts of linearity that if $\Psi_1,\dots,\Psi_n$ are solutions and $c_1,\dots,c_n$ are complex constants, then
+    \item It follows from the two parts of linearity that if $\psi_1,\dots,\psi_n$ are solutions and $c_1,\dots,c_n$ are complex constants, then
     \begin{equation*}
-        \Psi = \sum_{i=1}^nc_i\Psi_i
+        \psi = \sum_{i=1}^nc_i\psi_i
     \end{equation*}
     is a solution.
-    \item What if I want to find the mean value of the \emph{position} of the particle defined by $\Psi$? Integrate over all space (I know that the particle will be somewhere there), and scale the probability of it being at each point by the distance to that point:
+    \item What if I want to find the mean value of the \emph{position} of the particle defined by $\psi$? Integrate over all space (I know that the particle will be somewhere there), and scale the probability of it being at each point by the distance to that point:
     \begin{equation*}
-        \Exp{\hat{\vec{r}}} = \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\Psi(\vec{r},t)|^2\vec{r}
+        \Exp{\hat{\vec{r}}} = \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\psi(\vec{r},t)|^2\vec{r}
     \end{equation*}
     \begin{itemize}
         \item Note that $\hat{\vec{r}}=\vec{r}$, i.e., the position operator is just the position!
     \end{itemize}
-    \item What if we want to find the mean value of the \emph{momentum} of the particle defined by $\Psi$? We have to do something less obvious:
+    \item What if we want to find the mean value of the \emph{momentum} of the particle defined by $\psi$? We have to do something less obvious:
     \begin{equation*}
-        \Exp{\hat{\vec{p}}} = \int\dd^3r\Psi^*(-i\hbar\vec{\nabla}\Psi)
+        \Exp{\hat{\vec{p}}} = \int\dd^3r\psi^*(-i\hbar\vec{\nabla}\psi)
     \end{equation*}
     \begin{itemize}
         \item Is there a rationale for this construction??
@@ -500,17 +500,17 @@
         \item Recall from E\&M that $\pdv*{\rho}{t}+\vec{\nabla}\cdot\vec{J}=0$; this is a relationship between density and current density.
         \item The analogous equation in quantum mechanics is
         \begin{equation*}
-            \pdv{|\Psi|^2}{t}+\vec{\nabla}\left[ \frac{i\hbar}{2m}(\Psi\vec{\nabla}\Psi^*-\Psi^*\vec{\nabla}\Psi) \right] = 0
+            \pdv{|\psi|^2}{t}+\vec{\nabla}\left[ \frac{i\hbar}{2m}(\psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi) \right] = 0
         \end{equation*}
         \begin{itemize}
-            \item In PSet 1, we will derive this equation from from the Schr\"{o}dinger equation by multiplying by $\Psi,\Psi^*$ to the two sides and adding.
+            \item In PSet 1, we will derive this equation from from the Schr\"{o}dinger equation by multiplying by $\psi,\psi^*$ to the two sides and adding.
             \item The derivation should be pretty straightforward.
         \end{itemize}
         \item We now use this equation.
         \item Differentiate both sides of the $\Exp{\hat{\vec{r}}}$ equation to get
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\vec{r}\pdv{t}|\Psi(\vec{r},t)|^2\\
-            &= \int\dd^3r\vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\Psi\vec{\nabla}\Psi^*-\Psi^*\vec{\nabla}\Psi) \right]
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\vec{r}\pdv{t}|\psi(\vec{r},t)|^2\\
+            &= \int\dd^3r\vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi) \right]
         \end{align*}
         \item We now integrate by parts using
         \begin{equation*}
@@ -523,15 +523,15 @@
         where $\delta$ denotes the Kronecker delta function.
         \item Thus, continuing from the above, we have that
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\left[ \frac{i\hbar}{2m}\Psi\vec{\nabla}\Psi^*-\frac{i\hbar}{2m}\Psi^*\vec{\nabla}\Psi \right]\\
-            &= \int\dd^3r\left[ -\frac{i\hbar}{m}\Psi^*\vec{\nabla}\Psi \right]\\
+            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3r\left[ \frac{i\hbar}{2m}\psi\vec{\nabla}\psi^*-\frac{i\hbar}{2m}\psi^*\vec{\nabla}\psi \right]\\
+            &= \int\dd^3r\left[ -\frac{i\hbar}{m}\psi^*\vec{\nabla}\psi \right]\\
             &= \frac{\Exp{\hat{\vec{p}}}}{m}
         \end{align*}
     \end{itemize}
     \item Ask about instances of notation changing.
-    \item Note that in this course, $\Psi^*$ denotes the complex conjugate of $\Psi$.
+    \item Note that in this course, $\psi^*$ denotes the complex conjugate of $\psi$.
     \begin{itemize}
-        \item We don't use $\bar{\Psi}$ here because bars often indicate something else in physics.
+        \item We don't use $\bar{\psi}$ here because bars often indicate something else in physics.
     \end{itemize}
     \item Last note: All observables are real in quantum mechanics!
     \begin{itemize}
@@ -539,7 +539,7 @@
     \end{itemize}
     \item \textbf{Hermitian} (operator): An operator satisfying the following equation. \emph{Constraint}
     \begin{equation*}
-        \int\Psi^*\hat{\typical}\Psi\dd^3x = \left( \int\Psi\typical\Psi^*\dd^3r \right)^*
+        \int\psi^*\hat{\typical}\psi\dd^3x = \left( \int\psi\typical\psi^*\dd^3r \right)^*
     \end{equation*}
     \begin{itemize}
         \item As with matrices, we have some kind of equality with the complex conjugate.
