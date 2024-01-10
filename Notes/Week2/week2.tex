@@ -133,5 +133,215 @@
 
 
 
+\section{Time-Independent Potentials}
+\begin{itemize}
+    \item \marginnote{1/10:}Recap of important equations.
+    \begin{itemize}
+        \item Momentum and Hamiltonian operators.
+        \item Schr\"{o}dinger equation.
+        \item Expectation values of $\vec{x}$ and $\vec{p}$, the classical relation between them, and Ehrenfest's theorem.
+        \item Hermitian operator condition.
+        \begin{itemize}
+            \item The fact that their observables are real.
+            \item Examples: $\hat{\vec{p}}$, $\hat{H}$, $\hat{\vec{p}}{\,}^2/2m$, $V(\vec{r},t)$.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Adjoint} (of $\hat{O}$): The operator defined according to the following rule. \emph{Denoted by} $\bm{\hat{O}^\dagger}$. \emph{Constraint}
+    \begin{equation*}
+        \int\dd^3\vec{r}\ \psi_i^*\hat{O}\psi_j = \int\dd^3\vec{r}\ (\hat{O}^\dagger\psi_i)^*\psi_j
+    \end{equation*}
+    \begin{itemize}
+        \item A self-adjoint (Hermitian) operator is an operator satisfying $\hat{O}=\hat{O}^\dagger$.
+    \end{itemize}
+    \item Dirac notation.
+    \begin{itemize}
+        \item Associate with each $\psi(\vec{r},t)$ a "ket" $\ket{\psi}$ and a "bra" $\bra{\psi}$.
+        \begin{itemize}
+            \item These are like vectors.
+        \end{itemize}
+        \item The full "bra-ket" $\braket{\psi_i}{\psi_j}:=\int\dd^3\vec{r}\ \psi_i^*\psi_j$.
+        \item We also have $\mel{\psi_i}{\hat{O}}{\psi_j}:=\int\dd^3\vec{r}\ \psi_i^*\hat{O}\psi_j$.
+    \end{itemize}
+    \item The condition for an operator being Hermitian/self-adjoint in Dirac notation:
+    \begin{equation*}
+        \mel{\psi_i}{\hat{O}}{\psi_j} = \braket{\psi_i}{\hat{O}\psi_j}
+        = \braket{\hat{O}^\dagger\psi_i}{\psi_j}
+    \end{equation*}
+    \item We also have that
+    \begin{equation*}
+        \mel{\psi_i}{\hat{O}_1\hat{O}_2}{\psi_j} = \braket{\psi_i}{\hat{O}_1\hat{O}_2\psi_j}
+        = \braket{\hat{O}_1^\dagger\psi_i}{\hat{O}_2\psi_j}
+        = \braket{\hat{O}_2^\dagger\hat{O}_1^\dagger\psi_i}{\psi_j}
+    \end{equation*}
+    \begin{itemize}
+        \item This is very relevant to PSet 1, Q3a!
+    \end{itemize}
+    \item Dirac notation allows us to represent complicated expressions such as
+    \begin{equation*}
+        \int\dd^3\vec{r}\ {\psi'}^*\psi = \left( \int\dd^3\vec{r}\ \psi^*\psi' \right)^*
+    \end{equation*}
+    in the form
+    \begin{equation*}
+        \braket{\psi}{\psi'} = \left( \braket{\psi'}{\psi} \right)^*
+    \end{equation*}
+    \item In Dirac notation, the Hermitian condition becomes
+    \begin{equation*}
+        \braket{\psi_i}{\hat{O}_1\hat{O}_2\psi_j} = \braket{\hat{O}_2\hat{O}_1\psi_i}{\psi_j}
+    \end{equation*}
+    \item We also have that
+    \begin{equation*}
+        \braket{\psi_i}{\hat{O}_1\hat{O}_2\psi_j} = \left( \braket{\psi_j}{\hat{O}_2\hat{O}_1\psi_i} \right)^*
+    \end{equation*}
+    \begin{itemize}
+        \item This is also relevant to PSet 1, Q3a!
+    \end{itemize}
+    \item This last statement has some consequences.
+    \begin{itemize}
+        \item In particular, if $\psi_i=\psi_j=\psi$, then
+        \begin{equation*}
+            \braket{\psi}{\hat{O}_1\hat{O}_2\psi} = \left( \braket{\psi}{\hat{O}_2\hat{O}_1\psi} \right)^*
+        \end{equation*}
+        \item Thus, by adding and subtracting the quantities in the above result, we learn that
+        \begin{equation*}
+            \braket{\psi}{(\hat{O}_1\hat{O}_2-\hat{O}_2\hat{O}_1)\psi}
+        \end{equation*}
+        is an imaginary number and
+        \begin{equation*}
+            \braket{\psi}{(\hat{O}_1\hat{O}_2+\hat{O}_2\hat{O}_1)\psi}
+        \end{equation*}
+        is a real number.
+    \end{itemize}
+    \item Example: The commutator of the position and momentum operators gives a purely imaginary number.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            [\hat{\vec{p}}_x,\hat{x}]f = (\hat{\vec{p}}_xx-x\hat{\vec{p}}_x)f
+            = -i\hbar\pdv{x}(xf)+xi\hbar\pdv{f}{x}
+            = -i\hbar\pdv{x}{x}f-i\hbar x\pdv{f}{x}+i\hbar x\pdv{f}{x}
+            = -i\hbar f
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            [\hat{\vec{p}}_x,\hat{x}] = -i\hbar
+        \end{equation*}
+        as desired.
+    \end{itemize}
+    \item Can $\psi_n$ be an eigenstate of $\hat{O}_1$ and $\hat{O}_2$ simultaneously?
+    \begin{itemize}
+        \item In the mold of a typical eigenvalue equation $A\vec{x}_n=\lambda_n\vec{x}_n$, let
+        \begin{align*}
+            \hat{O}\psi_n &= O_n\psi_n&
+            \hat{O}_1\psi_n &= O_{1,n}\psi_n&
+            \hat{O}_2\psi_m' &= O_{2,m}\psi_m'
+        \end{align*}
+        \item Then we have that
+        \begin{align*}
+            \hat{O}_1\psi_n &= O_{1,n}\psi_n\\
+            \hat{O}_2\hat{O}_1\psi_n &= O_{1,n}\hat{O}_2\psi_n = O_{1,n}O_{2,n}\psi_n
+        \end{align*}
+        and
+        \begin{align*}
+            \hat{O}_2\psi_n &= O_{2,n}\psi_n\\
+            \hat{O}_1\hat{O}_2\psi_n &= O_{2,n}\hat{O}_1\psi_n = O_{2,n}O_{1,n}\psi_n
+        \end{align*}
+        \item These are the relevant constraints.
+        \item If such a $\psi_n$ exists, then we can determine the values of $\hat{O}_1,\hat{O}_2$ simultaneously to infinite precision.
+    \end{itemize}
+    \item The commutator is associated with a compatible observable.
+    \begin{itemize}
+        \item In particular, when two operators commute, we say that the associated physical observables are \textbf{compatible}.
+    \end{itemize}
+    \item Because waves move in a \textbf{wave packet}, there is some uncertainty in the position.
+    \begin{itemize}
+        \item In particular, the uncertainty of $\hat{A}$ in a given state $\psi$ is
+        \begin{equation*}
+            \ev{(\hat{A}-\Exp{\hat{A}})^2}{\psi}
+        \end{equation*}
+        \item An alternate form of this expression is
+        \begin{equation*}
+            \ev{\Exp{\hat{A}^2}-\Exp{\hat{A}}^2}{\psi}
+        \end{equation*}
+        \begin{itemize}
+            \item Wagner proves this as in MathChapter B from CHEM26100Notes.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Wave packet}: It is a continuous sum of waves of different frequencies.
+    \item If $\psi_n$ is an eigenstate of $\hat{A}$\dots
+    \begin{itemize}
+        \item Then
+        \begin{equation*}
+            \ev{\hat{A}}{\psi_n} = A_n\braket{\psi_n} = A_n
+        \end{equation*}
+        \item Similarly,
+        \begin{equation*}
+            \ev{\hat{A}^2}{\psi_n} = A_n^2\braket{\psi_n} = A_n^2
+        \end{equation*}
+        \item Therefore, the uncertainty of $\hat{A}$ in an eigenstate is $A_n^2-(A_n)^2=0$.
+    \end{itemize}
+    \item Note that the condition "$\psi$ is an eigenstate of $\hat{A}$" can be denoted via $\hat{A}\ket{\psi_n}=A_n\ket{\psi_n}$.
+    \item \textbf{Heisenberg uncertainty principle}. \emph{Given by}
+    \begin{equation*}
+        \sigma_x\sigma_{p_x} \geq \frac{\hbar}{2}
+    \end{equation*}
+    \item Why is this the case? It is related to $[p_x,x]=-i\hbar$.
+    \begin{itemize}
+        \item The full derivation is in the notes (transcribed below), but for now, know that it is a general fact that
+        \begin{equation*}
+            \sigma_A^2\sigma_B^2 \geq \frac{1}{4}|\ev{[A,B]}{\psi}|^2
+        \end{equation*}
+        \item We demonstrate this via the \textbf{Schwarz inequality}.
+        \item One thing is always complex; the other is always real.
+    \end{itemize}
+    \item \textbf{Cauchy-Schwarz inequality}. \emph{Given by}
+    \begin{equation*}
+        (f,f)(g,g) \geq |(f,g)|^2
+    \end{equation*}
+    \begin{itemize}
+        \item $(f,g)$ denotes the inner product of $f$ and $g$, where $f,g$ are elements of an abstract vector space.
+    \end{itemize}
+    \item \textbf{Schwarz inequality}. \emph{Given by}
+    \begin{equation*}
+        \left( \int\dd^3\vec{r}\ |f|^2 \right)\left( \int\dd^3\vec{r}\ |g|^2 \right) \geq \left| \int\dd^3\vec{r}\ fg^* \right|^2
+    \end{equation*}
+    \begin{itemize}
+        \item In Dirac's notation, this is
+        \begin{equation*}
+            \braket{f}\cdot\braket{g} \geq |\braket{f}{g}|^2
+        \end{equation*}
+    \end{itemize}
+    \item Full derivation of the Heisenberg uncertainty principle.
+    \begin{itemize}
+        \item Apply the Schwarz inequality to $f=(\hat{A}-\Exp{\hat{A}})\psi$ and $g=(\hat{B}-\Exp{\hat{B}})\psi$, for $\hat{A},\hat{B}$ Hermitian.
+        \item Recall that the following identities hold for Hermitian/self-adjoint operators.
+        \begin{align*}
+            \mel{\psi}{\hat{A}}{\psi'} &= \braket{\psi}{\hat{A}\psi'} = \braket{\hat{A}\psi}{\psi'}&
+            \mel{\psi}{\hat{A}^2}{\psi'} &= \braket{\hat{A}\psi}{\hat{A}\psi'}
+        \end{align*}
+        \item Consequently, we have that
+        \begin{align*}
+            \sigma_A^2\cdot\sigma_B^2 &= \ev{(\hat{A}-\Exp{\hat{A}})^2}{\psi}\cdot\ev{(\hat{B}-\Exp{\hat{B}})^2}{\psi}\\
+            &= \braket{(\hat{A}-\Exp{\hat{A}})\psi}{(\hat{A}-\Exp{\hat{A}})\psi}\cdot\braket{(\hat{B}-\Exp{\hat{B}})\psi}{(\hat{B}-\Exp{\hat{B}})\psi}\\
+            &\geq \left| \braket{(\hat{A}-\Exp{\hat{A}})\psi}{(\hat{B}-\Exp{\hat{B}})\psi} \right|^2\\
+            &= \Big| \ev{(\underbrace{\hat{A}-\Exp{\hat{A}}}_{\Delta\hat{A}})(\underbrace{\hat{B}-\Exp{\hat{B}}}_{\Delta\hat{B}})}{\psi} \Big|^2
+            \intertext{Now, any product of operators can be expressed as one half of the sum of the \textbf{commutator} and the \textbf{anticommutator}. Thus, continuing,}
+            &= \Big| \ev{\frac{1}{2}([\Delta\hat{A},\Delta\hat{B}]+\{\Delta\hat{A},\Delta\hat{B}\})}{\psi} \Big|^2\\
+            &= \frac{1}{4}\Big| \ev{[\Delta\hat{A},\Delta\hat{B}]+\{\Delta\hat{A},\Delta\hat{B}\}}{\psi} \Big|^2
+            \intertext{Recall from above that the mean value of the commutator is an imaginary number and the mean value of the anticommutator is a real number. Thus, if we split the above equation into two terms, the mean value of the anticommutator will be squared, hence a positive number that we can get rid of and maintain the inequality. Lastly, we can compute that $[\Delta\hat{A},\Delta\hat{B}]=[\hat{A},\hat{B}]$. Therefore,}
+            &\geq \frac{1}{4}\Big| \ev{[\hat{A},\hat{B}]}{\psi} \Big|^2
+        \end{align*}
+        \item Example: Since $[p_x,x]=-i\hbar$, we can recover the Heisenberg uncertainty principle from the above inequality.
+    \end{itemize}
+    \item \textbf{Commutator} (of $\hat{O}_1,\hat{O}_2$): The operator defined as follows. \emph{Denoted by} $\bm{[\hat{O}_1,\hat{O}_2]}$. \emph{Given by}
+    \begin{equation*}
+        [\hat{O}_1,\hat{O}_2] = \hat{O}_1\hat{O}_2-\hat{O}_1\hat{O}_2
+    \end{equation*}
+    \item \textbf{Anticommutator} (of $\hat{O}_1,\hat{O}_2$): The operator defined as follows. \emph{Denoted by} $\bm{\{\hat{O}_1,\hat{O}_2\}}$. \emph{Given by}
+    \begin{equation*}
+        \{\hat{O}_1,\hat{O}_2\} = \hat{O}_1\hat{O}_2+\hat{O}_2\hat{O}_1
+    \end{equation*}
+\end{itemize}
+
+
+
 
 \end{document}
