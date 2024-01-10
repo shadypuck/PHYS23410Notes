@@ -478,14 +478,14 @@
     is a solution.
     \item What if I want to find the mean value of the \emph{position} of the particle defined by $\psi$? Integrate over all space (I know that the particle will be somewhere there), and scale the probability of it being at each point by the distance to that point:
     \begin{equation*}
-        \Exp{\hat{\vec{r}}} = \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\psi(\vec{r},t)|^2\vec{r}
+        \Exp{\hat{\vec{r}}\,} = \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\dd{x}\dd{y}\dd{z}|\psi(\vec{r},t)|^2\vec{r}
     \end{equation*}
     \begin{itemize}
         \item Note that $\hat{\vec{r}}=\vec{r}$, i.e., the position operator is just the position!
     \end{itemize}
     \item What if we want to find the mean value of the \emph{momentum} of the particle defined by $\psi$? We have to do something less obvious:
     \begin{equation*}
-        \Exp{\hat{\vec{p}}} = \int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi)
+        \Exp{\hat{\vec{p}}\,} = \int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi)
     \end{equation*}
     \begin{itemize}
         \item Is there a rationale for this construction??
@@ -507,9 +507,9 @@
             \item The derivation should be pretty straightforward.
         \end{itemize}
         \item We now use this equation.
-        \item Differentiate both sides of the $\Exp{\hat{\vec{r}}}$ equation to get
+        \item Differentiate both sides of the $\Exp{\hat{\vec{r}}\,}$ equation to get
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3\vec{r}\ \vec{r}\pdv{t}|\psi(\vec{r},t)|^2\\
+            \dv{\Exp{\hat{\vec{r}}\,}}{t} &= \int\dd^3\vec{r}\ \vec{r}\pdv{t}|\psi(\vec{r},t)|^2\\
             &= \int\dd^3\vec{r}\ \vec{r}\,\vec{\nabla}\left[ -\frac{i\hbar}{2m}(\psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi) \right]
         \end{align*}
         \item We now integrate by parts using
@@ -523,9 +523,9 @@
         where $\delta$ denotes the Kronecker delta function.
         \item Thus, continuing from the above, we have that
         \begin{align*}
-            \dv{\Exp{\hat{\vec{r}}}}{t} &= \int\dd^3\vec{r}\ \left[ \frac{i\hbar}{2m}\psi\vec{\nabla}\psi^*-\frac{i\hbar}{2m}\psi^*\vec{\nabla}\psi \right]\\
+            \dv{\Exp{\hat{\vec{r}}}\,}{t} &= \int\dd^3\vec{r}\ \left[ \frac{i\hbar}{2m}\psi\vec{\nabla}\psi^*-\frac{i\hbar}{2m}\psi^*\vec{\nabla}\psi \right]\\
             &= \int\dd^3\vec{r}\ \left[ -\frac{i\hbar}{m}\psi^*\vec{\nabla}\psi \right]\\
-            &= \frac{\Exp{\hat{\vec{p}}}}{m}
+            &= \frac{\Exp{\hat{\vec{p}}}\,}{m}
         \end{align*}
     \end{itemize}
     \item Ask about instances of notation changing.
@@ -543,6 +543,158 @@
     \end{equation*}
     \begin{itemize}
         \item As with matrices, we have some kind of equality with the complex conjugate.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 0: Preface}
+\emph{From \textcite{bib:Griffiths}.}
+\begin{itemize}
+    \item \marginnote{1/9:}"Every competent physicist can `do' quantum mechanics, but the stories we tell ourselves about what we are doing are as various" as can be \parencite[11]{bib:Griffiths}.
+    \item "We do not believe one can intelligently discuss what quantum mechanics \emph{means} until one has a firm sense of what quantum mechanics \emph{does}," hence this book is devoted to teaching how to \emph{do} quantum mechanics \parencite[11]{bib:Griffiths}.
+    \item Mathematical prerequisites.
+    \begin{itemize}
+        \item Legendre, Hermite, and Laguerre polynomials.
+        \item Spherical harmonics.
+        \item Bessel, Neumann, and Hankel functions.
+        \item Airy functions.
+        \item The Riemann zeta function.
+        \item Fourier transforms.
+        \item Hilbert spaces.
+        \item Hermitian operators.
+        \item Clebsch-Gordon coefficients.
+    \end{itemize}
+    \item \textcite{bib:Griffiths} recommend two math books for physicists that would explain the above concepts.
+\end{itemize}
+
+
+
+\section{Chapter 1: The Wave Function}
+\emph{From \textcite{bib:Griffiths}.}
+\begin{itemize}
+    \item Section 1.1: The Schr\"{o}dinger Equation.
+    \item All systems that occur at the microscopic level are conservative!
+    \item The setup in classical mechanics: Use Newton's second law to find a given particle's trajectory $x(t)$ and then derive any other quantity (e.g., $v,p,T$) that you want from there.
+    \item The setup in quantum mechanics: Use the Schr\"{o}dinger equation to find a given particle's wave function $\psi(x,t)$.
+    \item Section 1.2: The Statistical Interpretation.
+    \item \textbf{Statistical interpretation}: $|\psi(x,t)|^2$ gives the probability of finding the particle at the point $x$ at time $t$.
+    \begin{itemize}
+        \item Attributed to Max Born.
+    \end{itemize}
+    \item Probability as the area under a curve.
+    \item \textbf{Quantum indeterminacy}: Even if you know everything the theory has to tell you about a given particle (e.g., the theory tells you its wave function), still you cannot predict with certainty the outcome of a simple experiment to measure the particle's position.
+    \item Is quantum indeterminacy a fact of nature or a defect in the theory?
+    \begin{itemize}
+        \item Big physical/philosophical question!
+    \end{itemize}
+    \item Suppose you measure the position of a given particle, finding that its at point $C$.
+    \begin{itemize}
+        \item Where was the particle just before measuring?
+        \item Three plausible answers: The \textbf{realist}, \textbf{orthodox}, and \textbf{agnostic} positions.
+    \end{itemize}
+    \item \textbf{Realist} (position): The particle was at $C$.
+    \begin{itemize}
+        \item "The position of the particle was never indeterminate, but was merely unknown to the experimenter" \parencite[17]{bib:Griffiths}.
+        \item If this is true, then quantum mechanics is an \textbf{incomplete} theory, i.e., we are missing some \textbf{hidden variable} needed to prove a complete description of the particle.
+    \end{itemize}
+    \item \textbf{Orthodox} (position): The particle wasn't really anywhere. \emph{Also known as} \textbf{Copenhagen interpretation}.
+    \begin{itemize}
+        \item Implication: It was the act of measurement that forced the particle to "take a stand."
+        \item Implication: "Observations not only \emph{disturb} what is to be measured, they \emph{produce} it\dots we \emph{compel} [the particle] to assume a definite position" \parencite[17]{bib:Griffiths}.
+    \end{itemize}
+    \item \textbf{Agnostic} (position): Refuse to answer.
+    \begin{itemize}
+        \item Only way to establish where the particle was before moving is to take two measurements, but we can't do this physically.
+        \item Thus, why even worry about the question!
+    \end{itemize}
+    \item John Bell in 1964 showed that there is an observable corresponding to whether the particle has a precise position prior to measurement, eliminating agnosticism and making the distinction between realism and orthodoxy a (mostly) experimental question.
+    \begin{itemize}
+        \item The orthodox position is the most likely current contender following the experiment.
+    \end{itemize}
+    \item Measuring position twice consecutively must give the same value.
+    \begin{itemize}
+        \item We account for this by saying that the wave function \textbf{collapses} to a spike at $C$ that we can measure again quickly before the wave function spreads out anew.
+    \end{itemize}
+    \item Double slit experiment with electrons.
+    \item Section 1.3: Probability.
+    \item Largely a review of MathChapter B from CHEM26100Notes. A few important, novel things are noted below.
+    \item Why do we measure spread via squared terms?
+    \begin{itemize}
+        \item The most obvious way to measure spread would be to find out how far each individual is from the average via $\Delta j=j-\Exp{j}$ and then compute $\Exp{\Delta j}$. But $\Exp{\Delta j}=0$ always.
+        \item What else could we do? We could take the absolute value of $\Delta j$. But this would be computationally complicated and involve lots of signs of which to keep track.
+        \item Thus, we get around both the zeroing out problem and the sign problem by squaring to get $\Exp{(\Delta j)^2}$.
+    \end{itemize}
+    \item \textbf{Probability density}: The proportionality factor $\rho(x)$ such that $\rho(x)\dd{x}$ is the probability that an individual lies between $x$ and $x+\dd{x}$.
+    \item Example 1.2: A really interesting continuous probability problem! Come back to if I have time.
+    \item Section 1.4: Normalization.
+    \item Recall that a wave function $\psi$ is not necessarily normalized right off the bat, but since we have scalar linearity, we can normalize it!
+    \item This also means that we neglect any trivial solutions ($\psi=0,\infty$) as not corresponding to real particles, since these wavefunctions can't be normalized.
+    \item "Physically realizable states correspond to the \textbf{square-integrable} solutions to Schr\"{o}dinger's equation" \parencite[29]{bib:Griffiths}.
+    \item If we only normalized $\psi$ at $t=0$, how do we know that it will stay normalized as $\psi$ evolves?
+    \begin{itemize}
+        \item It is a property of the Schr\"{o}dinger equation that $\psi$ does stay normalized.
+        \item Without this fact, the whole statistical interpretation would break down.
+    \end{itemize}
+    \item \textcite{bib:Griffiths} essentially answer PSet 1, Q1.
+    \item Section 1.5: Momentum.
+    \item \textbf{Expectation value}: The average of measurements on an ensemble of identically prepared systems.
+    \begin{itemize}
+        \item The expectation value is \emph{not} the average of repeated measurements of the same particle (because measurement changes the particle).
+    \end{itemize}
+    \item We now justify why expectation values are calculated the way they are.
+    \begin{itemize}
+        \item To begin, we have as in class that
+        \begin{align*}
+            \dv{\Exp{x}}{t} &= \dv{t}(\int x|\psi|^2\dd{x})\\
+            &= \int x\pdv{t}|\psi|^2\dd{x}\\
+            &= \frac{i\hbar}{2m}\int x\pdv{x}(\psi^*\pdv{\psi}{x}-\pdv{\psi^*}{x}\psi)\dd{x}
+            \intertext{We now invoke integration by parts. Let $u:=x$ and $\dd{v}:=\pdv*{x}(\psi^*\pdv*{\psi}{x}-\pdv*{\psi^*}{x}\psi)\dd{x}$. Then we obtain}
+            &= \frac{i\hbar}{2m}\left\{ \left[ x\left( \psi^*\pdv{\psi}{x}-\pdv{\psi^*}{x}\psi \right) \right]_{-\infty}^\infty-\int \left( \psi^*\pdv{\psi}{x}-\pdv{\psi^*}{x}\psi \right)\dd{x} \right\}
+            \intertext{Since $\psi(\infty)=\psi^*(\infty)=\psi(-\infty)=\psi^*(-\infty)=0$, the left term above goes to zero, leaving}
+            &= -\frac{i\hbar}{2m}\int \left( \psi^*\pdv{\psi}{x}-\pdv{\psi^*}{x}\psi \right)\dd{x}\\
+            &= -\frac{i\hbar}{2m}\left( \int\psi^*\pdv{\psi}{x}\dd{x}-\int\pdv{\psi^*}{x}\psi\dd{x} \right)
+            \intertext{Now considering the right term above, let $u:=\psi$ and $\dd{v}:=\pdv*{\psi^*}{x}\dd{x}$. Then by both integration by parts and considering the behavior of $\psi,\psi^*$ at $\pm\infty$ once again, we obtain}
+            &= -\frac{i\hbar}{2m}\left[ \int\psi^*\pdv{\psi}{x}\dd{x}-\left( [\psi\psi^*]_{-\infty}^\infty-\int\psi^*\pdv{\psi}{x}\dd{x} \right) \right]\\
+            &= -\frac{i\hbar}{2m}\left[ \int\psi^*\pdv{\psi}{x}\dd{x}-\left( 0-\int\psi^*\pdv{\psi}{x}\dd{x} \right) \right]\\
+            &= -\frac{i\hbar}{2m}\left( \int\psi^*\pdv{\psi}{x}\dd{x}+\int\psi^*\pdv{\psi}{x}\dd{x}\right)\\
+            &= -\frac{i\hbar}{m}\int\psi^*\pdv{\psi}{x}\dd{x}
+        \end{align*}
+        \begin{itemize}
+            \item All integrals above are over all space.
+            \item We use $\pdv*{x}$ instead of $\vec{\nabla}$ because the book is only treating the one-dimensional case so far; the two operators are entirely analogous, though, by the definition of $\vec{\nabla}$!
+        \end{itemize}
+        \item Aside: Interpreting the above result.
+        \begin{itemize}
+            \item It is unclear that we could even give a well-defined conceptualization of the velocity $\Exp{v}$ of a quantum particle.
+            \item It turns out that we can (see Chapter 3), but for now we will postulate that
+            \begin{equation*}
+                \Exp{v} := \dv{\Exp{x}}{t}
+            \end{equation*}
+        \end{itemize}
+        \item It is much more customary to work with the \emph{momentum} $\Exp{p}=m\Exp{v}$ of a quantum particle.
+        \item In terms of $\psi$, the above equation tells us that
+        \begin{equation*}
+            \Exp{p} = -i\hbar\int\psi^*\pdv{\psi}{x}\dd{x}
+        \end{equation*}
+        \item Let's rewrite the above expressions for $\Exp{x},\Exp{p}$ in a more suggestive way.
+        \begin{align*}
+            \Exp{x} &= \int\psi^*[x]\psi\dd{x}&
+            \Exp{p} &= \int\psi^*[-i\hbar(\pdv*{x})]\psi\dd{x}
+        \end{align*}
+        \item Thus, we have derived expressions that we may call the \textbf{operators} representing position $x$ and momentum $p$!
+        \item Fact: "All classical dynamical variables can be expressed in terms of position and momentum" \parencite[33]{bib:Griffiths}.
+        \begin{itemize}
+            \item Example: $T=p^2/2m$.
+            \item Example: $\vec{L}=\vec{r}\times\vec{p}$.
+        \end{itemize}
+        \item Implication: To calculate the expectation value of any such quantity $Q(x,p)$, we simply replace every $p$ by $-i\hbar(\pdv*{x})$, insert the resulting operator between $\psi^*$ and $\psi$, and integrate:
+        \begin{equation*}
+            \Exp{Q(x,p)} = \int\psi^*[Q(x,-i\hbar\pdv*{x})]\psi\dd{x}
+        \end{equation*}
+        \begin{itemize}
+            \item In Chapter 3, we will put the above equation on firmer theoretical footing.
+        \end{itemize}
     \end{itemize}
 \end{itemize}
 

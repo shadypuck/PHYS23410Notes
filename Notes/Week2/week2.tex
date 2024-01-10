@@ -22,9 +22,9 @@
         \end{itemize}
         \item $\hat{\vec{p}}$ is the momentum operator, defined as the differential operator $-i\hbar\vec{\nabla}$.
         \item Expressing the Schr\"{o}dinger equation in terms of $\hat{\vec{p}}$, we see that it represents the application of a Hamiltonian operator in the usual form from last quarter (i.e., kinetic plus potential energy) to a certain function.
-        \item $\Exp{\hat{\vec{r}}}$ is the mean position, and $\Exp{\hat{\vec{p}}}$ is the mean momentum.
+        \item $\Exp{\hat{\vec{r}}\,}$ is the mean position, and $\Exp{\hat{\vec{p}}\,}$ is the mean momentum.
         \begin{itemize}
-            \item The mean position and mean momentum satisfy the classical relation, i.e., $\dd{\Exp{\hat{\vec{r}}}}/\dd{t}=\Exp{\hat{\vec{p}}}/m$.
+            \item The mean position and mean momentum satisfy the classical relation, i.e., $\dd{\Exp{\hat{\vec{r}}\,}}/\dd{t}=\Exp{\hat{\vec{p}}\,}/m$.
         \end{itemize}
     \end{itemize}
     \item \textbf{Probability density}: The quantity given as follows. \emph{Given by}
@@ -34,7 +34,7 @@
     \item We now prove something even more amazing than the classical relation result: An analogy to the classical Newton's law.
     \item \textbf{Ehrenfest's theorem}: The time derivative of the expectation value of the momentum operator is related to the expectation value of the force $F:=-\vec{\nabla}V$ on a massive particle moving in a scalar potential $V(\vec{r},t)$ as follows.
     \begin{equation*}
-        \dv{\Exp{\hat{\vec{p}}}}{t} = \Exp{-\vec{\nabla}V(\vec{r},t)}
+        \dv{\Exp{\hat{\vec{p}}\,}}{t} = \Exp{-\vec{\nabla}V(\vec{r},t)}
     \end{equation*}
     \begin{proof}
         Consider the Schr\"{o}dinger equation:
@@ -47,7 +47,7 @@
         \end{equation*}
         We will use the above two equations to substitute into the following algebraic derivation.
         \begin{align*}
-            \dv{\Exp{\hat{\vec{p}}}}{t} ={}& \dv{t}(\int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi))\\
+            \dv{\Exp{\hat{\vec{p}}\,}}{t} ={}& \dv{t}(\int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi))\\
             ={}& \int\dd^3\vec{r}\ {\pdv{\psi^*}{t}}(-i\hbar\vec{\nabla}\psi)+\int\dd^3\vec{r}\ \psi^*\left( -i\hbar\vec{\nabla}\pdv{\psi}{t} \right)\\
             ={}& \int\dd^3\vec{r}\,\left[ -i\hbar{\pdv{\psi^*}{t}}(\vec{\nabla}\psi) \right]+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( -i\hbar\pdv{\psi}{t} \right)\\
             \begin{split}
