@@ -355,5 +355,161 @@
 
 
 
+\section{Discussion Section}
+\begin{itemize}
+    \item There's not that much content to go over today, so we'll talk about some more mathematical tools like the Dirac delta function and Fourier transforms.
+    \item \textbf{Dirac delta function}: The function defined as follows. \emph{Denoted by} $\bm{\delta(x-x_0)}$. \emph{Given by}
+    \begin{equation*}
+        \delta(x-x_0) =
+        \begin{cases}
+            \infty & x=x_0\\
+            0 & x\neq x_0
+        \end{cases}
+    \end{equation*}
+    \item Useful for solving the Schr\"{o}dinger equation; this is a potential that we'll solve for.
+    \item Important application:
+    \begin{equation*}
+        \int_a^b\dd{x}\delta(x-x_0)f(x) =
+        \begin{cases}
+            f(x_0) & x_0\in[a,b]\\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{equation*}
+    \item Examples.
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            \int_{-5}^5\dd{x}\delta(x+4)(x^2-3x+4) = \eval{x^2-3x+4}_{x=-4}
+            = 32
+        \end{equation*}
+        \item 
+        \begin{equation*}
+            \int_0^\infty\delta(x+\pi)\cos(x) = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Because $x_0=-\pi\notin[0,\infty)$.
+        \end{itemize}
+    \end{enumerate}
+    \item Defining a notion of equality.
+    \begin{itemize}
+        \item Let $D_1(x),D_2(x)$ be functions of the $\delta$-function.
+        \begin{itemize}
+            \item Example: $D_1(x)=\delta(x+3)\e[-3x^2]$.
+        \end{itemize}
+        \item We say that $D_1(x)=D_2(x)$ if
+        \begin{equation*}
+            \int_{-\infty}^\infty\dd{x}D_1(x)f(x) = \int_{-\infty}^\infty\dd{x}D_2(x)f(x)
+        \end{equation*}
+        for any smooth function $f$.
+    \end{itemize}
+    \item $\delta$-function equalities.
+    \begin{enumerate}
+        \item $x\delta(x)=0$.
+        \item $\delta(x)=\delta(-x)$.
+        \item $\delta(cx)=\frac{1}{|c|}\delta(x)$.
+        \item $\int_{-\infty}^\infty\dd{x}\delta(a-x)\delta(x-b)=\delta(a-b)$.
+        \item $g(x)\delta(x-a)=g(a)\delta(x-a)$.
+    \end{enumerate}
+    \item These equalities will probably come in handy when we start working with the $\delta$-function.
+    \item We can prove these five equalities with the notion of equality defined above.
+    \item Example: Proving equality 1.
+    \begin{proof}
+        Let $D_1(x)=x\delta(x)$ and $D_2(x)=0$. Then
+        \begin{equation*}
+            \int_{-\infty}^\infty\dd{x}\delta(x)xf(x) = \eval{xf(x)}_{x=0} = 0
+        \end{equation*}
+        and
+        \begin{equation*}
+            \int_{-\infty}^\infty\dd{x}0f(x) = 0
+        \end{equation*}
+        It follows by transitivity that the two integrals equal each other, so we must have $x\delta(x)=0$ as desired.
+    \end{proof}
+    \item Equality 4 is the hardest to prove. We will have a constant $D_1(x)$ equal to
+    \begin{equation*}
+        D_1(x) = \int_{-\infty}^\infty\dd{y}\delta(a-y)\delta(y-b)
+    \end{equation*}
+    \item Fourier transforms (FT) of $\delta$-functions.
+    \item Recall:
+    \begin{itemize}
+        \item The FT of the function $\phi(x)$ is
+        \begin{equation*}
+            \tilde{\phi}(k) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\dd{x}\e[-ikx]\phi(x)
+        \end{equation*}
+        \item The inverse FT is
+        \begin{equation*}
+            \phi(x) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\dd{k}\e[ikx]\tilde{\phi}(k)
+        \end{equation*}
+    \end{itemize}
+    \item We call the FT of $\delta(x-x_0)$ the function
+    \begin{equation*}
+        \tilde{\phi}(k;x_0) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\dd{x}\e[-ikx]\delta(x-x_0)
+        = \eval{\frac{1}{\sqrt{2\pi}}\e[-ikx]}_{x=x_0}
+        = \frac{1}{\sqrt{2\pi}}\e[-ikx_0]
+    \end{equation*}
+    \item In addition:
+    \begin{align*}
+        \delta(x) &= \frac{1}{2\pi}\int_{-\infty}^\infty\dd{k}\e[ikx]&
+        \tilde{\delta}(k) &= \frac{1}{2\pi}\int_{-\infty}^\infty\dd{x}\e[-ikx]
+    \end{align*}
+    \item Matt explains the FT in terms of decomposing sums of sines and cosines.
+    \item Now the physics starts!
+    \item Expectation values.
+    \item So far, we have the wavefunction $\psi(x)$, which mysteriously contains information on the particle.
+    \begin{itemize}
+        \item It solves the Schr\"{o}dinger equation.
+    \end{itemize}
+    \item $|\psi(x)|^2$ gives the probability density of finding the particle at $x$.
+    \item The expectation value of some function $f(x)$ is
+    \begin{equation*}
+        \Exp{f(x)} = \int_{-\infty}^\infty\dd{x}\psi^*(x)f(x)\psi(x)
+    \end{equation*}
+    \item 1D momentum $\hat{p}$ can be written as the operator $-i\hbar\pdv*{x}$. Thus,
+    \begin{equation*}
+        \Exp{p} = \int_{-\infty}^\infty\dd{x}\psi^*
+        = \int_{-\infty}^\infty\dd{x}\psi^*\left( -i\hbar\pdv{\psi}{x} \right)
+    \end{equation*}
+    \begin{itemize}
+        \item This holds for $n^\text{th}$ powers:
+        \begin{equation*}
+            \Exp{\hat{p}^n} = \int_{-\infty}^\infty\dd{x}\psi^*(-i\hbar)^n\pdv[n]{\psi}{x}
+        \end{equation*}
+    \end{itemize}
+    \item Example (PSet 1, Q2): Prove that
+    \begin{equation*}
+        \Exp{f(p)} = \int_{-\infty}^\infty\dd{k}f(\hbar k)|\tilde{\psi}(k)|^2
+    \end{equation*}
+    \begin{proof}
+        Start from
+        \begin{equation*}
+            \Exp{f(p)} = \int_{-\infty}^\infty\dd{x}\psi^*(x)f(p)\psi(x)
+        \end{equation*}
+        Taylor expand about $f(0)$:
+        \begin{align*}
+            f(p) &= f(0)+\eval{\pdv{f}{p}}_{p=0}p+\frac{1}{2!}\eval{\pdv[2]{f}{p}}_{p=0}p^2+\cdots
+            = \sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p_n}}_{p=0}\\
+            &= \int_{-\infty}^\infty\dd{x}\psi^*(x)\sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p}}_{p=0}p^n\psi(x)\\
+            &= \sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p}}_{p=0}\int_{-\infty}^\infty\dd{x}\psi^*(x)p^n\psi(x)\\
+            &= \sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p}}_{p=0}\Exp{p^n}
+        \end{align*}
+        This holds when
+        \begin{align*}
+            \Exp{p^n} &= \int_{-\infty}^\infty\dd{x}\psi^*(x)(-i\hbar)^n\pdv[n]{\psi}{x}\\
+            &= \int_{-\infty}^\infty\dd{x}\left( \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\dd{k}\e[ikx]\psi(x) \right)^*(-i\hbar)^n\pdv[n]{x}(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\dd{\ell}\e[i\ell x]\tilde{\psi}(\ell))\\
+            &= \frac{(-i\hbar)^n}{2\pi}\int_{-\infty}^\infty\dd{x}\int_{-\infty}^\infty\dd{k}\int_{-\infty}^\infty\dd{\ell}\e[-ikx]\tilde{\psi}^*(k)\tilde{\psi}(\ell)\pdv[n]{x}(\e[i\ell x])\\
+            &= \frac{(-i\hbar)^n}{2\pi}\int_{-\infty}^\infty\dd{x}\dd{k}\dd{\ell}\e[-ikx]\tilde{\psi}^*(k)\tilde{\psi}(\ell)(i\ell)^n\e[i\ell x]\\
+            &= \int_{-\infty}^\infty\dd{k}\int_{-\infty}^\infty\dd{\ell}\tilde{\psi}^*(k)\tilde{\psi}(\ell)(\ell\hbar)^n\underbrace{\frac{1}{2\pi}\int_{-\infty}^\infty\dd{x}\e[i(\ell-k)x]}_{\tilde{\delta}(\ell-k)}\\
+            &= \int_{-\infty}^\infty\dd{k}\tilde{\psi}^*(k)\tilde{\psi}(\ell)(\ell\hbar)^n\eval{}_{\ell=k}\\
+            &= \int_{-\infty}^\infty\dd{k}\tilde{\psi}^*(k)\tilde{\psi}(k)(k\hbar)^n\\
+            &= \sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p}}_{p=0}\int_{-\infty}^\infty\dd{k}(k\hbar)^n|\tilde{\psi}(k)|^2\\
+            &= \int_{-\infty}^\infty\dd{k}|\tilde{\psi}(k)|^2\underbrace{\sum_{n=0}^\infty\frac{1}{n!}\eval{\pdv[n]{f}{p}}_{p=0}(k\hbar)^n}_{f(k\hbar)}\\
+            &= \int_{-\infty}^\infty\dd{k}|\tilde{\psi}(k)|^2f(k\hbar)
+        \end{align*}
+    \end{proof}
+    \item This example is much more complicated than the PSet. If we can understand 50\% of it, we'll be great. If we didn't understand any of it, no worries.
+    \item It sounds like we're not required to come to discussion session this quarter either.
+\end{itemize}
+
+
+
 
 \end{document}
