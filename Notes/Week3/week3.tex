@@ -1,0 +1,435 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{2}
+
+\begin{document}
+
+
+
+
+\chapter{Time-Independent Problems in One-Dimensional Systems}
+\section{Infinite Well Motion}
+\begin{itemize}
+    \item \marginnote{1/17:}We begin today by building up to the uncertainty principle another, more general way.
+    \item Recall that what we are aiming for is
+    \begin{equation*}
+        \Delta p_x\Delta x \geq \frac{\hbar}{2}
+    \end{equation*}
+    where $\Delta p_x,\Delta x$ are the uncertainties in the determination of the momentum and position, respectively:
+    \begin{align*}
+        (\Delta p_x)^2 &= \Exp{(\hat{\vec{p}}_x-\Exp{\hat{\vec{p}}_x})^2} = \Exp{\hat{\vec{p}}_x{}^2}-\Exp{\hat{\vec{p}}_x}^2&
+        (\Delta x)^2 &= \Exp{\hat{\vec{x}}{\,}^2}-\Exp{\hat{\vec{x}}}^2
+    \end{align*}
+    \item Example of the uncertainty principle: For a plane wave, we know the momentum but not the position. That is, $\Delta x\to\infty$ and $\Delta p_x\to 0$.
+    \item More generally, for a \textbf{wave packet}, we know only approximately the position and momentum.
+    \item \textbf{Wave packet}: A continuous sum of waves of different frequencies. \emph{Given by}
+    \begin{equation*}
+        \psi(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\phi(k)\e[i(kx-\omega(k)t)]\dd{k}
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \path (0,0) -- (0,-1);
+                \draw (-2,0) -- (2,0);
+                \draw [blx,thick] (-0.8,0.1)
+                    to[out=0,in=180,in looseness=0.7] (-0.3,0.5)
+                    to[out=0,in=180,out looseness=0.7] (0.2,0.1)
+                ;
+    
+                \draw [-latex] (-0.3,0.35) -- ++(0.6,0);
+            \end{tikzpicture}
+            \caption{A wave packet.}
+            \label{fig:wavePacketa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw (-2.5,0) -- (2.5,0);
+                \draw [rex,thick] plot[domain=-2:2,samples=100,smooth] (\x,{e^(-\x*\x)*sin(3*pi*\x r)});
+                \draw [blx,thick]
+                    plot[domain=-2:2,smooth] (\x,{e^(-\x*\x)})
+                    plot[domain=-2:2,smooth] (\x,{-e^(-\x*\x)})
+                ;
+    
+                \draw [-latex] (0.5,{e^(-0.25)}) -- ++(0.6,0) node[right]{$v_g$};
+                \draw [-latex] (0.27,{e^(-0.27*0.27)*sin(3*pi*0.27 r)}) -- ++(0.3,0) node[below,xshift=-2pt]{$v_p$};
+            \end{tikzpicture}
+            \caption{Group and phase velocity.}
+            \label{fig:wavePacketb}
+        \end{subfigure}
+        \caption{Wave packets.}
+        \label{fig:wavePacket}
+    \end{figure}
+    \begin{itemize}
+        \item Note that the above formula only applies to the one dimensional case.
+    \end{itemize}
+    \item Let's investigate the case of a wave packet of free particles.
+    \begin{itemize}
+        \item In this case,
+        \begin{equation*}
+            \omega(k) = \frac{\hbar k^2}{2m}
+        \end{equation*}
+        \begin{itemize}
+            \item This is derived from
+            \begin{equation*}
+                \hbar\omega = E = \frac{p^2}{2m} = \frac{(\hbar k)^2}{2m}
+            \end{equation*}
+            by cancelling an $\hbar$ from both sides.
+        \end{itemize}
+        \item Let's assume that $\phi(k)$ is a narrowly peaked function around a certain value $k_0$.
+        \item Then we can expand
+        \begin{align*}
+            \omega(k) &= \omega(k_0)+\eval{\dv{\omega}{k}}_{k=k_0}(k-k_0)+\cdots\\
+            &= \omega(k_0)+\eval{\frac{\hbar k}{m}}_{k=k_0}(k-k_0)+\cdots\\
+            &= \omega(k_0)+\underbrace{\frac{\hbar k_0}{m}}_{\omega_0'}(k-k_0)+\cdots
+        \end{align*}
+        \item Define $s:=k-k_0$.
+        \item Then $k=k_0+s$ and $\dd{k}=\dd{s}$, so
+        \begin{align*}
+            \psi(x,t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\phi(k_0+s)\e[i((k_0+s)x-(\omega(k_0)+\omega_0's)t)]\dd{s}\\
+            &= \frac{1}{\sqrt{2\pi}}\e[i(k_0x-\omega(k_0)t)]\int_{-\infty}^\infty\phi(k_0+s)\e[is(x-\omega_0't)]\dd{s}
+        \end{align*}
+        \item It follows that
+        \begin{equation*}
+            |\psi(x,t)|^2 = \frac{1}{2\pi}\left| \int_{-\infty}^\infty\phi(k_0+s)\e[is(x-\omega_0't)]\dd{s} \right|^2 = f(x-\omega_0't)
+        \end{equation*}
+        \begin{itemize}
+            \item In words, the probability density is a function of $x-\omega_0't$, so the packet moves with \textbf{group velocity} $\omega_0'=\hbar k_0/m=p_0/m$.
+        \end{itemize}
+        \item Implication: The wave packet moves with a velocity that is equal ot the classical velocity
+        \begin{equation*}
+            \eval{\dv{\omega}{k}}_{k=k_0} = \frac{p_0}{m}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Group velocity}: A measure of the velocity of a wave packet. \emph{Denoted by} $\bm{v_g}$, $\bm{v_\textbf{group}}$. \emph{Given by}
+    \begin{equation*}
+        v_\text{group} = \eval{\dv{\omega}{k}}_{k=k_0}
+    \end{equation*}
+    \item \textbf{Phase velocity}: A measure of the velocity of the ripples. \emph{Denoted by} $\bm{v_p}$, $\bm{v_\textbf{phase}}$. \emph{Given by}
+    \begin{equation*}
+        v_\text{phase} = \frac{\omega(k_0)}{k_0} = \frac{\hbar k_0}{2m} = \frac{v_\text{group}}{2}
+    \end{equation*}
+    \item Explicit example of a wave packet: A \textbf{Gaussian wave packet}.
+    \item \textbf{Gaussian wave packet}: A one-dimensional wave packet of the following form. \emph{Given by}
+    \begin{equation*}
+        \psi_0(x,t) = \left( \frac{2}{\pi\sigma^2} \right)^{1/4}\exp[-\frac{(x-v_gt)^2}{\sigma^2}]\e[i(k_0x-v_pt)]
+    \end{equation*}
+    \begin{itemize}
+        \item This means that we must have used the following definition of $\phi(k)$ in the original definition.
+        \begin{equation*}
+            \phi(k) = \left( \frac{\sigma^2}{2\pi} \right)^{1/4}\exp[-\frac{\sigma^2(k-k_0)^2}{4}]
+        \end{equation*}
+    \end{itemize}
+    \item Uncertainty analysis of a Gaussian wave packet.
+    \begin{itemize}
+        \item The uncertainties $\Delta x$ and $\Delta k$ are associated with the widths of the Gaussians, as one can determine by computing. Indeed, at $t=0$,
+        \begin{align*}
+            \Exp{\hat{\vec{x}}} &= 0&
+            \Exp{\hat{\vec{x}}{\,}^2} &= (\Delta x)^2&
+            \Exp{(k-k_0)^2} &= (\Delta k)^2
+        \end{align*}
+        \begin{itemize}
+            \item Indeed, since $\Exp{k}=k_0$, we know that $\Exp{(k-k_0)^2}=\Exp{k^2}-k_0^2$.
+        \end{itemize}
+        \item For Gaussians, normalized as $\int|\psi|^2=1$, we obtain
+        \begin{equation*}
+            \left( \frac{1}{\pi\sigma^2} \right)^{1/2}\int_{-\infty}^\infty u^2\exp(-\frac{u^2}{\sigma^2})\dd{u}
+            = (\Delta u)^2
+            = \frac{\sigma^2}{2}
+        \end{equation*}
+        \begin{itemize}
+            \item How do we get this??
+        \end{itemize}
+        \item It follows that the value of $\Delta u$ coincides well with the departure from the central value for which the exponential in $|\psi|^2$ or $|\phi|^2$ is $\e[-1/2]$.
+        \item Altogether, we get
+        \begin{align*}
+            \Delta x &= \frac{\sigma}{2}&
+            \Delta k &= \frac{1}{\sigma}
+        \end{align*}
+        so
+        \begin{align*}
+            \Delta x\Delta k &= \frac{1}{2}\\
+            \Delta x\Delta p_x &= \frac{\hbar}{2}
+        \end{align*}
+        for a Gaussian wave packet.
+        \item Implication: The Gaussian function minimizes the product of the position and momentum uncertainties!
+    \end{itemize}
+    \item We now move onto discussing the \textbf{infinite square well} potential, a one-dimensional time-independent potential for which we can solve the Schr\"{o}dinger equation exactly.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black,text height=1.5ex,text depth=0.25ex}
+        ]
+            \footnotesize
+            \shade [left color=white,right color=grx!30] (-0.3,0) rectangle (0,2);
+            \shade [left color=grx!30,right color=white] (2,0) rectangle (2.3,2);
+            \draw (-2,0) -- (4,0);
+            \draw [grx,thick] (0,2) node[above left]{$V(x)$}
+                -- (0,0) node[below]{$0$}
+                -- (2,0) node[below]{$a$}
+                -- (2,2)
+            ;
+            \node at (-1,1) {$V\to\infty$};
+            \node at (3,1) {$V\to\infty$};
+        \end{tikzpicture}
+        \caption{Infinite square well.}
+        \label{fig:infiniteSquareWell}
+    \end{figure}
+    \item \textbf{Infinite square well}: The potential energy function that vanishes for $0<x<a$ and tends to infinity for $x\leq 0$ and $x\geq a$. \emph{Given by}
+    \begin{equation*}
+        V(x) =
+        \begin{cases}
+            0 & 0<x<a\\
+            \infty & \text{otherwise}
+        \end{cases}
+    \end{equation*}
+    \item We would like to obtain energy eigenstates for this potential. That is, we seek eigenvalues and eigenfunctions for
+    \begin{equation*}
+        \left[ -\frac{\hbar^2}{2m}\dv[2]{x}+V(x) \right]\psi(x) = E\psi(x)
+    \end{equation*}
+    \begin{itemize}
+        \item Any such eigenstate $\psi$ will have $\psi(x)=0$ in the region of space where $V\to\infty$.
+        \item Hence, the Schr\"{o}dinger equation reduces to the boundary-value problem
+        \begin{align*}
+            -\frac{\hbar^2}{2m}\dv[2]{\psi}{x} &= E\psi&
+            \psi(0) &= \psi(a) = 0
+        \end{align*}
+        \item The above ODE may be expressed in the following equivalent form
+        \begin{equation*}
+            \dv[2]{\psi}{x} = -\left( \frac{2mE}{\hbar^2} \right)\psi
+        \end{equation*}
+        \item Observe that this ODE is of the same form as the classical harmonic oscillator equation $\dv*[2]{x}{t}=-(k/m)x$. Thus, it admits a similar set of solutions:
+        \begin{align*}
+            \psi_n(x) &= C\sin(\sqrt{\frac{2mE_n}{\hbar^2}}x)&
+            \sqrt{\frac{2mE_n}{\hbar^2}}a &= n\pi,\ n=1,2,\dots
+        \end{align*}
+        \item It follows that
+        \begin{equation*}
+            E_n = \frac{\hbar^2n^2\pi^2}{2ma^2}
+        \end{equation*}
+        \item The coefficient $C$ can be fixed via the normalization requirement, as follows.
+        \begin{align*}
+            1 &= \int_0^a|\psi_n(x)|^2\dd{x}\\
+            &= C^2\int_0^a\sin^2\left( \frac{\pi nx}{a} \right)\dd{x}\\
+            &= C^2\int_0^a\frac{1-\cos(\frac{2\pi nx}{a})}{2}\dd{x}\\
+            &= \frac{C^2}{2}\left[ \int_0^a\dd{x}-\int_0^a\cos(\frac{2\pi nx}{a})\dd{x} \right]\\
+            &= \frac{C^2}{2}\bigg[ a-\underbrace{\eval{\frac{a}{2n\pi}\sin(\frac{2\pi nx}{a})}_0^a}_0 \bigg]\\
+            &= \frac{aC^2}{2}\\
+            C &= \sqrt{\frac{2}{a}}
+        \end{align*}
+        \item Therefore, the complete eigenfunctions and eigenvalues are
+        \begin{align*}
+            \psi_n(x) &= \sqrt{\frac{2}{a}}\sin(\frac{\pi nx}{a})&
+            E_n &= \frac{\hbar^2n^2\pi^2}{2ma^2}
+        \end{align*}
+    \end{itemize}
+    \item A general solution is therefore given by the following, where $\psi_n,E_n$ are defined as above.
+    \begin{equation*}
+        \psi(x,t) = \sum_nc_n\psi_n(x)\e[-iE_nt/\hbar]
+    \end{equation*}
+    \item The probability density of the infinite square well potential is time-independent.
+    \begin{proof}
+        Observe that given any individual eigenstate of energy
+        \begin{equation*}
+            \psi_n(x,t) = \psi_n(x)\e[-iE_nt/\hbar]
+        \end{equation*}
+        we have that
+        \begin{equation*}
+            |\psi_n(x,t)|^2 = |\psi_n(x)|^2
+            = \frac{2}{a}\sin^2\left( \frac{\pi nx}{a} \right)
+        \end{equation*}
+    \end{proof}
+    \item Let's investigate the form of the probability density for a few $n$.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.19\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black,text height=1.5ex,text depth=0.25ex}
+            ]
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below]{$0$}
+                    -- (2,0) node[below]{$a$}
+                    -- (2,2) node[above]{$|\psi_n|^2$}
+                ;
+    
+                \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
+    
+                \draw [rex,thick] plot[domain=0:2,smooth] (\x,{sin(pi*\x/2 r)^2});
+            \end{tikzpicture}
+            \caption{$n=1$.}
+            \label{fig:infWellProba}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.19\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black,text height=1.5ex,text depth=0.25ex}
+            ]
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below]{$0$}
+                    -- (2,0) node[below]{$a$}
+                    -- (2,2) node[above]{$|\psi_n|^2$}
+                ;
+    
+                \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
+    
+                \draw [rex,thick] plot[domain=0:2,samples=50,smooth] (\x,{sin(2*pi*\x/2 r)^2});
+            \end{tikzpicture}
+            \caption{$n=2$.}
+            \label{fig:infWellProbb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.19\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black,text height=1.5ex,text depth=0.25ex}
+            ]
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below]{$0$}
+                    -- (2,0) node[below]{$a$}
+                    -- (2,2) node[above]{$|\psi_n|^2$}
+                ;
+    
+                \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
+    
+                \draw [rex,thick] plot[domain=0:2,samples=75,smooth] (\x,{sin(3*pi*\x/2 r)^2});
+            \end{tikzpicture}
+            \caption{$n=3$.}
+            \label{fig:infWellProbc}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.19\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black,text height=1.5ex,text depth=0.25ex}
+            ]
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below]{$0$}
+                    -- (2,0) node[below]{$a$}
+                    -- (2,2) node[above]{$|\psi_n|^2$}
+                ;
+    
+                \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
+    
+                \draw [rex,thick] plot[domain=0:2,samples=150,smooth] (\x,{sin(6*pi*\x/2 r)^2});
+            \end{tikzpicture}
+            \caption{$n=6$.}
+            \label{fig:infWellProbd}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.19\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black,text height=1.5ex,text depth=0.25ex}
+            ]
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below]{$0$}
+                    -- (2,0) node[below]{$a$}
+                    -- (2,2) node[above]{$|\psi_n|^2$}
+                ;
+    
+                \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
+    
+                \draw [rex,thick] plot[domain=0:2,samples=500,smooth] (\x,{sin(20*pi*\x/2 r)^2});
+            \end{tikzpicture}
+            \caption{$n\gg1$.}
+            \label{fig:infWellProbe}
+        \end{subfigure}
+        \caption{Infinite square well probability density.}
+        \label{fig:infWellProb}
+    \end{figure}
+    \begin{itemize}
+        \item Recall that the average height of a sine wave is half its amplitude. Thus the average probability density is
+        \begin{equation*}
+            \frac{1}{2}\cdot\frac{2}{a} = \frac{1}{a}
+        \end{equation*}
+    \end{itemize}
+    \item Recovering "motion," in the sense that ${\dv*{t}}(\ev{\hat{\vec{x}}}{\psi})\neq 0$
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.25\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below,black,text height=1.5ex,text depth=0.25ex]{$0$}
+                    -- (2,0) node[below,black,text height=1.5ex,text depth=0.25ex]{$a$}
+                    -- (2,2)
+                ;
+    
+                \draw [-latex] (0.2,0.4) node[circle,fill=red,inner sep=1pt]{} -- node[above]{$|v_x|$} ++(0.6,0);
+                \draw [-latex] (1.8,0.4) node[circle,fill=red,inner sep=1pt]{} -- node[above]{$-|v_x|$} ++(-0.6,0);
+            \end{tikzpicture}
+            \caption{Classical.}
+            \label{fig:infWellMotiona}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.25\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [grx,thick] (0,2)
+                    -- (0,0) node[below,black,text height=1.5ex,text depth=0.25ex]{$0$}
+                    -- (2,0) node[below,black,text height=1.5ex,text depth=0.25ex]{$a$}
+                    -- (2,2)
+                ;
+    
+                \draw [rex,thick] (0.1,0.1)
+                    to[out=0,in=180,in looseness=0.7] (0.4,0.4)
+                    to[out=0,in=180,out looseness=0.7] (0.7,0.1)
+                ;
+                \draw [rex,thick] (1.3,0.1)
+                    to[out=0,in=180,in looseness=0.7] (1.6,0.4)
+                    to[out=0,in=180,out looseness=0.7] (1.9,0.1)
+                ;
+    
+                \draw [-latex] (0.4,0.25) -- ++(0.4,0) node[above]{$v_g$};
+                \draw [-latex] (1.6,0.25) -- ++(-0.4,0) node[above]{$v_g$};
+            \end{tikzpicture}
+            \caption{Quantum.}
+            \label{fig:infWellMotionb}
+        \end{subfigure}
+        \caption{Infinite square well motion.}
+        \label{fig:infWellMotion}
+    \end{figure}
+    \begin{itemize}
+        \item We obtain motion upon superimposing different eigenstate wave functions.
+        \item Guiding question: What would happen in the classical case of a particle in such a potential?
+        \begin{itemize}
+            \item The particle would move first to the right with momentum $|p_x|$, then bounce against the wall at $x=a$ and change its momentum to $-|p_x|$, then bounce against the wall at $x=0$ and change its momentum back to $|p_x|$, and so continue indefinitely.
+        \end{itemize}
+        \item In quantum mechanics, we can mimic the same behavior by forming a wave packet!
+        \item Since the particle moves free of forces between $0<x<a$, one can try to build a Gaussian wave packet, similar to the one we discussed in the free particle case. The difference is that any wave function must vanish at $x=0,a$, so it must be represented not by combinations of free waves $\e[ikx]$ at $t=0$ but by
+        \begin{equation*}
+            \sin(\frac{\pi nx}{a}) = \frac{1}{2i}(\e[i\pi nx/a]-\e[-i\pi nx/a])
+        \end{equation*}
+        \item Define
+        \begin{equation*}
+            k_n = \frac{\sqrt{2mE_n}}{\hbar}
+            = \frac{\pi n}{a}
+        \end{equation*}
+        \item Now, what we want is a Gaussian with width $\Delta x$ for $\Delta x\ll a$.
+        \item Recalling the free case $|\psi_0(x,t)|^2=(1/\pi\sigma^2)^{1/2}\e[-(x-v_gt)^2/2\sigma^2]$ with $\phi(k)=k\e[-\sigma^2(k-k_0)^2]$, we would like to try
+        \begin{equation*}
+            \phi(k_n) \propto \e[-\sigma^2(k_n-k_0)^2] =: c_n
+        \end{equation*}
+        where $\sigma=\Delta x\ll a$, and hence $1/\sigma\gg 1/a$.
+        \item Since
+        \begin{equation*}
+            k_m-k_n = (m-n)\frac{\pi}{a}
+        \end{equation*}
+        we will obtain a "continuous" distribution of states with $|k_n-k_0|<1/\sigma$ as well as a suppression of other modes.
+        \item Left as an exercise to the student to derive further results about this system.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
