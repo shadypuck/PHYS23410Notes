@@ -639,5 +639,42 @@
 
 
 
+\section{Office Hours (Wagner)}
+\begin{itemize}
+    \item PSet 2, Q1: Do you want us to rederive the wavefunction, or just answer the questions in the parts?
+    \item Do we have to show our integration steps, or are integral calculators fine?
+    \begin{itemize}
+        \item Show whatever we feel comfortable with.
+        \item Sounds like Wagner thinks we should be able to do all these calculations like we were born doing them, but integral calculators and skipping steps shouldn't lose us any points.
+    \end{itemize}
+    \item Including Problem 3 was probably a mistake, but now that it's included, we have to do it.
+    \item PSet 2, Q1d:
+    \begin{itemize}
+        \item One way to do this problem is to remember that $\dv*{\Exp{\hat{r}}}{t}=\Exp{p}/m$ and $\dv*{\Exp{p}}{t}=0$.
+        \item Now the $\psi=\sum_nc_n\sin(k_nx)$.
+        \item The mean value of the momentum, once computed explicitly, is
+        \begin{equation*}
+            \Exp{p} \propto \int\dd{x}\left[ \sum_nc_n\sin(k_nx)\cdot\pdv{x}(\sum_nc_n\sin(k_nx)) \right]
+        \end{equation*}
+        \item Then we integrate using the trick that
+        \begin{equation*}
+            \sin x\cos y = \frac{1}{2}\sin(x+y)+\frac{1}{2}\sin(x-y)
+        \end{equation*}
+        \begin{itemize}
+            \item Wagner briefly proves this trig identity.
+        \end{itemize}
+        \item Recall tricks like given an \emph{even} function $f$,
+        \begin{equation*}
+            \int_{-L}^L\dd{x}x\cdot f(x) = 0
+        \end{equation*}
+    \end{itemize}
+    \item PSet 2, Q2:
+    \begin{itemize}
+        \item There is some part where we do not need to find exact solutions.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
