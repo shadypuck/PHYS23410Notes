@@ -38,11 +38,179 @@
     where $A$ is a real constant.
     \begin{enumerate}
         \item Find the value of $A$ such that $\psi(x,0)$ is normalized. (Hint: Use $\braket{\psi_n}{\psi_m}=\delta_{nm}$.)
+        \begin{proof}
+            % For $\psi(x,0)$ to be normalized, it must satisfy
+            % \begin{equation*}
+            %     \int_0^a\dd{x}\psi^2(x,0) = 1
+            % \end{equation*}
+            % We can solve this equation for $A$ as follows.
+            % \begin{align*}
+            %     1 ={}& \int_0^a\dd{x}\left[ \frac{A}{\sqrt{a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a}) \right]^2\\
+            %     \begin{split}
+            %         ={}& \int_0^a\dd{x}\left[ \frac{A^2}{a}\sin^2\left( \frac{\pi x}{a} \right)+\frac{3}{5a}\sin^2\left( \frac{3\pi x}{a} \right)+\frac{1}{5a}\sin^2\left( \frac{5\pi x}{a} \right) \right.\\
+            %         & \left. +\frac{2A}{a}\sqrt{\frac{3}{5}}\sin(\frac{\pi x}{a})\sin(\frac{3\pi x}{a})+\frac{2A}{a\sqrt{5}}\sin(\frac{\pi x}{a})\sin(\frac{5\pi x}{a})+\frac{2\sqrt{3}}{5a}\sin(\frac{3\pi x}{a})\sin(\frac{5\pi x}{a}) \right]
+            %     \end{split}\\
+            %     ={}& \frac{A^2}{2}+\frac{3}{10}+\frac{1}{10}+0+0+0\\
+            %     ={}& \frac{5A^2+4}{10}\\
+            %     \Aboxed{A ={}& \sqrt{\frac{6}{5}}}
+            % \end{align*}
+
+            For $\psi(x,0)$ to be normalized, it must satisfy
+            \begin{equation*}
+                \braket{\psi(x,0)} = 1
+            \end{equation*}
+            Now recognize that $\psi(x,0)$ is of the form
+            \begin{equation*}
+                \psi = c_1\psi_1+c_3\psi_3+c_5\psi_5
+            \end{equation*}
+            Thus, we have that
+            \begin{align*}
+                1 &= \braket{\psi}\\
+                &= \braket{c_1\psi_1+c_3\psi_3+c_5\psi_5}\\
+                &= \braket{c_1\psi_1}+\braket{c_3\psi_3}+\braket{c_5\psi_5}+2\underbrace{\braket{c_1\psi_1}{c_3\psi_3}}_0+2\underbrace{\braket{c_1\psi_1}{c_5\psi_5}}_0+2\underbrace{\braket{c_3\psi_3}{c_5\psi_5}}_0\\
+                &= \braket{c_1\psi_1}+\braket{c_3\psi_3}+\braket{c_5\psi_5}\\
+                &= \int_0^a\frac{A^2}{a}\sin^2\left( \frac{\pi x}{a} \right)\dd{x}+\int_0^a\frac{3}{5a}\sin^2\left( \frac{3\pi x}{a} \right)\dd{x}+\int_0^a\frac{1}{5a}\sin^2\left( \frac{5\pi x}{a} \right)\dd{x}\\
+                &= \frac{A^2}{2}+\frac{3}{10}+\frac{1}{10}\\
+                &= \frac{5A^2+4}{10}\\
+                \Aboxed{A &= \sqrt{\frac{6}{5}}}
+            \end{align*}
+        \end{proof}
         \item If measurements of the energy are carried out, what are the values that will be found and what are the probabilities of measuring such energies? Calculate the average energy.
+        \begin{proof}
+            As mentioned above, $\psi(x,0)$ is of the form
+            \begin{equation*}
+                \psi(x,0) = c_1\psi_1(x)+c_3\psi_3(x)+c_5\psi_5(x)
+            \end{equation*}
+            Thus, the energies that will be found are
+            \begin{empheq}[box=\fbox]{align*}
+                E_1 &= \frac{\hbar^2\pi^2}{2ma^2}&
+                E_3 &= \frac{3^2\hbar^2\pi^2}{2ma^2}&
+                E_5 &= \frac{5^2\hbar^2\pi^2}{2ma^2}
+            \end{empheq}
+            Moreover, the probabilities of measuring such energies are given by the integrals calculated in part (a). In other words, the probabilities $P_i$ of measuring energy $E_i$ are
+            \begin{empheq}[box=\fbox]{align*}
+                P_1 &= \frac{6}{10}&
+                P_3 &= \frac{3}{10}&
+                P_5 &= \frac{1}{10}
+            \end{empheq}
+            The average energy could be calculated by evaluating $\ev{\hat{H}}{\psi}$, or by calculating
+            \begin{align*}
+                \Exp{E} &= E_1P_1+E_3P_3+E_5P_5\\
+                \Aboxed{\Exp{E} &= \frac{29\hbar^2\pi^2}{10ma^2}}
+            \end{align*}
+        \end{proof}
         \item Find the expression of the wave function at a later time $t$. (Hint: What is $\psi_n(x,t)$?)
+        \begin{proof}
+            Taking the hint, we know that
+            \begin{equation*}
+                \psi_n(x,t) = \psi_n(x)\e[-iE_nt/\hbar]
+                = \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\e[-iE_nt/\hbar]
+            \end{equation*}
+            We can rewrite $\psi(x,0)$ in a form relatable to the above as follows.
+            \begin{align*}
+                \psi(x,0) &= \sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\\
+                &= \sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{10}}\sqrt{\frac{2}{a}}\sin(\frac{5\pi x}{a})\\
+                &= \sqrt{\frac{3}{5}}\psi_1(x,0)+\sqrt{\frac{3}{10}}\psi_3(x,0)+\frac{1}{\sqrt{10}}\psi_5(x,0)
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \psi(x,t) ={}& \sqrt{\frac{3}{5}}\psi_1(x,t)+\sqrt{\frac{3}{10}}\psi_3(x,t)+\frac{1}{\sqrt{10}}\psi_5(x,t)\\
+                \begin{split}
+                    ={}& \sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]\\
+                    &+\frac{1}{\sqrt{10}}\sqrt{\frac{2}{a}}\sin(\frac{5\pi x}{a})\e[-iE_5t/\hbar]
+                \end{split}\\
+                \Aboxed{\psi(x,t) ={}& \sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\e[-iE_5t/\hbar]}
+            \end{align*}
+        \end{proof}
         \item Is the mean value of the position operator independent of time? What about the mean value of the momentum? (Hint: Use symmetry properties with respect to the central point of the well.)
+        \begin{proof}
+            % One way to do this problem is to remember that $\dv*{\Exp{\hat{r}}}{t}=\Exp{p}/m$ and $\dv*{\Exp{p}}{t}=0$.
+            % Now the $\psi=\sum_nc_n\sin(k_nx)$.
+            % The mean value of the momentum, once computed explicitly, is
+            % \begin{equation*}
+            %     \Exp{p} \propto \int\dd{x}\left[ \sum_nc_n\sin(k_nx)\cdot\pdv{x}(\sum_nc_n\sin(k_nx)) \right]
+            % \end{equation*}
+            % Then we integrate using the trick that
+            % \begin{equation*}
+            %     \sin x\cos y = \frac{1}{2}\sin(x+y)+\frac{1}{2}\sin(x-y)
+            % \end{equation*}
+            % Wagner briefly proves this trig identity.
+            % Recall tricks like given an \emph{even} function $f$,
+            % \begin{equation*}
+            %     \int_{-L}^L\dd{x}x\cdot f(x) = 0
+            % \end{equation*}
+
+            % To prove that the mean value of the momentum is independent of time, it will suffice to show that
+            % \begin{equation*}
+            %     \dv{t}(\ev{\hat{\vec{p}}}{\psi(x,t)}) = 0
+            % \end{equation*}
+
+            % , taking the hint, we may observe that $\psi_1,\psi_3,\psi_5$ are even functions on the interval $[0,a]$. This means that $x\psi_i^2$ ($i=1,3,5$) are odd functions on this interval, and thus
+            % \begin{equation*}
+            %     \ev{\hat{\vec{x}}}{\psi_1}
+            %     = \ev{\hat{\vec{x}}}{\psi_3}
+            %     = \ev{\hat{\vec{x}}}{\psi_5}
+            %     = 0
+            % \end{equation*}
+            % Additionally, since the product of two even functions and an odd function is odd, $x\psi_1\psi_3$ and the like are odd. Thus, we have the following as well
+            % \begin{equation*}
+            %     \mel{\psi_1}{\hat{\vec{x}}}{\psi_3}
+            %     = \mel{\psi_1}{\hat{\vec{x}}}{\psi_5}
+            %     = \mel{\psi_3}{\hat{\vec{x}}}{\psi_5}
+            %     = 0
+            % \end{equation*}
+
+
+            To determine whether or not the position operator is independent of time, it will suffice to evaluate
+            \begin{equation*}
+                \dv{t}(\ev{\hat{\vec{x}}}{\psi(x,t)})
+            \end{equation*}
+            If the above expression is equal to zero, then the position operator is independent of time, and if it is not equal to zero, then the position operator is not independent of time. Let's begin.\par
+            We have that
+            \begin{align*}
+                & \ev{\hat{\vec{x}}}{\psi(x,t)}\\
+                ={}& \ev{\hat{\vec{x}}}{\frac{3}{5}\psi_1\e[-iE_1t/\hbar]+\frac{3}{10}\psi_3\e[-iE_3t/\hbar]+\frac{1}{10}\psi_5\e[-iE_5t/\hbar]}\\
+                \begin{split}
+                    ={}& \frac{9}{25}\e[-2iE_1t/\hbar]\ev{\hat{\vec{x}}}{\psi_1}+\frac{9}{100}\e[-2iE_3t/\hbar]\ev{\hat{\vec{x}}}{\psi_3}+\frac{1}{100}\e[-2iE_5t/\hbar]\ev{\hat{\vec{x}}}{\psi_5}\\
+                    & +\frac{9}{50}\e[-i(E_1+E_3)t/\hbar]\mel{\psi_1}{\hat{\vec{x}}}{\psi_3}+\frac{3}{50}\e[-i(E_1+E_5)t/\hbar]\mel{\psi_1}{\hat{\vec{x}}}{\psi_5}+\frac{3}{100}\e[-i(E_3+E_5)t/\hbar]\mel{\psi_3}{\hat{\vec{x}}}{\psi_5}
+                \end{split}
+            \end{align*}
+            Now, computing integrals, we have the following.
+            \begin{equation*}
+                \mel{\psi_1}{\hat{\vec{x}}}{\psi_3}
+                = \mel{\psi_1}{\hat{\vec{x}}}{\psi_5}
+                = \mel{\psi_3}{\hat{\vec{x}}}{\psi_5}
+                = 0
+            \end{equation*}
+            One easy way to see this without direct computation is to observe, per the hint, that $(x-0.5a)\psi_1\psi_3$ and $0.5a\psi_1\psi_3$ are both odd about the central point of the well and hence evaluate to zero. Thus,
+            \begin{equation*}
+                \mel{\psi_1}{\hat{\vec{x}}}{\psi_3} = \int_0^ax\psi_1\psi_3\dd{x}
+                = \int_0^a(x-0.5a)\psi_1\psi_3\dd{x}+\int_0^a0.5a\psi_1\psi_3\dd{x}
+                = 0+0
+                = 0
+            \end{equation*}
+            On the other hand, we may observe that $x\psi_i^2$ ($i=1,3,5$) are all strictly positive on $(0,a)$ and hence evaluate to positive constants $c_i$. Consequently,
+            \begin{equation*}
+                \ev{\hat{\vec{x}}}{\psi(x,t)} = \frac{9}{25}c_1\e[-2iE_1t/\hbar]+\frac{9}{100}c_3\e[-2iE_3t/\hbar]+\frac{1}{100}c_5\e[-2iE_5t/\hbar]
+            \end{equation*}
+            This function clearly has a nonzero derivative with respect to time, meaning that the mean value of the position operator \fbox{is not} independent of time.\par
+            As to the second part of the question, we have that
+            \begin{equation*}
+                \dv{\Exp{\hat{\vec{p}}}}{t} = \dv{t}(m\dv{\Exp{\hat{\vec{x}}}}{t}) \neq 0
+            \end{equation*}
+            Therefore, the mean value of the momentum operator \fbox{is not} independent of time, either.
+        \end{proof}
         \item Would the result of part (d) be different if we replaced $\psi_3$ by $\psi_2$ in Eq. \ref{eqn:PS2E5}?
+        \begin{proof}
+            If we replaced $\psi_3$ by $\psi_2$, then we would additionally have
+            \begin{align*}
+                \mel{\psi_1}{\hat{\vec{x}}}{\psi_2} &\neq 0&
+                \mel{\psi_2}{\hat{\vec{x}}}{\psi_5} &\neq 0
+            \end{align*}
+            However, \fbox{this would change neither result overall.}
+        \end{proof}
     \end{enumerate}
+    \pagebreak
     \item 
     \begin{enumerate}
         \item Consider now the wave function $\Psi(x,t)$ of a particle moving in one dimension in a potential $V(x)$ such that
@@ -55,46 +223,77 @@
         \end{equation}
         Considering that the wave function and its derivative are continuous at $x=0$, and that the wave function vanishes at $x=\pm a/2$, try to find the equation that gives the possible energy states assuming $E_n>V_0$.\par
         \emph{Hint}: There are different combinations of sine and cosine functions for positive and negative values of $x$.
-        \item Consider now an energy $E_n<V_0$. What is the form of the solution at positive values of $x$?\par
-        \emph{Hint}: The solutions at $x>0$ are no longer given in terms of sine and cosine functions. They can now be written in terms of exponential functions. You can obtain the new solutions by using the same solutions as for $E_n>V_0$, and the known relations between trigonometric and hyperbolic sine and cosine functions, namely $\sin(ix)=i\sinh(x)$ and $\cos(ix)=\cosh(x)$.\par
-        In classical mechanics, a particle cannot enter a region where the potential energy is larger than the energy of the particle, since it would imply that the kinetic energy is negative. Is this still true in quantum mechanics? In other words, does the probability of finding the particle at positive values of $x$ vanish?
-        \item What happens when $V_0\to\infty$? In principle, one obtains in this limit an infinite square well of length $a/2$. Hence, the energy eigenstates should change such that
-        \begin{equation}
-            \sin(\frac{k_na}{2}) = 0
-        \end{equation}
-        with
-        \begin{equation}
-            \frac{\hbar^2k_n^2}{2m} = E_n
-        \end{equation}
-        Is this true? What happens to the wave function at positive values of $x$?
+        \begin{proof}
+            Taking the hint, split the total wave function $\psi(x)$ into the sum of two parts, $\psi_1(x)$ and $\psi_2(x)$, where $\psi_1(x)=0$ for $x\geq 0$ and $\psi_2(x)=0$ for $x\leq 0$. In general, we have
+            \begin{align*}
+                \psi_1(x) &= A\sin(kx)+B\cos(kx)&
+                \psi_2(x) &= C\sin(k_2x)+D\cos(k_2x)
+            \end{align*}
+            If $\psi=\psi_1+\psi_2$ is to be continuous at $x=0$, then we must have
+            \begin{align*}
+                \psi_1(0) &= \psi_2(0)\\
+                B &= D
+            \end{align*}
+            If $\psi=\psi_1+\psi_2$ is to have a continuous first derivative at $x=0$, then we must have
+            \begin{align*}
+                \psi_1'(0) &= \psi_2'(0)\\
+                kA &= k_2C
+            \end{align*}
+            Thus, altogether, we have that
+            \begin{equation*}
+                \psi(x) =
+                \begin{cases}
+                    A\sin(kx)+B\cos(kx) & x\leq 0\\
+                    \frac{kA}{k_2}\sin(k_2x)+B\cos(k_2x) & x>0
+                \end{cases}
+                \qquad\text{for }|x|\leq a/2
+            \end{equation*}
+            The boundary condition is met when either\dots
+            \begin{enumerate}
+                \item $B=0$, $k=n\pi$, and $k_2=m\pi/a$;
+                \item $A=0$, $k=n\pi/2$, and $k_2=m\pi/2a$.
+            \end{enumerate}
+        \end{proof}
+        % \item Consider now an energy $E_n<V_0$. What is the form of the solution at positive values of $x$?\par
+        % \emph{Hint}: The solutions at $x>0$ are no longer given in terms of sine and cosine functions. They can now be written in terms of exponential functions. You can obtain the new solutions by using the same solutions as for $E_n>V_0$, and the known relations between trigonometric and hyperbolic sine and cosine functions, namely $\sin(ix)=i\sinh(x)$ and $\cos(ix)=\cosh(x)$.\par
+        % In classical mechanics, a particle cannot enter a region where the potential energy is larger than the energy of the particle, since it would imply that the kinetic energy is negative. Is this still true in quantum mechanics? In other words, does the probability of finding the particle at positive values of $x$ vanish?
+        % \item What happens when $V_0\to\infty$? In principle, one obtains in this limit an infinite square well of length $a/2$. Hence, the energy eigenstates should change such that
+        % \begin{equation}
+        %     \sin(\frac{k_na}{2}) = 0
+        % \end{equation}
+        % with
+        % \begin{equation}
+        %     \frac{\hbar^2k_n^2}{2m} = E_n
+        % \end{equation}
+        % Is this true? What happens to the wave function at positive values of $x$?
     \end{enumerate}
-    \item Although planar waves are not well normalized, one can use them to demonstrate the tunneling phenomenon. Note that a well-normalized solution would be a wave packet of these planar waves, namely
-    \begin{equation}
-        \psi(x,0) = \frac{1}{\sqrt{2\pi}}\int\dd{k}\Phi(k)\e[ikx]
-    \end{equation}
-    Consider a stationary solution of a free particle with finite energy $E$ and forget for the time being the question of normalization. The momentum of the particle will be given by $|\hbar k|=\sqrt{E/2m}$ and
-    \begin{equation}\label{eqn:PS2E10}
-        \psi(x,t) = A\e[i(kx-\omega t)]+B\e[i(-kx-\omega t)]
-    \end{equation}
-    with $\hbar\omega=E$.\par
-    Observe that there are two solutions, one with positive (incoming wave) and the other with negative (reflected wave) values of the momentum in the $x$-direction. In the previous problems, they combined to give sine and cosine functions due to the boundary conditions. Now, imagine that we consider that this particle goes through a potential
-    \begin{equation}
-        \begin{aligned}
-            V(x) &= 0   && \text{for }|x|>a/2\\
-            V(x) &= V_0 && \text{for }|x|\leq a/2
-        \end{aligned}
-    \end{equation}
-    Since we want to consider the transmission of the particle at the right of the potential barrier, consider the case in which at the right of this finite potential barrier, the wave function is described by a particle moving freely in the positive direction of $x$ via
-    \begin{equation}
-        \psi(x,t) = C\e[i(kx-\omega t)]
-    \end{equation}
-    for $x>a/2$ while for $x<-a/2$, we have the function given in Eq. \ref{eqn:PS2E10}. The ratio $|B/A|^2$ may be considered as the reflection probability, while $|C/A|^2$ is the transmission probability.\par
-    The solutions for $-a/2\leq x\leq a/2$, instead, are given by
-    \begin{equation}
-        \psi(x,t) = F\e[i(k_2x-\omega t)]+G\e[i(-k_2x-\omega t)]
-    \end{equation}
-    with $k_2=\sqrt{2m(E-V_0)}/\hbar$. Observe that $\omega$ is unchanged.\par
-    Using continuity of the wave function and its derivatives at $x=\pm a/2$, calculate the reflection and transmission probabilities. Consider both the case of $E>V_0$ and $E<V_0$, and try to interpret the results. What happens when $V_0\to\infty$?
+    % \item Although planar waves are not well normalized, one can use them to demonstrate the tunneling phenomenon. Note that a well-normalized solution would be a wave packet of these planar waves, namely
+    % \begin{equation}
+    %     \psi(x,0) = \frac{1}{\sqrt{2\pi}}\int\dd{k}\Phi(k)\e[ikx]
+    % \end{equation}
+    % Consider a stationary solution of a free particle with finite energy $E$ and forget for the time being the question of normalization. The momentum of the particle will be given by $|\hbar k|=\sqrt{E/2m}$ and
+    % \begin{equation}\label{eqn:PS2E10}
+    %     \psi(x,t) = A\e[i(kx-\omega t)]+B\e[i(-kx-\omega t)]
+    % \end{equation}
+    % with $\hbar\omega=E$.\par
+    % Observe that there are two solutions, one with positive (incoming wave) and the other with negative (reflected wave) values of the momentum in the $x$-direction. In the previous problems, they combined to give sine and cosine functions due to the boundary conditions. Now, imagine that we consider that this particle goes through a potential
+    % \begin{equation}
+    %     \begin{aligned}
+    %         V(x) &= 0   && \text{for }|x|>a/2\\
+    %         V(x) &= V_0 && \text{for }|x|\leq a/2
+    %     \end{aligned}
+    % \end{equation}
+    % Since we want to consider the transmission of the particle at the right of the potential barrier, consider the case in which at the right of this finite potential barrier, the wave function is described by a particle moving freely in the positive direction of $x$ via
+    % \begin{equation}
+    %     \psi(x,t) = C\e[i(kx-\omega t)]
+    % \end{equation}
+    % for $x>a/2$ while for $x<-a/2$, we have the function given in Eq. \ref{eqn:PS2E10}. The ratio $|B/A|^2$ may be considered as the reflection probability, while $|C/A|^2$ is the transmission probability.\par
+    % The solutions for $-a/2\leq x\leq a/2$, instead, are given by
+    % \begin{equation}
+    %     \psi(x,t) = F\e[i(k_2x-\omega t)]+G\e[i(-k_2x-\omega t)]
+    % \end{equation}
+    % with $k_2=\sqrt{2m(E-V_0)}/\hbar$. Observe that $\omega$ is unchanged.\par
+    % Using continuity of the wave function and its derivatives at $x=\pm a/2$, calculate the reflection and transmission probabilities. Consider both the case of $E>V_0$ and $E<V_0$, and try to interpret the results. What happens when $V_0\to\infty$?
 \end{enumerate}
 
 
