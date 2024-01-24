@@ -20,8 +20,32 @@
             \pdv{|\psi(\vec{r},t)|^2}{t}+\vec{\nabla}\left( \frac{i\hbar}{2m} \right)\left( \psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi \right) = 0
         \end{equation*}
         where the first term, with $|\psi|^2=\psi^*\psi$, is the partial derivative of the probability density, while the second term is the divergence of the probability current density.
+        \begin{proof}
+            Multiply both sides of the Schr\"{o}dinger equation by $-i/\hbar$:
+            \begin{equation*}
+                \pdv{\psi}{t} = \left( \frac{i\hbar}{2m}\vec{\nabla}^2-\frac{i}{\hbar}V \right)\psi
+            \end{equation*}
+            We may then obtain the complex conjugate of the above equation by replacing all instances of $i$ with its complex conjugate $-i$ and $\psi$ with its complex conjugate $\psi^*$. In a nutshell, this works because we have a case of multiplying some complex number $a+bi=\psi(\vec{r})$ on the left by $i$, which gives $i(a+bi)=-b+ai$, and the complex conjugate of this number is $-b-ai=-i(a-bi)=-i(a+bi)^*$.
+            \begin{equation*}
+                \pdv{\psi^*}{t} = \left( -\frac{i\hbar}{2m}\vec{\nabla}^2+\frac{i}{\hbar}V \right)\psi^*
+            \end{equation*}
+            We will use the above two equations to substitute into the following algebraic derivation, which yields the desired result.
+            \begin{align*}
+                \pdv{|\psi|^2}{t} &= \pdv{t}(\psi^*\psi)\\
+                &= \psi^*\pdv{\psi}{t}+\psi\pdv{\psi^*}{t}\\
+                &= \psi^*\left( \frac{i\hbar}{2m}\vec{\nabla}^2-\frac{i}{\hbar}V \right)\psi+\psi\left( -\frac{i\hbar}{2m}\vec{\nabla}^2+\frac{i}{\hbar}V \right)\psi^*\\
+                &= \frac{i\hbar}{2m}\left( \psi^*\vec{\nabla}^2\psi-\psi\vec{\nabla}^2\psi^* \right)\\
+                &= \frac{i\hbar}{2m}\left[ \left( \vec{\nabla}\psi^*\vec{\nabla}\psi+\psi^*\vec{\nabla}^2\psi \right)-\left( \vec{\nabla}\psi\vec{\nabla}\psi^*+\psi\vec{\nabla}^2\psi^* \right) \right]\\
+                &= \frac{i\hbar}{2m}\vec{\nabla}\left( \psi^*\vec{\nabla}\psi-\psi\vec{\nabla}\psi^* \right)\\
+                &= -\vec{\nabla}\left( \frac{i\hbar}{2m} \right)\left( \psi\vec{\nabla}\psi^*-\psi^*\vec{\nabla}\psi \right)
+            \end{align*}
+        \end{proof}
         \item Discuss the physical interpretation of this equation. What happens if you integrate the first and second terms over a region of space, defined by a finite volume $V$ and separated by the rest of space by a boundary area $S$?\par
         \emph{Hint}: Use the analogy with the case of electromagnetic charge. If you integrate over the whole volume of space, the continuity equation leads to charge conservation. The probability current density, just as the charge current density, is assumed to vanish sufficiently fast at infinity, so that there is no ﬂow of probability (charge) at infinity.
+        \begin{proof}
+            This equation implies that probability density is \emph{locally} conserved. In its current differential form, it states that the change in probability density (first term) is exactly offset by the divergence or the probability current density (second term). This interpretation is clarified upon integrating over a volume $V$ contained within a boundary surface $S$. In the integral form, the first term becomes the change in probability density within $V$, i.e., the rate at which the particle becomes more or less likely to exist within $V$. Moreover, this is equal to the opposite of the second term, which when integrated gives the flux of the probability density through $S$. Essentially, if the particle is going to become less likely to exist within $V$, then a corresponding amount of probability density must flow out of $V$ through $S$ (and vice versa if the particle is going to become more likely to exist within $V$).\par
+            Additionally, note that if you take the limit as $V\to\C^3$, both terms go to zero (because probability density is conserved within the entire space). Since the sum of two terms equal to zero is zero, this is another way of verifying the equality in the continuity equation.
+        \end{proof}
     \end{enumerate}
     \item Consider the expectation value of the operator $\hat{\vec{p}}{\,}^2=-\hbar^2\vec{\nabla}^2$, namely
     \begin{equation*}
@@ -29,6 +53,25 @@
     \end{equation*}
     \begin{enumerate}
         \item Using integration by parts, demonstrate that this can be rewritten as the integral of the modulus square of the gradient of $\hbar\psi(\vec{r},t)$ and that it is therefore a positive quantity. As before, assume that the wave functions go sufficiently fast to zero at infinity.
+        \begin{proof}
+            To begin, we need to derive a three-dimensional analogy to the standard one-dimensional integration by parts formula. Let $u,v:\C^3\to\C^3$ be functions with smoothness constraints analogous to $\psi$. As in the one-dimensional case, we'll start with the product rule and integrate.
+            \begin{align*}
+                \vec{\nabla}\cdot(u\vec{\nabla}v) &= (\vec{\nabla}u)(\vec{\nabla}v)+u\vec{\nabla}^2v\\
+                \int_\Omega\vec{\nabla}\cdot(u\vec{\nabla}v) &= \int_\Omega(\vec{\nabla}u)(\vec{\nabla}v)+\int_\Omega u\vec{\nabla}^2v\\
+                \int_\Omega\vec{\nabla}\cdot(u\vec{\nabla}v)-\int_\Omega(\vec{\nabla}u)(\vec{\nabla}v) &= \int_\Omega u\vec{\nabla}^2v
+            \end{align*}
+            We can then apply this result and simplify to yield the final result.
+            \begin{align*}
+                \int\dd^3\vec{r}\ \psi^*\left( -\hbar^2\vec{\nabla}^2\psi \right) &= -\int\dd^3\vec{r}\ \underbrace{\hbar\psi^*}_u\underbrace{\vec{\nabla}^2(\hbar\psi)}_{\vec{\nabla}^2v}\\
+                &= -\underbrace{\int\vec{\nabla}\cdot\left[ (\hbar\psi^*)\vec{\nabla}(\hbar\psi) \right]}_0+\int\dd^3\vec{r}\ \vec{\nabla}(\hbar\psi^*)\vec{\nabla}(\hbar\psi)\\
+                &= \int\dd^3\vec{r}\ |\vec{\nabla}(\hbar\psi)|^2
+            \end{align*}
+            To clarify, we know that the first term given by integration by parts goes to zero because of the divergence theorem. In particular, let $\Omega$ be a finite region of space encapsulated by $\dd\Omega$; we will take the limit as $\Omega\to\C^3$ and $\dd\Omega$ approaches the boundary of $\C^3$. Then
+            \begin{equation*}
+                \int_\Omega\vec{\nabla}\cdot[\hbar\psi^*\vec{\nabla}(\hbar\psi)] = \int_{\dd\Omega}[\hbar\psi^*\vec{\nabla}(\hbar\psi)]\cdot\hat{n}\dd{S}
+            \end{equation*}
+            Essentially, this means that the original integral is equal to an integral of an integrand containing $\psi^*$ (which goes to zero at the "boundary" of $\C^3$) at a surface approaching the boundary through the aforementioned limit. This means that the second integral --- under the limit that $\dd\Omega$ approaches the "boundary" of $\C^3$ --- is zero, justifying the original substitution.
+        \end{proof}
         \item Now consider the expectation value of the Hamiltonian $\hat{\vec{p}}{\,}^2/2m+V(\vec{r},t)$ and assume that the function $\psi(\vec{r},t)$ is an eigenfunction of the Hamiltonian. In such a case,
         \begin{equation*}
             \hat{H}\psi(\vec{r},t) = E\psi
@@ -36,6 +79,28 @@
         and the particle therefore has a well-defined energy, equal to $E$. Demonstrate, based on the result of part (a), that $E$ must be larger than the minimum value of $V(\vec{r},t)$.\par
         \emph{Hint}: Use $(\hat{\vec{p}}{\,}^2/2m)\psi=(E-V)\psi$, and the fact that the mean value of V should be larger than its minimum value.\par
         The lesson is that the particle can enter regions of space where its energy is lower than the potential, but this is not possible everywhere in space. The fact that the particle can go through regions of space where its energy is lower than the potential (the wave function does not vanish in those regions of space) leads to the famous phenomenon of tunneling, namely a particle can go through a \emph{finite region of space where the potential is higher than its energy} and has a probability of being transmitted to the other side.
+        \begin{proof}
+            Taking the hint, we have that
+            \begin{align*}
+                E-\Exp{V} &= E\cdot 1-\Exp{V}\\
+                &= E\cdot\int\dd^3\vec{r}\ \psi^*\psi-\int\dd^3\vec{r}\ \psi^*V\psi\\
+                &= \int\dd^3\vec{r}\ \psi^*(E-V)\psi\\
+                &= \int\dd^3\vec{r}\ \psi^*\left( \frac{\hat{\vec{p}}{\,}^2}{2m} \right)\psi\\
+                &= \frac{1}{2m}\int\dd^3\vec{r}\ \psi^*(-\hbar^2\vec{\nabla}^2)\psi\\
+                &= \frac{1}{2m}\int\dd^3\vec{r}\ |\vec{\nabla}(\hbar\psi)|^2\tag*{Part (a)}\\
+                &> 0
+            \end{align*}
+            Taking the hint again, we have that
+            \begin{equation*}
+                \Exp{V} > V_\text{min}
+            \end{equation*}
+            Therefore, by transitivity, we have that
+            \begin{align*}
+                E-\Exp{V} &> 0\\
+                E &> \Exp{V} > V_\text{min}
+            \end{align*}
+            as desired.
+        \end{proof}
     \end{enumerate}
     \item We shall define \textbf{Hermitian operators} as those ones $\hat{O}$ satisfying the property
     \begin{equation}\label{eqn:HermitianDef}
@@ -54,16 +119,79 @@
             \mel{\psi_m}{\hat{O}_1\hat{O}_2}{\psi_n} = \left( \mel{\psi_n}{\hat{O}_2\hat{O}_1}{\psi_m} \right)^*
         \end{equation*}
         where I used the Dirac notation. Observe that if I take $\hat{O}_2$ to be a real constant, this equation reduces to Equation \ref{eqn:HermitianDef}.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \mel{\psi_m}{\hat{O}_1\hat{O}_2}{\psi_n} &= \int\dd^3\vec{r}\ \psi_m^*\hat{O}_1\hat{O}_2\psi_n\\
+                &= \int\dd^3\vec{r}\ (\hat{O}_1\psi_m)^*\hat{O}_2\psi_n\\
+                &= \int\dd^3\vec{r}\ [\hat{O}_2(\hat{O}_1\psi_m)]^*\psi_n\\
+                &= \left( \int\dd^3\vec{r}\ \psi_n^*[\hat{O}_2(\hat{O}_1\psi_m)] \right)^*\\
+                &= \left( \int\dd^3\vec{r}\ \psi_n^*\hat{O}_2\hat{O}_1\psi_m \right)^*\\
+                &= \left( \mel{\psi_n}{\hat{O}_2\hat{O}_1}{\psi_m} \right)^*
+            \end{align*}
+            as desired.
+        \end{proof}
         \item Use this relation to demonstrate that the mean value of the \textbf{commutator} of two Hermitian operators, which is given by
         \begin{equation*}
             [\hat{O}_1,\hat{O}_2] = \hat{O}_1\hat{O}_2-\hat{O}_2\hat{O}_1
         \end{equation*}
         is a pure imaginary number, and hence (unless it is multiplied by an imaginary factor), cannot be associated with a physical observable. In the particular example of momentum and position, for instance, $[\hat{p}_i,\hat{r}_j]=-i\hbar\delta_{ij}$, where $\delta_{ij}$ is the \textbf{Kronecker delta}. Do it for the mean value of the commutator in a particular state with wave function $\psi_n$.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \ev{[\hat{O}_1,\hat{O}_2]}{\psi} &= \ev{\hat{O}_1\hat{O}_2-\hat{O}_2\hat{O}_1}{\psi}\\
+                &= \ev{\hat{O}_1\hat{O}_2}{\psi}-\ev{\hat{O}_2\hat{O}_1}{\psi}\\
+                &= \underbrace{\ev{\hat{O}_1\hat{O}_2}{\psi}}_{a+bi}-(\underbrace{\ev{\hat{O}_1\hat{O}_2}{\psi}}_{a-bi})^*
+            \end{align*}
+            Since taking the difference of a complex number $a+bi$ and its complex conjugate $a-bi$ yields the purely imaginary number $2bi$, we have the desired result.\par
+            Now consider the explicit case where $\hat{O}_1=\hat{p}_i$, $\hat{O}_2=\hat{r}_j$, and $\psi=\psi_n$. Then we have that
+            \begin{align*}
+                \ev{[\hat{p}_i,\hat{r}_j]}{\psi_n} &= \ev{-i\hbar\delta_{ij}}{\psi_n}\\
+                &= -i\hbar\delta_{ij}\int\dd^3\vec{r}\ \psi_n^*\psi_n\\
+                &= -i\hbar\delta_{ij}\int\dd^3\vec{r}\ |\psi_n|^2
+                % ={}& \ev{\hat{p}_i\hat{r}_j}{\psi_n}-(\ev{\hat{p}_i\hat{r}_j}{\psi_n})^*\\
+                % ={}& \int\dd^3\vec{r}\ \psi_n^*\left[ -i\hbar\pdv{r_i}(\vec{r}_j\psi_n) \right]-\left( \int\dd^3\vec{r}\ \psi_n^*\left[ -i\hbar\pdv{r_i}(\vec{r}_j\psi_n) \right] \right)^*\\
+                % \begin{split}
+                %     ={}& -i\hbar\int\dd^3\vec{r}\ \psi_n^*\left[ \psi_n\delta_{ij}+\vec{r}_j\pdv{\psi_n}{r_i} \right]\\
+                %     &-\left( -i\hbar\int\dd^3\vec{r}\ \psi_n^*\left[ \psi_n\delta_{ij}+\vec{r}_j\pdv{\psi_n}{r_i} \right] \right)^*
+                % \end{split}\\
+                % \begin{split}
+                %     ={}& -i\hbar\int\dd^3\vec{r}\ \psi_n^*\psi_n\delta_{ij}-i\hbar\int\dd^3\vec{r}\ \vec{r}_j\pdv{\psi_n}{r_i}\\
+                %     &-i\hbar\left( \int\dd^3\vec{r}\ \psi_n^*\psi_n\delta_{ij} \right)^*-i\hbar\left( \int\dd^3\vec{r}\ \vec{r}_j\pdv{\psi_n}{r_i} \right)^*
+                % \end{split}
+            \end{align*}
+            Therefore, the mean value is equal to an imaginary number times an integral that will be real, so the final answer is, indeed, purely imaginary.
+        \end{proof}
         \item Demonstrate that the above relation remains true if you compute the mean value of the commutator for an arbitrary wave function
         \begin{equation*}
-            \Psi = \sum_{i=1}^nc_i\psi_i
+            \Psi = \sum_nc_n\psi_n
         \end{equation*}
         \emph{Hint}: Organize the total sum that you obtain in pairs that share the same values of $m$ and $n$, and demonstrate that when you add up the two terms with the same values of $m$ and $n$, you obtain a purely imaginary number. The terms in the total sum for which $m=n$ don't have pairs, but you can use the result of part (b) to show that they are indeed imaginary.
+        \begin{proof}
+            We are interested in computing
+            \begin{equation*}
+                \ev{[\hat{O}_1,\hat{O}_2]}{\Psi}
+            \end{equation*}
+            Taking the hint, we break it into two sums as follows.
+            \begin{align*}
+                \ev{[\hat{O}_1,\hat{O}_2]}{\Psi} ={}& \ev{[\hat{O}_1,\hat{O}_2]}{\sum_nc_n\psi_n}\\
+                ={}& \sum_{n,m}\mel{c_n\psi_n}{[\hat{O}_1,\hat{O}_2]}{c_m\psi_m}\\
+                ={}& \sum_m\sum_{\substack{n\\n=m}}c_n^*c_n\ev{[\hat{O}_1,\hat{O}_2]}{\psi_n}+\sum_m\sum_{\substack{n\\n\neq m}}c_m^*c_n\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n}\\
+                \begin{split}
+                    ={}& \sum_nc_n^*c_n\ev{[\hat{O}_1,\hat{O}_2]}{\psi_n}\\
+                    &+\sum_{m<n}(c_m^*c_n\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n}+c_n^*c_m\mel{\psi_n}{[\hat{O}_1,\hat{O}_2]}{\psi_m})
+                \end{split}\\
+                \begin{split}
+                    ={}& \sum_nc_n^*c_n\ev{[\hat{O}_1,\hat{O}_2]}{\psi_n}\\
+                    &+\sum_{m<n}[c_m^*c_n\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n}-c_n^*c_m(\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n})^*]
+                \end{split}\\
+                \begin{split}
+                    ={}& \sum_nc_n^*c_n\ev{[\hat{O}_1,\hat{O}_2]}{\psi_n}\\
+                    &+\sum_{m<n}[c_m^*c_n\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n}-(c_m^*c_n\mel{\psi_m}{[\hat{O}_1,\hat{O}_2]}{\psi_n})^*]
+                \end{split}
+            \end{align*}
+            From part (b), the first sum is a sum of purely imaginary numbers. Additionally, by the same logic as in part (b), the second sum is a sum of purely imaginary numbers. Thus, the overall term is a sum of purely imaginary numbers, and is thus a purely imaginary number, as desired\footnote{Note that in the above derivation, I derive that terms across the diagonal from each other are complex conjugates of each other. However, I don't even need to do this because the commutator is Hermitian, so we have this by definition!}.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
