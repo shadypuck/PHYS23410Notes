@@ -511,5 +511,158 @@
 
 
 
+\section{Simple Cases of Time-Independent Potentials}
+\begin{itemize}
+    \item \marginnote{1/12:}Super snowy day, his wife told him only 5 students will show up, he takes a pic of the filled lecture hall with a kid at the front holding up a sign that says "We are more than 5," lol!!
+    \item Review of equations.
+    \begin{itemize}
+        \item The operators $\hat{H},\hat{\vec{p}},\hat{\vec{r}},\hat{V}$.
+        \item The commutator $[p_i,r_j]=-i\hbar\delta_{ij}$.
+        \item The relation between $\Exp{\hat{\vec{r}}}$ and $\Exp{\hat{\vec{p}}}$, and Ehrenfest's theorem.
+        \item The Schr\"{o}dinger equation.
+        \item The following equality from last time
+        \begin{equation*}
+            \braket{\psi}{\hat{O}\psi} = \braket{\hat{O}^\dagger\psi}{\psi}
+            = \ev{\hat{O}}{\psi}
+            = \int\dd^3\vec{r}\ \psi^*\hat{O}\psi
+        \end{equation*}
+        \item A Hermitian operator is one for which $\hat{O}^\dagger=\hat{O}$.
+        \begin{itemize}
+            \item These have real mean values and observables.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Incompatible} (operators): Two operators $\hat{O}_1,\hat{O}_2$ for which the following condition is met. \emph{Constraint}
+    \begin{equation*}
+        [\hat{O}_1,\hat{O}_2] \neq 0
+    \end{equation*}
+    \begin{itemize}
+        \item Means that you can't simultaneously determine the values of the observables associated with $\hat{O}_1,\hat{O}_2$ with infinite precision.
+        \item Mathematically, this means that
+        \begin{equation*}
+            \sigma_{\hat{O}_1}\sigma_{\hat{O}_2} \geq \frac{1}{2}\left| \ev{[\hat{O}_1,\hat{O}_2]}{\psi} \right|
+        \end{equation*}
+    \end{itemize}
+    \item We now start discussing time-independent potentials.
+    \item What is important about these in classical mechanics?
+    \begin{itemize}
+        \item Energy is conserved.
+        \item Classically, we demonstrated this by taking the equation
+        \begin{align*}
+            \vec{v}\cdot\dv{t}(m\dv{\vec{r}}{t}) &= -\vec{\nabla}V(\vec{r})\cdot\dv{\vec{r}}{t}\\
+            \dv{t}(\frac{m\vec{v}{\,}^2}{2}) &= -\dv{t}(V(\vec{r}))\\
+            \dv{t}(\frac{m\vec{v}{\,}^2}{2}+V(\vec{r})) &= 0\\
+            \dv{E}{t} &= 0
+        \end{align*}
+    \end{itemize}
+    \item The equivalent expression in quantum mechanics is that
+    \begin{equation*}
+        \dv{t}(\ev{\hat{H}}{\psi}) = 0
+    \end{equation*}
+    \begin{itemize}
+        \item We now prove this expression.
+        \item Start by considering the time variation of a generic Hermitian operator $\hat{O}$, i.e., we want
+        \begin{equation*}
+            \dv{t}(\int\dd^3\vec{r}\ \psi^*\hat{O}\psi) = \dv{t}(\ev{\hat{O}}{\psi})
+        \end{equation*}
+        \item Essentially, we have
+        \begin{align*}
+            \dv{t}(\ev{\hat{O}}{\psi}) &= \int\dd^3\vec{r}\ \pdv{\psi^*}{t}\hat{O}\psi+\int\dd^3\vec{r}\ \psi^*\pdv{\hat{O}}{t}\psi+\int\dd^3\vec{r}\ \psi^*\hat{O}\pdv{\psi}{t}\\
+            &= \int\dd^3\vec{r}\ \psi^*\hat{O}\pdv{\psi}{t}+\ev{\pdv{\hat{O}}{t}}{\psi}+\int\dd^3\vec{r}\ \left( \hat{O}\pdv{\psi}{t} \right)^*\psi\\
+            &= \int\dd^3\vec{r}\ \left[ \hat{O}\left( -\frac{i}{\hbar}\hat{H}\psi \right) \right]^*\psi+\int\dd^3\vec{r}\ \psi^*\left( -\frac{i}{\hbar}\hat{O}\hat{H}\psi \right)+\ev**{\pdv{\hat{O}}{t}}{\psi}\\
+            &= \frac{i}{\hbar}\int\dd^3\vec{r}\ \psi^*(\hat{H}\hat{O}-\hat{O}\hat{H})\psi+\ev**{\pdv{\hat{O}}{t}}{\psi}\\
+            \dv{t}(\ev{\hat{O}}{\psi}) &= \frac{i}{\hbar}\ev{[\hat{H},\hat{O}]}{\psi}+\ev**{\pdv{\hat{O}}{t}}{\psi}
+        \end{align*}
+        \begin{itemize}
+            \item In the first step, we move the derivative into the integral and do a tripartite product rule.
+            \item The last statement above is a general statement that applies to all Hermitian operators $\hat{O}$, that is, all observables.
+        \end{itemize}
+        \item Now, we can simply plug in $\hat{O}=\hat{H}$. Since the commutator of the Hamiltonian with itself is zero and $\pdv*{\hat{H}}{t}=0$ by hypothesis (for a time-independent potential), we have that ${\dv*{t}}(\ev{\hat{H}}{\psi})=0$, as desired.
+    \end{itemize}
+    \item Wagner reproves that $[\hat{\vec{p}}_x,\hat{\vec{x}}]=-i\hbar$.
+    \begin{itemize}
+        \item Analogously, he proves that $[\hat{\vec{p}}_x,\hat{\vec{y}}]=0$.
+        \item Relevant to PSet 1, Q3b!
+    \end{itemize}
+    \item Implication: You \emph{can} have an operator with a perfectly defined $x$-momentum and $y$-position.
+    \item Another new derivation:
+    \begin{align*}
+        [\hat{\vec{p}}_x,\hat{V}(\vec{r})]f &= -i\hbar\pdv{x}(V(\vec{r})f)+i\hbar V(\vec{r})\pdv{f}{x}\\
+        &= -i\hbar\pdv{V}{x}f
+    \end{align*}
+    \item What if we want to figure out $[\hat{\vec{p}},\hat{V}(\vec{r})]$?
+    \begin{itemize}
+        \item Start off with the expression we derived above.
+        \begin{equation*}
+            \pdv{t}(\ev{\hat{\vec{p}}}{\psi}) = \frac{i}{\hbar}\ev{[\hat{H},\hat{\vec{p}}]}{\psi}
+            = \frac{i}{\hbar}(i\hbar\ev{\vec{\nabla}V}{\psi})
+            = -\ev{\vec{\nabla}V}{\psi}
+        \end{equation*}
+    \end{itemize}
+    \item Moving on, let's try solving the Schr\"{o}dinger equation with a separable ansatz,
+    \begin{equation*}
+        \psi(\vec{r},t) = \psi(\vec{r})\phi(t)
+    \end{equation*}
+    \begin{itemize}
+        \item This works because the left side of the Schr\"{o}dinger equation doesn't operate on the position, and the right side doesn't operate on the time.
+        \item Let's begin.
+        \begin{align*}
+            -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi(\vec{r},t)+V(\vec{r})\psi(\vec{r},t) &= i\hbar\pdv{t}(\psi(\vec{r},t))\\
+            \phi(t)\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi(\vec{r})+V(\vec{r})\psi(\vec{r}) \right] &= i\hbar\psi(\vec{r})\pdv{t}(\phi(t))\\
+            \frac{1}{\psi(\vec{r})}\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi(\vec{r})+V(\vec{r})\psi(\vec{r}) \right] &= \frac{i\hbar}{\phi(t)}\pdv{t}(\phi(t))
+        \end{align*}
+        \item Now the two sides of the above equation are functions of different variables, so they cannot be equal \emph{unless} they are equal to a constant, which we'll call $E$. This allows us to split the above equation into two:
+        \begin{align*}
+            \frac{1}{\psi(\vec{r})}\hat{H}\psi(\vec{r}) &= E&
+                \frac{i\hbar}{\phi(t)}\pdv{t}(\phi(t)) &= E\\
+            \hat{H}\psi(\vec{r}) &= E\psi(\vec{r})&
+                \phi(t) &= A\exp(-\frac{iEt}{\hbar})
+        \end{align*}
+        \begin{itemize}
+            \item $A$ is a constant of integration.
+        \end{itemize}
+        \item We also have that
+        \begin{equation*}
+            E_n = \ev{\hat{H}}{\psi_n}
+        \end{equation*}
+        \begin{itemize}
+            \item This means that the eigenstates of $\hat{H}$ correspond to eigenvalues $E_n$.
+        \end{itemize}
+    \end{itemize}
+    \item Thus, we have
+    \begin{equation*}
+        \psi_n(\vec{r},t) = \psi_n(\vec{r})\exp(-\frac{iE_nt}{\hbar})
+    \end{equation*}
+    \begin{itemize}
+        \item Note that we assume that we have renormalized every $\psi_n$ written this way from here on out, pulling $A$ and anything with it into $\psi_n(\vec{r})$.
+    \end{itemize}
+    \item When $m\neq n$, we can obtain an important rule:
+    \begin{align*}
+        \mel{\psi_m}{\hat{H}}{\psi_n} = E_n\braket{\psi_m}{\psi_n} &= E_m\braket{\psi_m}{\psi_n}\\
+        (E_n-E_m)\braket{\psi_m}{\psi_n} &= 0
+    \end{align*}
+    \begin{itemize}
+        \item It follows that if $E_m\neq E_n$, then $\braket{\psi_m}{\psi_n}=0$!
+    \end{itemize}
+    \item Now let
+    \begin{equation*}
+        \psi = \sum_nc_n\psi_n(\vec{r})\exp(-\frac{iE_nt}{\hbar})
+    \end{equation*}
+    \begin{itemize}
+        \item Then
+        \begin{align*}
+            \braket{\psi} &= \sum_{m,n}c_m^*c_n\exp(-\frac{i}{\hbar}(E_m-E_n)t)\braket{\psi_m}{\psi_n}\\
+            &= \sum_m|c_m|^2
+        \end{align*}
+        \item This follows from the fact that $\braket{\psi_m}{\psi_n}=1$.
+    \end{itemize}
+    \item Last note.
+    \begin{align*}
+        \ev{\hat{H}}{\psi} &= \sum_{m,n}c_m^*c_n\exp(-\frac{i}{\hbar}(E_m-E_n)t)\underbrace{\mel{\psi_m'}{\hat{H}}{\psi_n}}_{E_n\braket{\psi_m}{\psi_n}}\\
+        &= \sum_m|c_m|^2E_m
+    \end{align*}
+\end{itemize}
+
+
+
 
 \end{document}
