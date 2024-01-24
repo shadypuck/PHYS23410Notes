@@ -45,24 +45,44 @@
         \begin{equation*}
             -i\hbar\pdv{\psi^*}{t} = -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi^*+V(\vec{r},t)\psi^*
         \end{equation*}
-        We will use the above two equations to substitute into the following algebraic derivation.
+        Also observe that
+        \begin{equation*}
+            \int\dd^3\vec{r}\ \psi^*\vec{\nabla}(\vec{\nabla}^2\psi) = \int\dd^3\vec{r}\ \vec{\nabla}\cdot[\psi^*\vec{\nabla}^2\psi]-\int\dd^3\vec{r}\ \vec{\nabla}\psi^*\vec{\nabla}^2\psi
+            = -\int\dd^3\vec{r}\ \vec{\nabla}\psi^*\vec{\nabla}^2\psi
+        \end{equation*}
+        where the first term goes to zero by the divergence theorem and the boundary condition. (See PSet 1, Q2a for a full explanation of this zeroing out.) Similarly, we have that
+        \begin{equation*}
+            \int\dd^3\vec{r}\ \vec{\nabla}\psi^*\vec{\nabla}(\vec{\nabla}\psi) = -\int\dd^3\vec{r}\ \vec{\nabla}^2\psi^*\vec{\nabla}\psi
+        \end{equation*}
+        This means that altogether,
+        \begin{align*}
+            \int\dd^3\vec{r}\ \psi^*\vec{\nabla}^3\psi &= \int\dd^3\vec{r}\ \vec{\nabla}^2\psi^*\vec{\nabla}\psi\\
+            \int\dd^3\vec{r}\ [\vec{\nabla}^2\psi^*\vec{\nabla}\psi-\psi^*\vec{\nabla}^3\psi] &= 0
+        \end{align*}
+        We will now use the two Schr\"{o}dinger substitutions and the above equation to substitute into the following algebraic derivation.
         \begin{align*}
             \dv{\Exp{\hat{\vec{p}}\,}}{t} ={}& \dv{t}(\int\dd^3\vec{r}\ \psi^*(-i\hbar\vec{\nabla}\psi))\\
             ={}& \int\dd^3\vec{r}\ {\pdv{\psi^*}{t}}(-i\hbar\vec{\nabla}\psi)+\int\dd^3\vec{r}\ \psi^*\left( -i\hbar\vec{\nabla}\pdv{\psi}{t} \right)\\
-            ={}& \int\dd^3\vec{r}\,\left[ -i\hbar{\pdv{\psi^*}{t}}(\vec{\nabla}\psi) \right]+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( -i\hbar\pdv{\psi}{t} \right)\\
+            ={}& \int\dd^3\vec{r}\,\left( -i\hbar{\pdv{\psi^*}{t}} \right)(\vec{\nabla}\psi)+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( -i\hbar\pdv{\psi}{t} \right)\\
+            \begin{split}
+                ={}& \int\dd^3\vec{r}\,\left( -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi^*+V(\vec{r},t)\psi^* \right)(\vec{\nabla}\psi)\\
+                & +\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( \frac{\hbar^2}{2m}\vec{\nabla}^2\psi-V(\vec{r},t)\psi \right)
+            \end{split}\\
             \begin{split}
                 ={}& \int\dd^3\vec{r}\,\left[ -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi^*(\vec{\nabla}\psi) \right]+\int\dd^3\vec{r}\ \psi^*\vec{\nabla}\left( \frac{\hbar^2}{2m}\vec{\nabla}^2\psi \right)\\
-                & +\int\dd^3\vec{r}\,\left[ V(\vec{r},t)\psi^*(\vec{\nabla}\psi)+\psi^*\vec{\nabla}(-V(\vec{r},t)\psi) \right]
+                & +\int\dd^3\vec{r}\,\left[ V(\vec{r},t)\psi^*(\vec{\nabla}\psi)+\psi^*\vec{\nabla}[-V(\vec{r},t)\psi] \right]
             \end{split}\\
-            ={}& \int\dd^3\vec{r}\ \psi^*\vec{\nabla}(-V(\vec{r},t)\psi)\\
+            \begin{split}
+                ={}& \int\dd^3\vec{r}\ -\frac{\hbar^2}{2m}\left[ \vec{\nabla}^2\psi^*(\vec{\nabla}\psi)-\psi^*\vec{\nabla}^3\psi \right]\\
+                & +\int\dd^3\vec{r}\,\left[ V(\vec{r},t)\psi^*(\vec{\nabla}\psi)-\psi^*\vec{\nabla}[V(\vec{r},t)]\psi-\psi^*V(\vec{r},t)(\vec{\nabla}\psi) \right]
+            \end{split}\\
             ={}& \int\dd^3\vec{r}\ \psi^*(-\vec{\nabla}V(\vec{r},t))\psi\\
             ={}& \Exp{-\vec{\nabla}V(\vec{r},t)}
         \end{align*}
         as desired.
     \end{proof}
-    \item How does everything cancel from the long line to the following line in the above proof??
     \item In quantum mechanics, we have \textbf{observables} which are in one-to-one correspondence with operators.
-    \begin{table}[h!]
+    \begin{table}[H]
         \centering
         \small
         \renewcommand{\arraystretch}{1.4}
@@ -102,20 +122,23 @@
         is real.
         \item Takeaway: Averages over arbitrary wavefunctions are real.
         \item Similarly, suppose that $\vec{r}$ is Hermitian. Then any function $V(\vec{r})$ of it is also Hermitian.
-        \item Once again,
+        \item For example, the momentum operator is a Hermitian operator:
         \begin{equation*}
             \int\dd^3\vec{r}\ \psi_i^*(-i\hbar\vec{\nabla}\psi_j) = \left( \int\dd^3\vec{r}\ \psi_j^*(-i\hbar\vec{\nabla}\psi_i) \right)^*
             = \int\dd^3\vec{r}\ \psi_j(i\hbar\vec{\nabla}\psi_i^*)
             \to -\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)
         \end{equation*}
-        Involves integration by parts?? Perhaps via
+        \item To prove the leftmost equality above, we can use integration by parts as follows.
         \begin{align*}
             \int\dd^3\vec{r}\ \psi_j(i\hbar\vec{\nabla}\psi_i^*) &= i\hbar\int\dd^3\vec{r}\ \vec{\nabla}(\psi_j\psi_i^*)-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
             &= i\hbar\vec{\nabla}\int\dd^3\vec{r}\ (\psi_j\psi_i^*)-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
             &= i\hbar\vec{\nabla}0-\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)\\
             &= -\int\dd^3\vec{r}\ \vec{\nabla}\psi_j(i\hbar\psi_i^*)
         \end{align*}
-        What is the takeaway??
+        \begin{itemize}
+            \item Note that the left integral above goes to zero because of the boundary condition.
+            \item This is relevant to PSet 1, Q2a!
+        \end{itemize}
     \end{itemize}
     \item Linear algebra analogy.
     \begin{itemize}
@@ -161,6 +184,7 @@
         \end{itemize}
         \item The full "bra-ket" $\braket{\psi_i}{\psi_j}:=\int\dd^3\vec{r}\ \psi_i^*\psi_j$.
         \item We also have $\mel{\psi_i}{\hat{O}}{\psi_j}:=\int\dd^3\vec{r}\ \psi_i^*\hat{O}\psi_j$.
+        \item Essentially, we're just representing this Hilbert-space integral inner product in typical inner product notation!
     \end{itemize}
     \item The condition for an operator being Hermitian/self-adjoint in Dirac notation:
     \begin{equation*}
@@ -346,7 +370,7 @@
 
 \section{Office Hours (Matt)}
 \begin{itemize}
-    \item PSet1, Q2a: Conceptual reason why the first term in the integration by parts vanishes?
+    \item PSet 1, Q2a: Conceptual reason why the first term in the integration by parts vanishes?
     \begin{itemize}
         \item Boundary conditions in each of the three directional integrals.
     \end{itemize}
