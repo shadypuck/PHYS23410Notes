@@ -380,11 +380,11 @@
                     -- (2,2)
                 ;
     
-                \draw [rex,thick] (0.1,0.1)
+                \draw [blx,thick] (0.1,0.1)
                     to[out=0,in=180,in looseness=0.7] (0.4,0.4)
                     to[out=0,in=180,out looseness=0.7] (0.7,0.1)
                 ;
-                \draw [rex,thick] (1.3,0.1)
+                \draw [blx,thick] (1.3,0.1)
                     to[out=0,in=180,in looseness=0.7] (1.6,0.4)
                     to[out=0,in=180,out looseness=0.7] (1.9,0.1)
                 ;
@@ -427,6 +427,214 @@
         we will obtain a "continuous" distribution of states with $|k_n-k_0|<1/\sigma$ as well as a suppression of other modes.
         \item Left as an exercise to the student to derive further results about this system.
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Harmonic Oscillator}
+\begin{itemize}
+    \item \marginnote{1/19:}The harmonic oscillator is one of the most important problems in physics because we can solve it exactly.
+    \item It used to approximate solutions near the bottom of smooth potential wells. It does so via
+    \begin{equation*}
+        V(x) \approx V(x_0)+\eval{\dv{V}{x}}_{x_0}(x-x_0)+\frac{1}{2}\eval{\dv[2]{V}{x}}_{x_0}(x-x_0)^2+\cdots
+    \end{equation*}
+    \begin{itemize}
+        \item Mathematically, this represents small departures from $x_0$.
+        \item Recall that the first derivative goes to zero (because we are at a minimum) and the second one is a constant we can call $k$, yielding
+        \begin{equation*}
+            V(x) = V(x_0)+\frac{1}{2}k(x-x_0)^2
+        \end{equation*}
+        \item This is now a potential with which we are familiar from classical mechanics.
+    \end{itemize}
+    \item Recall what happens in classical mechanics.
+    \begin{itemize}
+        \item We get an equation with a second derivative of $u=x-x_0$:
+        \begin{equation*}
+            m\dv[2]{u}{t} = -ku
+        \end{equation*}
+        \item This problem is solved in classical mechanics by defining $\omega^2:=k/m$ and solving the differential equation for
+        \begin{equation*}
+            u = A\sin(\omega t)+B\cos(\omega t)
+        \end{equation*}
+        \item From this general solution, we can get to particular solutions using initial conditions.
+        \item For example, if $u(0)=0$, then $B=0$ and
+        \begin{equation*}
+            u = A\sin(\omega t)
+        \end{equation*}
+        \item What happens if we multiply the original equation of motion by $v=\dv*{u}{t}$? We get the conservation of energy!
+        \begin{align*}
+            mv\dv{v}{t} &= -ku\dv{u}{t}\\
+            \dv{t}(\frac{mv^2}{2}+\frac{ku^2}{2}) = 0
+        \end{align*}
+        \item Note that we associate the left term above with $KE=p^2/2m$ and the right term above with $V(u)$.
+        \item This gives us
+        \begin{align*}
+            V(u) &= \frac{ku^2}{2}
+                = \frac{k[A\sin(\omega t)]^2}{2}
+                = \frac{kA^2}{2}\sin^2(\omega t)\\
+            K(u) &= \frac{mv^2}{2}
+                = \frac{m}{2}\left( \dv{t}[A\sin(\omega t)] \right)^2
+                = \frac{A^2m\omega^2}{2}\cos^2(\omega t)
+                = \frac{kA^2}{2}\cos^2(\omega t)
+        \end{align*}
+        so that
+        \begin{equation*}
+            V(u)+K(u) = \frac{kA^2}{2}
+        \end{equation*}
+        for all $u$!
+    \end{itemize}
+    \item The situation is different in quantum mechanics.
+    \begin{itemize}
+        \item Here, we must begin from
+        \begin{equation*}
+            -\frac{\hbar^2}{2m}\dv[2]{x}\psi_n(x)+\frac{kx^2}{2}\psi_n(x) = E_m\psi_n(x)
+        \end{equation*}
+    \end{itemize}
+    \item What do we know, qualitatively, about a solution to this ODE?
+    \begin{itemize}
+        \item Since $V(x)$ is time-independent, the eigenfunctions will be of the form
+        \begin{equation*}
+            \psi_n(x,t) = \psi_n(x)\e[-iE_nt/\hbar]
+        \end{equation*}
+        \item We will be able to normalize these solutions via
+        \begin{equation*}
+            \int\dd{x}\psi_m^*(x)\psi_n(x) = \delta_{nm}
+        \end{equation*}
+        \item The general solution will then be a sum of the normalized solutions, like the following.
+        \begin{equation*}
+            \psi(x,t) = \sum_nc_n\psi_n(x,t)
+        \end{equation*}
+        \item The normalization condition \emph{here} will then yield
+        \begin{equation*}
+            \sum_n|c_n|^2 = 1
+        \end{equation*}
+        \item Lastly, we will be able to calculate expected values, such as
+        \begin{equation*}
+            \ev{\hat{H}}{\psi} = \sum_m|c_m|^2E_m
+        \end{equation*}
+    \end{itemize}
+    \item We now work toward quantitative solutions $\psi_n(x,t)$, based on insight from the following picture.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+            \draw (-2,0) -- (2,0) node[right]{$x$};
+            \draw [-stealth] (0,-0.5) -- (0,1.5);
+    
+            \draw [grx,thick] (-1,1.4) parabola bend (0,0) (1,1.4) node[below right]{$V(x)=\frac{kx^2}{2}$};
+            \draw [rex,thick] (-2,0)
+                to[out=0,in=180,out looseness=1.5,in looseness=0.7] (0,1)
+                to[out=0,in=180,out looseness=0.7,in looseness=1.5] (2,0) node[above]{$\psi_n(x)$}
+            ;
+        \end{tikzpicture}
+        \caption{Solving the quantum harmonic oscillator with an asymptotic Schr\"{o}dinger equation.}
+        \label{fig:harmOscSol}
+    \end{figure}
+    \begin{itemize}
+        \item Although it may not be immediately obvious how to solve the Schr\"{o}dinger equation in this case, we can see from Figure \ref{fig:harmOscSol} that at large values of $x$, $\psi_n(x)=0$. Thus, for large $x$, we will have
+        \begin{equation*}
+            -\frac{\hbar^2}{2m}\dv[2]{x}\psi_n(x)+\frac{kx^2}{2}\psi_n(x) = 0
+        \end{equation*}
+        \begin{itemize}
+            \item This tells us the \textbf{asymptotic} behavior of the equation.
+        \end{itemize}
+        \item We can then algebraically rearrange this equation into the form
+        \begin{equation*}
+            \dv[2]{x}\psi_n(x)-\frac{m^2\omega^2x^2}{\hbar^2}\psi_n(x) = 0
+        \end{equation*}
+        \item To solve it, use an ansatz proportional to the following.
+        \begin{equation*}
+            \psi_n(x) \propto \exp[-\frac{m\omega}{2\hbar}x^2]
+        \end{equation*}
+        \begin{itemize}
+            \item This works because
+            \begin{align*}
+                \dv{\psi_n}{x} &= -\frac{m\omega x}{\hbar}\exp[-\frac{m\omega}{2\hbar}x^2]\\
+                \dv[2]{\psi_n}{x} &= \left( -\frac{m\omega}{\hbar}+\frac{m^2\omega^2x^2}{\hbar^2} \right)\exp[-\frac{m\omega}{2\hbar}x^2]
+            \end{align*}
+        \end{itemize}
+        \item In particular, use the ansatz
+        \begin{equation*}
+            \psi_n(x) = f_n(x)\exp[-\frac{m\omega}{2\hbar}x^2]
+        \end{equation*}
+        \item Now insert this ansatz into the original equation and solve for values of $f_n(x)$ that give an exact solution.
+        \item Start by calculating that
+        \begin{equation*}
+            \dv{\psi_n}{x} = \dv{f_n(x)}{x}\exp[-\frac{m\omega}{2\hbar}x^2]-f_n(x)\frac{m\omega x}{\hbar}\exp[-\frac{m\omega}{2\hbar}x^2]
+        \end{equation*}
+        and thus
+        \begin{align*}
+            \begin{split}
+                \dv[2]{\psi_n}{x} ={}& \dv[2]{f_n(x)}{x}\exp[-\frac{m\omega}{2\hbar}x^2]-2\dv{f_n(x)}{x}\frac{m\omega x}{\hbar}\exp[-\frac{m\omega}{2\hbar}x^2]\\
+                & -f_n(x)\frac{m\omega}{\hbar}\exp[-\frac{m\omega}{2\hbar}x^2]+f_n(x)\frac{m^2\omega^2x^2}{\hbar^2}\exp[-\frac{m\omega}{2\hbar}x^2]
+            \end{split}\\
+            ={}& \left[ f_n''(x)-\frac{2m\omega x}{\hbar}f_n'(x)-f_n(x)\frac{m\omega}{\hbar}+f_n(x)\frac{m^2\omega^2x^2}{\hbar^2} \right]\exp[-\frac{m\omega}{2\hbar}x^2]\\
+            ={}& \left[ f_n''(x)-\frac{2m\omega x}{\hbar}f_n'(x)+\frac{m\omega}{\hbar}\left( \frac{m\omega x^2}{\hbar}-1 \right)f_n(x) \right]\exp[-\frac{m\omega}{2\hbar}x^2]
+        \end{align*}
+        \item Now we insert the above into the full original Schr\"{o}dinger equation, cancelling the exponential term immediately to save space.
+        \begin{align*}
+            -\frac{\hbar^2}{2m}\left[ f_n''(x)-\frac{2m\omega x}{\hbar}f_n'(x)+\frac{m\omega}{\hbar}\left( \frac{m\omega x^2}{\hbar}-1 \right)f_n(x) \right]+\frac{m\omega^2x^2}{2}f_n(x) &= E_nf_n(x)\\
+            -\frac{\hbar^2}{2m}\left( f_n''-\frac{2m\omega x}{\hbar}f_n'-\frac{m\omega}{\hbar}f_n \right) &= E_nf_n\\
+            -\frac{\hbar^2}{2m}f_n''+\hbar\omega xf_n'+\left( \frac{\hbar\omega}{2}-E_n \right)f_n &= 0
+        \end{align*}
+    \end{itemize}
+    \item Thus, we have obtained an ODE that we can solve to find particular solutions.
+    \item One obvious solution: the \textbf{minimal energy solution}.
+    \item \textbf{Minimal energy solution} (to the quantum harmonic oscillator): Take $f_n$ to be a constant $C$. \emph{Given by}
+    \begin{align*}
+        \psi_0(x) &= C\exp[-\frac{m\omega}{2\hbar}x^2]&
+        E_0 &= \frac{\hbar\omega}{2}
+    \end{align*}
+    \begin{itemize}
+        \item Note that it is the above ODE that necessitates $E_0=\hbar\omega/2$ if $f_n$ is to be a constant.
+        \item The minimal energy solution classically is zero, but in quantum mechanics, there will always be some energy!
+        \begin{itemize}
+            \item Zero energy is impossible because it would imply that the position and momentum are both zero. But there needs to be some uncertainty, in both, so the position and momentum \emph{cannot} both be zero.
+            \item Essentially, the uncertainty principle \emph{necessitates} a finite nonzero minimal energy. Stated another way, zero energy is \emph{inconsistent} with the uncertainty principle.
+        \end{itemize}
+    \end{itemize}
+    \item What if we postulate that $f_1=b_1x$ for some constant $b_1$?
+    \begin{itemize}
+        \item Then the ODE simplifies to
+        \begin{align*}
+            \hbar\omega b_1x+\left( \frac{\hbar\omega}{2}-E_1 \right)b_1x &= 0\\
+            E_1 &= \frac{3\hbar\omega}{2}
+        \end{align*}
+        \item Note that
+        \begin{equation*}
+            E_1-E_0 = \hbar\omega
+        \end{equation*}
+        \begin{itemize}
+            \item This observation is important because we can actually prove that
+            \begin{equation*}
+                E_{n+1}-E_n = \hbar\omega
+            \end{equation*}
+            for all $n=0,1,2,\dots$.
+            \item We will not prove this in this class, though; we will just postulate it.
+            \item Essentially, what we do is assume that
+            \begin{equation*}
+                f_N(x) = \sum_{n=1}^Nb_nx^n
+            \end{equation*}
+            and solve.
+            \item All the solutions are either even or odd solutions based on whether $N$ is even or odd. These "even" and "odd" solutions correspond to even and odd polynomial functions.
+        \end{itemize}
+        \item This means that
+        \begin{equation*}
+            E_n = \hbar\omega\left( n+\frac{1}{2} \right)
+        \end{equation*}
+    \end{itemize}
+    \item In particular, if we let $\xi=x\sqrt{m\omega/\hbar}$, then the solutions $f_N$ are the \textbf{Hermite polynomials}.
+    \item \textbf{Hermite polynomial}: A polynomial of the following form. \emph{Denoted by} $\bm{H_n(\xi)}$. \emph{Given by}
+    \begin{equation*}
+        H_n(\xi) = (-1)^n\exp(\xi^2)\dv[n]{\xi}[\exp(-\xi^2)]
+    \end{equation*}
+    \item Thus, the general solutions to the quantum harmonic oscillator
+    \begin{equation*}
+        \psi_n(x) = \left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\frac{H_n(\xi)}{\sqrt{2^nn!}}\exp[-\frac{\xi^2}{2}]
+    \end{equation*}
+    \item On Monday, we will derive this result using \textbf{rasing} and \textbf{lowering} operators.
 \end{itemize}
 
 
