@@ -263,5 +263,190 @@
 
 
 
+\section{Time Dependence and Coherent States}
+\begin{itemize}
+    \item \marginnote{1/24:}Review of the harmonic oscillator.
+    \begin{itemize}
+        \item Our Hamiltonian is
+        \begin{equation*}
+            \hat{H} = -\frac{\hbar^2}{2m}\dv[2]{x}+\frac{kx^2}{2} = \frac{\hat{\vec{p}}{\,}^2}{2m}+\frac{k\hat{\vec{x}}{\,}^2}{2}
+        \end{equation*}
+        \begin{itemize}
+            \item We have an analogy with the classical $\omega^2=k/m$.
+        \end{itemize}
+        \item Under this Hamiltonian, $\hat{H}\ket{\psi_n}=E_n\ket{\psi_n}$ implies that
+        \begin{equation*}
+            E_n = \hbar\omega\left( \frac{1}{2}+n \right)
+        \end{equation*}
+        \item The raising and lowering operators are given by
+        \begin{align*}
+            a_+ &= \frac{1}{\sqrt{2\hbar m\omega}}[-i\hat{\vec{p}}+m\omega\hat{\vec{x}}\,]&
+            a_- &= \frac{1}{\sqrt{2\hbar m\omega}}[i\hat{\vec{p}}+m\omega\hat{\vec{x}}\,]
+        \end{align*}
+        \begin{itemize}
+            \item Together, these imply that
+            \begin{equation*}
+                \hat{H} = \hbar\omega\left( a_+a_-+\frac{1}{2} \right)
+            \end{equation*}
+            \item We also have that
+            \begin{align*}
+                a_+a_-\ket{\psi_n} &= n\ket{\psi_n}&
+                    a_+\ket{\psi_n} &= \sqrt{n+1}\ket{\psi_{n+1}}\\
+                [a_-,a_+] &= 1&
+                    a_-\ket{\psi_n} &= \sqrt{n}\ket{\psi_{n-1}}
+            \end{align*}
+            \item We call $a_+a_-$ the number operator.
+            \item We should go home and learn these formulas.
+        \end{itemize}
+        \item The full eigenstate is
+        \begin{equation*}
+            \psi(x,t) = \sum_{n=0}^\infty\underbrace{c_n\psi_n(x)\e[-iE_nt/\hbar]}_{\psi_n(x,t)}
+        \end{equation*}
+        \item Two properties of this eigenstate.
+        \begin{enumerate}
+            \item We have that
+            \begin{equation*}
+                \ket{\psi} = \sum_{n=0}^\infty c_n\e[-iE_nt/\hbar]\ket{\psi_n}
+            \end{equation*}
+            which implies that
+            \begin{equation*}
+                \sum_{n=0}^\infty|c_n|^2 = 1
+            \end{equation*}
+            since $\braket{\psi}=1$ and $\braket{\psi_n}{\psi_m}=\delta_{nm}$.
+            \item We have that
+            \begin{equation*}
+                \ev{\hat{H}}{\psi} = \sum_{n=0}^\infty|c_n|^2E_n
+            \end{equation*}
+        \end{enumerate}
+        \item We have that
+        \begin{align*}
+            \ev**{\frac{k\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right) = \frac{E_n}{2}&
+            \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n} &= \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right) = \frac{E_n}{2}
+        \end{align*}
+        \begin{itemize}
+            \item Note that this makes sense because the sum $E_n/2+E_n/2$ of potential and kinetic should be $E_n$, and it will be!
+        \end{itemize}
+        \item Additionally, recall that we have
+        \begin{align*}
+            \hat{\vec{p}}{\,}^2 &\propto (a_+-a_-)^2&
+            \hat{\vec{x}}{\,}^2 &\propto (a_++a_-)^2
+        \end{align*}
+        \begin{itemize}
+            \item Thus, we have that
+            \begin{align*}
+                \ev{\hat{\vec{p}}\,}{\psi_n} &= \ev{(a_+-a_-)}{\psi_n} = 0&
+                \ev{\hat{\vec{x}}}{\psi_n} &= \ev{(a_++a_-)}{\psi_n} = 0
+            \end{align*}
+        \end{itemize}
+        \item The harmonic oscillator is a very important problem in physics, and we should know it by heart! (In order to pass the class.)
+    \end{itemize}
+    \item Recall as well that there is a correspondence between the Dirac notation and the functional notation, given by
+    \begin{equation*}
+        \psi_n(x) \mapsto \ket{\psi_n}
+    \end{equation*}
+    \begin{itemize}
+        \item As an additional example,
+        \begin{equation*}
+            \frac{1}{\sqrt{2\hbar m\omega}}\left[ -\hbar\dv{x}+m\omega x \right]\psi_n(x) = \sqrt{n+1}\psi_{n+1}(x)
+            \quad\mapsto\quad
+            a_+\ket{\psi_n} = \sqrt{n+1}\ket{\psi_{n+1}}
+        \end{equation*}
+        \item One more example:
+        \begin{equation*}
+            \hbar\dv{\psi_0}{x}+m\omega x\psi_0(x) = 0
+            \quad\mapsto\quad
+            a_-\ket{\psi_0} = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Note that solving this ODE yields the solution
+            \begin{equation*}
+                \psi_0 = C\exp(-\frac{m\omega x^2}{2\hbar})
+            \end{equation*}
+            \item It appears that this is how we intuitively derive the ansatz we used last Friday!
+        \end{itemize}
+    \end{itemize}
+    \item Now we start on some new content.
+    \item Observe that
+    \begin{align*}
+        \frac{2m\omega\hat{\vec{x}}}{\sqrt{2\hbar m\omega}} &= a_++a_-\\
+        \hat{\vec{x}} &= \sqrt{\frac{\hbar}{2m\omega}}(a_++a_-)
+    \end{align*}
+    \item In classical mechanics, the solution to the harmonic oscillator is
+    \begin{equation*}
+        x(t) = A\sin\omega t+B\cos\omega t
+    \end{equation*}
+    \item We now investigate the observables of $\ket{\psi}$.
+    \item To start with, we show how $\ev{\hat{\vec{x}}}{\psi}$ varies with time. This will lead into a discussion of something called coherent states. Let's begin.
+    \begin{itemize}
+        \item We start with
+        \begin{equation*}
+            \ev{\hat{\vec{x}}}{\psi} = \sum_{m,n=0}^\infty c_m^*c_n\e[i(E_m-E_n)t/\hbar]\mel{\psi_n}{\hat{\vec{x}}}{\psi_n}
+        \end{equation*}
+        \item We can algebraically manipulate the above to
+        \begin{align*}
+            \ev{\hat{\vec{x}}}{\psi} ={}& \sum_{m,n=0}^\infty c_m^*c_n\e[i(\hbar\omega(m-n))t/\hbar]\sqrt{\frac{\hbar}{2m\omega}}\left( \sqrt{n+1}\delta_{m,n+1}+\sqrt{n}\delta_{m,n-1} \right)\\
+            ={}& \sum_{n=0}^\infty c_{n+1}^*c_n\e[i\omega t]\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}+\sum_{n=1}^\infty c_{n-1}^*c_n\e[-i\omega t]\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n}\\
+            ={}& \sum_{n=0}^\infty c_{n+1}^*c_n\e[i\omega t]\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}+\sum_{n=0}^\infty c_n^*c_{n+1}\e[-i\omega t]\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}\\
+            \begin{split}
+                ={}& \sqrt{\frac{\hbar}{2m\omega}}\cos(\omega t)\left[ \sum_{n=0}^\infty\left( c_{n+1}^*c_n+c_n^*c_{n+1} \right)\sqrt{n+1} \right]\\
+                & +\sqrt{\frac{\hbar}{2m\omega}}\sin(\omega t)\left[ \sum_{n=0}^\infty\left( c_{n+1}^*c_n-c_n^*c_{n+1} \right)\sqrt{n+1} \right]
+            \end{split}
+        \end{align*}
+        \item Thus,
+        \begin{equation*}
+            \ev{\hat{\vec{x}}}{\psi} = A\cos\omega t+B\sin\omega t
+        \end{equation*}
+        where
+        \begin{align*}
+            A &= 2\re\left[ \sum_{n=0}^\infty c_{n+1}^*c_n\sqrt{n+1} \right]\sqrt{\frac{\hbar}{2m\omega}}&
+                B &= 2\im\left[ \sum_{n=0}^\infty c_{n+1}^*c_n\sqrt{n+1} \right]\sqrt{\frac{\hbar}{2m\omega}}\\
+            &= \re\left[ \sum_{n=0}^\infty c_{n+1}^*c_n\sqrt{n+1} \right]\sqrt{\frac{2\hbar}{m\omega}}&
+                &= \im\left[ \sum_{n=0}^\infty c_{n+1}^*c_n\sqrt{n+1} \right]\sqrt{\frac{2\hbar}{m\omega}}
+        \end{align*}
+        \item Now for large values of $n$,
+        \begin{equation*}
+            \sqrt{n+1}\sqrt{\frac{2\hbar}{m\omega}} = \sqrt{\frac{2\hbar\omega(n+1)}{m\omega^2}}
+            \approx \sqrt{\frac{2E_n}{m\omega^2}}
+        \end{equation*}
+        where
+        \begin{align*}
+            E_n &= \hbar\omega\left( n+\frac{1}{2} \right)&
+            x &= A\sin\omega t&
+            E &= \frac{m\omega^2A^2}{2}&
+            A &= \sqrt{\frac{2E}{m\omega^2}}
+        \end{align*}
+        \begin{itemize}
+            \item How can we just ignore the real and imaginary sum terms??
+        \end{itemize}
+        \item Now take the harmonic oscillator. Notice that $\sum_n$ is dominated by large values of $n\approx\bar{n}$, close to $\bar{n}$, where $\bar{n}\gg 1$. Thus,
+        \begin{equation*}
+            \ev{\hat{\vec{x}}}{\psi} = \sqrt{\frac{2E\bar{n}}{m\omega^2}}\sum_{n=0}^\infty\re\left[ \sum c_{n+1}^*c_n \right]\sin\omega t
+        \end{equation*}
+        and
+        \begin{equation*}
+            \ev{\hat{\vec{x}}{\,}^2}{\psi}-(\ev{\hat{\vec{x}}}{\psi})^2 \neq 0
+        \end{equation*}
+        \item This is \emph{not} classical motion.
+        \item The states that come closest to realizing classical motion are called \textbf{coherent states}.
+    \end{itemize}
+    \item \textbf{Coherent state}: A state in which the uncertainty in $\hat{\vec{x}}$ is minimized.
+    \item Example:
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            a_-\ket{\alpha} &= \alpha\ket{\alpha}&
+            a_-\ket{\psi_0} &= 0\ket{\psi_0}
+        \end{align*}
+        \item Then
+        \begin{align*}
+            \frac{\hbar}{2m\omega}\left[ \ev{(a_++a_-)^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right] &= \frac{\hbar}{2}\\
+            \frac{\hbar}{2m\omega}\left[ \ev{a_+^2+a_+a_-+a_-a_++a_-^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right] &= \dots
+        \end{align*}
+        \item We'll finish this up next time.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
