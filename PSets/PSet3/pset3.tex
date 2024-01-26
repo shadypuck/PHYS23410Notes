@@ -1,0 +1,78 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{2}
+
+\begin{document}
+
+
+
+
+\section{The Harmonic Oscillator}
+\begin{enumerate}
+    \item \marginnote{1/26:}Harmonic oscillator in Earth's gravity.\par
+    In class, we solved the Harmonic Oscillator Problem, which has the potential
+    \begin{equation}
+        V(x) = \frac{m\omega^2x^2}{2}
+    \end{equation}
+    with $\omega=\sqrt{k/m}$ being the classical frequency. Now assume that $x$ is a vertical direction and that we place the harmonic oscillator close to the Earth's surface. Now, if $x$ grows upwards, the potential will be
+    \begin{equation}\label{eqn:gravPot}
+        V(x) = \frac{m\omega^2x^2}{2}+mgx+C
+    \end{equation}
+    with $g=\SI[per-mode=symbol]{9.8}{\meter\per\second\squared}$ and $C$ an arbitrary (and irrelevant) constant.
+    \begin{enumerate}
+        \item First, think about the classical problem. The equilibrium point is no longer at $x=0$, but a displaced point where the tension and gravity forces are equilibrated. Find that point and rewrite the potential in terms of a new variable representing departures from the equilibrium point. What would be the motion of a classical particle under the potential given in Eq. \ref{eqn:gravPot}?
+        \item Now think about the quantum problem. Without gravity, the energy eigenvalues are given by $E_n^\text{HO}=\hbar\omega(n+1/2)$ and the corresponding wave functions $\psi_n^\text{HO}$ can be written in terms of odd and even Hermite polynomials and a Gaussian function of $x$. (Here, HO means "harmonic oscillator.") Using these results, derive the new energy eigenvalues $E_n$ and eigenfunctions $\psi_n$ in the presence of gravity, Eq. \ref{eqn:gravPot}. \emph{Hint}: Can you make a similar redefinition of the coordinates as you did in the classical case?
+        \item What would be the mean value of $x$ and $p$ in this system (for a given energy eigenstate, not a generic state)? What would be the mean value of $x^2$ and $p^2$ in the ground state of the system? \emph{Hint}: Use properties of the wave functions under displacements from the equilibrium point, and write $x=x_\text{eq}+(x-x_\text{eq})$, where $x_\text{eq}$ is the equilibrium point.
+        \item Think about the uncertainty principle. What is the value of $\sigma_x\sigma_p$ in the ground state of this system? Does it differ from the value we obtained in the absence of gravity?
+    \end{enumerate}
+    \item Bouncing harmonic oscillator.\par
+    Assume now that we add an infinite potential floor just at the equilibrium point, so that the particle can no longer go below it. Under this modification, the new potential is
+    \begin{equation}
+        V(x) =
+        \begin{cases}
+            \frac{m\omega^2x^2}{2}+mgx+C & x>x_\text{eq}\\
+            \infty & x\leq x_\text{eq}
+        \end{cases}
+    \end{equation}
+    where $x_\text{eq}$ is the equilibrium point. Classically, every time the particle hits the floor, it will bounce back with the same modulus of the momentum, but in the upwards direction.
+    \begin{enumerate}
+        \item What is the mathematical description of $x(t)$ of the classical motion? \emph{Hint}: Think about the oscillator without a floor and the symmetry regarding displacements in the positive and negative directions from the equilibrium point.
+        \item Now go back to the quantum mechanical problem. Similarly to the infinite square well that we solved last week, what should happen to the wave functions at $x=x_\text{eq}$ and why?
+        \item Now look at the Schr\"{o}dinger equation for positive values of the displacement with respect to the equilibrium point. Does it change from the one we had without the floor? Find the energy eigenvalues and the corresponding functions $\psi_n$ to this problem. \emph{Hint}: Observe that the boundary condition at $x=x_\text{eq}$ eliminates some solutions.
+        \item What is the minimal energy solution once we add the floor to the system? Is it the same as the system without the floor? What is the corresponding eigenfunction of this solution?
+        \item Find $\sigma_x$ and $\sigma_p$ for the minimum energy solution. Is $\sigma_x\sigma_p$ the same as in the system without the wall?
+    \end{enumerate}
+    \item For the harmonic oscillator, consider the ladder operators $a_\pm=(\mp ip+m\omega x)/\sqrt{2\hbar m\omega}$. Recall that $[a_-,a_+]=1$, the Hamiltonian may be written as $\hat{H}=\hbar\omega(a_+a_-+1/2)$, and the eigenfunctions describing the eigenstates of energy $E_n=\hbar\omega(n+1/2)$ are related by $a_+\psi_n=\sqrt{n+1}\psi_{n+1}$ and $a_-\psi_n=\sqrt{n}\psi_{n-1}$.
+    \begin{enumerate}
+        \item Compute the mean value of $x$ and $p$ in the energy eigenstates described by $\psi_n$.
+        \item Compute the mean value of $x^2$ and $p^2$ in these states.
+        \item What would the uncertainty principle tell me about $\sigma_x\sigma_p$?
+        \item Verify that the uncertainty principle is fulfilled for the energy eigenstates.
+        \item Write a formal expression for the mean value of the position and the momentum for the general solution $\psi(x,t)$. Work it out as much as you can, using the orthonormality of the wave functions $\psi_n$.\par
+        \emph{Hint}: For instance, the mean value of the operators $x^q$ and $p^q$ can be obtained by computing
+        \begin{equation}
+            \Exp{x^q} = \left( \frac{\hbar}{2m\omega} \right)^{q/2}\int\psi(x)^*(a_++a_-)^q\psi(x)\dd{x}
+        \end{equation}
+        and
+        \begin{equation}
+            \Exp{p^q} = i^q\left( \frac{\hbar}{2m\omega} \right)^{q/2}\int\psi(x)^*(a_+-a_-)^q\psi(x)\dd{x}
+        \end{equation}
+        Observe that due to orthonormality of the real functions $\psi_n$ and the fact that $a_\pm$ are ladder operators, the only nonvanishing contributions are
+        \begin{align}
+            \begin{split}
+                \int\psi_m(x)a_+^q\psi_n(x)\dd{x} &\qquad \text{Non-vanishing for }m=n+q\\
+                \int\psi_m(x)a_-^q\psi_n(x)\dd{x} &\qquad \text{Non-vanishing for }m=n-q\\
+                \int\psi_m(x)a_-^qa_+^r\psi_n(x)\dd{x} &\qquad \text{Non-vanishing for }m=n+r-q\\
+                \int\psi_m(x)a_+^qa_-^r\psi_n(x)\dd{x} &\qquad \text{Non-vanishing for }m=n-r+q
+            \end{split}
+        \end{align}
+        Two useful cases, as follows from the above, are $\ev{a_+a_-}{\psi_n}=n$ and $\ev{a_-a_+}{\psi_n}=n+1$.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
