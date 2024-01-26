@@ -1,0 +1,267 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{3}
+
+\begin{document}
+
+
+
+
+\chapter{Observables and Hermitian Operators}
+\section{Harmonic Oscillator: Raising and Lowering Operators}
+\begin{itemize}
+    \item \marginnote{1/22:}\textbf{Raising operator}: The operator defined as follows. \emph{Denoted by} $\bm{\hat{a}_+}$, $\bm{a_+}$. \emph{Given by}
+    \begin{equation*}
+        \hat{a}_+ = \frac{1}{\sqrt{2\hbar m\omega}}[-i\hat{\vec{p}}+m\omega\hat{\vec{x}}\,]
+    \end{equation*}
+    \item \textbf{Lowering operator}: The operator defined as follows. \emph{Denoted by} $\bm{\hat{a}_-}$, $\bm{a_-}$. \emph{Given by}
+    \begin{equation*}
+        \hat{a}_- = \frac{1}{\sqrt{2\hbar m\omega}}[i\hat{\vec{p}}+m\omega\hat{\vec{x}}\,]
+    \end{equation*}
+    \item \textbf{Number operator}: The operator defined as follows. \emph{Denoted by} $\bm{a_+a_-}$. \emph{Given by}
+    \begin{equation*}
+        a_+a_- = \hat{a}_+\circ\hat{a}_-
+        = \frac{1}{2\hbar m\omega}\left[ \hat{\vec{p}}{\,}^2+m^2\omega^2x^2-im\omega[\hat{\vec{p}},\hat{\vec{x}}] \right]
+    \end{equation*}
+    \item Properties of these operators.
+    \begin{itemize}
+        \item We can express $\hat{\vec{p}},\hat{\vec{x}}$ in terms of $a_+,a_-$ via
+        \begin{align*}
+            \hat{\vec{p}} &= i\sqrt{\frac{\hbar m\omega}{2}}(\hat{a}_+-\hat{a}_-)&
+            \hat{\vec{x}} &= \sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_++\hat{a}_-)
+        \end{align*}
+        \begin{itemize}
+            \item It follows that
+            \begin{equation*}
+                [\hat{\vec{p}},\hat{\vec{x}}] = \frac{i\hbar}{2}[a_+-a_-,a_++a_-]
+                = \frac{i\hbar}{2}([a_+,a_-]-[a_-,a_+])
+                = i\hbar[a_+,a_-]
+            \end{equation*}
+            \item Consequently, since $[\hat{\vec{p}},\hat{\vec{x}}]=-i\hbar$, we have that
+            \begin{equation*}
+                [a_+,a_-] = -1
+            \end{equation*}
+            \item We also have that
+            \begin{equation*}
+                [a_-,a_+] = 1
+            \end{equation*}
+        \end{itemize}
+        \item Since $[\hat{\vec{p}},\hat{x}]=-i\hbar$ and $\omega^2=k/m$, we have that
+        \begin{align*}
+            a_+a_- &= \frac{1}{2\hbar m\omega}\left[ \hat{\vec{p}}{\,}^2+m^2\omega^2x^2-m\hbar\omega \right]\\
+            &= \frac{1}{\hbar\omega}\Bigg[ \underbrace{\frac{\hat{\vec{p}}{\,}^2}{2m}+\frac{kx^2}{2}}_{\hat{H}}-\frac{\hbar\omega}{2} \Bigg]\\
+            \hat{H} &= \hbar\omega\left( a_+a_-+\frac{1}{2} \right)
+        \end{align*}
+        \begin{itemize}
+            \item Because of the properties of $[a_+,a_-]$ proven above, we similarly have that
+            \begin{equation*}
+                \hat{H} = \hbar\omega\left( a_-a_+-\frac{1}{2} \right)
+            \end{equation*}
+            \item We can also derive this equation in a manner exactly analogous to the first one.
+        \end{itemize}
+    \end{itemize}
+    \item How does the number operator act on the eigenstate $\ket{\psi_n}$ of the harmonic oscillator?
+    \begin{itemize}
+        \item Since $E_n=\hbar\omega(n+1/2)$, we have that
+        \begin{align*}
+            \hbar\omega\left( a_+a_-+\frac{1}{2} \right)\ket{\psi_n} &= \hat{H}\ket{\psi_n}\\
+            \hbar\omega\left( a_+a_-+\frac{1}{2} \right)\ket{\psi_n} &= \hbar\omega\left( n+\frac{1}{2} \right)\ket{\psi_n}\\
+            a_+a_-\ket{\psi_n} &= n\ket{\psi_n}
+        \end{align*}
+    \end{itemize}
+    \item How do the raising and lowering operators act on the eigenstate $\ket{\psi_n}$ of the harmonic oscillator?
+    \begin{itemize}
+        \item Using a number of the above substitutions, we have that
+        \begin{align*}
+            \hat{H}(a_+\ket{\psi_n}) &= \left[ \hbar\omega\left( a_+a_-+\frac{1}{2} \right) \right](a_+\ket{\psi_n})\\
+            &= \hbar\omega\left( a_+a_-a_++\frac{1}{2}a_+ \right)\ket{\psi_n}\\
+            &= \hbar\omega a_+\left( a_-a_++\frac{1}{2} \right)\ket{\psi_n}\\
+            &= \hbar\omega a_+\left( a_+a_-+1+\frac{1}{2} \right)\ket{\psi_n}\\
+            &= \hbar\omega a_+\left( n+1+\frac{1}{2} \right)\ket{\psi_n}\\
+            &= E_{n+1}(a_+\ket{\psi_n})
+        \end{align*}
+        \item This means that $\hat{H}$ acts on $a_+\ket{\psi_n}$ the same way it acts on $\ket{\psi_{n+1}}$. In other words, it must be that
+        \begin{equation*}
+            a_+\ket{\psi_n} \propto \ket{\psi_{n+1}}
+        \end{equation*}
+        \item Similarly,
+        \begin{equation*}
+            \hat{H}(a_-\ket{\psi_n}) = E_{n-1}(a_-\ket{\psi_n})
+        \end{equation*}
+        so
+        \begin{equation*}
+            a_-\ket{\psi_n} \propto \ket{\psi_{n-1}}
+        \end{equation*}
+        \item These actions are why $a_+,a_-$ are called the \emph{raising} and \emph{lowering} operators!
+        \item We now seek to determine the constants of proportionality.
+        \item First off, note that $a_+$ and $a_-$ are adjoints, i.e.,
+        \begin{equation*}
+            a_+^\dagger = a_-
+        \end{equation*}
+        \begin{itemize}
+            \item This identity is evident from the original $\hat{a}_+,\hat{a}_-$ definitions, where the only difference between the two definitions is the conjugacy of the imaginary momentum term!
+            \item Is this correct, or do I have to appeal to the formal $\braket{\psi_i}{\hat{a}_+\psi_j}=\braket*{\hat{a}_+^\dagger\psi_i}{\psi_j}$ definition??
+        \end{itemize}
+        \item Then for $a_+$, we know that if
+        \begin{align*}
+            a_+\ket{\psi_n} = c_+\ket{\psi_n}
+        \end{align*}
+        then
+        \begin{align*}
+            c_+^2 &= c_+^2\braket{\psi_{n+1}}\\
+            &= \braket{c_+\psi_{n+1}}\\
+            &= \braket{a_+\psi_n}\\
+            &= \ev{a_+^\dagger a_+}{\psi_n}\\
+            &= \ev{a_-a_+}{\psi_n}\\
+            &= \ev{a_+a_-+1}{\psi_n}\\
+            &= (n+1)\braket{\psi_n}\\
+            &= n+1
+        \end{align*}
+        so that, taking square roots,
+        \begin{equation*}
+            c_+ = \sqrt{n+1}
+        \end{equation*}
+        \item By the same method --- namely
+        \begin{equation*}
+            c_-^2 = \braket{a_-\psi_n}
+            = \ev{a_+a_-}{\psi_n}
+            = n
+        \end{equation*}
+        we can also learn that
+        \begin{equation*}
+            c_- = \sqrt{n}
+        \end{equation*}
+        \item Therefore,
+        \begin{align*}
+            a_+\ket{\psi_n} &= \sqrt{n+1}\ket{\psi_{n+1}}&
+            a_-\ket{\psi_n} &= \sqrt{n}\ket{\psi_{n-1}}
+        \end{align*}
+        \item Note that what we have done here to derive this fact is far more slick than working directly with the unintuitive and complicated formal definitions of $a_+,a_-$.
+    \end{itemize}
+    \item Now is a good time to mention a bit more about Dirac notation.
+    \begin{itemize}
+        \item A "ket" represents a vector in a Hilbert space, so $\ket{\psi_n}$ demonstrates that we are talking about the wave function as a vector in the abstract linear algebra sense, not as a function $\psi_n:\R^4\to\C$.
+        \item A "bra" represents a linear functional on a Hilbert space. In quantum mechanics, the linear functional $\bra{\eta}$ is given by
+        \begin{equation*}
+            \bra{\eta} := \int\dd^3\vec{r}\ \eta^*
+        \end{equation*}
+        \item Observe that this "functional" does indeed map any $\ket{\psi_n}$ given to it as an argument to a number $\braket{\eta}{\psi_n}$!
+    \end{itemize}
+    \item $\ket{\psi_n}$ can be defined in terms of $a_+$, $\ket{\psi_0}$, and constants.
+    \begin{itemize}
+        \item Observe that since $a_+\ket{\psi_0}=\ket{\psi_1}$ and $a_+\ket{\psi_1}=\sqrt{2}\ket{\psi_2}$, we have that
+        \begin{equation*}
+            \ket{\psi_2} = \frac{a_+}{\sqrt{2}}\ket{\psi_1}
+            = \frac{a_+^2}{\sqrt{2}}\ket{\psi_0}
+        \end{equation*}
+        \item Similarly,
+        \begin{equation*}
+            \ket{\psi_3} = \frac{a_+}{\sqrt{3}}\ket{\psi_2}
+            = \frac{a_+^3}{\sqrt{3\cdot 2}}\ket{\psi_0}
+        \end{equation*}
+        \item Generalizing, we have that
+        \begin{equation*}
+            \ket{\psi_n} = \frac{a_+^n}{\sqrt{n!}}\ket{\psi_0}
+        \end{equation*}
+    \end{itemize}
+    \item Thus, we have that
+    \begin{equation*}
+        \psi_n(x) = \left( \frac{1}{\sqrt{2\hbar m\omega}} \right)^n\frac{1}{\sqrt{n!}}\left( -\hbar\dv{x}+xm\omega \right)^n\psi_0(x)
+    \end{equation*}
+    where we may recall that
+    \begin{equation*}
+        \psi_0(x) = \left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\e[-m\omega x^2/2\hbar]
+    \end{equation*}
+    \item Final observations about the raising and lowering operators.
+    \begin{itemize}
+        \item Since $a_-\ket{\psi_0}=0$ (as we may readily verify by direct computation), we have that
+        \begin{equation*}
+            \hbar\dv{\psi_0}{x}+m\omega x\psi_0 = 0
+        \end{equation*}
+        \item We also know that
+        \begin{equation*}
+            \dd(\ln(\psi_0)) = -\frac{m\omega}{\hbar}\frac{\dd{x}^2}{2}
+        \end{equation*}
+        so
+        \begin{equation*}
+            \psi_0 \propto \e[-m\omega x^2/2\hbar]
+        \end{equation*}
+        \begin{itemize}
+            \item What is the point of this line?? What new information does it give us?
+        \end{itemize}
+    \end{itemize}
+    \item Raising and lowering operators allow us to compute the kinetic and potential energy of the harmonic oscillator.
+    \begin{itemize}
+        \item Kinetic energy.
+        \begin{align*}
+            \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n} &= -\frac{\hbar\omega}{4}\ev{(a_+-a_-)^2}{\psi_n}\\
+            &= -\frac{\hbar\omega}{4}\ev{a_+^2+a_-^2-a_+a_--a_-a_+}{\psi_n}\\
+            % &= -\frac{\hbar\omega}{4}\left[ \ev{a_+^2}{\psi_n}+\ev{a_-^2}{\psi_n}-2\ev{a_+a_-}{\psi_n}-\ev{1}{\psi_n} \right]\\
+            &= -\frac{\hbar\omega}{4}\big[ \underbrace{\ev{a_+^2}{\psi_n}}_{\propto\,\braket{\psi_n}{\psi_{n+2}}}+\underbrace{\ev{a_-^2}{\psi_n}}_{\propto\,\braket{\psi_n}{\psi_{n-2}}}-\underbrace{2\ev{a_+a_-}{\psi_n}}_{2n\braket{\psi_n}}-\underbrace{\ev{1}{\psi_n}}_{\braket{\psi_n}} \big]\\
+            &= \frac{\hbar\omega}{4}(2n+1)\\
+            &= \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right)\\
+            &= \frac{E_n}{2}
+        \end{align*}
+        \item Potential energy.
+        \begin{align*}
+            \ev{\hat{H}}{\psi_n} &= E_n\\
+            \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n}+\ev**{k\frac{\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}+\frac{E_n}{2}\\
+            \ev**{k\frac{\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}
+        \end{align*}
+        \item Implication: In an energy eigenstate, the harmonic oscillator has equal values of kinetic and potential energies!
+    \end{itemize}
+    \pagebreak
+    \item Computing more observables.
+    \begin{itemize}
+        \item We can show that
+        \begin{align*}
+            \ev{\hat{\vec{x}}}{\psi_n} &= \ev{\hat{\vec{p}}\,}{\psi_n} = 0&
+            \ev{\hat{\vec{x}}{\,}^2}{\psi_n} &= \frac{\hbar\omega}{k}\left( n+\frac{1}{2} \right)&
+            \ev{\hat{\vec{p}}{\,}^2}{\psi_n} &= \hbar\omega m\left( n+\frac{1}{2} \right)
+        \end{align*}
+    \end{itemize}
+    \item It follows from the above computations and the facts that
+    \begin{align*}
+        \Delta x^2 &= \ev{\hat{\vec{x}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{x}}}{\psi_n})^2&
+        \Delta p^2 &= \ev{\hat{\vec{p}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{p}}\,}{\psi_n})^2
+    \end{align*}
+    that
+    \begin{align*}
+        \Delta x^2\cdot\Delta p^2 &= \hbar^2\left( n+\frac{1}{2} \right)^2\\
+        \Delta x\cdot\Delta p &= \frac{\hbar}{2}(2n+1)
+    \end{align*}
+    \begin{itemize}
+        \item Implication: The ground state $\psi_0(x)$ is represented by a Gaussian since in this case, $\Delta x\cdot\Delta p=\hbar/2$.
+    \end{itemize}
+    \item Review from last class.
+    \begin{itemize}
+        \item Mostly stuff I already wrote down.
+        \item One new equation formalizing the even/odd solutions:
+        \begin{equation*}
+            f_n(x) = (-1)^nf_n(-x)
+        \end{equation*}
+        \item The first four Hermite polynomials:
+        \begin{align*}
+            H_0(\xi) &= 1&
+            H_1(\xi) &= 2\xi&
+            H_2(\xi) &= 4\xi^2-2&
+            H_3 &= 8\xi^3-12\xi
+        \end{align*}
+        \item Summary of the characteristics of $E_n$: The energy is quantized and grows linearly with $n$ in quanta of $\hbar\omega$, and has a minimum value $\hbar\omega/2$.
+        \item As with other time-independent potentials, the general solution to the Schr\"{o}dinger equation will be
+        \begin{equation*}
+            \psi(x,t) = \sum_nc_n\psi_n(x)\e[-iE_nt/\hbar]
+        \end{equation*}
+        where
+        \begin{equation*}
+            \ev{\hat{H}}{\psi} = \sum_n|c_n|^2E_n
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
