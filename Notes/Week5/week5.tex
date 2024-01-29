@@ -1,0 +1,368 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{4}
+
+\begin{document}
+
+
+
+
+\chapter{Three-Dimensional Systems}
+\section{Three-Dimensional Problems}
+\begin{itemize}
+    \item \marginnote{1/29:}3D problems still solve the Schr\"{o}dinger equation, just in 3D.
+    \begin{align*}
+        \hat{H}\psi &= i\hbar\pdv{\psi}{t}\\
+        -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi+V(\vec{r},t)\psi &= i\hbar\pdv{\psi}{t}
+    \end{align*}
+    \begin{itemize}
+        \item Slightly more complicated here, but not too much.
+    \end{itemize}
+    \item Focus: Time-independent potentials for now, that is
+    \begin{equation*}
+        V(\vec{r},t) = V(\vec{r})
+    \end{equation*}
+    \begin{itemize}
+        \item 3D time-independent potentials still allow us to split the wave function as on the left below, and we also still seek energy eigenvalues of the system on the right below.
+        \begin{align*}
+            \psi(\vec{r},t) &= \psi(\vec{r})\cdot\phi(t)&
+            -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi(\vec{r})+V(\vec{r})\psi(\vec{r}) &= E\psi(\vec{r})
+        \end{align*}
+        \item These two facts still imply that the solution will be of the form
+        \begin{equation*}
+            \psi(\vec{r},t) = \psi(\vec{r})\e[-iEt/\hbar]
+        \end{equation*}
+        \begin{itemize}
+            \item No difference between 1D and 3D!
+        \end{itemize}
+    \end{itemize}
+    \item So 1D and 3D are remarkably similar. But where do they differ?
+    \item Example: In 3D, there will be 3 components of the momentum, given as follows.
+    \begin{align*}
+        \hat{p}_x &= -i\hbar\pdv{x}&
+        \hat{p}_y &= -i\hbar\pdv{y}&
+        \hat{p}_z &= -i\hbar\pdv{z}
+    \end{align*}
+    \begin{itemize}
+        \item Note that these three momenta commute as follows.
+        \begin{equation*}
+            [\hat{p}_x,\hat{p}_y] = [\hat{p}_y,\hat{p}_z]
+            = [\hat{p}_z,\hat{p}_x]
+            = 0
+        \end{equation*}
+    \end{itemize}
+    \item Example: 3 components of the position, also commutative.
+    \begin{equation*}
+        [\hat{x},\hat{y}] = [f(\hat{x}),f(\hat{y})]
+        = [f(\hat{x}),g(\hat{x})]
+        = [f(\hat{x}),g(\hat{z})]
+        = 0
+    \end{equation*}
+    \begin{itemize}
+        \item As in PSet 4, $f,g$ are arbitrary real functions of the operator.
+    \end{itemize}
+    \item The only commutators that are not zero are those we obtained before, e.g.,
+    \begin{align*}
+        [\hat{p}_x,\hat{x}] &= -i\hbar&
+        [\hat{\vec{p}},V(\vec{r})] &= -i\hbar\vec{\nabla}V(\vec{r})
+    \end{align*}
+    \begin{itemize}
+        \item Recall that we still have
+        \begin{align*}
+            [\hat{p}_x,\hat{y}] &= [\hat{p}_x,\hat{z}] = 0&
+            [V(\vec{r}),\hat{\vec{r}}] &= 0
+        \end{align*}
+    \end{itemize}
+    \item In the presence of $V(\vec{r})$, neither of $\hat{\vec{p}},\hat{x}$ are conserved quantities. We know this because
+    \begin{equation*}
+        [\hat{H},\vec{p}] = [\hat{H},\vec{r}] \neq 0
+    \end{equation*}
+    \item In an atom\dots
+    \begin{itemize}
+        \item Potential is only a function of the \emph{magnitude} of distance from the nucleus. Mathematically,
+        \begin{equation*}
+            V(\vec{r}) = V(r)
+        \end{equation*}
+        \item Likewise, angular momentum $\vec{L}=\vec{r}\times\vec{p}$ is conserved. Here's why:
+        \begin{itemize}
+            \item Recall that
+            \begin{align*}
+                \dv{\vec{L}}{t} &= \dv{\vec{r}}{t}\times\vec{p}+\vec{r}\times\dv{\vec{p}}{t}\\
+                &= \frac{1}{m}\underbrace{\vec{p}\times\vec{p}}_0+\,\vec{r}\times\underbrace{\dv{\vec{p}}{t}}_{-\vec{\nabla}V(r)}
+            \end{align*}
+            \item Working with the second term a bit more, we have that
+            \begin{align*}
+                \vec{\nabla}V(r) &= \vec{x}\pdv{V}{x}+\vec{y}\pdv{V}{y}+\vec{z}\pdv{V}{z}\\
+                &= \vec{x}\left( \pdv{V}{r}\pdv{r}{x} \right)+\vec{y}\left( \pdv{V}{r}\pdv{r}{y} \right)+\vec{z}\left( \pdv{V}{r}\pdv{r}{z} \right)\\
+                &= \pdv{V}{r}\left( \vec{x}\pdv{r}{x}+\vec{y}\pdv{r}{y}+\vec{z}\pdv{r}{z} \right)
+            \end{align*}
+            \begin{itemize}
+                \item Taking the cross product of the above (evaluated at $r=\sqrt{x^2+y^2+z^2}$) with $\vec{r}$ yields zero.
+                \item Alternatively, we may observe that like each $\pdv*{V}{x}\propto x$, we have $\vec{\nabla}V\propto\vec{r}$ for a central potential (just picture it), and therefore the cross product of $\vec{r}$ and a vector proportional to $\vec{r}$ will be zero.
+            \end{itemize}
+            \item Therefore,
+            \begin{equation*}
+                \dv{\vec{L}}{t} = \frac{1}{m}\underbrace{\vec{p}\times\vec{p}}_0+\underbrace{\vec{r}\times c\vec{r}}_0
+                = 0
+            \end{equation*}
+            so angular momentum is conserved, as desired.
+        \end{itemize}
+    \end{itemize}
+    \item What does it mean that these two quantities are conserved?
+    \begin{itemize}
+        \item It means that when we take the classical Hamiltonian
+        \begin{equation*}
+            \hat{H} = \frac{\vec{p}{\,}^2}{2m}+V(r)
+        \end{equation*}
+        we can separate it into a radial and a perpendicular component so that
+        \begin{align*}
+            \hat{H} &= \frac{\hat{p}_r^2}{2m}+\frac{\hat{p}_\perp^2}{2m}+V(r)\\
+            &= \frac{\hat{p}_r^2}{2m}+\underbrace{\frac{\vec{L}^2}{2mr^2}+V(r)}_{V_\text{eff}(r)}
+        \end{align*}
+    \end{itemize}
+    \item Here's why we can make the above algebraic manipulations.
+    \begin{itemize}
+        \item To begin, we can always split the momentum operator into radial and perpendicular components.
+        \item We also know, since $\vec{p}_\perp$ and $\vec{r}$ are perpendicular, that
+        \begin{equation*}
+            \vec{L}^2 = (\vec{p}_\perp\times\vec{r})^2
+            = [p_\perp r\sin(\ang{90})]^2
+            = p_\perp^2r^2
+            = \hat{p}_\perp^2r^2
+        \end{equation*}
+        \item However, it is the conservation of angular momentum, in particular, which implies that $\vec{L}^2$ is a constant, and hence that making the substitution $\hat{p}_\perp^2=\vec{L}^2/r^2$ will allow the sum of the second two terms to be \emph{purely} a function of $r$ (as opposed to, per se, a function of $r$ and $\vec{L}$).
+    \end{itemize}
+    \item What is the implication of this effective potential?
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black},
+            scale=1.5
+        ]
+            \small
+            \draw [-stealth] (-0.5,0) -- (3,0) node[right]{$r$};
+            \draw [-stealth] (0,-1) -- (0,1) node[above]{$V_\text{eff}(r)$};
+    
+            \draw [rex,thick,name path=rex] plot[domain=0.285:2.9,samples=100,smooth] (\x,{0.1-4/(3*\x)+4/(3*\x)^2});
+    
+            \footnotesize
+            \draw [grx,thick,name path=grx] (-0.1,-0.5) node[left]{$E$} -- (2.9,-0.5);
+            \draw [densely dashed,help lines,name intersections={of=rex and grx}]
+                (intersection-1) node[circle,fill,inner sep=1pt]{} -- (intersection-1 |- 0,0) node[above right,xshift=-4pt]{$r_\text{min}$}
+                (intersection-2) node[circle,fill,inner sep=1pt]{} -- (intersection-2 |- 0,0) node[above right,xshift=-4pt]{$r_\text{max}$}
+            ;
+        \end{tikzpicture}
+        \caption{Effective potential.}
+        \label{fig:Veff}
+    \end{figure}
+    \begin{itemize}
+        \item Consider the classical case of planetary motion with
+        \begin{equation*}
+            V_\text{eff}(r) = -\frac{GM_0m}{r}+\frac{\vec{L}^2}{2mr^2}
+        \end{equation*}
+        \item Given a total energy $E$ for the system, the planets dance between an $r_\text{min}$ and $r_\text{max}$.
+        \item This gives the elliptical planetary motion.
+        \item Of course, we will not deal with planetary motion in this course, but we will deal with something very similar called the \textbf{hydrogen atom}.
+    \end{itemize}
+    \item We now investigate some analogies and differences between classical and quantum mechanics.
+    \item Before we begin, a quick aside on some commutator rules will be useful.
+    \begin{enumerate}
+        \item $[\hat{A}^2,\hat{B}]=\hat{A}[\hat{A},\hat{B}]+[\hat{A},\hat{B}]\hat{A}$.
+        \begin{proof}
+            \vspace{-0.5em}
+            \begin{align*}
+                [\hat{A}^2,\hat{B}] &= \hat{A}^2\hat{B}-\hat{B}\hat{A}^2\\
+                &= \hat{A}(\hat{A}\hat{B}-\hat{B}\hat{A})+(\hat{A}\hat{B}-\hat{B}\hat{A})\hat{A}\\
+                &= \hat{A}[\hat{A},\hat{B}]+[\hat{A},\hat{B}]\hat{A}
+            \end{align*}
+            \vspace{-1.5em}
+        \end{proof}
+        \item $[\hat{A}\hat{B},\hat{C}]=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}$.
+        \item $[\hat{A},\hat{B}\hat{C}]=\hat{B}[\hat{A},\hat{C}]+[\hat{A},\hat{B}]\hat{C}$.
+        \item Bilinearity, i.e.,
+        \begin{align*}
+            [\hat{A}+\hat{B},\hat{C}] &= [\hat{A},\hat{C}]+[\hat{B},\hat{C}]&
+                [c\hat{A},\hat{B}] &= c[\hat{A},\hat{B}]\\
+            [\hat{A},\hat{B}+\hat{C}] &= [\hat{A},\hat{B}]+[\hat{A},\hat{C}]&
+                [\hat{A},c\hat{B}] &= c[\hat{A},\hat{B}]
+        \end{align*}
+    \end{enumerate}
+    \item None of these rules is trivial, but they can all be demonstrated by expanding as with the first rule.
+    % \item Recall also that
+    % \begin{equation*}
+    %     [\hat{p}_i,V(r)] = -i\hbar\pdv{V}{r_i}
+    % \end{equation*}
+    % and then
+    % \begin{equation*}
+    %     \pdv{V}{r_i} \propto r_if(r)
+    % \end{equation*}
+    % hence how we get the constant $c$.
+    \item So getting back to it, the analogies and differences we will prove are\dots
+    \begin{enumerate}
+        \item The quantum angular momentum is conserved directionally and overall;
+        \item The square of the quantum angular momentum is conserved;
+        \item The quantum angular momentum \emph{cannot} be determined to infinite precision in more than one direction simultaneously;
+        \item The square of the quantum angular momentum and the quantum angular momentum can be determined to infinite precision simultaneously.
+    \end{enumerate}
+    \item Task 1: To prove that the quantum angular momentum is conserved directionally, we will show that the angular momentum in different directions commutes with the Hamiltonian. To prove that it is conserved overall, we will add the previous three results. Let's begin.
+    \begin{itemize}
+        \item Mathematically, we want to determine
+        \begin{equation*}
+            [\hat{H},\hat{L}_i] \stackrel{?}{=} 0
+        \end{equation*}
+        since if $[\hat{H},\hat{L}_i]=0$, then
+        \begin{equation*}
+            \dv{t}(\ev{\hat{L}_i}{\psi}) = \frac{i}{\hbar}\ev{\underbrace{[\hat{H},\hat{L}_i]}_0}{\psi}
+            = 0
+        \end{equation*}
+        \item Let's start with $\hat{L}_x$.
+        \item Since
+        \begin{equation*}
+            \vec{L} = \vec{r}\times\vec{p}
+            =
+            \begin{vmatrix}
+                \hat{x} & \hat{y} & \hat{z}\\
+                x & y & z\\
+                p_x & p_y & p_z\\
+            \end{vmatrix}
+            = \hat{x}(yp_z-p_yz)+\hat{y}(p_xz-p_zx)+\hat{z}(xp_y-p_xy)
+        \end{equation*}
+        we know that
+        \begin{equation*}
+            \hat{L}_x = yp_z-p_yz
+        \end{equation*}
+        \item Additionally, recall that
+        \begin{equation*}
+            \hat{H} = \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+V(r)
+        \end{equation*}
+        \item Thus, we have that
+        \begin{align*}
+            [\hat{H},\hat{L}_x] ={}& \left[ \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+V(r),\hat{y}\hat{p}_z-\hat{z}\hat{p}_y \right]\\
+            \begin{split}
+                ={}& \Bigg[ \frac{\hat{p}_x^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},\hat{y}\hat{p}_z \Bigg]\\
+                & +\Bigg[ \frac{\hat{p}_x^2}{2m},-\hat{z}\hat{p}_y \Bigg]+\Bigg[ \frac{\hat{p}_y^2}{2m},-\hat{z}\hat{p}_y \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},-\hat{z}\hat{p}_y \Bigg]\\
+                & +[V(r),\hat{y}\hat{p}_z]+[V(r),-\hat{z}\hat{p}_y]
+            \end{split}\\
+            ={}& \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},-\hat{z}\hat{p}_y \Bigg]+i\hbar\left( \hat{y}\pdv{V}{z}-\hat{z}\pdv{V}{y} \right)\\
+            ={}& -\frac{i\hbar\hat{p}_y\hat{p}_z}{m}+\frac{i\hbar\hat{p}_y\hat{p}_z}{m}+i\hbar\pdv{V}{r}\left( \hat{y}\pdv{r}{z}-\hat{z}\pdv{r}{y} \right)\\
+            ={}& 0
+        \end{align*}
+        \item Now let's investigate some of the above substitutions a bit more closely.
+        \item From line 1 to line 2, we split the commutator into $4\cdot 2=8$ terms using its bilinearity.
+        \item From line 2 to line 3, we eliminated all commutators that go to zero among the first six, and evaluated the last two commutators using a combination of Rule 3 and properties mentioned at the beginning of the lecture.
+        \begin{itemize}
+            \item Notice that the only two of the first six commutators that did \emph{not} go to zero were those for which the variable in the squared momentum operator matched the position operator, i.e., in
+            \begin{equation*}
+                \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]
+            \end{equation*}
+            we may observe that $\hat{p}_y^2$ and $\hat{y}$ both concern $y$.
+            \item Example evaluation:
+            \begin{align*}
+                \Bigg[ \frac{\hat{p}_x^2}{2m},\hat{y}\hat{p}_z \Bigg] &= \frac{1}{2m}[\hat{p}_x^2,\hat{y}\hat{p}_z]\tag*{Rule 4}\\
+                &= \frac{1}{2m}(\hat{p}_x[\hat{p}_x,\hat{y}\hat{p}_z]+[\hat{p}_x,\hat{y}\hat{p}_z]\hat{p}_x)\tag*{Rule 1}\\
+                &= \frac{1}{2m}(\hat{p}_x(\hat{y}\underbrace{[\hat{p}_x,\hat{p}_z]}_0+\underbrace{[\hat{p}_x,\hat{y}]}_0\hat{p}_z)+(\hat{y}\underbrace{[\hat{p}_x,\hat{p}_z]}_0+\underbrace{[\hat{p}_x,\hat{y}]}_0\hat{p}_z)\hat{p}_x)\tag*{Rule 3}\\
+                &= 0
+            \end{align*}
+            \item Example evaluation:
+            \begin{align*}
+                \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg] &= \frac{1}{2m}[\hat{p}_y^2,\hat{y}\hat{p}_z]\tag*{Rule 4}\\
+                &= \frac{1}{2m}(\hat{p}_y[\hat{p}_y,\hat{y}\hat{p}_z]+[\hat{p}_y,\hat{y}\hat{p}_z]\hat{p}_y)\tag*{Rule 1}\\
+                &= \frac{1}{2m}(\hat{p}_y(\hat{y}\underbrace{[\hat{p}_y,\hat{p}_z]}_0+\underbrace{[\hat{p}_y,\hat{y}]}_{-i\hbar}\hat{p}_z)+(\hat{y}\underbrace{[\hat{p}_y,\hat{p}_z]}_0+\underbrace{[\hat{p}_y,\hat{y}]}_{-i\hbar}\hat{p}_z)\hat{p}_y)\tag*{Rule 3}\\
+                &= \frac{1}{2m}(\hat{p}_y(-i\hbar\hat{p}_z)+(-i\hbar\hat{p}_z)\hat{p}_y)\\
+                &= -\frac{i\hbar}{2m}(\hat{p}_y\hat{p}_z+\hat{p}_z\hat{p}_y)\\
+                &= -\frac{i\hbar}{2m}(\hat{p}_y\hat{p}_z+\hat{p}_y\hat{p}_z)\\
+                &= -\frac{i\hbar\hat{p}_y\hat{p}_z}{m}
+            \end{align*}
+            \begin{itemize}
+                \item Note that $\hat{p}_z\hat{p}_y=\hat{p}_y\hat{p}_z$ because $[\hat{p}_y,\hat{p}_z]=0$.
+            \end{itemize}
+            \item Example evaluation:
+            \begin{align*}
+                [V(r),\hat{y}\hat{p}_z] &= \hat{y}\underbrace{[V(r),\hat{p}_z]}_{i\hbar\pdv*{V}{z}}+\underbrace{[V(r),\hat{y}]}_0\hat{p}_z\tag*{Rule 3}\\
+                &= i\hbar\hat{y}\pdv{V}{z}
+            \end{align*}
+        \end{itemize}
+        \item From line 3 to line 4, we evaluated the last two commutators and applied the chain rule.
+        \item From line 4 to line 5, we algebraically expanded and cancelled everything (using $r=\sqrt{x^2+y^2+z^2}$ for the partial derivatives).
+        % \item We have that
+        % \begin{align*}
+        %     \left[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \right] &= \frac{\hat{p}_y}{2m}[\hat{p}_y,\hat{y}\hat{p}_z]+\left[ \frac{\hat{p}_y}{2m},\hat{y}\hat{p}_z \right]\hat{p}_y\\
+        %     &= -\frac{\hat{p}_y\hat{p}_zi\hbar}{m}
+        % \end{align*}
+        % \item Additionally, we have that
+        % \begin{equation*}
+        %     \left[ \frac{\hat{p}_z^2}{2m},-\hat{z}\hat{p}_y \right] = \frac{\hat{p}_y\hat{p}_zi\hbar}{m}
+        % \end{equation*}
+        % \item Summing, we obtain
+        % \begin{equation*}
+        %     [\hat{H},\hat{L}_x] = 0
+        % \end{equation*}
+        \item Moving on, similar to the above, we obtain that
+        \begin{equation*}
+            [\hat{H},\hat{L}_y] = [\hat{H},\hat{L}_z] = 0
+        \end{equation*}
+        \item Thus, by bilinearity once more,
+        \begin{equation*}
+            [\hat{H},\hat{\vec{L}}] = [\hat{H},\hat{L}_x+\hat{L}_y+\hat{L}_z] = 0
+        \end{equation*}
+    \end{itemize}
+    \item Task 2: The fact that the Hamiltonian commutes with the constant $\hat{\vec{L}}{\,}^2$ is obvious, implying the claim.
+    \item Task 3.
+    \begin{itemize}
+        \item Here, we want to investigate if
+        \begin{equation*}
+            [L_x,L_y] \stackrel{?}{=} 0
+        \end{equation*}
+        \item We do this via
+        \begin{align*}
+            [L_x,L_y] &= [\hat{y}\hat{p}_z-\hat{z}p_y,p_xz-xp_z]\\
+            &= [yp_z,p_xz]+[\hat{z}\hat{p}_y,\hat{x}\hat{p}_z]\\
+            &= \hat{y}\hat{p}_x(-i\hbar)+\hat{p}_y\hat{x}(i\hbar)\\
+            &= i\hbar\hat{L}_z
+        \end{align*}
+        \item Similarly, we can see that no $\hat{L}_i$'s commute with each other. Indeed, altogether, we have
+        \begin{align*}
+            [\hat{L}_x,\hat{L}_y] &= i\hbar\hat{L}_z&
+            [\hat{L}_y,\hat{L}_z] &= i\hbar\hat{L}_x&
+            [\hat{L}_z,\hat{L}_x] &= i\hbar\hat{L}_y
+        \end{align*}
+    \end{itemize}
+    \item Task 4.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            [\hat{\vec{L}}{\,}^2,\hat{L}_x] &= [\hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2,\hat{L}_x]\\
+            &= 0+[\hat{L}_y^2,\hat{L}_x]+[\hat{L}_z^2,\hat{L}_x]\\
+            &= \hat{L}_y[\hat{L}_y,\hat{L}_x]+[\hat{L}_y,\hat{L}_x]\hat{L}_y+\hat{L}_z[\hat{L}_z,\hat{L}_x]+[\hat{L}_z,\hat{L}_x]\hat{L}_z\\
+            &= \hat{L}_y(-i\hbar\hat{L}_z)+(-i\hbar\hat{L}_z)\hat{L}_y+\hat{L}_z(i\hbar\hat{L}_y)+(i\hbar\hat{L}_y)\hat{L}_z\\
+            &= i\hbar(-\hat{L}_y\hat{L}_z-\hat{L}_z\hat{L}_y+\hat{L}_z\hat{L}_y+\hat{L}_y\hat{L}_z)\\
+            &= 0
+        \end{align*}
+        \item Thus, the squares commute:
+        \begin{equation*}
+            [\hat{\vec{L}}{\,}^2,\hat{L}_x] = [\hat{\vec{L}}{\,}^2,\hat{L}_y]
+            = [\hat{\vec{L}}{\,}^2,\hat{L}_z]
+            = 0
+        \end{equation*}
+    \end{itemize}
+    \item Conclusion.
+    \begin{itemize}
+        \item $\hat{L}_i,\hat{\vec{L}}{\,}^2$ are conserved. That is,
+        \begin{equation*}
+            [\hat{H},\hat{L}_i] = [\hat{H},\hat{\vec{L}}{\,}^2]
+            = 0
+        \end{equation*}
+        \begin{itemize}
+            \item This means that $\hat{H},\hat{L}_z,\hat{\vec{L}}{\,}^2$ have compatible observables.
+            \item In other words, we can only define the angular momentum in one direction and the modulus of the angular momentum squared.
+        \end{itemize}
+        \item All this will characterize three-dimensional motion as we'll see.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}

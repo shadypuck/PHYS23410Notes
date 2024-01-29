@@ -28,6 +28,10 @@
 }
 
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
+\setitemize[4]{label={\tikz[scale=0.06,baseline={(0,-0.14)}]{
+    \draw [line width=0.3pt] (0,1) -- (1.2,0) -- (0,-1) -- (3.5,0) -- cycle;
+    \fill (1.2,0) -- (0,-1) -- (3.5,0);
+}}}
 
 \reversemarginpar
 
@@ -39,7 +43,7 @@
 
 \sisetup{range-phrase=-,range-units=single}
 
-\usetikzlibrary{decorations.pathmorphing,angles,backgrounds,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing,angles,backgrounds,decorations.pathreplacing,intersections}
 \colorlet{blx}{blue!90!green!80}
 \colorlet{rex}{red!80!black!90!orange!80}
 \colorlet{rey}{red!80!black!90!orange!40}
