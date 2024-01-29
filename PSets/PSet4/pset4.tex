@@ -1,0 +1,92 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{3}
+
+\begin{document}
+
+
+
+
+\section{Observables and Operators}
+\begin{enumerate}
+    \item \marginnote{2/3:}Imagine a one-dimensional free particle ($V(x)=0$) of mass $m$ whose mean value of the position and momentum at time $t=0$ are given by $x_0$ and $p_0$.
+    \begin{enumerate}
+        \item Demonstrate that the mean value of the momentum and its powers is time-independent, that is
+        \begin{equation}
+            \dv{t}(\ev{\hat{\vec{p}}{\,}^n}{\psi}) = 0
+        \end{equation}
+        \emph{Hint}: Use the fact that for time-independent operators, $\dv*{\ev{\hat{O}}{\psi}}{t}=(i/\hbar)\ev{[\hat{H},\hat{O}]}{\psi}$.
+        \item Compute $\dv*{\ev{\hat{\vec{x}}}{\psi}}{t}$, and show that
+        \begin{equation}
+            \ev{\hat{\vec{x}}}{\psi}(t) = \frac{p_0t}{m}+x_0
+        \end{equation}
+        \item Show also that
+        \begin{equation}
+            \dv{t}(\ev{\hat{\vec{x}}{\,}^2}{\psi}) = \frac{2}{m}\ev{\hat{\vec{p}}\ \hat{\vec{x}}}{\psi}+\frac{i\hbar}{m}
+        \end{equation}
+        \emph{Hint}: Use the fact that $[AB,C]=A[B,C]+[A,C]B$ and $[A,BC]=B[A,C]+[A,B]C$.
+        \item Compute, in terms of $\ev{\hat{\vec{p}}{\,}^2}{\psi}$ and $\ev{\hat{\vec{p}}\,}{\psi}$, the values of
+        \begin{align}
+            \dv[2]{t}(\ev{\hat{\vec{x}}{\,}^2}{\psi})&&
+            \dv[2]{t}\left[ \left( \ev{\hat{\vec{x}}}{\psi} \right)^2 \right]
+        \end{align}
+        \emph{Hint}: Use the commutation of $\hat{\vec{p}}\hat{\vec{x}}$ with $\hat{H}=\hat{\vec{p}}{\,}^2/2m$.
+        \item Show that the position and momentum fluctuations are related by
+        \begin{equation}
+            \dv[2]{t}(\sigma_x^2) = \frac{2\sigma_p^2}{m^2}
+        \end{equation}
+        where $\sigma_{\hat{O}}^2=\ev{\hat{O}^2}{\psi}-(\ev{\hat{O}}{\psi})^2$, and that the solution to this equation at sufficiently large values of $t$ is given by
+        \begin{equation}
+            \sigma_x \approx \frac{\sigma_pt}{m}
+        \end{equation}
+        where $\sigma_p$ is independent of time. Discuss the implications of this result. Can you understand this result intuitively in terms of the fact that the momentum is not well-defined, meaning that there is a probability of finding the particle at different momentum values at a given time?
+    \end{enumerate}
+    \item \textbf{The power of completeness.} Imagine that I have a complete set $\{\psi_n\}_0^\infty$ of energy eigenstate functions and that any given wave function $\psi$ can be expressed as a linear combination of these functions via
+    \begin{equation}
+        \psi(x) = \sum_{n=0}^\infty c_n\psi_n(x)
+    \end{equation}
+    \begin{enumerate}
+        \item Demonstrate, using the fact that $\int\psi_m^*(x)\psi_n(x)\dd{x}=\delta_{mn}$, that these functions fulfill a completeness relation, in the sense that
+        \begin{equation}
+            \delta(x_1-x_2) = \sum_m\psi_m(x_1)\psi_m^*(x_2)
+        \end{equation}
+        \emph{Hint}: Demonstrate that if you perform the integral of the sum evaluated at $x_1=x_2$, you obtain one and if you integrate this sum multiplied by an arbitrary function $\psi(x_2)$, you obtain the same function at the point $\psi(x_1)$.
+        \item Imagine that you want to calculate the mean value of some real function $h(\hat{\vec{x}})$ of the operator $\hat{\vec{x}}$ that can be expressed as a product of two real functions, i.e., $h(\hat{\vec{x}})=f(\hat{\vec{x}})g(\hat{\vec{x}})$. For instance, $\hat{\vec{x}}{\,}^4=\hat{\vec{x}}{\,}^2\hat{\vec{x}}{\,}^2$. Then to compute the mean value of $h(\hat{\vec{x}})$ in a particular energy eigenstate described by $\psi_n$, one needs to compute
+        \begin{equation}
+            \ev{h(\hat{\vec{x}})}{n} = \int\psi_n^*(x)f(\hat{\vec{x}})g(\hat{\vec{x}})\psi_n(x)\dd{x}
+            = \iint\psi_n^*(x_1)f(x_1)\delta(x_1-x_2)g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}
+        \end{equation}
+        \item Use this expression to obtain the mean value of $h(\hat{\vec{x}})$ as a function of a sum of the products of the matrix elements $f_{mn}(\hat{\vec{x}})$ and $g_{mn}(\hat{\vec{x}})$, defined as
+        \begin{align}
+            f_{mn} &= \int\psi_m^*(x)f(\hat{\vec{x}})\psi_n(x)\dd{x}&
+            g_{mn} &= \int\psi_m^*(x)g(\hat{\vec{x}})\psi_n(x)\dd{x}
+        \end{align}
+        \item Apply the above to compute the mean value of $\hat{\vec{x}}{\,}^4=\hat{\vec{x}}{\,}^2\hat{\vec{x}}{\,}^2$ for the harmonic oscillator in its energy eigenstate. \emph{Hint}: Use the ladder operators.
+    \end{enumerate}
+    \emph{Commment}: In Dirac notation, the above procedure is equivalent to adding an identity operator, in the sense that
+    \begin{equation}
+        \sum_m\ket{m}\bra{m} = I
+    \end{equation}
+    and
+    \begin{equation}
+        \ev{\hat{O}_1\hat{O}_2}{n} = \sum_m\mel{n}{\hat{O}_1}{m}\mel{m}{\hat{O}_2}{n}
+        = \sum_mO_{1,nm}O_{2,nm}
+    \end{equation}
+    \item In class, and in PSet 3, we computed the time dependence of the mean value of $\hat{\vec{x}}$ in a harmonic oscillator and showed that it had some resemblance with the classical case. Use your preferred computational code language and the form of the energy eigenstate solutions in terms of Hermite polynomials and Gaussian factors to compute the variation of the mean value of the position as a function of time for different coefficients $c_n$ with
+    \begin{equation*}
+        \Psi(x,t) = \sum_nc_n\psi_n(x)\e[-iE_nt/\hbar]
+    \end{equation*}
+    Additionally, demonstrate numerically that --- as expected --- it always moves with a classical frequency $\omega$ such that $E_n=\hbar\omega(n+1/2)$. Compute also the value of $|\psi(x,t)|^2$ and draw it for different times to show that its shape does not vary over a period of time and is also recovered after half a period but for the opposite values of $x$, i.e.,
+    \begin{equation*}
+        |\psi(x,t+T/2)|^2 = |\psi(-x,t)|^2
+    \end{equation*}
+    \emph{Hint}: This is shown analytically in Wagner's notes.\par
+    Do this also for a coherent state where $c_{n+1}/c_n=1/\sqrt{n+1}$. In order to perform this computation, define $\hbar=1=m=\omega$ and don't worry about the overall normalization. You may use for guidance the Mathematica code that is posted on Canvas and which does some of this.
+\end{enumerate}
+
+
+
+
+\end{document}
