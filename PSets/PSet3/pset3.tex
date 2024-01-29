@@ -23,8 +23,64 @@
     with $g=\SI[per-mode=symbol]{9.8}{\meter\per\second\squared}$ and $C$ an arbitrary (and irrelevant) constant.
     \begin{enumerate}
         \item First, think about the classical problem. The equilibrium point is no longer at $x=0$, but a displaced point where the tension and gravity forces are equilibrated. Find that point and rewrite the potential in terms of a new variable representing departures from the equilibrium point. What would be the motion of a classical particle under the potential given in Eq. \ref{eqn:gravPot}?
+        \begin{proof}
+            The equilibrium point $x_\text{eq}$ will correspond to a minimum of $V$. Thus, we may solve
+            \begin{equation*}
+                V'(x_\text{eq}) = 0
+            \end{equation*}
+            for $x_\text{eq}$. Doing this, we obtain
+            \begin{align*}
+                0 &= \eval{\dv{x}(\frac{m\omega^2x^2}{2}+mgx+C)}_{x_\text{eq}}\\
+                &= m\omega^2x_\text{eq}+mg\\
+                \Aboxed{x_\text{eq} &= -\frac{g}{\omega^2}}
+            \end{align*}
+            Let
+            \begin{equation*}
+                u := x-x_\text{eq}
+            \end{equation*}
+            Then $x=u+x_\text{eq}$, so
+            \begin{align*}
+                V(u) &= \frac{m\omega^2(u+x_\text{eq})^2}{2}+mg(u+x_\text{eq})+C\\
+                &= \frac{m\omega^2u^2}{2}+m\omega^2x_\text{eq}u+mgu+\frac{m\omega^2x_\text{eq}^2}{2}+mgx_\text{eq}+C\\
+                V(u) &= \frac{m\omega^2u^2}{2}+m\omega^2\left( -\frac{g}{\omega^2} \right)u+mgu+C\\
+                \Aboxed{V(u) &= \frac{m\omega^2u^2}{2}+C}
+            \end{align*}
+            Note that we combine all constants from the second to the third line above, which we may do because only relative --- not absolute --- values of the potential matter.\par
+            This result reveals that the motion of a classical particle under the potential given in Eq. \ref{eqn:gravPot} is \fbox{simple harmonic motion about $x_\text{eq}$.}
+        \end{proof}
+        \pagebreak
         \item Now think about the quantum problem. Without gravity, the energy eigenvalues are given by $E_n^\text{HO}=\hbar\omega(n+1/2)$ and the corresponding wave functions $\psi_n^\text{HO}$ can be written in terms of odd and even Hermite polynomials and a Gaussian function of $x$. (Here, HO means "harmonic oscillator.") Using these results, derive the new energy eigenvalues $E_n$ and eigenfunctions $\psi_n$ in the presence of gravity, Eq. \ref{eqn:gravPot}. \emph{Hint}: Can you make a similar redefinition of the coordinates as you did in the classical case?
+        \begin{proof}
+            To derive $E_n,\psi_n$, we must solve the following ODE.
+            \begin{equation*}
+                -\frac{\hbar^2}{2m}\dv[2]{x}\psi_n(x)+\left[ \frac{m\omega^2x^2}{2}+mgx+C \right]\psi_n(x) = E_n\psi_n(x)
+            \end{equation*}
+            Define $u$ as in part (a). Fold $C$ into the energy to get rid of it, and substitute $\psi_n(u)$ and $x=u+x_\text{eq}$ into the above equation.
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv{x}\bigg[ \dv{x}\psi_n(u) \bigg]+\frac{m\omega^2u^2}{2}\psi_n(u) &= E_n\psi_n(u)\\
+                -\frac{\hbar^2}{2m}\dv{x}\bigg[ \dv{u}\psi_n(u)\cdot\underbrace{\dv{u}{x}}_1 \bigg]+\frac{m\omega^2u^2}{2}\psi_n(u) &= E_n\psi_n(u)\\
+                -\frac{\hbar^2}{2m}\dv{u}\left[ \dv{u}\psi_n(u) \right]\cdot\underbrace{\dv{u}{x}}_1+\frac{m\omega^2u^2}{2}\psi_n(u) &= E_n\psi_n(u)\\
+                -\frac{\hbar^2}{2m}\dv[2]{u}\psi_n(u)+\frac{m\omega^2u^2}{2}\psi_n(u) &= E_n\psi_n(u)
+            \end{align*}
+            We worked out the solutions to this equation already in class. They are
+            \begin{align*}
+                \psi_n(u) &= \psi_n^\text{HO}(u)&
+                E_n &= E_n^\text{HO}
+            \end{align*}
+            It follows by returning the substitution that
+            \begin{align*}
+                \Aboxed{\psi_n(x) &= \psi_n^\text{HO}(x-x_\text{eq})}&
+                \Aboxed{E_n &= E_n^\text{HO}}
+            \end{align*}
+        \end{proof}
         \item What would be the mean value of $x$ and $p$ in this system (for a given energy eigenstate, not a generic state)? What would be the mean value of $x^2$ and $p^2$ in the ground state of the system? \emph{Hint}: Use properties of the wave functions under displacements from the equilibrium point, and write $x=x_\text{eq}+(x-x_\text{eq})$, where $x_\text{eq}$ is the equilibrium point.
+        \begin{proof}
+            Piggybacking off of the results from class, we will have
+            \begin{align*}
+                \Aboxed{\ev{\hat{\vec{x}}}{\psi_n} &= x_\text{eq}}&
+                \Aboxed{\ev{\hat{\vec{p}}\,}{\psi_n} &= 0}
+            \end{align*}
+        \end{proof}
         \item Think about the uncertainty principle. What is the value of $\sigma_x\sigma_p$ in the ground state of this system? Does it differ from the value we obtained in the absence of gravity?
     \end{enumerate}
     \item Bouncing harmonic oscillator.\par
@@ -47,9 +103,57 @@
     \item For the harmonic oscillator, consider the ladder operators $a_\pm=(\mp ip+m\omega x)/\sqrt{2\hbar m\omega}$. Recall that $[a_-,a_+]=1$, the Hamiltonian may be written as $\hat{H}=\hbar\omega(a_+a_-+1/2)$, and the eigenfunctions describing the eigenstates of energy $E_n=\hbar\omega(n+1/2)$ are related by $a_+\psi_n=\sqrt{n+1}\psi_{n+1}$ and $a_-\psi_n=\sqrt{n}\psi_{n-1}$.
     \begin{enumerate}
         \item Compute the mean value of $x$ and $p$ in the energy eigenstates described by $\psi_n$.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \ev{\hat{\vec{x}}}{\psi_n} &= \sqrt{\frac{\hbar}{2m\omega}}\left[ \ev{a_+}{\psi_n}+\ev{a_-}{\psi_n} \right]\\
+                &= \sqrt{\frac{\hbar}{2m\omega}}\big[ \sqrt{n+1}\underbrace{\braket{\psi_n}{\psi_{n+1}}}_0+\sqrt{n}\underbrace{\braket{\psi_n}{\psi_{n-1}}}_0 \big]\\
+                \Aboxed{\ev{\hat{\vec{x}}}{\psi_n} &= 0}
+            \end{align*}
+            and
+            \begin{align*}
+                \ev{\hat{\vec{p}}\,}{\psi_n} &= i\sqrt{\frac{\hbar m\omega}{2}}\left[ \ev{a_+}{\psi_n}-\ev{a_-}{\psi_n} \right]\\
+                &= i\sqrt{\frac{\hbar m\omega}{2}}\big[ \sqrt{n+1}\underbrace{\braket{\psi_n}{\psi_{n+1}}}_0-\sqrt{n}\underbrace{\braket{\psi_n}{\psi_{n-1}}}_0 \big]\\
+                \Aboxed{\ev{\hat{\vec{p}}\,}{\psi_n} &= 0}
+            \end{align*}
+        \end{proof}
         \item Compute the mean value of $x^2$ and $p^2$ in these states.
+        \begin{proof}
+            As derived in class, we have that
+            \begin{align*}
+                \ev**{\frac{k\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}&
+                \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n} &= \frac{E_n}{2}
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \ev{\hat{\vec{x}}{\,}^2}{\psi_n} &= \frac{2}{k}\cdot\frac{E_n}{2}&
+                    \ev{\hat{\vec{p}}{\,}^2}{\psi_n} &= 2m\cdot\frac{E_n}{2}\\
+                \Aboxed{\ev{\hat{\vec{x}}{\,}^2}{\psi_n} &= \frac{\hbar\omega}{k}\left( n+\frac{1}{2} \right)}&
+                    \Aboxed{\ev{\hat{\vec{p}}{\,}^2}{\psi_n} &= \hbar\omega m\left( n+\frac{1}{2} \right)}
+            \end{align*}
+        \end{proof}
         \item What would the uncertainty principle tell me about $\sigma_x\sigma_p$?
+        \begin{proof}
+            Since
+            \begin{align*}
+                \sigma_x^2 &= \ev{\hat{\vec{x}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{x}}}{\psi_n})^2&
+                \sigma_p^2 &= \ev{\hat{\vec{p}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{p}}\,}{\psi_n})^2
+            \end{align*}
+            we have that
+            \begin{align*}
+                \sigma_x^2\cdot\sigma_p^2 &= \hbar^2\left( n+\frac{1}{2} \right)^2\\
+                \Aboxed{\sigma_x\sigma_p &= \frac{\hbar}{2}(2n+1)}
+            \end{align*}
+        \end{proof}
         \item Verify that the uncertainty principle is fulfilled for the energy eigenstates.
+        \begin{proof}
+            Per part (c), we have that
+            \begin{equation*}
+                \sigma_x\sigma_p = \frac{\hbar}{2}(2n+1)
+                \geq \frac{\hbar}{2}
+            \end{equation*}
+            for all $n\geq 0$, as desired.
+        \end{proof}
         \item Write a formal expression for the mean value of the position and the momentum for the general solution $\psi(x,t)$. Work it out as much as you can, using the orthonormality of the wave functions $\psi_n$.\par
         \emph{Hint}: For instance, the mean value of the operators $x^q$ and $p^q$ can be obtained by computing
         \begin{equation}
