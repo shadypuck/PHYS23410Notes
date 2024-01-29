@@ -207,8 +207,8 @@
         \item Potential energy.
         \begin{align*}
             \ev{\hat{H}}{\psi_n} &= E_n\\
-            \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n}+\ev**{k\frac{\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}+\frac{E_n}{2}\\
-            \ev**{k\frac{\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}
+            \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n}+\ev**{\frac{k\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}+\frac{E_n}{2}\\
+            \ev**{\frac{k\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}
         \end{align*}
         \item Implication: In an energy eigenstate, the harmonic oscillator has equal values of kinetic and potential energies!
     \end{itemize}
@@ -380,7 +380,7 @@
     \begin{itemize}
         \item We start with
         \begin{equation*}
-            \ev{\hat{\vec{x}}}{\psi} = \sum_{m,n=0}^\infty c_m^*c_n\e[i(E_m-E_n)t/\hbar]\mel{\psi_n}{\hat{\vec{x}}}{\psi_n}
+            \ev{\hat{\vec{x}}}{\psi} = \sum_{m,n=0}^\infty c_m^*c_n\e[i(E_m-E_n)t/\hbar]\mel{\psi_m}{\hat{\vec{x}}}{\psi_n}
         \end{equation*}
         \item We can algebraically manipulate the above to
         \begin{align*}
@@ -429,20 +429,211 @@
         \item This is \emph{not} classical motion.
         \item The states that come closest to realizing classical motion are called \textbf{coherent states}.
     \end{itemize}
-    \item \textbf{Coherent state}: A state in which the uncertainty in $\hat{\vec{x}}$ is minimized.
-    \item Example:
+    \item \textbf{Coherent state} (of the harmonic oscillator): A state in which the uncertainty in $\hat{\vec{x}}$ is minimized. \emph{Denoted by} $\bm{|\alpha\rangle}$.
+    \item It turns out that the coherent states of the harmonic oscillator are the eigenstates of the lowering operator. Denoting the corresponding eigenvalue by $\alpha$, we have that
+    \begin{equation*}
+        a_-\ket{\alpha} = \alpha\ket{\alpha}
+    \end{equation*}
+    \item Aside: $\ket{\alpha}$ can surely be expressed as a linear combination of the $\psi_n$. What does the lowering operator do to $\psi_0$, in particular, should it have a nonzero coefficient?
     \begin{itemize}
-        \item We have that
+        \item It acts as follows, simply zeroing it out.
+        \begin{equation*}
+            a_-\ket{\psi_0} = 0\ket{\psi_0}
+        \end{equation*}
+    \end{itemize}
+    \item Now what is $\ket{\alpha}$?
+    \item Well, for a state to be coherent, we must have
+    \begin{align*}
+        \frac{\hbar}{2} &= \sigma_x^2\\
+        &= \ev{\hat{\vec{x}}{\,}^2}{\alpha}-(\ev{\hat{\vec{x}}}{\alpha})^2\\
+        &= \frac{\hbar}{2m\omega}\left[ \ev{(a_++a_-)^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right]\\
+        &= \frac{\hbar}{2m\omega}\left[ \ev{a_+^2+a_+a_-+a_-a_++a_-^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right]\\
+        &= \dots
+    \end{align*}
+    \begin{itemize}
+        \item We'll finish this up next time.
+        \item Is it really $\hbar/2$ here??
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Hermitian Operators; Position and Momentum Eigenstates}
+\begin{itemize}
+    \item \marginnote{1/26:}Recap of the harmonic oscillator.
+    \begin{itemize}
+        \item The Hamiltonian (in terms of $\hat{p},\hat{x}$; and in terms of $a_+,a_-$).
+        \item The definitions of $a_+,a_-$.
+        \item The effect of $a_+,a_-$ on $\ket{n}:=\ket{\psi_n}$.
+        \item The effect of $\hat{H}$ on $\ket{n}$.
+        \item Adjoints of the \textbf{ladder operators}:
         \begin{align*}
-            a_-\ket{\alpha} &= \alpha\ket{\alpha}&
-            a_-\ket{\psi_0} &= 0\ket{\psi_0}
+            (a_+)^\dagger &= a_-&
+            (a_-)^\dagger &= a_+
         \end{align*}
+        \item The commutator $[a_-,a_+]=1$.
+        \item The formula for a generic state $\ket{\psi}$, i.e.,
+        \begin{equation*}
+            \ket{\psi} = \sum_{n=0}^\infty c_n\e[-iE_nt/\hbar]\ket{n}
+        \end{equation*}
+        \begin{itemize}
+            \item This will of course appear as a question in the midterm and final!
+            \item We must also remember that
+            \begin{align*}
+                1 &= \braket{\psi} = \sum_{n=0}^\infty|c_n|^2&
+                1 &= \ev{\hat{H}}{\psi} = \sum_{n=0}^\infty|c_n|^2E_n
+            \end{align*}
+        \end{itemize}
+        \item The probability of measuring the energy of $\ket{\psi}$ as $E_n$ is $|c_n|^2$.
+        \begin{itemize}
+            \item So when we perform a measurement, the energy of $\ket{\psi}$ collapses to that of one eigenstate.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Ladder operator}: An element in the class of operators that send $\ket{n}$ to scalar multiples of $\ket{n+i}$ for some $i\in\Z\setminus\{0\}$.
+    \begin{itemize}
+        \item The raising and lowering operators are ladder operators!
+    \end{itemize}
+    \item The midterm.
+    \begin{itemize}
+        \item 50\% of the midterm will be related to harmonic oscillator content, esp. the last few equations above following the definition of $\ket{\psi}$.
+        \item The midterm will only cover what we covered through today.
+        \item The midterm may be on February 5. It sounds like it will be on Friday, February 9, though.
+        \item It will take place in this classroom.
+        \item It will be open book.
+        \begin{itemize}
+            \item Can we bring virtual notes, or does everything have to be printed out??
+        \end{itemize}
+        \item The midterm questions will be the same level as the PSet questions; there may even be some repetition! Def take a look at the PSets.
+        \item PSet 1 through PSet 4 will be covered on the midterm.
+        \item Foundations of quantum mechanics plus one-dimensional problems.
+        \item We will be allowed to turn in the midterm through 1:00 PM, though it shouldn't take us more than 50 minutes.
+    \end{itemize}
+    \item The first two problems of PSet 4 must be solved; the third one can be dropped \emph{or} can be solved for 5 bonus points.
+    \item We now begin on new content.
+    \item Recall the following expression from last class.
+    \begin{equation*}
+        \ev{\hat{\vec{x}}}{\psi} = \sqrt{\frac{2\hbar}{m\omega}}\sum_{n=0}^\infty\left[ \sqrt{n+1}\cos(\omega t)\re(c_{n+1}^*c_n)+\sqrt{n+1}\sin(\omega t)\im(c_{n+1}^*c_n) \right]
+    \end{equation*}
+    \begin{itemize}
+        \item This is a really complicated expression, especially as we prepare to talk about coherent states.
+        \item Thus, it was quite difficult to prove that
+        \begin{equation*}
+            \ev{\hat{\vec{x}}{\,}^2}{\psi} \neq (\ev{\hat{\vec{x}}}{\psi})^2
+        \end{equation*}
+        \item Can we introduce a notation that will allow us to work with this expression and similar ones more easily?
+    \end{itemize}
+    \item Wagner restates the definition of a coherent state and and the uncertainty principles.
+    \item Recall that
+    \begin{equation*}
+        a_-\ket{\alpha} = \alpha\ket{\alpha}
+    \end{equation*}
+    and that
+    \begin{equation*}
+        \ket{\alpha} = \sum_nc_n\ket{n}
+    \end{equation*}
+    \item The Hermitian conjugate of $a_-$ is $a_+$ and hence, the Hermitian conjugate of $a_-\ket{\alpha}$ is
+    \begin{equation*}
+        \bra{\alpha}a_+ = \bra{\alpha}\alpha^*
+    \end{equation*}
+    \item Thus, since $\braket{\alpha}=1$
+    \begin{equation*}
+        \ev{a_+a_-}{\alpha} = \alpha\ev{a_+}{\alpha}
+        = \alpha\ev{\alpha^*}{\alpha}
+        = \alpha^*\alpha\braket{\alpha}
+        = \alpha^*\alpha
+    \end{equation*}
+    \item We now seek to verify that an eigenstate of $a_-$ does, in fact, minimize the uncertainty in $\hat{x}$.
+    \begin{itemize}
+        \item For simplicity, we will consider $\ket{\alpha}$ at $t=0$ (this will remove the complex exponential from calculations).
+        \item First off, we have that
+        \begin{equation*}
+            \ev{\hat{\vec{x}}}{\alpha} = \sqrt{\frac{\hbar}{2m\omega}}\ev{(a_++a_-)}{\alpha}
+            = (\alpha^*+\alpha)\sqrt{\frac{\hbar}{2m\omega}}
+        \end{equation*}
+        and
+        \begin{align*}
+            \ev{\hat{\vec{x}}{\,}^2}{\alpha} &= \frac{\hbar}{2m\omega}\ev{(a_++a_-)(a_++a_-)}{\alpha}\\
+            &= \frac{\hbar}{2m\omega}[\ev{a_+^2}{\alpha}+\ev{a_+a_-}{\alpha}+\ev{a_-a_+}{\alpha}+\ev{a_-^2}{\alpha}]\\
+            &= \frac{\hbar}{2m\omega}[(\alpha^*)^2\underbrace{\braket{\alpha}}_1+\alpha^*\alpha+\ev{(\underbrace{a_-a_+-a_+a_-}_1+a_+a_-)}{\alpha}+\alpha^2]\\
+            &= \frac{\hbar}{2m\omega}[(\alpha^*)^2+\alpha^2+2|\alpha|^2+1]
+        \end{align*}
+        \item Combining these, we have that
+        \begin{equation*}
+            \ev{\hat{\vec{x}}{\,}^2}{\alpha}-(\ev{\hat{\vec{x}}}{\alpha})^2 = \frac{\hbar}{2m\omega}[(\alpha^*)^2+\alpha^2+2|\alpha|^2+1-(\alpha^*)^2-\alpha^2-2|\alpha|^2]
+            = \frac{\hbar}{2m\omega}
+        \end{equation*}
+        \item Second, we have that
+        \begin{equation*}
+            \ev{\hat{\vec{p}}}{\alpha} = \sqrt{\frac{\hbar m\omega}{2}}\ev{(a_+-a_-)}{\alpha}
+            = \sqrt{\frac{\hbar m\omega}{2}}(\alpha^*-\alpha)
+        \end{equation*}
+        and
+        \begin{align*}
+            \ev{\hat{\vec{p}}{\,}^2}{\alpha} &= -\frac{\hbar m\omega}{2}\ev{(a_+-a_-)(a_+-a_-)}{\alpha}\\
+            &= -\frac{\hbar m\omega}{2}\big[ (\alpha^*)^2+\alpha^2-|\alpha|^2-\ev{\underbrace{a_-a_+}_{a_+a_-+1}}{\alpha} \big]\\
+            &= -\frac{\hbar m\omega}{2}\left[ (\alpha^*)^2+\alpha^2-2|\alpha|^2-1 \right]
+        \end{align*}
+        \item Combining these, we have that
+        \begin{equation*}
+            \ev{\hat{\vec{p}}{\,}^2}{\alpha}-(\ev{\hat{\vec{p}}\,}{\alpha})^2 = \frac{\hbar m\omega}{2}\left[ -(\alpha^*)^2-\alpha^2+2|\alpha|^2+1+(\alpha^*)^2+\alpha^2-2|\alpha|^2 \right]
+            = \frac{\hbar m\omega}{2}
+        \end{equation*}
+        \item Therefore,
+        \begin{align*}
+            \sigma_p^2\sigma_x^2 &= \frac{\hbar m\omega}{2}\cdot\frac{\hbar}{2m\omega}\\
+            &= \frac{\hbar^2}{4}\\
+            \sigma_p\sigma_x &= \frac{\hbar}{2}
+        \end{align*}
+        as desired.
+    \end{itemize}
+    \item If we reassert full time dependence, we obtain
+    \begin{equation*}
+        \ket{\alpha}(t) = \sum_nc_n\e[-iE_nt/\hbar]\ket{n}
+    \end{equation*}
+    \begin{itemize}
         \item Then
         \begin{align*}
-            \frac{\hbar}{2m\omega}\left[ \ev{(a_++a_-)^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right] &= \frac{\hbar}{2}\\
-            \frac{\hbar}{2m\omega}\left[ \ev{a_+^2+a_+a_-+a_-a_++a_-^2}{\alpha}-(\ev{(a_++a_-)}{\alpha})^2 \right] &= \dots
+            a_-\ket{\alpha} &= \sum_{n=0}^\infty c_n\e[-iE_nt/\hbar]\sqrt{n}\ket{n-1}\\
+            &= \sum_{n=0}^\infty c_{n+1}\e[-iE_{n+1}t/\hbar]\sqrt{n+1}\ket{n}
         \end{align*}
-        \item We'll finish this up next time.
+        \item And recall that
+        \begin{equation*}
+            a_-\ket{\alpha} = \alpha\ket{\alpha}
+        \end{equation*}
+        \item Thus, via term-by-term transitivity for each $\ket{n}$,
+        \begin{align*}
+            \alpha c_n &= c_{n+1}\e[-i(E_{n+1}-E_n)t/\hbar]\sqrt{n+1}\\
+            \alpha c_n &= c_{n+1}\e[-i\omega t]\sqrt{n+1}
+        \end{align*}
+        \item If $\alpha$ is real and $\psi_\alpha(x)$ denotes the time-independent factor in $\ket{\alpha}$, then
+        \begin{align*}
+            a_-\psi_\alpha(x) &= \alpha\psi_\alpha(x)\\
+            \left[ \hbar\dv{x}+m\omega x \right]\psi_\alpha(x) &= \alpha\psi_\alpha(x)
+        \end{align*}
+        \item Then
+        \begin{equation*}
+            \frac{1}{\psi_\alpha}\dv{x}\psi_\alpha+\left( \frac{m\omega x}{\hbar}-\alpha \right) = 0
+        \end{equation*}
+        \item Thus, solving the differential equation, we obtain
+        \begin{equation*}
+            \psi_\alpha = \exp\left[ -\frac{m\omega}{2\hbar}(x-\Exp{x})^2 \right]
+        \end{equation*}
+        which is a Gaussian.
+        \item Therefore,
+        \begin{equation*}
+            a_-\ket{0} = 0\ket{0}
+        \end{equation*}
+    \end{itemize}
+    \item We will program the time evolution of a coherent state in Python or Mathematica??
+    \begin{itemize}
+        \item A real wave function is a crazy thing that does flip from side to side at $T/2$ and $T$.
+        \begin{itemize}
+            \item Essentially,
+            \begin{equation*}
+                |\psi(x,t)|^2 = |\psi(-x,t+T/2)|^2
+            \end{equation*}
+        \end{itemize}
+        \item A coherent state is just a Gaussian that oscillates back and forth to both sides of the $y$-axis.
     \end{itemize}
 \end{itemize}
 
