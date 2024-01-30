@@ -604,11 +604,14 @@
             \alpha c_n &= c_{n+1}\e[-i(E_{n+1}-E_n)t/\hbar]\sqrt{n+1}\\
             \alpha c_n &= c_{n+1}\e[-i\omega t]\sqrt{n+1}
         \end{align*}
-        \item If $\alpha$ is real and $\psi_\alpha(x)$ denotes the time-independent factor in $\ket{\alpha}$, then
-        \begin{align*}
-            a_-\psi_\alpha(x) &= \alpha\psi_\alpha(x)\\
-            \left[ \hbar\dv{x}+m\omega x \right]\psi_\alpha(x) &= \alpha\psi_\alpha(x)
-        \end{align*}
+        \item We can continue on with this recurrence relation to find a formula for all coefficients $c_n$, from which we can define $\ket{\alpha}$ explicitly as a linear combination of the $\ket{n}$.
+    \end{itemize}
+    \item If $\alpha$ is real and $\psi_\alpha(x)$ denotes the time-independent factor in $\ket{\alpha}$, then
+    \begin{align*}
+        a_-\psi_\alpha(x) &= \alpha\psi_\alpha(x)\\
+        \left[ \hbar\dv{x}+m\omega x \right]\psi_\alpha(x) &= \alpha\psi_\alpha(x)
+    \end{align*}
+    \begin{itemize}
         \item Then
         \begin{equation*}
             \frac{1}{\psi_\alpha}\dv{x}\psi_\alpha+\left( \frac{m\omega x}{\hbar}-\alpha \right) = 0
@@ -638,7 +641,7 @@
 
 
 
-\section{Chapter 2: Time-Independent Schr\"{o}dinger Equation}
+\section{G Chapter 2: Time-Independent Schr\"{o}dinger Equation}
 \emph{From \textcite{bib:Griffiths}.}
 \subsection*{Section 2.3: The Harmonic Oscillator}
 \begin{itemize}
@@ -678,7 +681,7 @@
 
 
 
-\section{Chapter 3: Formalism}
+\section{G Chapter 3: Formalism}
 \emph{From \textcite{bib:Griffiths}.}
 \subsection*{Section 3.1: Hilbert Space}
 \begin{itemize}
@@ -688,10 +691,39 @@
 
 
 
-\section{Appendix: Linear Algebra}
+\section{G Appendix: Linear Algebra}
 \emph{From \textcite{bib:Griffiths}.}
 \begin{itemize}
     \item A terrific review of relevant concepts, all expressed in Dirac notation.
+\end{itemize}
+
+
+
+\section{T Chapter 7: The One-Dimensional Harmonic Oscillator}
+\emph{From \textcite{bib:Townsend}.}
+\subsection*{Section 7.7: Time Dependence}
+\begin{itemize}
+    \item There is some stuff here on $|\psi(x,t)|^2=|\psi(-x,t+T/2)|^2$.
+\end{itemize}
+
+
+\subsection*{Section 7.8: Coherent States}
+\begin{itemize}
+    \item \textbf{Coherent state}: A superposition of energy eigenstates of the harmonic oscillator that is also an eigenstate of the lowering operator. \emph{Denoted by} $\bm{|\alpha\rangle}$.
+    \item $\bm{\alpha}$: The eigenvalue corresponding to the coherent state $\ket{\alpha}$.
+    \begin{itemize}
+        \item Since $a_-$ is not Hermitian, $\alpha$ need not be real.
+    \end{itemize}
+    \item Coherent states "come closest to representing classical electromagnetic waves with a well-defined phase" \parencite[263]{bib:Townsend}.
+    \begin{itemize}
+        \item For a harmonic oscillator, they come "closest to the classical limit of a particle oscillating back and forth in a harmonic oscillator potential" \parencite[263]{bib:Townsend}.
+    \end{itemize}
+    \item Coherent states were first derived by Schr\"{o}dinger when he was looking for solutions to the Schr\"{o}dinger equation that satisfy the \textbf{correspondence principle}.
+    \item \textbf{Correspondence principle}: The behavior of systems described by the theory of quantum mechanics reproduces classical physics in the limit of large quantum numbers.
+    \item \textcite{bib:Townsend} completes Wagner's derivation of $\ket{\alpha}$ as a linear combination of the $\ket{n}$.
+    \item Time Evolution of a Coherent State.
+    \item Repeat of the derivation of the minimum uncertainty from class.
+    \item Shows that the ground coherent state is an oscillating Gaussian.
 \end{itemize}
 
 
