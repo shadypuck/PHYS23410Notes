@@ -657,7 +657,7 @@
         \psi_n(\vec{r},t) = \psi_n(\vec{r})\exp(-\frac{iE_nt}{\hbar})
     \end{equation*}
     \begin{itemize}
-        \item Note that we assume that we have renormalized every $\psi_n$ written this way from here on out, pulling $A$ and anything with it into $\psi_n(\vec{r})$.
+        \item Note that we assume that we have renormalized every $\psi_n$ written this way from here on out, absorbing $A$ and anything with it into $\psi_n(\vec{r})$.
     \end{itemize}
     \item When $m\neq n$, we can obtain an important rule:
     \begin{align*}
@@ -684,6 +684,43 @@
         \ev{\hat{H}}{\psi} &= \sum_{m,n}c_m^*c_n\exp(-\frac{i}{\hbar}(E_m-E_n)t)\underbrace{\mel{\psi_m'}{\hat{H}}{\psi_n}}_{E_n\braket{\psi_m}{\psi_n}}\\
         &= \sum_m|c_m|^2E_m
     \end{align*}
+\end{itemize}
+
+
+
+\section{Chapter 1: The Wave Function}
+\emph{From \textcite{bib:Griffiths}.}
+\subsection*{Section 1.6: The Uncertainty Principle}
+\begin{itemize}
+    \item \marginnote{1/29:}Qualitative justification of the uncertainty principle.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{uncertaintyPrinciplea.png}
+            \caption{A wave with a (fairly) well-defined \emph{wavelength}, but an ill-defined \emph{position}.}
+            \label{fig:uncertaintyPrinciplea}
+        \end{subfigure}
+        \begin{subfigure}[b]{\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{uncertaintyPrincipleb.png}
+            \caption{A wave with a (fairly) well-defined \emph{position}, but an ill-defined \emph{wavelength}.}
+            \label{fig:uncertaintyPrincipleb}
+        \end{subfigure}
+        \caption{Visualizing the uncertainty principle.}
+        \label{fig:uncertaintyPrinciple}
+    \end{figure}
+    \begin{itemize}
+        \item Consider someone shaking a rope.
+        \begin{itemize}
+            \item If they do so a lot, you get a wave with a well-defined wavelength and ill-defined position.
+            \item If they just shake it once, you get a wave with a well-defined position and ill-defined wavelength.
+        \end{itemize}
+        \item Thus, we see that there is a tradeoff between measuring the precision of wavelength and position.
+        \item This discussion is adapted from a quantitative theorem of Fourier analysis that is beyond the scope of the book.
+    \end{itemize}
+    \item For a wave function, recall that de Brogelie said $\lambda\propto 1/p$, so the above relation between the uncertainties in position and wavelength becomes --- for a quantum particle --- a relation between the uncertainties in position and momentum.
+    \item The Heisenberg Uncertainty Principle is stated, but not proven until Chapter 3.
 \end{itemize}
 
 
