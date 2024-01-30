@@ -676,5 +676,60 @@
 
 
 
+\section{Chapter 2: Time-Independent Schr\"{o}dinger Equation}
+\emph{From \textcite{bib:Griffiths}.}
+\subsection*{Section 2.2: The Infinite Square Well}
+\begin{itemize}
+    \item \marginnote{1/29:}Goes through the derivation from class.
+    \item The boundary conditions will be justified in Section 2.5!
+    \item Note that since $A$ is complex, normalization technically only determines the magnitude $|A|$. However, the phase of $A$ carries no physical significance, so there is no reason not to choose the simplest solution to $|A|^2=2/a$, which is just the positive real square root.
+    \item Notice how, as promised, the TISE delivers a set $\{\psi_n(x)\}$ of solutions!
+    \item \textbf{Ground state}: The wave functional solution to the TISE which carries the lowest energy.
+    \item \textbf{Excited state}: Any wave functional solution to the TISE that is not the ground state.
+    \item Four properties of the $\psi_n$ of the infinite square well.
+    \begin{enumerate}
+        \item They are alternately even and odd, with respect to the center of the well.
+        \item As $E_n$ increases, each successive state has one more \textbf{node}.
+        \item The $\{\psi_n\}$ are mutually orthogonal.
+        \begin{itemize}
+            \item \textcite{bib:Griffiths} proves that any $\psi_n,\psi_m$ ($n\neq m$) are orthogonal.
+        \end{itemize}
+        \item The $\{\psi_n\}$ are \textbf{complete}.
+    \end{enumerate}
+    \item \textbf{Complete} (set of functions): A set of functions such that any other function $f(x)$ can be expressed as a linear combination of them.
+    \begin{itemize}
+        \item \textcite{bib:Griffiths} will not prove the completeness of the functions $\sqrt{2/a}\sin(\pi nx/a)$, but the mathematically inclined student may notice that an infinite sum of these is the \textbf{Fourier series} for $f(x)$, and the fact that any function can be expanded in this way is called \textbf{Dirichlet's theorem}.
+        \item To compute the $c_n$ corresponding to an arbitrary $f$, use \textbf{Fourier's trick}:
+        \begin{equation*}
+            \int\psi_m^*(x)f(x)\dd{x} = \sum_{n=1}^\infty c_n\int\psi_m^*(x)\psi_n(x)\dd{x}
+            = \sum_{c_n}\delta_{mn}
+            = c_m
+        \end{equation*}
+        \item Aside (from me): Dirac notation expresses the above statement as simply a consequence of taking the inner product of a vector and a member of the orthonormal basis.
+        \begin{equation*}
+            \braket{\psi_m}{f} = c_m
+        \end{equation*}
+    \end{itemize}
+    \item Note on the four properties.
+    \begin{itemize}
+        \item Property 1 is true whenever the potential is a symmetric function.
+        \item Property 2 is universal, regardless of the shape of the potential.
+        \item Orthogonality is quite general (we'll see exactly how much in Chapter 3).
+        \item Completeness holds for all potentials we are likely to encounter (but the proofs tend to be nasty).
+        \begin{itemize}
+            \item "Most physicists simply \emph{assume} completeness, and hope for the best" \parencite[52]{bib:Griffiths}.
+        \end{itemize}
+    \end{itemize}
+    \item With what we know now, we can compute the time evolution of any particle in this system.
+    \begin{itemize}
+        \item Simply start with its wave function at $t=0$, which is $\psi(x,0)$.
+        \item Compute expansion coefficients.
+        \item And take $\psi(x,t)$ to be the sum of stationary states.
+    \end{itemize}
+    \item \textcite{bib:Griffiths} proves --- as at the end of class on 1/12 --- that $\sum_n|c_n|^2=1$ and $\sum_n|c_n|^2E_n=\Exp{H}$.
+\end{itemize}
+
+
+
 
 \end{document}

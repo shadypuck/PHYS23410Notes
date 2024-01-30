@@ -725,5 +725,63 @@
 
 
 
+\section{Chapter 2: Time-Independent Schr\"{o}dinger Equation}
+\emph{From \textcite{bib:Griffiths}.}
+\subsection*{Section 2.1: Stationary States}
+\begin{itemize}
+    \item Goes through solving the TDSE via separation of variables.
+    \begin{itemize}
+        \item Remark: Separation of variables is "the physicist's first line of attack on any partial differential equation" \parencite[43]{bib:Griffiths}.
+        \item \textcite{bib:Griffiths} finally addresses my criticism that separation of variables will restrict us to a tiny subset of solutions!
+        \begin{itemize}
+            \item Answer: This is true, but it just so happens that the solutions we \emph{do} get turn out to be of great interest. So essentially, this is "because it works" physics.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Time-independent Schr\"{o}dinger equation}: The equation defined as follows. \emph{Also known as} \textbf{TISE}. \emph{Given by}
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\dv[2]{\psi}{x}+V\psi = E\psi
+    \end{equation*}
+    \item The remaining sections of this chapter will focus on solving the TISE for various simple potentials.
+    \item Three reasons why separable solutions are valuable.
+    \begin{enumerate}
+        \item They are \textbf{stationary states}.
+        \begin{itemize}
+            \item Every expectation value $\Exp{Q(x,p)}$ is also constant in time.
+            \item In particular, $\Exp{\hat{\vec{x}}}$ is constant so $\Exp{\hat{\vec{p}}}=0$.
+        \end{itemize}
+        \item They are states of definite total energy.
+        \begin{itemize}
+            \item Reproves that $\sigma_H^2=0$, and hence every measurement of the total energy is certain to return the value $E$.
+        \end{itemize}
+        \item The general solution is a linear combination of separable solutions.
+        \begin{itemize}
+            \item Essentially, we can prove that \emph{every} solution to the TDSE can be written as
+            \begin{equation*}
+                \psi(x,t) = \sum_{n=0}^\infty c_n\psi_n(x)\e[-iE_nt/\hbar]
+            \end{equation*}
+        \end{itemize}
+    \end{enumerate}
+    \item \textbf{Stationary state}: A wave function $\psi(x,t)$ for which the probability density $|\psi(x,t)|^2$ does \emph{not} depend on $t$.
+    \item Example: The linear combination of two stationary states produces motion.
+    \begin{itemize}
+        \item If $\psi(x,0)=c_1\psi_1(x)+c_2\psi_2(x)$, then we may compute that
+        \begin{equation*}
+            |\psi(x,t)|^2 = c_1^2\psi_1^2+c_2^2\psi_2^2+2c_1c_2\psi_1\psi_2\cos(\frac{E_2-E_1}{\hbar}t)
+        \end{equation*}
+    \end{itemize}
+    \item $|c_n|^2$ is the probability that a measurement of the energy would return the value $E_n$.
+    \begin{itemize}
+        \item Proven in Chapter 3.
+    \end{itemize}
+    \item It follows from this understanding that we must have Wagner's favorite two equations,
+    \begin{align*}
+        \sum_{n=0}^\infty|c_n|^2 &= 1&
+        \sum_{n=0}^\infty|c_n|^2E_n &= \Exp{\hat{H}}
+    \end{align*}
+    \item Remark: "Because the constants $\{c_n\}$ are independent of time, so too is the probability of getting a particular energy, and, \emph{a fortiori}, the expectation value of $H$. These are manifestations of energy conservation in quantum mechanics" \parencite[47]{bib:Griffiths}.
+\end{itemize}
+
+
+
 
 \end{document}
