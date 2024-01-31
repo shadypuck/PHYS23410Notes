@@ -364,5 +364,186 @@
 
 
 
+\section{Angular Momentum; Ladder Operators}
+\begin{itemize}
+    \item \marginnote{1/31:}Is there an operator $\hat{L}$?
+    \begin{itemize}
+        \item There \emph{is} an operator $\hat{\vec{L}}$ with components $\hat{L}_x,\hat{L}_y,\hat{L}_z$; it's just that we cannot measure it because the components are incompatible.
+        \item This is why we measure $\hat{\vec{L}}{\,}^2$ and one $\hat{L}_i$.
+    \end{itemize}
+    \item Recap of 3D.
+    \begin{itemize}
+        \item The 3D Hamiltonian is
+        \begin{equation*}
+            \hat{H} = -\frac{\hbar^2}{2m}\vec{\nabla}^2+V(\vec{r})
+        \end{equation*}
+        \item We are interested in obtaining the energy eigenvalues of such a potential, which we do via the 3D Schr\"{o}dinger equation,
+        \begin{equation*}
+            \hat{H}\psi(\vec{r},t) = E\psi(\vec{r},t)
+        \end{equation*}
+        \item The potentials we work with will be \textbf{central}, i.e.,
+        \begin{equation*}
+            V(\vec{r}) = V(r)
+        \end{equation*}
+        \item For central potentials, we have the following compatibility relations.
+        \begin{gather*}
+            [\hat{H},\hat{L}_z] = [\hat{H},\hat{L}_x]
+                = [\hat{H},\hat{L}_y]
+                = [\hat{H},\hat{\vec{L}}{\,}^2]
+                = [\hat{\vec{L}}{\,}^2,\hat{L}_z]
+                = 0\\
+            [\hat{L}_x,\hat{L}_y] = i\hbar\hat{L}_z
+        \end{gather*}
+        \item Thus, we can get good eigenstates of $\hat{H}$, $\hat{\vec{L}}{\,}^2$, and $\hat{L}_z$ all together.
+        \begin{itemize}
+            \item We choose $\hat{L}_z$ instead of $\hat{L}_x,\hat{L}_y$ WLOG.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Central} (potential): A potential that depends only on the distance.
+    \item Before we go any further, we need to express the Laplacian
+    \begin{equation*}
+        \vec{\nabla}^2 = \pdv[2]{x}+\pdv[2]{y}+\pdv[2]{z}
+    \end{equation*}
+    in spherical coordinates.
+    \begin{itemize}
+        \item Recall that spherical coordinates have a distance $r$, a polar angle $\theta$, and an azimuthal angle $\phi$.
+        \item Drawing out the Cartesian and polar coordinates of a point, we may rederive that
+        \begin{align*}
+            z &= r\cos\theta\\
+            x &= r\sin\theta\cos\phi\\
+            y &= r\sin\theta\sin\phi
+        \end{align*}
+        \item The Laplacian has a rather nasty form in spherical coordinates. In particular, it is given by
+        \begin{equation*}
+            \vec{\nabla}^2\psi(r,\theta,\phi) = \frac{1}{r^2}\pdv{r}(r^2\pdv{\psi}{r})+\frac{1}{r^2\sin\theta}\pdv{\theta}(\sin\theta\pdv{\psi}{\theta})+\frac{1}{r^2\sin^2\theta}\pdv[2]{\psi}{\phi}
+        \end{equation*}
+    \end{itemize}
+    \item A nice thing about spherical coordinates is that like $\hat{p}_z=-i\hbar\pdv*{z}$ in Cartesian coordinates, we have in spherical coordinates that
+    \begin{equation*}
+        \hat{L}_z = -i\hbar\pdv{\phi}
+    \end{equation*}
+    \item Eigenstates of $\hat{L}_z$.
+    \begin{itemize}
+        \item We wish to solve
+        \begin{equation*}
+            \hat{L}_z\psi = c\psi
+        \end{equation*}
+        where $\psi$ is the desired eigenstate and $c$ the corresponding eigenvalue.
+        \item Expanding, we have that
+        \begin{align*}
+            -i\hbar\pdv{\psi}{\phi} &= c\psi\\
+            \pdv{\psi}{\phi} &= \frac{ic}{\hbar}\psi\\
+            \psi(r,\theta,\phi) &= F(r,\theta)\e[ic\phi/\hbar]
+        \end{align*}
+        \item We now apply the boundary condition to determine $c$. Since
+        \begin{align*}
+            \psi(r,\theta,\phi+2\pi) &= \psi(r,\theta,\phi)\\
+            \e[2\pi ic/\hbar] &= 1
+        \end{align*}
+        we must have that $c/\hbar=m\in\Z$.
+        \item Thus, $\psi$ as written above is an eigenstate of $\hat{L}_z$ with eigenvalue $\hbar m$.
+        \item Sanity check:
+        \begin{equation*}
+            \hat{L}_z\psi = -i\hbar(im)F(r,\theta)\e[im\phi]
+            = \hbar m\psi
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Ladder operator}: Either of the two operators defined as follows. \emph{Denoted by} $\bm{\hat{L}_\pm}$. \emph{Given by}
+    \begin{equation*}
+        \hat{L}_\pm = \hat{L}_x\pm i\hat{L}_y
+    \end{equation*}
+    \item Commutator of the ladder operators and the angular momentum operators.
+    \begin{itemize}
+        \item We have by the the commutator relations among the $\hat{L}_i$ that
+        \begin{equation*}
+            [\hat{L}_\pm,\hat{L}_z] = [\hat{L}_x\pm i\hat{L}_y,\hat{L}_z]
+            = -i\hbar\hat{L}_y\pm i(i\hbar\hat{L}_x)
+            = -i\hbar\hat{L}_y\mp\hbar\hat{L}_x
+            = \mp\hbar(\hat{L}_x\pm i\hat{L}_y)
+            = \mp\hbar\hat{L}_\pm
+        \end{equation*}
+    \end{itemize}
+    \item Commutator of the ladder operators with each other.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \hat{L}_+\hat{L}_- &= (\hat{L}_x+i\hat{L}_y)(\hat{L}_x-i\hat{L}_y)\\
+            &= \hat{L}_x^2+\hat{L}_y^2+i(\hat{L}_y\hat{L}_x)-i(\hat{L}_x\hat{L}_y)\\
+            &= \hat{L}_x^2+\hat{L}_y^2-i[\hat{L}_x,\hat{L}_y]\\
+            &= \hat{L}_x^2+\hat{L}_y^2+\hbar\hat{L}_z\\
+            &= \hat{L}_x^2+\hat{L}_y^2+\hbar\hat{L}_z+\hat{L}_z^2-\hat{L}_z^2\\
+            &= \hat{\vec{L}}{\,}^2-\hat{L}_z^2+\hbar\hat{L}_z
+        \end{align*}
+        \item Similarly, we have that
+        \begin{align*}
+            \hat{L}_-\hat{L}_+ &= (\hat{L}_x-i\hat{L}_y)(\hat{L}_x+i\hat{L}_y)\\
+            &= \hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2-i[\hat{L}_y,\hat{L}_x]-\hat{L}_z^2\\
+            &= \hat{\vec{L}}{\,}^2-\hat{L}_z^2-\hbar\hat{L}_z
+        \end{align*}
+        \item Thus, we can calculate that
+        \begin{equation*}
+            [\hat{L}_+,\hat{L}_-] = 2\hbar\hat{L}_z
+        \end{equation*}
+    \end{itemize}
+    \item The ladder operators also "raise" and "lower."
+    \begin{itemize}
+        \item Let $\ket{L,m}$ be an eigenstate of $\hat{\vec{L}}{\,}^2,\hat{L}_z$.
+        \item Then we have the following, where we will withhold proof of the left equality below for now.
+        \begin{align*}
+            \hat{\vec{L}}{\,}^2\ket{L,m} &= \hbar^2L(L+1)\ket{L,m}&
+            \hat{L}_z\ket{L,m} &= \hbar m\ket{L,m}
+        \end{align*}
+        \item Now, what happens when we apply $\hat{L}_z$ to $\hat{L}_+\ket{L,m}$? As we might expect at this point,
+        \begin{align*}
+            \hat{L}_z(\hat{L}_+\ket{L,m}) &= \left[ \hat{L}_+\hat{L}_z-(\hat{L}_+\hat{L}_z-\hat{L}_z\hat{L}_+) \right]\ket{L,m}\\
+            &= \hat{L}_+\hbar m\ket{L,m}+\hbar\hat{L}_+\ket{L,m}\\
+            &= \hbar(m+1)(\hat{L}_+\ket{L,m})
+        \end{align*}
+        \item Thus,
+        \begin{equation*}
+            \hat{L}_+\ket{L,m} \propto \ket{L,m+1}
+        \end{equation*}
+        \item We can prove in a similar fashion that
+        \begin{equation*}
+            \hat{L}_-\ket{L,m} \propto \ket{L,m-1}
+        \end{equation*}
+    \end{itemize}
+    \item Relating the numbers $m,L$.
+    \begin{itemize}
+        \item Recall that $\hat{\vec{L}}{\,}^2=\hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2$.
+        \item The eigenvalue corresponding to an eigenstate of $\hat{\vec{L}}{\,}^2$ is $\hbar^2L(L+1)$.
+        \item The eigenvalue corresponding to an eigenstate of $\hat{L}_z^2$ is $(\hbar m)^2$.
+        \item Thus, since all quantities are positive, $\hbar^2L(L+1)>\hbar^2m^2$; it follows that $|m|<|L|$.
+        \item But since ladder operators give larger and larger values of $m$ without changing $L$, it appears that eventually, this rule will be violated. Therefore, there must be an $m_\text{max}$ such that
+        \begin{equation*}
+            L_+\ket{L,m_\text{max}} = 0
+        \end{equation*}
+        \item Similarly, there must be an $m_\text{min}$ such that
+        \begin{equation*}
+            L_-\ket{L,m_\text{min}} = 0
+        \end{equation*}
+        \item Since we have $\hat{\vec{L}}{\,}^2=\hat{L}_-\hat{L}_++\hbar\hat{L}_z+\hat{L}_z^2$, we have that
+        \begin{equation*}
+            \hat{\vec{L}}{\,}^2\ket{L,m_\text{max}} = \hat{L}_-\underbrace{\hat{L}_+\ket{L,m_\text{max}}}_0+(\hbar^2m_\text{max}+\hbar^2m_\text{max}^2)\ket{L,m_\text{max}}
+        \end{equation*}
+        \item This combined with the fact that
+        \begin{equation*}
+            \hat{\vec{L}}{\,}^2\ket{L,m_\text{max}} = \hbar^2L(L+1)\ket{L,m_\text{max}}
+        \end{equation*}
+        implies that
+        \begin{align*}
+            m_\text{max} &= L&
+            m_\text{min} &= -L
+        \end{align*}
+        \item Thus, $\ket{L,m}$ has $2m+1$ eigenstates for $-L\leq m\leq L$. Additionally, we have that
+        \begin{align*}
+            \hat{\vec{L}}{\,}^2\ket{L,m} &= \hbar^2L(L+1)\ket{L,m}&
+            \hat{L}_z\ket{L,m} &= \hbar m\ket{L,m}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
