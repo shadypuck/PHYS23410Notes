@@ -18,21 +18,92 @@
             \dv{t}(\ev{\hat{p}^n}{\psi}) = 0
         \end{equation}
         \emph{Hint}: Use the fact that for time-independent operators, $\dv*{\ev{\hat{O}}{\psi}}{t}=(i/\hbar)\ev{[\hat{H},\hat{O}]}{\psi}$.
+        \begin{proof}
+            To prove that the mean value of the momentum is time-independent, it will suffice to show that
+            \begin{equation*}
+                [\hat{H},\hat{p}^n] = 0
+            \end{equation*}
+            for all $n\in\N$. To do so, we induct on $n$. For the base case $n=1$, we have that
+            \begin{equation*}
+                [\hat{H},\hat{p}] = \left[ \frac{\hat{p}^2}{2m},\hat{p} \right]
+                = \frac{1}{2m}(\hat{p}^3-\hat{p}^3)
+                = 0
+            \end{equation*}
+            Now suppose inductively that we have prove the claim for $n$, that is, we know that $[\hat{H},\hat{p}^n]=0$; we now seek to prove the claim for $n+1$. Here, we have that
+            \begin{equation*}
+                [\hat{H},\hat{p}^{n+1}] = \hat{p}\underbrace{[\hat{H},\hat{p}^n]}_0+\underbrace{[\hat{H},\hat{p}^n]}_0\hat{p}
+                = 0
+            \end{equation*}
+            This closes the induction.
+        \end{proof}
         \item Compute $\dv*{\ev{\hat{x}}{\psi}}{t}$, and show that
         \begin{equation}
             \ev{\hat{x}}{\psi}(t) = \frac{p_0t}{m}+x_0
         \end{equation}
+        \begin{proof}
+            We have from Lecture 1.2 that
+            \begin{equation*}
+                \dv{t}(\ev{\hat{x}}{\psi}) = \frac{\ev{\hat{p}}{\psi}}{m}
+            \end{equation*}
+            Now part (a) tells us that $\ev{\hat{p}}{\psi}$ is time-independent, which means that if $\ev{\hat{p}}{\psi}=p_0$ at $t=0$, then $\ev{\hat{p}}{\psi}=p_0$ for all time $t$. Thus,
+            \begin{equation*}
+                \boxed{\dv{t}(\ev{\hat{x}}{\psi}) = \frac{p_0}{m}}
+            \end{equation*}
+            It follows by integrating that
+            \begin{align*}
+                \int_0^t\dv{t}(\ev{\hat{x}}{\psi})\dd{t} &= \int_0^t\frac{p_0}{m}\dd{t'}\\
+                \ev{\hat{x}}{\psi}(t)-\ev{\hat{x}}{\psi}(0) &= \frac{p_0}{m}t-\frac{p_0}{m}0\\
+                \ev{\hat{x}}{\psi}(t)-x_0 &= \frac{p_0t}{m}\\
+                \ev{\hat{x}}{\psi}(t) &= \frac{p_0t}{m}+x_0
+            \end{align*}
+            as desired.
+        \end{proof}
+        \pagebreak
         \item Show also that
         \begin{equation}
             \dv{t}(\ev{\hat{x}^2}{\psi}) = \frac{2}{m}\ev{\hat{p}\hat{x}}{\psi}+\frac{i\hbar}{m}
         \end{equation}
         \emph{Hint}: Use the fact that $[\hat{A}\hat{B},\hat{C}]=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}$ and $[\hat{A},\hat{B}\hat{C}]=\hat{B}[\hat{A},\hat{C}]+[\hat{A},\hat{B}]\hat{C}$.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \dv{t}(\ev{\hat{x}^2}{\psi}) &= \frac{i}{\hbar}\ev{[\hat{H},\hat{x}^2]}{\psi}\\
+                &= \frac{i}{2m\hbar}\ev{[\hat{p}^2,\hat{x}^2]}{\psi}\\
+                &= \frac{i}{2m\hbar}\ev{\hat{p}[\hat{p},\hat{x}^2]+[\hat{p},\hat{x}^2]\hat{p}}{\psi}\\
+                &= \frac{i}{2m\hbar}\ev{\hat{p}(\hat{x}[\hat{p},\hat{x}]+[\hat{p},\hat{x}]\hat{x})+(\hat{x}[\hat{p},\hat{x}]+[\hat{p},\hat{x}]\hat{x})\hat{p}}{\psi}\\
+                &= \frac{i}{2m\hbar}(\ev{\hat{p}\hat{x}[\hat{p},\hat{x}]}{\psi}+\ev{\hat{p}[\hat{p},\hat{x}]\hat{x}}{\psi}+\ev{\hat{x}[\hat{p},\hat{x}]\hat{p}}{\psi}+\ev{[\hat{p},\hat{x}]\hat{x}\hat{p}}{\psi})\\
+                &= \frac{i}{2m\hbar}(\ev{\hat{p}\hat{x}(-i\hbar)}{\psi}+\ev{\hat{p}(-i\hbar)\hat{x}}{\psi}+\ev{\hat{x}(-i\hbar)\hat{p}}{\psi}+\ev{(-i\hbar)\hat{x}\hat{p}}{\psi})\\
+                &= \frac{1}{2m}(\ev{\hat{p}\hat{x}}{\psi}+\ev{\hat{p}\hat{x}}{\psi}+\ev{\hat{x}\hat{p}}{\psi}+\ev{\hat{x}\hat{p}}{\psi})\\
+                &= \frac{1}{2m}(2\ev{\hat{p}\hat{x}}{\psi}+2\ev{\hat{p}\hat{x}+i\hbar}{\psi})\\
+                &= \frac{1}{2m}(4\ev{\hat{p}\hat{x}}{\psi}+2i\hbar\braket{\psi})\\
+                &= \frac{2}{m}\ev{\hat{p}\hat{x}}{\psi}+\frac{i\hbar}{m}
+            \end{align*}
+            as desired.
+        \end{proof}
         \item Compute, in terms of $\ev{\hat{p}^2}{\psi}$ and $\ev{\hat{p}}{\psi}$, the values of
         \begin{align}
             \dv[2]{t}(\ev{\hat{x}^2}{\psi})&&
             \dv[2]{t}\left[ (\ev{\hat{x}}{\psi})^2 \right]
         \end{align}
         \emph{Hint}: Use the commutation of $\hat{p}\hat{x}$ with $\hat{H}=\hat{p}^2/2m$.
+        \begin{proof}
+            By part (c), we have that
+            \begin{align*}
+                \dv[2]{t}(\ev{\hat{x}^2}{\psi})
+                % &= \dv{t}(\frac{2}{m}\ev{\hat{p}\hat{x}}{\psi}+\frac{i\hbar}{m})\\
+                &= \frac{2}{m}\dv{t}(\ev{\hat{p}\hat{x}}{\psi})\\
+                &= \frac{2i}{m\hbar}\ev{[\hat{H},\hat{p}\hat{x}]}{\psi}\\
+                &= \frac{i}{m^2\hbar}\big( \ev{\hat{p}^2\underbrace{[\hat{p},\hat{x}]}_{-i\hbar}}{\psi}+\ev{\hat{p}\underbrace{[\hat{p},\hat{p}]}_0\hat{x}}{\psi}+\ev{\hat{p}\underbrace{[\hat{p},\hat{x}]}_{-i\hbar}\hat{p}}{\psi}+\ev{\underbrace{[\hat{p},\hat{p}]}_0\hat{x}\hat{p}}{\psi} \big)\\
+                \Aboxed{\dv[2]{t}(\ev{\hat{x}^2}{\psi}) &= \frac{2}{m^2}\ev{\hat{p}^2}{\psi}}
+            \end{align*}
+            By part (b), we have that
+            \begin{align*}
+                \dv[2]{t}\left[ (\ev{\hat{x}}{\psi})^2 \right] &= \dv{t}[2\ev{\hat{x}}{\psi}\cdot\dv{t}(\ev{\hat{x}}{\psi})]\\
+                &= 2\dv{t}(\ev{\hat{x}}{\psi})\cdot\dv{t}(\ev{\hat{x}}{\psi})+2\ev{\hat{x}}{\psi}\cdot\dv[2]{t}(\ev{\hat{x}}{\psi})\\
+                &= \frac{2p_0^2}{m^2}+2x_0\cdot\underbrace{\dv{t}(\frac{p_0}{m})}_0\\
+                \Aboxed{\dv[2]{t}\left[ (\ev{\hat{x}}{\psi})^2 \right] &= \frac{2}{m^2}(\ev{\hat{p}}{\psi})^2}
+            \end{align*}
+        \end{proof}
         \item Show that the position and momentum fluctuations are related by
         \begin{equation}
             \dv[2]{t}(\sigma_x^2) = \frac{2\sigma_p^2}{m^2}
@@ -42,7 +113,29 @@
             \sigma_x \approx \frac{\sigma_pt}{m}
         \end{equation}
         where $\sigma_p$ is independent of time. Discuss the implications of this result. Can you understand this result intuitively in terms of the fact that the momentum is not well-defined, meaning that there is a probability of finding the particle at different momentum values at a given time?
+        \begin{proof}
+            By part (d), we have that
+            \begin{align*}
+                \dv[2]{t}(\sigma_x^2) &= \dv[2]{t}(\ev{\hat{x}^2}{\psi})-\dv[2]{t}\left[ (\ev{\hat{x}}{\psi})^2 \right]\\
+                &= \frac{2}{m^2}\left[ \ev{\hat{p}^2}{\psi}-(\ev{\hat{p}}{\psi})^2 \right]\\
+                &= \frac{2\sigma_p^2}{m^2}
+            \end{align*}
+            Additionally, we have that
+            \begin{equation*}
+                \dv[2]{t}\left[ \left( \frac{\sigma_pt}{m} \right)^2 \right] = \dv[2]{t}(\frac{\sigma_p^2t^2}{m^2})
+                = \dv{t}(\frac{2\sigma_p^2t}{m^2})
+                = \frac{2\sigma_p^2}{m^2}
+            \end{equation*}
+            Note that by requiring $t$ be "sufficiently large," we are eliminating consideration of the case $t=0$, in which we would have $\sigma_x=0$ which cannot happen by the Heisenberg uncertainty principle.\par
+            We now discuss the implications of this result. In part (a), we proved that the $\ev{\hat{p}^n}{\psi}$ are fixed for all time, which means in particular that
+            \begin{equation*}
+                \sigma_p^2 = \ev{\hat{p}^2}{\psi}-(\ev{\hat{p}}{\psi})^2
+            \end{equation*}
+            is fixed. Thus, Eq. \ref{eqn:4.6} essentially implies that for sufficiently large time $t$, the uncertainty in the position of the free particle increases approximately linearly with time. We may visualize this as the particle "spreading out" as time passes, much like a wave function might expand after it collapses.\par
+            The fact that the momentum is not well-defined is the \emph{reason} that the particle spreads out over time. Essentially, different "parts" of the particle will move with different momenta, so as the free particle "moves," some parts of it will move faster and some will move slower, causing it to spread out! This further justifies the linear relation, which in these terms essentially says that the greater the uncertainty in momenta, the greater the difference in speed of different parts of the particle, and the greater the spread in $x$ as time goes on.
+        \end{proof}
     \end{enumerate}
+    \pagebreak
     \item \textbf{The power of completeness.} Imagine that I have a complete set $\{\psi_n\}$ of energy eigenstate functions and that any given wave function $\psi$ can be expressed as a linear combination of these functions via
     \begin{equation}\label{eqn:4.7}
         \psi(x) = \sum_{n=0}^\infty c_n\psi_n(x)
@@ -53,18 +146,82 @@
             \delta(x_1-x_2) = \sum_m\psi_m(x_1)\psi_m^*(x_2)
         \end{equation}
         \emph{Hint}: Demonstrate that if you integrate this sum multiplied by an arbitrary function $\psi(x_2)$, you obtain the same function at the point $\psi(x_1)$.
+        \begin{proof}
+            % Prove the equality in Equation 8 using the facts about Dirac delta functions covered in the first discussion section.
+            % The smooth function that we have to multiply by and integrate with is $\psi(x_2)$.
+
+            Let $\psi:\R\to\C$ be an arbitrary, smooth function in the variable $x_2$. To prove the equality in Eq. \ref{eqn:4.8}, it will suffice to show that
+            \begin{equation*}
+                \int\delta(x_1-x_2)\psi(x_2)\dd{x_2} = \int\sum_m\psi_m(x_1)\psi_m^*(x_2)\psi(x_2)\dd{x_2}
+            \end{equation*}
+            Note that this integral and all following integrals are over all space, that is, $(-\infty,\infty)$. By the properties of the Dirac delta function, the left side of the above equality evaluates to
+            \begin{equation*}
+                \int\delta(x_1-x_2)\psi(x_2)\dd{x_2} = \psi(x_1)
+            \end{equation*}
+            The right side is a bit more complicated since it involves the expansion of $\psi$ that we are allowed to do by Eq. \ref{eqn:4.7}. However, it evaluates directly all the same, as follows.
+            \begin{align*}
+                \int\sum_m\psi_m(x_1)\psi_m^*(x_2)\psi(x_2)\dd{x_2} &= \int\sum_m\psi_m(x_1)\psi_m^*(x_2)\left( \sum_{n=0}^\infty c_n\psi_n(x_2) \right)\dd{x_2}\\
+                &= \sum_m\sum_{n=0}^\infty c_n\psi_m(x_1)\int\psi_m^*(x_2)\psi_n(x_2)\dd{x_2}\\
+                &= \sum_{n=0}^\infty c_n\psi_n(x_1)\\
+                &= \psi(x_1)
+            \end{align*}
+            Therefore, by transitivity, we have the desired equality.
+        \end{proof}
         \item Imagine that you want to calculate the mean value of some real function $h(x)$ of the operator $\hat{x}=x$ that can be expressed as a product of two real functions, i.e., $h(x)=f(x)g(x)$. For instance, $x^4=x^2x^2$. Then to compute the mean value of $h(x)$ in a particular energy eigenstate described by $\psi_n$, one needs to compute
         \begin{equation}\label{eqn:4.9}
             \ev{h(x)}{\psi_n} = \int\psi_n^*(x)f(x)g(x)\psi_n(x)\dd{x}
             = \iint\psi_n^*(x_1)f(x_1)\delta(x_1-x_2)g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}
         \end{equation}
         Verify that this is true by performing the integral over one of two variables, $x_1$ or $x_2$.
+        \begin{proof}
+            Working backward from the RHS of Eq. \ref{eqn:4.9}, we have that
+            \begin{align*}
+                \text{RHS} &= \iint\psi_n^*(x_1)f(x_1)\delta(x_1-x_2)g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}\\
+                &= \int\left[ \int\psi_n^*(x_1)f(x_1)\delta(x_1-x_2)\dd{x_1} \right]g(x_2)\psi_n(x_2)\dd{x_2}\\
+                &= \int\left[ \psi_n^*(x_2)f(x_2) \right]g(x_2)\psi_n(x_2)\dd{x_2}\\
+                &= \int\psi_n^*(x)f(x)g(x)\psi_n(x)\dd{x}\\
+                &= \int\psi_n^*(x)h(x)\psi_n(x)\dd{x}\\
+                &= \ev{h(x)}{\psi_n}
+            \end{align*}
+        \end{proof}
         \item Use this expression to obtain the mean value of $h(x)$ as a function of a sum of the products of the matrix elements $f_{mn}(x)$ and $g_{mn}(x)$, defined as
         \begin{align}
             f_{mn} &= \int\psi_m^*(x)f(x)\psi_n(x)\dd{x}&
             g_{mn} &= \int\psi_m^*(x)g(x)\psi_n(x)\dd{x}
         \end{align}
+        \begin{proof}
+            By part (a) and Eq. \ref{eqn:4.8}, we have that
+            \begin{align*}
+                \ev{h(x)}{\psi_n} &= \iint\psi_n^*(x_1)f(x_1)\delta(x_1-x_2)g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}\\
+                &= \iint\psi_n^*(x_1)f(x_1)\left[ \sum_m\psi_m(x_1)\psi_m^*(x_2) \right]g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}\\
+                &= \sum_m\iint\psi_n^*(x_1)f(x_1)\psi_m(x_1)\psi_m^*(x_2)g(x_2)\psi_n(x_2)\dd{x_1}\dd{x_2}\\
+                &= \sum_m\int\left[ \int\psi_n^*(x_1)f(x_1)\psi_m(x_1)\dd{x_1} \right]\psi_m^*(x_2)g(x_2)\psi_n(x_2)\dd{x_2}\\
+                &= \sum_m\int f_{nm}\psi_m^*(x_2)g(x_2)\psi_n(x_2)\dd{x_2}\\
+                &= \sum_mf_{nm}\int\psi_m^*(x_2)g(x_2)\psi_n(x_2)\dd{x_2}\\
+                \Aboxed{\ev{h(x)}{\psi_n} &= \sum_mf_{nm}g_{mn}}
+            \end{align*}
+        \end{proof}
         \item Apply the above to compute the mean value of $x^4=x^2x^2$ for the harmonic oscillator in its energy eigenstate. \emph{Hint}: Use the ladder operators.
+        \begin{proof}
+            By part (b), we have that
+            \begin{align*}
+                \ev{x^4}{\psi_n} ={}& \sum_m\mel{n}{x^2}{m}\mel{m}{x^2}{n}\\
+                ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\mel{n}{(a_++a_-)^2}{m}\mel{m}{(a_++a_-)^2}{n}\\
+                \begin{split}
+                    ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\Big( \mel{n}{a_+^2}{m}+\mel{n}{a_-^2}{m}+2\mel{n}{a_+a_-}{m}+\mel{n}{1}{m} \Big)\\
+                    & \cdot\Big( \mel{m}{a_+^2}{n}+\mel{m}{a_-^2}{n}+2\mel{m}{a_+a_-}{n}+\mel{m}{1}{n} \Big)
+                \end{split}\\
+                \begin{split}
+                    ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\Big( \sqrt{(m+1)(m+2)}\braket{n}{m+2}+\sqrt{m(m-1)}\braket{n}{m-2}+(2m+1)\braket{n}{m} \Big)\\
+                    & \cdot\Big( \sqrt{(n+1)(n+2)}\braket{m}{n+2}+\sqrt{n(n-1)}\braket{m}{n-2}+(2n+1)\braket{m}{n} \Big)
+                \end{split}\\
+                \begin{split}
+                    ={}& \frac{\hbar^2}{4m^2\omega^2}\Big( \sqrt{(n-1)n}\braket{n}{n}+\sqrt{(n+2)(n+1)}\braket{n}{n}+(2n+1)\braket{n}{n} \Big)\\
+                    & \cdot\Big( \sqrt{(n+1)(n+2)}\braket{n+2}{n+2}+\sqrt{n(n-1)}\braket{n-2}{n-2}+(2n+1)\braket{n}{n} \Big)
+                \end{split}\\
+                \Aboxed{\ev{x^4}{\psi_n} ={}& \frac{\hbar^2}{2m^2\omega^2}\left( \sqrt{n(n-1)}+\sqrt{(n+2)(n+1)}+2n+1 \right)}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \emph{Comment}: In Dirac notation, the above procedure is equivalent to adding an identity operator, in the sense that
     \begin{equation}
