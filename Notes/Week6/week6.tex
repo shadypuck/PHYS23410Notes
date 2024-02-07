@@ -1,0 +1,172 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{5}
+
+\begin{document}
+
+
+
+
+\chapter{The Hydrogen Atom}
+\section{Central Potentials}
+\begin{itemize}
+    \item \marginnote{2/5:}Review.
+    \begin{itemize}
+        \item Definition of \textbf{central potential}.
+        \begin{itemize}
+            \item In this case, we have three good observables: $\hat{H},\hat{\vec{L}}{\,}^2,\hat{L}_z$.
+        \end{itemize}
+        \item Last Friday, we discovered that the eigenstates are characterized by three numbers $n,\ell,m$ that correspond to the three operators above.
+        \begin{itemize}
+            \item Altogether, we have that
+            \begin{align*}
+                \hat{L}_z\ket{n\ell m} &= \hbar m\ket{n\ell m}&
+                \hat{\vec{L}}{\,}^2\ket{n\ell m} &= \hbar^2\ell(\ell+1)\ket{n\ell m}&
+                \hat{H}\ket{n\ell m} &= E_n\ket{n\ell m}
+            \end{align*}
+        \end{itemize}
+        \item We also defined ladder operators $L_+,L_-$ such that
+        \begin{equation*}
+            \hat{L}_\pm\ket{n\ell m} = \sqrt{\ell(\ell+1)-m(m\pm 1)}\ket{n\ell(m\pm 1)}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Central potential}: A three-dimensional potential energy distribution in which the potential depends only on the distance from the origin. \emph{Denoted by} $\bm{V(r)}$.
+    \item The eigenstates are well normalized, i.e.,
+    \begin{equation*}
+        \braket{n\ell m}{n\ell m'} = \delta_{mm'}
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that
+        \begin{equation*}
+            \ev{\hat{L}_x}{n\ell m} = \ev{\frac{1}{2}(\hat{L}_++\hat{L}_-)}{n\ell m} = 0
+        \end{equation*}
+        \item Similarly,
+        \begin{equation*}
+            \ev{\hat{L}_y}{n\ell m} = 0
+        \end{equation*}
+        \item Additionally, we have that
+        \begin{equation*}
+            \ev{(\hat{L}_x^2+\hat{L}_y^2)}{n\ell m} = \ev{(\hat{\vec{L}}{\,}^2-\hat{L}_z^2)}{n\ell m} = \hbar^2[\ell(\ell+1)-m^2]
+        \end{equation*}
+        \begin{itemize}
+            \item Since the above eigenvalue must be greater than or equal to zero, $|m|\leq\ell$.
+        \end{itemize}
+        \item Recall that $\hat{L}_x,\hat{L}_y$ are incompatible with $\hat{L}_z$.
+        \begin{itemize}
+            \item This is why we have an uncertainty associated with the quantity $\hbar^2[\ell(\ell+1)-m^2]$.
+            \item This is also why we have
+            \begin{equation*}
+                \ev{(\hat{L}_x^2+\hat{L}_y^2)}{n\ell m} = 2\ev{\hat{L}_x^2}{n\ell m}
+                = 2\ev{\hat{L}_y^2}{n\ell m}
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Recall expressing the wave function in polar coordinates via $\psi(r,\theta,\phi)$.
+    \begin{itemize}
+        \item Solving by separation of variables, we have
+        \begin{equation*}
+            \ket{n\ell m} = \psi_{n\ell m}(r,\theta,\phi)
+            = R_{n\ell}(r)\cdot Y_{\ell m}(\theta,\phi)
+        \end{equation*}
+        \item This has the interesting property that if we define
+        \begin{equation*}
+            U_{n\ell}(r) = rR_{n\ell}(r)
+        \end{equation*}
+        then
+        \begin{equation*}
+            -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\underbrace{\left[ \frac{\hbar^2\ell(\ell+1)}{2Mr^2}+V(r) \right]}_{V_\text{eff}(r)}U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+        \end{equation*}
+        \item This means that $U$ is the solution to a one-dimensional problem in an effective potential.
+    \end{itemize}
+    \item A couple of interesting comments.
+    \begin{itemize}
+        \item $m$ doesn't appear because directionality doesn't matter. We don't care which direction we project into; we only care about the total angular momentum.
+        \begin{itemize}
+            \item Recall that there is a $2\ell+1$ degeneracy associated with the fact that $m$ doesn't appear.
+            \item Indeed, we get energy levels within this potential.
+        \end{itemize}
+        \item Recall that $M$ denotes the mass to avoid confusion with the quantum number $m$.
+        \item The effective potential we are considering is of the same shape as the red line in Figure \ref{fig:Veff}.
+    \end{itemize}
+    \item Recall that solving for $Y$, we obtain
+    \begin{equation*}
+        \underbrace{-\hbar^2\left[ \frac{1}{\sin\theta}\pdv{\theta}(\sin\theta\pdv{Y_{\ell m}}{\theta})+\frac{1}{\sin^2\theta}\pdv[2]{Y_{\ell m}}{\phi} \right]}_{\hat{\vec{L}}{\,}^2Y_{\ell m}} = \hbar^2\ell(\ell+1)Y_{\ell m}
+    \end{equation*}
+    \begin{itemize}
+        \item The rather complicated expression on the left above just describes $\hat{\vec{L}}{\,}^2Y_{\ell m}$ in polar coordinates.
+        \item We'll get as a solution
+        \begin{equation*}
+            Y_{\ell m}(\theta,\phi) = \e[im\phi]\Theta_{\ell m}(\theta)
+        \end{equation*}
+        \item We can therefore see that if $\hat{L}_z=-i\hbar(\pdv*{\phi})$ then
+        \begin{equation*}
+            \hat{L}_zY_{\ell m}(\theta,\phi) = \hbar mY_{\ell m}(\theta,\phi)
+        \end{equation*}
+        \item Remember that $m$ and $\ell$ are both integers.
+        \item Simplifying the above, we get
+        \begin{equation*}
+            \sin\theta\dv{\theta}(\sin\theta\dv{\Theta_{\ell m}}{\theta})-m^2\Theta_{\ell m}+[\ell(\ell+1)\sin^2\theta]\Theta_{\ell m} = 0
+        \end{equation*}
+        \item Secretly, all the dependence on $\theta$ is a dependence on $\cos\theta$ since we can make substitutions like $\sin^2\theta=1-\cos^2\theta$.
+        \item The solutions are then
+        \begin{equation*}
+            \Theta_{\ell m}(u) = AP_\ell^m(u)
+        \end{equation*}
+        where $u=\cos\theta$ and $P_\ell^m$ are the \textbf{associated Legendre functions}.
+        \item Finally, if we want to obtain a well-normalized solution, i.e., we need to calculate $A$. Computationally, this means that we need
+        \begin{equation*}
+            \int_0^{2\pi}\int_0^\pi\int_0^\infty\dd{r}\dd\theta\dd\phi\ r^2\sin\theta|Y_{\ell m}(\theta,\phi)R_{n\ell}(r)|^2
+        \end{equation*}
+        \item This integral splits into two.
+        \begin{align*}
+            \int_0^{2\pi}\int_0^\pi\dd\theta\dd\phi\ \sin\theta|Y_{\ell m}(\theta,\phi)|^2 &= 1&
+            \int_0^\infty\dd{r}\ \underbrace{|rR_{n\ell}(r)|^2}_{|U_{n\ell}(r)|^2} &= 1
+        \end{align*}
+        \item Note that this implies that
+        \begin{align*}
+            \int\dd\phi\dd\theta\ \sin\theta Y_{\ell m}(\theta,\phi)Y_{\ell'm'}(\theta,\phi) &= \delta_{\ell\ell'}\delta_{mm'}&
+            \int\dd{r}\ r^2R_{n\ell}(r)R_{n'\ell'}(r) = \delta_{nn'}\delta_{\ell\ell'}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Rodrigues formula}: The formula given as follows. \emph{Given by}
+    \begin{equation*}
+        \frac{1}{2^\ell\ell!}\dv[\ell]{u}(u^2-1)^\ell
+    \end{equation*}
+    \item \textbf{Legendre polynomials}: The system of complete orthogonal polynomials defined via the Rodrigues formula. \emph{Denoted by} $\bm{P_\ell(u)}$. \emph{Given by}
+    \begin{equation*}
+        P_\ell(u) = \frac{1}{2^\ell\ell!}\dv[\ell]{u}(u^2-1)^\ell
+    \end{equation*}
+    \item \textbf{Associated Legendre functions}: The canonical solutions of the general Legendre equation. \emph{Denoted by} $\bm{P_\ell^m(u)}$. \emph{Given by}
+    \begin{equation*}
+        P_\ell^m(u) = (1-u^2)^{|m|/2}\dv[|m|]{u}[P_\ell(u)]
+    \end{equation*}
+    \item A couple of closing comments.
+    \begin{itemize}
+        \item The normalization constant is such that \emph{en toto},
+        \begin{equation*}
+            Y_{\ell m}(\theta,\phi) = (-1)^m\sqrt{\frac{(2\ell+1)}{4\pi}\cdot\frac{(\ell-m)!}{(\ell+m)!}}P_{\ell m}(\cos\theta)\e[im\phi]
+        \end{equation*}
+        \begin{itemize}
+            \item This is for $m\geq 0$
+        \end{itemize}
+        \item If $m<0$, then use
+        \begin{equation*}
+            Y_{\ell(-|m|)} = (-1)^{|m|}Y_{\ell|m|}^*(\theta,\phi)
+        \end{equation*}
+        where the complex conjugate of $Y$ just switches the exponential term at the end to $\e[-im\phi]$.
+        \item The probability $P_{00}(\cos\theta)$ is a constant. So if we draw a circle in the $zx$-plane, it will not vary in intensity??
+        \item We also have $P_{10}(\cos\theta)=\cos\theta$. Thus, this particle will move more quickly past the $x$-axis and slower toward the bottom of its circular orbit, yielding a $p$-orbital shape. Maximum probability is moving in the perpendicular direction.
+        \item $P_{11}(\cos\theta)=\sin\theta$.
+        \begin{itemize}
+            \item If you have a particle with angular momentum 1 and modulus 1, it moves in the $xy$ plane in such a way that the total angular momentum points in the vertical direction and thus then it has maximum probability of being in the perpendicular plane.
+            \item This gives us something sideways (think $p_z$ vs. $p_x$ orbitals).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
