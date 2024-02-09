@@ -168,5 +168,185 @@
 
 
 
+\section{Midterm Exam Review}
+\begin{itemize}
+    \item \marginnote{2/7:}Format of the midterm.
+    \begin{itemize}
+        \item 5 conceptual questions (multiple choice) that we should know by now.
+        \item Two computational problems.
+        \begin{itemize}
+            \item One that appears in the problem set.
+            \item One that appears in the problem set but we will have to do a couple extra things.
+            \item Subject: One on harmonic oscillators and one on motion in potential wells.
+        \end{itemize}
+        \item If we fail the multiple choice, "something is wrong with you."
+        \item The exam is not curved, but the class will have a curve.
+        \item We can bring virtual notes.
+    \end{itemize}
+    \item Conceptual things to remember for the midterm.
+    \begin{itemize}
+        \item In classical mechanics, a particle is given by a path/trajectory $\vec{r}(t)$.
+        \item In quantum mechanics, there is no path. The best we can do is define $\ev{\vec{r}}{\psi}(t)$, but we will always be hampered by the fact that $\sigma_{\vec{p}}\neq 0$.
+        \begin{itemize}
+            \item The uncertainty in momentum comes from the Heisenberg uncertainty relation.
+            \item If the operator is independent of time (such as $\hat{x},\hat{p}_x,\hat{\vec{r}},\hat{\vec{p}},V(\vec{r})$), then
+            \begin{equation*}
+                \dv{t}(\ev{\hat{O}}{\psi}) = \frac{i}{\hbar}\ev{[\hat{H},\hat{O}]}{\psi}
+            \end{equation*}
+            \begin{itemize}
+                \item This means that if $[\hat{H},\hat{O}]=0$, then the expected value of the operator is independent of time.
+            \end{itemize}
+            \item We most often deal with time-independent potentials $V(\vec{r},t)=V(\vec{r})$.
+            \item Recall that since $[\hat{H},\hat{H}]=0$, $E=\ev{\hat{H}}{\psi}$ is a good quantum number.
+            \begin{itemize}
+                \item It follows that
+                \begin{align*}
+                    \hat{H}\ket{\psi_n} &= E_n\ket{\psi_n}&
+                    \hat{H}^2\ket{\psi_n} &= E_n^2\ket{\psi_n}
+                \end{align*}
+                \item We also have that
+                \begin{align*}
+                    \sigma_{\hat{H}} &= 0&
+                    \ev{\hat{H}^2}{\psi_n}-(\ev{\hat{H}}{\psi_n})^2 &= 0
+                \end{align*}
+            \end{itemize}
+            \item It is very important to remember that
+            \begin{align*}
+                \ket{\psi} &= \sum_nc_n\e[-iE_nt/\hbar]\ket{\psi_n}\\
+                \braket{\psi} &= \sum_n|c_n|^2 = 1\\
+                \ev{\hat{H}}{\psi} &= \sum_n|c_n|^2E_n\\
+                \braket{\psi_n}{\psi_m} &= \int\dd{\vec{r}}\ \psi_n^*\psi_m = \delta_{nm}
+            \end{align*}
+            \begin{itemize}
+                \item It follows from the bottom three statements that $|c_n|^2$ is the probability of measuring $E_n$.
+            \end{itemize}
+            \item We can obtain the $m^\text{th}$ coefficient of $\psi$ using the inner product formula.
+            \begin{equation*}
+                \braket{\psi_m}{\psi} = \sum_nc_n\underbrace{\braket{\psi_m}{\psi_n}}_{\delta_{nm}} = c_m
+            \end{equation*}
+            \begin{itemize}
+                \item Equivalently,
+                \begin{equation*}
+                    c_m = \int\dd{\vec{r}}\ \psi_m^*(\vec{r})\psi(\vec{r})
+                \end{equation*}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \pagebreak
+    \item Computational things to remember for the midterm.
+    \item The harmonic oscillator.
+    \begin{itemize}
+        \item Since we are in one dimension, $\hat{p}=\hat{p}_x$
+        \item The Hamiltonian is
+        \begin{equation*}
+            \hat{H} = \frac{\hat{p}^2}{2m}+\frac{k\hat{x}^2}{2}
+        \end{equation*}
+        \item We have that
+        \begin{equation*}
+            [\hat{p},\hat{x}] = -i\hbar
+        \end{equation*}
+        \begin{itemize}
+            \item Note that this statement is not only true in the context of the harmonic oscillator. Indeed, $\hat{p}_x$ and $\hat{x}$ always compatibilize in this way.
+        \end{itemize}
+        \item Recall that compatibility is important because the \emph{generic} uncertainty principle (restated as follows) requires a zero commutator in order for it to be possible for both uncertainties to be zero!
+        \begin{equation*}
+            \sigma_{\hat{A}}^2\sigma_{\hat{B}}^2 \geq \frac{1}{4}|\ev{[\hat{A},\hat{B}]}{\psi}|^2
+        \end{equation*}
+        \item We defined ladder operators
+        \begin{align*}
+            a_+ &= \frac{1}{\sqrt{2\hbar m\omega}}(-i\hat{p}+m\omega\hat{x})&
+            a_- &= \frac{1}{\sqrt{2\hbar m\omega}}(i\hat{p}+m\omega\hat{x})
+        \end{align*}
+        \item Having defined these operators, we may write the Hamiltonian in terms of them as follows.
+        \begin{equation*}
+            \hat{H} = \hbar\omega\left( a_+a_-+\frac{1}{2} \right)
+        \end{equation*}
+        \item Defining $\ket{n}:=\ket{\psi_n}$ and remembering that
+        \begin{equation*}
+            a_+a_-\ket{n} = n\ket{n}
+        \end{equation*}
+        this form of the Hamiltonian makes it obvious that
+        \begin{equation*}
+            E_n = \hbar\omega\left( n+\frac{1}{2} \right)
+        \end{equation*}
+        since
+        \begin{align*}
+            \hat{H}\ket{n} &= \hbar\omega\left( n+\frac{1}{2} \right)\ket{n}&
+            \ev{\hat{H}}{n} &= \hbar\omega\left( n+\frac{1}{2} \right)
+        \end{align*}
+        \item The ladder operators also have distinctive actions on the energy eigenstates.
+        \begin{align*}
+            a_-\ket{n} &= \sqrt{n}\ket{n-1}&
+            a_+\ket{n} &= \sqrt{n+1}\ket{n+1}
+        \end{align*}
+        \item Don't forget that overall,
+        \begin{equation*}
+            \braket{n}{m} = \delta_{nm}
+        \end{equation*}
+        \item The ladder operators enable us to calculate the observables of a generic state $\psi$ of the harmonic oscillator as follows.
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            \ev{\hat{x}}{\psi} &= \sqrt{\frac{\hbar}{2M\omega}}\ev{(a_++a_-)}{\psi}\\
+            &= \sum_{m,n}c_m^*c_n\sqrt{\frac{\hbar}{2M\omega}}\mel{m}{(a_++a_-)}{n}\e[i(E_m-E_n)t/\hbar]\\
+            &= \sum_{m,n}c_m^*c_n\sqrt{\frac{\hbar}{2M\omega}}\e[i(E_m-E_n)t/\hbar]\big( \sqrt{n+1}\underbrace{\braket{m}{n+1}}_{\delta_{m,n+1}}+\underbrace{\sqrt{n}\braket{m}{n-1}}_{\delta_{m,n-1}} \big)\\
+            &= \sum_{n=0}^\infty c_{n+1}^*c_n\e[i\omega t]\sqrt{n+1}+\sum_{n=0}^\infty c_{n-1}^*c_n\e[-i\omega t]\sqrt{n}\\
+            &= \sum_{n=0}^\infty\left( c_{n+1}^*c_n\e[i\omega t]+c_n^*c_{n+1}\e[-i\omega t] \right)\sqrt{n+1}
+        \end{align*}
+        \endgroup
+        \begin{itemize}
+            \item Note that in the next to last line above, the second sum \emph{can} go from zero to $\infty$ because for the $n=0$ term, although we have an undefined $c_{-1}$, we also have $\sqrt{0}=0$ so the problematic "undefined" term vanishes.
+            \item We can expect to see a computation like this in the midterm.
+        \end{itemize}
+        \item Using similar methods, we can calculate that
+        \begin{equation*}
+            \ev**{\frac{k\hat{x}^2}{2}}{n} = \frac{E_n}{2}
+            = \ev{\hat{p}^2}{n}
+            = \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right)
+        \end{equation*}
+        \begin{itemize}
+            \item In particular, we expand
+            \begin{equation*}
+                \ev{(a_++a_-)^2}{n} = \underbrace{\ev{a_+^2}{n}}_0+\underbrace{\ev{a_-^2}{n}}_0+\underbrace{\ev{a_+a_-}{n}}_n+\ev{\underbrace{a_-a_+}_{a_+a_-+1}}{n}
+                = 2n+1
+            \end{equation*}
+        \end{itemize}
+        \item Note that for the same reason discussed above,
+        \begin{equation*}
+            a_-a_+\ket{n} = (n+1)\ket{n}
+        \end{equation*}
+        \item Since $\sigma_x^2=\ev{\hat{x}^2}{n}-(\ev{\hat{x}}{n})^2\neq 0$ as we can verify by further calculations, there is \emph{always} some nonzero $\sigma_x$ for the harmonic oscillator.
+    \end{itemize}
+    \item Final note.
+    \begin{itemize}
+        \item If we want to compute $\ev{\hat{x}}{\psi}$ for a generic potential, we must use
+        \begin{equation*}
+            \ev{\hat{x}}{\psi}(t) = \sum_{m,n}c_m^*c_n\e[i(E_m-E_n)t/\hbar]\mel{m}{\hat{x}}{n}
+        \end{equation*}
+        \item In other words, it is only in the harmonic oscillator specifically that we can use the ladder operators.
+        \item If we are in a specific energy eigenstate (of a general potential), though, then we do get conservation of position and momentum because $E_m=E_n$ so $E_m-E_n=0$ removes the time term. In particular,
+        \begin{equation*}
+            \ev{\hat{x}}{\psi_n(x,t)} = c_n^*c_n\e[i(E_n-E_n)t/\hbar]\ev{\hat{x}}{\psi_n(x)}= c_n^*c_n\ev{\hat{x}}{\psi_n(x)}
+        \end{equation*}
+        and
+        \begin{equation*}
+            \dv{t}(\ev{\hat{x}}{\psi_n}) = \frac{i}{\hbar}\ev{[\hat{H},\hat{x}]}{\psi_n}
+            = \frac{i}{\hbar}\ev{\hat{H}\hat{x}-\hat{x}\hat{H}}{\psi_n}
+            = \frac{i}{\hbar}\left( E_n\ev{\hat{x}}{\psi_n}-E_n\ev{\hat{x}}{\psi_n} \right)
+            = 0
+        \end{equation*}
+        so
+        \begin{equation*}
+            \dv{t}(\ev{\hat{x}}{\psi_n}) = \dv{t}(\ev{\hat{p}}{\psi_n})
+            = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Why does $\ev{\hat{H}\hat{x}}{\psi_n}=E_n\ev{\hat{x}}{\psi_n}$?? I thought $\hat{H}$ and $\hat{x}$ didn't commute.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
