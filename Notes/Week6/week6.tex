@@ -348,5 +348,110 @@
 
 
 
+\section{Midterm}
+\begin{enumerate}[label={\textbf{\arabic*.}}]
+    \item \marginnote{2/9:}(5 pts) In quantum mechanics, a particle follows a definite path $\vec{r}=\vec{r}(t)$. The only difference with the classical case is that the energy is quantized.
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item True
+        \item False
+    \end{enumerate}
+    \item (5 pts) A particle can enter a region of space where the energy of the particle is smaller than the potential energy.
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item False
+        \item True, if it happens in a limited region of space.
+    \end{enumerate}
+    \item (5 pts) In quantum mechanics, observables are identified with Hermitian operators. These observables are conserved in time\dots
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item Only if these operators commute with the momentum operator;
+        \item Only if these operators commute with the Hamiltonian operator;
+        \item Only if these operators commute with the Hamiltonian operator and they have no explicit time dependence.
+    \end{enumerate}
+    Give a short justification of your answer.
+    \item (5 pts) For the case of a time-independent potential, one can find eigenfunctions of the Hamiltonian operator $\psi_n(x)$ in which the energy $E_n$ is well-defined. Being that the case, the mean values of the position and momentum in the states described by $\psi_n(x,t)=\psi_n(x)\e[-iE_nt/\hbar]$ are independent of time.
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item True
+        \item False
+    \end{enumerate}
+    Give a short justification of your answer.
+    \item Given the eigenfunctions $\psi_n(x)$ of the Hamiltonian in one dimension with well-defined energies $E_n$\dots
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item (5 pts) Write the form of the general solution $\psi(x,t)$, including its time dependence.
+        \item (5 pts) What is the mean value of the Hamiltonian in the state associated with this general solution, and how can this expression be interpreted in terms of the probability of measuring the particle with a given energy $E_n$?
+        \item (10 pts) Write the formal expression one needs to calculate to obtain the mean values of the position and momentum, identified with the operators $\hat{x}$ and $\hat{p}_x=-i\hbar(\pdv*{x})$ in terms of the coefficients $c_n$, $\psi_n(x)$, $E_n$, $x$, and the derivatives with respect to $x$ of $\psi_n$. Include the dependence on time.
+    \end{enumerate}
+    \item For the harmonic oscillator, consider the ladder operators $a_\pm=(\mp i\hat{p}+M\omega x)/\sqrt{2\hbar M\omega}$ such that $[a_-,a_+]=1$, where $M$ is the mass of the particle. The Hamiltonian may be written as $\hat{H}=\hbar\omega(a_+a_-+1/2)$, and the eigenstates of energy $E_n=\hbar\omega(n+1/2)$ are related by $a_+\psi_n=\sqrt{n+1}\psi_{n+1}$, $a_-\psi_n=\sqrt{n}\psi_{n-1}$. Some additional useful formulae are given after Problem 7.
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item (5 pts) Compute the mean value of $\hat{x}$ and $\hat{p}$ in the energy eigenstates described by $\psi_n$.
+        \item (10 pts) Compute the mean value of $\hat{x}^2$ and $\hat{p}^2$ in these states.
+        \item (5 pts) Verify that the uncertainty principle is fulfilled for the energy eigenstates.
+        \item (15 pts) Write the expression for the mean value of the momentum for the general solution $\psi(x,t)$. Work it out as much as you can. What can you say about the frequency of oscillation of the momentum in a generic solution?
+    \end{enumerate}
+    \item Imagine a particle in an infinite potential well
+    \begin{equation*}
+        V(x) =
+        \begin{cases}
+            0 & 0<x<a\\
+            \infty & x\leq 0\text{ and }x\geq a
+        \end{cases}
+    \end{equation*}
+    Some useful formulae for the solution of Problem 7 are given below.
+    \begin{enumerate}[label={\textbf{\alph*.}}]
+        \item (10 pts) What are the energy eigenvalues and eigenstate wave functions in this case? Justify your answer.
+        \item (15 pts) Take a superposition of two energy eigenstates with contiguous eigenvalues
+        \begin{equation*}
+            \psi(x,t) = \frac{1}{\sqrt{2}}\psi_n(x,t)+\frac{1}{\sqrt{2}}\psi_{n+1}(x,t)
+        \end{equation*}
+        anc compute the mean value of $\hat{x}$ as a function of time for the wave function $\psi(x,t)$. Compute also the mean value of the momentum and demonstrate from these expressions that it is related to the mean value of $\hat{x}$ by the expected Ehrenfest Theorem relation:
+        \begin{equation*}
+            \dv{t}(\ev{\hat{x}}{\psi}) = \frac{\ev{\hat{p}}{\psi}}{M}
+        \end{equation*}
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection*{Some Useful Formulae}
+\subsubsection*{For the Harmonic Oscillator}
+\begin{align*}
+    \hat{p} &= i\sqrt{\frac{\hbar M\omega}{2}}(a_+-a_-)&
+    \hat{x} &= \sqrt{\frac{\hbar}{2M\omega}}(a_++a_-)
+\end{align*}
+Matrix elements: Using Dirac notation,
+\begin{align*}
+    a_+\ket{n} &= \sqrt{n+1}\ket{n+1}\\
+    a_-\ket{n} &= \sqrt{n}\ket{n-1}\\
+    \ev{(a_+)^m}{n} &= \ev{(a_-)^m}{n} = 0,\quad m\geq 1\\
+    \mel{m}{a_+}{n} &= \sqrt{n+1}\,\delta_{n+1,m}\\
+    \mel{m}{a_-}{n} &= \sqrt{n}\,\delta_{n-1,m}\\
+    \mel{m}{a_-a_+}{n} &= (n+1)\delta_{n,m}\\
+    \mel{m}{a_+a_-}{n} &= n\,\delta_{n,m}
+\end{align*}
+
+\subsubsection*{For the Harmonic Oscillator}
+Wave functions and energies:
+\begin{align*}
+    \psi_n(x,t) &= \sqrt{\frac{2}{a}}\sin(\frac{\pi nx}{a})\e[-iE_nt/\hbar]&
+    E_n &= \frac{\hbar^2\pi^2n^2}{2Ma^2}
+\end{align*}
+Useful integrals: For $n,m\in\N$,
+\begin{align*}
+    \frac{2}{a}\int_0^a\sin(\frac{\pi nx}{a})\sin(\frac{\pi mx}{a})\dd{x} &= \delta_{nm}\\
+    \frac{2}{a}\int_0^ax\sin^2(\frac{\pi nx}{a})\dd{x} &= \frac{a}{2}
+\end{align*}
+For $n+m$ even and $n\neq m$,
+\begin{equation*}
+    \frac{2}{a}\int_0^ax\sin(\frac{\pi nx}{a})\sin(\frac{\pi mx}{a})\dd{x} = 0
+\end{equation*}
+For $n+m$ even,
+\begin{equation*}
+    \int_0^a\sin(\frac{\pi nx}{a})\cos(\frac{\pi mx}{a})\dd{x} = 0
+\end{equation*}
+For $n+m$ odd,
+\begin{align*}
+    \frac{2}{a}\int_0^ax\sin(\frac{\pi nx}{a})\sin(\frac{\pi mx}{a})\dd{x} &= -\frac{8anm}{\pi^2(m^2-n^2)^2}\\
+    \frac{\pi m}{a}\frac{2}{a}\int_0^a\sin(\frac{\pi nx}{a})\cos(\frac{\pi mx}{a})\dd{x} &= \frac{4mn}{a(n^2-m^2)}
+\end{align*}
+
+
+
 
 \end{document}
