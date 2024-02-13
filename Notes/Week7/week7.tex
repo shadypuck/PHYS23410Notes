@@ -1,0 +1,245 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{6}
+
+\begin{document}
+
+
+
+
+\chapter{Spin, Fermions, and Bosons}
+\section{Three-Dimensional Harmonic Oscillator}
+\begin{itemize}
+    \item \marginnote{2/12:}Last time.
+    \begin{itemize}
+        \item We discussed some of the problems we face in 3D.
+        \item The Hamiltonian is now
+        \begin{equation*}
+            \hat{H} = -\frac{\hbar^2}{2m}\left[ \pdv[2]{x}+\pdv[2]{y}+\pdv[2]{z} \right]+V(x,y,z)
+        \end{equation*}
+        \begin{itemize}
+            \item Derivatives in three coordinates.
+            \item The potential is time-independent.
+            \item If the potential does not depend on anything more specific (e.g., is not central, for instance), then only $\hat{H}$ is conserved.
+        \end{itemize}
+        \item We solve
+        \begin{equation*}
+            \hat{H}\psi(x,y,z) = E\psi(x,y,z)
+        \end{equation*}
+        for $\psi,E$.
+        \item There are three compatible operators:
+        \begin{equation*}
+            \hat{H},\ \hat{\vec{L}}{\,}^2,\ \hat{L}_z
+        \end{equation*}
+        \begin{itemize}
+            \item The $z$-angular momentum operator, in particular, has the form
+            \begin{equation*}
+                \hat{L}_z = -i\hbar\pdv{\phi}
+            \end{equation*}
+            which is analogous to the form $\hat{p}_z=-i\hbar(\pdv*{z})$.
+        \end{itemize}
+        \item The potential is central, i.e.,
+        \begin{equation*}
+            V(x,y,z) = V(r) = V(\sqrt{x^2+y^2+z^2})
+        \end{equation*}
+        \begin{itemize}
+            \item If the potential is depends on $r$, we solve the ODE in polar coordinates $(r,\theta,\phi)$.
+        \end{itemize}
+    \end{itemize}
+    \item There are also many cases when we only have
+    \begin{equation*}
+        V(x,y,z) = V(\sqrt{x^2+y^2})
+    \end{equation*}
+    \begin{itemize}
+        \item In this case, $\hat{H},\hat{L}_z,\hat{p}_z$ will all be compatible.
+    \end{itemize}
+    \item If the potential depends via
+    \begin{equation*}
+        V(x,y,z) = V(\sqrt{x^2+y^2},z)
+    \end{equation*}
+    then we will conserve $\hat{H},\hat{L}_z$.
+    \begin{itemize}
+        \item We will play with this in the problem set.
+    \end{itemize}
+    \pagebreak
+    \item Today, we begin with the \textbf{asymmetric harmonic oscillator}.
+    \item \textbf{Asymmetric harmonic oscillator}: A particle subject to the following three-dimensional potential. \emph{Constraint}
+    \begin{equation*}
+        V(x,y,z) = \frac{M\omega_1^2x^2}{2}+\frac{M\omega_2^2y^2}{2}+\frac{M\omega_3^2z^2}{2}
+    \end{equation*}
+    \begin{itemize}
+        \item This potential is special in the sense that it allows us to solve by separation of variables.
+        \item In other words, since we can write the ODE in the form
+        \begin{equation*}
+            \left[ -\frac{\hbar^2}{2M}\pdv[2]{\psi}{x}+\frac{M\omega_1^2x^2}{2}\psi \right]+\left[ -\frac{\hbar^2}{2M}\pdv[2]{\psi}{y}+\frac{M\omega_2^2y^2}{2}\psi \right]+\left[ -\frac{\hbar^2}{2M}\pdv[2]{\psi}{z}+\frac{M\omega_3^2z^2}{2}\psi \right] = E\psi
+        \end{equation*}
+        we may write
+        \begin{equation*}
+            \psi(x,y,z) = X(x)Y(y)Z(z)
+        \end{equation*}
+        \item This allows us to algebraically manipulate the ODE into the form
+        \begin{equation*}
+            \frac{1}{X}\left[ -\frac{\hbar^2}{2M}\dv[2]{X}{x}+\frac{M\omega_1^2x^2}{2}X \right]+\frac{1}{Y}\left[ -\frac{\hbar^2}{2M}\dv[2]{Y}{y}+\frac{M\omega_2^2y^2}{2}Y \right]+\frac{1}{Z}\left[ -\frac{\hbar^2}{2M}\dv[2]{Z}{z}+\frac{M\omega_3^2z^2}{2}Z \right] = E
+        \end{equation*}
+        \begin{itemize}
+            \item We switch from partial to total derivatives here because now each function is only a function of one variable (e.g., $X(x)$ depends only on $x$)!
+        \end{itemize}
+        \item Since the sum of these three independent terms is equal to a constant, each term must equal a constant!
+        \item Splitting the above equation into three, we obtain
+        \begin{align*}
+            -\frac{\hbar^2}{2M}\dv[2]{X}{x}+\frac{M\omega_1^2x^2}{2}X &= E_{n_1}X\\
+            -\frac{\hbar^2}{2M}\dv[2]{Y}{y}+\frac{M\omega_2^2y^2}{2}Y &= E_{n_2}Y\\
+            -\frac{\hbar^2}{2M}\dv[2]{Z}{z}+\frac{M\omega_3^2z^2}{2}Z &= E_{n_3}Z
+        \end{align*}
+        \begin{itemize}
+            \item It follows that
+            \begin{equation*}
+                E = E_{n_1}+E_{n_2}+E_{n_3}
+            \end{equation*}
+        \end{itemize}
+        \item We already know the solution to each of these three ODEs! They are just quantum harmonic oscillators. Thus,
+        \begin{equation*}
+            E_{n_i} = \hbar\omega_i\left( n_i+\frac{1}{2} \right)
+        \end{equation*}
+        and
+        \begin{equation*}
+            E = E_{n_1n_2n_3}
+            = \hbar\omega_1\left( n_1+\frac{1}{2} \right)+\hbar\omega_2\left( n_2+\frac{1}{2} \right)+\hbar\omega_3\left( n_3+\frac{1}{2} \right)
+        \end{equation*}
+        \item Additionally, it follows that the wave functions of each direction are of the form (for example)
+        \begin{equation*}
+            X_{n_1}(x) = \left( \frac{M\omega_1}{\hbar\pi} \right)^{1/4}\frac{H_{n_1}(\xi_1)}{\sqrt{2^{n_1}n_1!}}\exp[-\frac{\xi_1^2}{2}]
+        \end{equation*}
+        where $\xi_1=x\sqrt{M\omega_1/\hbar}$.
+    \end{itemize}
+    \item What happens to $X_{n_1}(x),Y_{n_2}(y)$ in the limiting case that $n_1\to n_2$, $x\to y$, and $\omega_1\to\omega_2$?
+    \begin{itemize}
+        \item We start approaching something interesting.
+        \item We need to go a bit further, though.
+    \end{itemize}
+    \item Now consider the limiting case where
+    \begin{equation*}
+        \omega_1 = \omega_2
+        = \omega_3
+        = \omega
+    \end{equation*}
+    \begin{itemize}
+        \item Herein, the Hamiltonian becomes
+        \begin{align*}
+            \hat{H} &= -\frac{\hbar^2}{2M}\vec{\nabla}^2+\frac{M\omega^2}{2}(x^2+y^2+z^2)\\
+            &= -\frac{\hbar^2}{2M}\vec{\nabla}^2+\frac{M\omega^2r^2}{2}
+        \end{align*}
+        \item In this \emph{central potential}, recall that we have
+        \begin{equation*}
+            \hat{\vec{L}}{\,}^2Y_{\ell m}(\theta,\phi) = \hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi)
+        \end{equation*}
+        and
+        \begin{equation*}
+            \hat{L}_zY_{\ell m}(\theta,\phi) = \hbar mY_{\ell m}(\theta,\phi)
+        \end{equation*}
+        and
+        \begin{equation*}
+            -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\underbrace{\left[ V(r)+\frac{\hbar^2\ell(\ell+1)}{2Mr^2} \right]}_{V_\text{eff}(r)}U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+        \end{equation*}
+    \end{itemize}
+    \item This leads directly into our discussion of the \textbf{spherically symmetric harmonic oscillator}.
+    \item \textbf{Spherically symmetric harmonic oscillator}: A particle subject to the following one-dimensional effective potential. \emph{Constraint}
+    \begin{equation*}
+        V_\text{eff}(r) = \frac{M\omega^2r^2}{2}+\frac{\hbar^2\ell(\ell+1)}{2Mr^2}
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \small
+            \draw [-stealth] (-1,0) -- (4,0) node[right]{$r$};
+            \draw [-stealth] (0,-0.5) -- (0,2.5);
+    
+            \footnotesize
+            \draw [blx,thick] plot[domain=0.318:3.95,samples=50,smooth] (\x,{1/(4*\x*\x)}) node[above left]{$\dfrac{\hbar^2\ell(\ell+1)}{2Mr^2}$};
+            \draw [rex,thick] plot[domain=0:3.162,smooth] (\x,{\x*\x/4}) node[below=5mm]{$\dfrac{M\omega r^2}{2}$};
+            
+            \draw [grx,thick] plot[domain=0.318:3.146,samples=50,smooth] (\x,{1/(4*\x*\x)+\x*\x/4});
+            \draw [grx]
+                (0.648,0.7) -- (1.543,0.7)
+                (0.551,0.9) -- (1.816,0.9)
+                (0.490,1.1) -- (2.040,1.1)
+            ;
+            \node [grx] at (1,2) {$V_\text{eff}(r)$};
+        \end{tikzpicture}
+        \caption{Spherically symmetric harmonic oscillator potential.}
+        \label{fig:sphrSymHOV}
+    \end{figure}
+    \begin{itemize}
+        \item The problem we have to solve here is
+        \begin{equation*}
+            -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\left[ \frac{M\omega r^2}{2}+\frac{\hbar^2\ell(\ell+1)}{2Mr^2} \right]U_{n\ell}(r) = E_{n\ell}U(r)
+        \end{equation*}
+        \item Recall that
+        \begin{align*}
+            \psi(r,\theta,\phi) &= R_{n\ell}(r)Y_{\ell m}(\theta,\phi)&
+            R_{n\ell}(r)r &= U_{n\ell}(r)
+        \end{align*}
+        \item In the effective potential, we have the interplay of two peaking potentials as in Figure \ref{fig:sphrSymHOV}.
+        \begin{itemize}
+            \item The particle will have certain energy states within the well.
+        \end{itemize}
+        \item In the limiting case that $r$ is small ($r\to 0$), we can approximate the potential as giving us
+        \begin{equation*}
+            -\frac{\hbar^2}{2M}\dv[2]{U_{n\ell}}{r}+\frac{\hbar^2\ell(\ell+1)}{2Mr^2}U_{n\ell}+\cdots = 0
+        \end{equation*}
+        \begin{itemize}
+            \item In this case, the solution is proportional to
+            \begin{equation*}
+                U_{n\ell} \propto Cr^{\ell+1}
+            \end{equation*}
+            \item This is because
+            \begin{align*}
+                \dv{r}(Cr^{\ell+1}) &= (\ell+1)Cr^\ell\\
+                \dv[2]{r}(Cr^{\ell+1}) &= \ell(\ell+1)C\frac{r^{\ell+1}}{r^2}
+            \end{align*}
+        \end{itemize}
+        \item In the limiting case that $r$ is large ($r\to\infty$), we can approximate the potential as giving us
+        \begin{equation*}
+            -\frac{\hbar^2}{2M}\dv[2]{U_{n\ell}}{r}+\frac{M\omega^2r^2}{2}U_{n\ell}+\cdots = 0
+        \end{equation*}
+        \begin{itemize}
+            \item In this case, the solution is proportional to
+            \begin{equation*}
+                U_{n\ell} = C\e[-M\omega r^2/\hbar]
+            \end{equation*}
+        \end{itemize}
+        \item Thus, we combine the two partial solutions to propose the overall ansatz
+        \begin{equation*}
+            U_{n\ell} = f_{n\ell}r^{\ell+1}\e[-M\omega r^2/\hbar]
+        \end{equation*}
+        \item Substituting back into the original ODE, we obtain the differential equation
+        \begin{equation*}
+            f_{n\ell}''+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)f_{n\ell}'+\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]f_{n\ell} = 0
+        \end{equation*}
+        \item As we have previously, propose that
+        \begin{equation*}
+            f_{n\ell}(r) = \sum_ja_jr^j
+        \end{equation*}
+        \begin{itemize}
+            \item But there's a problem: $f_{n\ell}'(r=0)=a_1$, and this would allow the $(\ell+1)/r$ term to diverge and make the differential equation blow up.
+            \item Thus, we choose $a_1=0$ and proceed.
+        \end{itemize}
+        \item Substituting this power series into the differential equation, we obtain
+        \begin{equation*}
+            \sum_jj(j-1)a_jr^{j-2}+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)\sum_jja_jr^{j-1}+\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_ja_jr^j = 0
+        \end{equation*}
+        \item Make a change of variables $j\to j+2$ so that we can start the sum from zero.
+        \begin{multline*}
+            \sum_{j=0}^\infty(j+2)(j+1)a_{j+2}r^j+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)\sum_{j=0}^\infty(j+2)a_{j+2}r^{j+1}\\
+            +\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_{j=0}^\infty a_{j+2}r^{j+2} = 0
+        \end{multline*}
+        \item We will finish this derivation on Wednesday.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
