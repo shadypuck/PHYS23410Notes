@@ -1,0 +1,62 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{4}
+
+\begin{document}
+
+
+
+
+\section{Three Dimensional Mathematical Tools}
+\begin{enumerate}
+    \item \marginnote{2/17:}Consider a three-dimensional box, such that the potential is given by
+    \begin{equation}
+        V(x,y,z) = V_1\theta(|x|-a)+V_2\theta(|y|-b)+V_3\theta(|z|-c)
+    \end{equation}
+    where the function $\theta$ is such that
+    \begin{equation}
+        \theta(u) =
+        \begin{cases}
+            1 & u\geq 0\\
+            0 & u<0
+        \end{cases}
+    \end{equation}
+    This means that the potential is zero inside the box that extends from $x=-a$ to $x=a$ in the $x$-direction, $y=-b$ to $y=b$ in the $y$-direction, and $z=-c$ to $z=c$ in the $z$-direction and increases in steps otherwise.
+    \begin{enumerate}
+        \item Analyze first the case wherein all of $V_1,V_2,V_3\to\infty$. This is the infinite square well in three dimensions. What is the general solution for $\psi(x,y,z)$? \emph{Hint}: Use the method of separation of variables and write $\psi(x,y,z)=X(x)Y(y)Z(z)$.
+        \item Give an expression for the total energy of the system in terms of the energies associated with the propagation in the three space directions.
+        \item What happens when one of the three $V_i$'s becomes finite? What would be the possible solutions in such a case?
+        \item What happens when the three $V_i$'s become finite?
+    \end{enumerate}
+    \item In the presence of a central force, the potential depends only on the radial distance and not on the direction, i.e.,
+    \begin{equation}
+        V(\vec{r}) = V(\sqrt{x^2+y^2+z^2})
+    \end{equation}
+    \begin{enumerate}
+        \item Show that in such a potential, the momentum is not conserved (that is, its mean value is not independent of time), but the angular momentum $\vec{L}=\vec{r}\times\vec{p}$ is conserved. \emph{Hint}: Use commutation relations with $\hat{H}$. Test this for each component of $\vec{L}$ separately.
+        \item What happens if the system has a translational invariance in the $z$-direction and
+        \begin{equation}
+            V(\vec{r}) = V(\sqrt{x^2+y^2})
+        \end{equation}
+        for all $z$? Is any component of the momentum or angular momentum preserved?
+        \item For part (b), what would be the mean value $\Exp{\hat{z}}(t)$ of the $z$-coordinate if the mean value $\Exp{\hat{p}_z}$ of the momentum in the $z$-direction is constant at $p_0$ while $\Exp{\hat{z}}=0$ at time $t=0$?
+    \end{enumerate}
+    \item Imagine I have a potential such that I can find simultaneous eigenstates of $\hat{\vec{L}}{\,}^2$, $\hat{L}_z$, and $\hat{H}$ with respective eigenvalues $\hbar^2\ell(\ell+1)$, $\hbar m$, and $E_{n\ell}$. Suppose that $[\hat{L}_i,\hat{L}_j]=i\hbar\epsilon_{ijk}\hat{L}_k$, $[\hat{\vec{L}}{\,}^2,\hat{L}_i]=[\hat{H},\hat{L}_i]=0$, and $\hat{L}_\pm=\hat{L}_x\pm i\hat{L}_y$.
+    \begin{enumerate}
+        \item Show that $[\hat{L}_\pm,\hat{L}_z]=\mp\hbar\hat{L}_\pm$.
+        \item Show also that this implies that, given an eigenfunction $Y_{\ell m}$ of $\hat{\vec{L}}{\,}^2$ and $\hat{L}_z$,
+        \begin{equation}
+            \hat{L}_\pm Y_{\ell m} \propto Y_{\ell(m\pm 1)}
+        \end{equation}
+        \item Show that $\hat{\vec{L}}{\,}^2=\hat{L}_-\hat{L}_++\hbar\hat{L}_z+\hat{L}_z^2$.
+        \item With the above information, use the ladder operators $\hat{L}_\pm$ to compute the mean value of $\hat{L}_z$, $\hat{L}_y$, $\hat{L}_x^2$, and $\hat{L}_y^2$ in an eigenstate of $\hat{\vec{L}}{\,}^2$ and $\hat{L}_z$.
+        \item Discuss the uncertainty principle for the incompatible variables $\hat{L}_x$ and $\hat{L}_y$. In which way does this differ from the case of $\hat{x}$ and $\hat{p}_x$?
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
