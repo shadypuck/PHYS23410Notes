@@ -72,7 +72,7 @@
                 &= \int_0^a\frac{A^2}{a}\sin^2\left( \frac{\pi x}{a} \right)\dd{x}+\int_0^a\frac{3}{5a}\sin^2\left( \frac{3\pi x}{a} \right)\dd{x}+\int_0^a\frac{1}{5a}\sin^2\left( \frac{5\pi x}{a} \right)\dd{x}\\
                 &= \frac{A^2}{2}+\frac{3}{10}+\frac{1}{10}\\
                 &= \frac{5A^2+4}{10}\\
-                \Aboxed{A &= \sqrt{\frac{6}{5}}}
+                \Aboxed{A &= \pm\sqrt{\frac{6}{5}}}
             \end{align*}
         \end{proof}
         \item If measurements of the energy are carried out, what are the values that will be found and what are the probabilities of measuring such energies? Calculate the average energy.
@@ -89,7 +89,7 @@
             \end{empheq}
             Moreover, the probabilities of measuring such energies are given by the integrals calculated in part (a). In other words, the probabilities $P_i$ of measuring energy $E_i$ are
             \begin{empheq}[box=\fbox]{align*}
-                P_1 &= \frac{6}{10}&
+                P_1 &= \frac{3}{5}&
                 P_3 &= \frac{3}{10}&
                 P_5 &= \frac{1}{10}
             \end{empheq}
@@ -108,18 +108,18 @@
             \end{equation*}
             We can rewrite $\psi(x,0)$ in a form relatable to the above as follows.
             \begin{align*}
-                \psi(x,0) &= \sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\\
-                &= \sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{10}}\sqrt{\frac{2}{a}}\sin(\frac{5\pi x}{a})\\
-                &= \sqrt{\frac{3}{5}}\psi_1(x,0)+\sqrt{\frac{3}{10}}\psi_3(x,0)+\frac{1}{\sqrt{10}}\psi_5(x,0)
+                \psi(x,0) &= \pm\sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\\
+                &= \pm\sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})+\frac{1}{\sqrt{10}}\sqrt{\frac{2}{a}}\sin(\frac{5\pi x}{a})\\
+                &= \pm\sqrt{\frac{3}{5}}\psi_1(x,0)+\sqrt{\frac{3}{10}}\psi_3(x,0)+\frac{1}{\sqrt{10}}\psi_5(x,0)
             \end{align*}
             Therefore,
             \begin{align*}
-                \psi(x,t) ={}& \sqrt{\frac{3}{5}}\psi_1(x,t)+\sqrt{\frac{3}{10}}\psi_3(x,t)+\frac{1}{\sqrt{10}}\psi_5(x,t)\\
+                \psi(x,t) ={}& \pm\sqrt{\frac{3}{5}}\psi_1(x,t)+\sqrt{\frac{3}{10}}\psi_3(x,t)+\frac{1}{\sqrt{10}}\psi_5(x,t)\\
                 \begin{split}
-                    ={}& \sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]\\
+                    ={}& \pm\sqrt{\frac{3}{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{10}}\sqrt{\frac{2}{a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]\\
                     &+\frac{1}{\sqrt{10}}\sqrt{\frac{2}{a}}\sin(\frac{5\pi x}{a})\e[-iE_5t/\hbar]
                 \end{split}\\
-                \Aboxed{\psi(x,t) ={}& \sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\e[-iE_5t/\hbar]}
+                \Aboxed{\psi(x,t) ={}& \pm\sqrt{\frac{6}{5a}}\sin(\frac{\pi x}{a})\e[-iE_1t/\hbar]+\sqrt{\frac{3}{5a}}\sin(\frac{3\pi x}{a})\e[-iE_3t/\hbar]+\frac{1}{\sqrt{5a}}\sin(\frac{5\pi x}{a})\e[-iE_5t/\hbar]}
             \end{align*}
         \end{proof}
         \item Is the mean value of the position operator independent of time? What about the mean value of the momentum? (Hint: Use symmetry properties with respect to the central point of the well.)
@@ -163,51 +163,27 @@
 
             To determine whether or not the position operator is independent of time, it will suffice to evaluate
             \begin{equation*}
-                \dv{t}(\ev{\hat{\vec{x}}}{\psi(x,t)})
+                \dv{t}(\ev{\hat{x}}{\psi(x,t)})
             \end{equation*}
             If the above expression is equal to zero, then the position operator is independent of time, and if it is not equal to zero, then the position operator is not independent of time. Let's begin.\par
-            We have that
+            Taking the hint, we may observe that $\psi(x,t)$ is the sum of wave functions which all have odd $n$, meaning that they are each even about the center point $x=a/2$ of the well. Thus, the entire wave function is even about $a/2$. Since the product of an odd and an even function is an odd function, we consequently have that
             \begin{align*}
-                & \ev{\hat{\vec{x}}}{\psi(x,t)}\\
-                ={}& \ev{\hat{\vec{x}}}{\frac{3}{5}\psi_1\e[-iE_1t/\hbar]+\frac{3}{10}\psi_3\e[-iE_3t/\hbar]+\frac{1}{10}\psi_5\e[-iE_5t/\hbar]}\\
-                \begin{split}
-                    ={}& \frac{9}{25}\e[-2iE_1t/\hbar]\ev{\hat{\vec{x}}}{\psi_1}+\frac{9}{100}\e[-2iE_3t/\hbar]\ev{\hat{\vec{x}}}{\psi_3}+\frac{1}{100}\e[-2iE_5t/\hbar]\ev{\hat{\vec{x}}}{\psi_5}\\
-                    & +\frac{9}{50}\e[-i(E_1+E_3)t/\hbar]\mel{\psi_1}{\hat{\vec{x}}}{\psi_3}+\frac{3}{50}\e[-i(E_1+E_5)t/\hbar]\mel{\psi_1}{\hat{\vec{x}}}{\psi_5}+\frac{3}{100}\e[-i(E_3+E_5)t/\hbar]\mel{\psi_3}{\hat{\vec{x}}}{\psi_5}
-                \end{split}
+                \ev{\hat{x}}{\psi(x,t)} &= \int_0^ax|\psi(x,t)|^2\dd{x}\\
+                &= \underbrace{\int_0^a\left( x-\frac{a}{2} \right)|\psi(x,t)|^2\dd{x}}_0+\frac{a}{2}\underbrace{\int_0^a|\psi(x,t)|^2\dd{x}}_1\\
+                &= \frac{a}{2}
             \end{align*}
-            Now, computing integrals, we have the following.
-            \begin{equation*}
-                \mel{\psi_1}{\hat{\vec{x}}}{\psi_3}
-                = \mel{\psi_1}{\hat{\vec{x}}}{\psi_5}
-                = \mel{\psi_3}{\hat{\vec{x}}}{\psi_5}
-                = 0
-            \end{equation*}
-            One easy way to see this without direct computation is to observe, per the hint, that $(x-0.5a)\psi_1\psi_3$ and $0.5a\psi_1\psi_3$ are both odd about the central point of the well and hence evaluate to zero. Thus,
-            \begin{equation*}
-                \mel{\psi_1}{\hat{\vec{x}}}{\psi_3} = \int_0^ax\psi_1\psi_3\dd{x}
-                = \int_0^a(x-0.5a)\psi_1\psi_3\dd{x}+\int_0^a0.5a\psi_1\psi_3\dd{x}
-                = 0+0
-                = 0
-            \end{equation*}
-            On the other hand, we may observe that $x\psi_i^2$ ($i=1,3,5$) are all strictly positive on $(0,a)$ and hence evaluate to positive constants $c_i$. Consequently,
-            \begin{equation*}
-                \ev{\hat{\vec{x}}}{\psi(x,t)} = \frac{9}{25}c_1\e[-2iE_1t/\hbar]+\frac{9}{100}c_3\e[-2iE_3t/\hbar]+\frac{1}{100}c_5\e[-2iE_5t/\hbar]
-            \end{equation*}
-            This function clearly has a nonzero derivative with respect to time, meaning that the mean value of the position operator \fbox{is not} independent of time.\par
+            Just to clarify, $x-a/2$ is odd with respect to the center of the well and $|\psi(x,t)|^2$ is even, so their product is odd. The integral of an odd function over all space is always zero. For the right term, the normalization requirement evaluates it to 1.\par
+            The above constant clearly has zero derivative with respect to time. It therefore follows by what we said at the beginning that \fbox{the mean value of the position operator is independent of time.}\par
             As to the second part of the question, we have that
             \begin{equation*}
-                \dv{\Exp{\hat{\vec{p}}}}{t} = \dv{t}(m\dv{\Exp{\hat{\vec{x}}}}{t}) \neq 0
+                \ev{\hat{p}}{\psi(x,t)} = m\underbrace{\dv{t}(\ev{\hat{x}}{\psi(x,t)})}_0
+                = 0
             \end{equation*}
-            Therefore, the mean value of the momentum operator \fbox{is not} independent of time, either.
+            Therefore, \fbox{the mean value of the momentum operator is independent of time.}
         \end{proof}
         \item Would the result of part (d) be different if we replaced $\psi_3$ by $\psi_2$ in Eq. \ref{eqn:PS2E5}?
         \begin{proof}
-            If we replaced $\psi_3$ by $\psi_2$, then we would additionally have
-            \begin{align*}
-                \mel{\psi_1}{\hat{\vec{x}}}{\psi_2} &\neq 0&
-                \mel{\psi_2}{\hat{\vec{x}}}{\psi_5} &\neq 0
-            \end{align*}
-            However, \fbox{this would change neither result overall.}
+            If we replace $\psi_3$ by $\psi_2$, then $\psi(x,t)$ will have no definite parity (will be neither even nor odd). Thus, the left integral in part (d) will no longer vanish generically; instead, it will be some function of time. This will also affect the momentum result since it follows from the position result. So overall, \fbox{yes} the result will be different.
         \end{proof}
     \end{enumerate}
     \pagebreak
@@ -226,74 +202,280 @@
         \begin{proof}
             Taking the hint, split the total wave function $\psi(x)$ into the sum of two parts, $\psi_1(x)$ and $\psi_2(x)$, where $\psi_1(x)=0$ for $x\geq 0$ and $\psi_2(x)=0$ for $x\leq 0$. In general, we have
             \begin{align*}
-                \psi_1(x) &= A\sin(kx)+B\cos(kx)&
-                \psi_2(x) &= C\sin(k_2x)+D\cos(k_2x)
+                \psi_1(x) &= S_1\sin(k_1x)+C_1\cos(k_1x)&
+                \psi_2(x) &= S_2\sin(k_2x)+C_2\cos(k_2x)
             \end{align*}
             If $\psi=\psi_1+\psi_2$ is to be continuous at $x=0$, then we must have
             \begin{align*}
                 \psi_1(0) &= \psi_2(0)\\
-                B &= D
+                C_1 &= C_2
             \end{align*}
             If $\psi=\psi_1+\psi_2$ is to have a continuous first derivative at $x=0$, then we must have
             \begin{align*}
                 \psi_1'(0) &= \psi_2'(0)\\
-                kA &= k_2C
+                k_1S_1 &= k_2S_2
             \end{align*}
-            Thus, altogether, we have that
+            If we are to have $\psi(-a/2)=\psi_1(-a/2)=0$ at the left boundary, then we must have
+            \begin{align*}
+                S_1\sin(-\frac{k_1a}{2})+C_1\cos(-\frac{k_1a}{2}) &= 0\\
+                -S_1\sin(\frac{k_1a}{2})+C_1\cos(\frac{k_1a}{2}) &= 0
+            \end{align*}
+            If we are to have $\psi(a/2)=\psi_2(a/2)=0$ at the right boundary, then we must have
             \begin{equation*}
-                \psi(x) =
-                \begin{cases}
-                    A\sin(kx)+B\cos(kx) & x\leq 0\\
-                    \frac{kA}{k_2}\sin(k_2x)+B\cos(k_2x) & x>0
-                \end{cases}
-                \qquad\text{for }|x|\leq a/2
+                S_2\sin(\frac{k_2a}{2})+C_2\cos(\frac{k_2a}{2}) = 0
             \end{equation*}
-            The boundary condition is met when either\dots
-            \begin{enumerate}
-                \item $B=0$, $k=n\pi$, and $k_2=m\pi/a$;
-                \item $A=0$, $k=n\pi/2$, and $k_2=m\pi/2a$.
-            \end{enumerate}
+            Now combining all four boundary condition equations above (and favoring $C_1,S_1$ over $C_2,S_2$), we obtain the following two equations.
+            \begin{align*}
+                S_1\sin(\frac{k_1a}{2}) &= C_1\cos(\frac{k_1a}{2})&
+                \frac{k_1S_1}{k_2}\sin(\frac{k_2a}{2}) &= -C_1\cos(\frac{k_2a}{2})
+            \end{align*}
+            Now divide the right equation above by the left one.
+            \begin{align*}
+                \frac{\frac{k_1S_1}{k_2}\sin(\frac{k_2a}{2})}{S_1\sin(\frac{k_1a}{2})} &= -\frac{C_1\cos(\frac{k_2a}{2})}{C_1\cos(\frac{k_1a}{2})}\\
+                \frac{k_1}{k_2} &= -\frac{\sin(\frac{k_1a}{2})\cos(\frac{k_2a}{2})}{\cos(\frac{k_1a}{2})\sin(\frac{k_2a}{2})}\\
+                \Aboxed{\frac{k_1}{k_2} &= -\tan(\frac{k_1a}{2})\cot(\frac{k_2a}{2})}
+            \end{align*}
+            Since
+            \begin{align*}
+                k_1 &= \frac{\sqrt{2mE_n}}{\hbar}&
+                k_2 &= \frac{\sqrt{2m(E_n-V_0)}}{\hbar}
+            \end{align*}
+            the above equation gives one constraint on the possible energy states. An additional one can be obtained directly from these equations and is
+            \begin{equation*}
+                \boxed{k_2^2-k_1^2 = -\frac{2mV_0}{\hbar^2}}
+            \end{equation*}
+            Together, these two equations can (theoretically) be solved for the two variables $k_1,k_2$ and, thus, for the energy states $E_n$.
         \end{proof}
-        % \item Consider now an energy $E_n<V_0$. What is the form of the solution at positive values of $x$?\par
-        % \emph{Hint}: The solutions at $x>0$ are no longer given in terms of sine and cosine functions. They can now be written in terms of exponential functions. You can obtain the new solutions by using the same solutions as for $E_n>V_0$, and the known relations between trigonometric and hyperbolic sine and cosine functions, namely $\sin(ix)=i\sinh(x)$ and $\cos(ix)=\cosh(x)$.\par
-        % In classical mechanics, a particle cannot enter a region where the potential energy is larger than the energy of the particle, since it would imply that the kinetic energy is negative. Is this still true in quantum mechanics? In other words, does the probability of finding the particle at positive values of $x$ vanish?
-        % \item What happens when $V_0\to\infty$? In principle, one obtains in this limit an infinite square well of length $a/2$. Hence, the energy eigenstates should change such that
-        % \begin{equation}
-        %     \sin(\frac{k_na}{2}) = 0
-        % \end{equation}
-        % with
-        % \begin{equation}
-        %     \frac{\hbar^2k_n^2}{2m} = E_n
-        % \end{equation}
-        % Is this true? What happens to the wave function at positive values of $x$?
+        \item Consider now an energy $E_n<V_0$. What is the form of the solution at positive values of $x$?\par
+        \emph{Hint}: The solutions at $x>0$ are no longer given in terms of sine and cosine functions. They can now be written in terms of exponential functions. You can obtain the new solutions by using the same solutions as for $E_n>V_0$, and the known relations between trigonometric and hyperbolic sine and cosine functions, namely $\sin(ix)=i\sinh(x)$ and $\cos(ix)=\cosh(x)$.\par
+        In classical mechanics, a particle cannot enter a region where the potential energy is larger than the energy of the particle, since it would imply that the kinetic energy is negative. Is this still true in quantum mechanics? In other words, does the probability of finding the particle at positive values of $x$ vanish?
+        \begin{proof}
+            We first define the Schr\"{o}dinger equation at positive values of $x$ in this case.
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv[2]{\psi_2}{x}+V_0\psi_2 &= E_n\psi_2\\
+                \dv[2]{\psi_2}{x} &= \underbrace{\frac{2m(V_0-E_n)}{\hbar^2}}_{\kappa_2^2}\psi_2
+            \end{align*}
+            Taking the hint, the general solution to this equation is
+            \begin{align*}
+                \psi_2(x) &= A\e[\kappa_2x]+B\e[-\kappa_2x]\\
+                &= \frac{\tilde{S}_2+\tilde{C}_2}{2}\e[\kappa_2x]+\frac{\tilde{C}_2-\tilde{S}_2}{2}\e[-\kappa_2x]\\
+                &= \tilde{S}_2\cdot\frac{\e[\kappa_2x]-\e[-\kappa_2x]}{2}+\tilde{C}_2\cdot\frac{\e[\kappa_2x]+\e[-\kappa_2x]}{2}\\
+                &= \tilde{S}_2\sinh(\kappa_2x)+\tilde{C}_2\cosh(\kappa_2x)\\
+                &= -i\tilde{S}_2\sin(i\kappa_2x)+\tilde{C}_2\cos(i\kappa_2x)
+            \end{align*}
+            Now observe that
+            \begin{equation*}
+                i\kappa_2 = \frac{\sqrt{2m(E_n-V_0)}}{\hbar}
+                = k_2
+            \end{equation*}
+            Additionally, define
+            \begin{align*}
+                S_2 &:= -i\tilde{S}_2&
+                C_2 &:= \tilde{C}_2
+            \end{align*}
+            Thus,
+            \begin{equation*}
+                \boxed{\psi_2(x) = S_2\sin(k_2x)+C_2\cos(k_2x)}
+            \end{equation*}
+            Additionally, we still have that
+            \begin{equation*}
+                \psi_1(x) = S_1\sin(k_1x)+C_1\cos(k_1x)
+            \end{equation*}
+            so the boundary conditions at $x=0$ imply by transitivity that
+            \begin{align*}
+                C_1 &= C_2 = \tilde{C}_2&
+                k_1S_1 &= k_2S_2 = (i\kappa_2)(-i\tilde{S}_2) = \kappa_2\tilde{S}_2
+            \end{align*}
+            Since $\psi_2$ will vanish if and only if $\tilde{S}_2=\tilde{C}_2=0$, the above two equations imply that in this case, $S_1=C_1=0$, too. Therefore, in general, it is \fbox{not} still true in quantum mechanics that a particle cannot enter a region where the potential energy is larger than the energy of the particle. In other words, the probability of finding the particle at positive values of $x$ \fbox{does not} vanish.
+        \end{proof}
+        \item What happens when $V_0\to\infty$? In principle, one obtains in this limit an infinite square well of length $a/2$. Hence, the energy eigenstates should change such that
+        \begin{equation}
+            \sin(\frac{k_na}{2}) = 0
+        \end{equation}
+        with
+        \begin{equation}
+            \frac{\hbar^2k_n^2}{2m} = E_n
+        \end{equation}
+        Is this true? What happens to the wave function at positive values of $x$?
+        \begin{proof}
+            Here, it will be convenient to write
+            \begin{equation*}
+                \psi_2(x) = A\e[\kappa_2x]+B\e[-\kappa_2x]
+            \end{equation*}
+            Now since $\kappa_2\propto V_0^{1/2}$, as $V_0\to\infty$, $\kappa_2\to\infty$. Thus, to keep $\psi_2$ from blowing up at positive $x$, we must set $A=0$. Additionally, we will have $\e[-\kappa_2x]\to 0$ so that at $V_0=\infty$,
+            \begin{equation*}
+                \boxed{\psi_2(x) = 0}
+            \end{equation*}
+            Additionally, the boundary conditions at zero (and the fact that $A=0$) imply that
+            \begin{align*}
+                \psi_1(0) &= \psi_2(0)&
+                    \psi_1'(0) &= \psi_2'(0)\\
+                C_1 &= B&
+                    k_1S_1 &= -\kappa_2B
+            \end{align*}
+            Therefore, our last boundary condition gives us that
+            \begin{align*}
+                0 &= \psi_1\left( -\frac{a}{2} \right)\\
+                &= S_1\sin(-\frac{k_1a}{2})+C_1\cos(-\frac{k_1a}{2})\\
+                &= -S_1\sin(\frac{k_1a}{2})+C_1\cos(\frac{k_1a}{2})\\
+                &= \frac{\kappa_2B}{k_1}\sin(\frac{k_1a}{2})+B\cos(\frac{k_1a}{2})\\
+                &= \sin(\frac{k_1a}{2})+\frac{k_1}{\kappa_2}\cos(\frac{k_1a}{2})\\
+                &= \sin(\frac{k_1a}{2})+\frac{k_1}{\infty}\cos(\frac{k_1a}{2})\\
+                &= \sin(\frac{k_1a}{2})\\
+                \frac{k_1a}{2} &= \pi n\\
+                % k_1 &= \frac{2\pi n}{a}\\
+                \frac{\sqrt{2mE_n}}{\hbar} &= \frac{2\pi n}{a}\\
+                E_n &= \frac{\hbar^2\pi^2n^2}{2m(a/2)^2}
+            \end{align*}
+            as desired. So \fbox{yes, it is true.}
+        \end{proof}
     \end{enumerate}
-    % \item Although planar waves are not well normalized, one can use them to demonstrate the tunneling phenomenon. Note that a well-normalized solution would be a wave packet of these planar waves, namely
-    % \begin{equation}
-    %     \psi(x,0) = \frac{1}{\sqrt{2\pi}}\int\dd{k}\Phi(k)\e[ikx]
-    % \end{equation}
-    % Consider a stationary solution of a free particle with finite energy $E$ and forget for the time being the question of normalization. The momentum of the particle will be given by $|\hbar k|=\sqrt{E/2m}$ and
-    % \begin{equation}\label{eqn:PS2E10}
-    %     \psi(x,t) = A\e[i(kx-\omega t)]+B\e[i(-kx-\omega t)]
-    % \end{equation}
-    % with $\hbar\omega=E$.\par
-    % Observe that there are two solutions, one with positive (incoming wave) and the other with negative (reflected wave) values of the momentum in the $x$-direction. In the previous problems, they combined to give sine and cosine functions due to the boundary conditions. Now, imagine that we consider that this particle goes through a potential
-    % \begin{equation}
-    %     \begin{aligned}
-    %         V(x) &= 0   && \text{for }|x|>a/2\\
-    %         V(x) &= V_0 && \text{for }|x|\leq a/2
-    %     \end{aligned}
-    % \end{equation}
-    % Since we want to consider the transmission of the particle at the right of the potential barrier, consider the case in which at the right of this finite potential barrier, the wave function is described by a particle moving freely in the positive direction of $x$ via
-    % \begin{equation}
-    %     \psi(x,t) = C\e[i(kx-\omega t)]
-    % \end{equation}
-    % for $x>a/2$ while for $x<-a/2$, we have the function given in Eq. \ref{eqn:PS2E10}. The ratio $|B/A|^2$ may be considered as the reflection probability, while $|C/A|^2$ is the transmission probability.\par
-    % The solutions for $-a/2\leq x\leq a/2$, instead, are given by
-    % \begin{equation}
-    %     \psi(x,t) = F\e[i(k_2x-\omega t)]+G\e[i(-k_2x-\omega t)]
-    % \end{equation}
-    % with $k_2=\sqrt{2m(E-V_0)}/\hbar$. Observe that $\omega$ is unchanged.\par
-    % Using continuity of the wave function and its derivatives at $x=\pm a/2$, calculate the reflection and transmission probabilities. Consider both the case of $E>V_0$ and $E<V_0$, and try to interpret the results. What happens when $V_0\to\infty$?
+    \item Although planar waves are not well normalized, one can use them to demonstrate the tunneling phenomenon. Note that a well-normalized solution would be a wave packet of these planar waves, namely
+    \begin{equation}
+        \psi(x,0) = \frac{1}{\sqrt{2\pi}}\int\dd{k}\Phi(k)\e[ikx]
+    \end{equation}
+    Consider a stationary solution of a free particle with finite energy $E$ and forget for the time being the question of normalization. The momentum of the particle will be given by $|\hbar k|=\sqrt{E/2m}$ and
+    \begin{equation}\label{eqn:PS2E10}
+        \psi(x,t) = A\e[i(kx-\omega t)]+B\e[i(-kx-\omega t)]
+    \end{equation}
+    with $\hbar\omega=E$.\par
+    Observe that there are two solutions, one with positive (incoming wave) and the other with negative (reflected wave) values of the momentum in the $x$-direction. In the previous problems, they combined to give sine and cosine functions due to the boundary conditions. Now, imagine that we consider that this particle goes through a potential
+    \begin{equation}
+        \begin{aligned}
+            V(x) &= 0   && \text{for }|x|>a/2\\
+            V(x) &= V_0 && \text{for }|x|\leq a/2
+        \end{aligned}
+    \end{equation}
+    Since we want to consider the transmission of the particle at the right of the potential barrier, consider the case in which at the right of this finite potential barrier, the wave function is described by a particle moving freely in the positive direction of $x$ via
+    \begin{equation}
+        \psi(x,t) = C\e[i(kx-\omega t)]
+    \end{equation}
+    for $x>a/2$ while for $x<-a/2$, we have the function given in Eq. \ref{eqn:PS2E10}. The ratio $|B/A|^2$ may be considered as the reflection probability, while $|C/A|^2$ is the transmission probability.\par
+    The solutions for $-a/2\leq x\leq a/2$, instead, are given by
+    \begin{equation}
+        \psi(x,t) = F\e[i(k_2x-\omega t)]+G\e[i(-k_2x-\omega t)]
+    \end{equation}
+    with $k_2=\sqrt{2m(E-V_0)}/\hbar$. Observe that $\omega$ is unchanged.\par
+    Using continuity of the wave function and its derivatives at $x=\pm a/2$, calculate the reflection and transmission probabilities. Consider both the case of $E>V_0$ and $E<V_0$, and try to interpret the results. What happens when $V_0\to\infty$?
+    \begin{proof}
+        % x(A-C)=y(B-D)
+        % y=(A-C)/(B-D)x
+        % 1+xA=B(A-C)/(B-D)x
+        % 1=[(AD-BC)/(B-D)]x
+        % x = (B-D)/(AD-BC)
+
+        % 1+(AB-AD)/(AD-BC)=yB
+        % 1/B+(AB-AD)/(ABD-BBC)=y
+        % y = (A-C)/(AD-BC)
+
+
+        The total spatial wave function is
+        \begin{equation*}
+            \psi(x) =
+            \begin{cases}
+                A\e[ikx]+B\e[-ikx] & x<-\frac{a}{2}\\
+                F\e[ik_2x]+G\e[-ik_2x] & -\frac{a}{2}\leq x\leq\frac{a}{2}\\
+                C\e[ikx] & \frac{a}{2}<x
+            \end{cases}
+        \end{equation*}
+        For now, we will remain agnostic about whether $E>V_0$ or $E<V_0$, since in the latter case, $k_2$ will just become imaginary so that the solutions in the middle region are real exponentials.\par
+        As recommended, we begin with the equations given by the continuity of $\psi$ and its derivatives at the $\pm a/2$ boundaries. For continuity, we have
+        \begin{align*}
+            \psi_1(-a/2) &= \psi_2(-a/2)&
+                \psi_2(a/2) &= \psi_3(a/2)\\
+            A\e[-ika/2]+B\e[ika/2] &= F\e[-ik_2a/2]+G\e[ik_2a/2]&
+                F\e[ik_2a/2]+G\e[-ik_2a/2] &= C\e[ika/2]
+        \end{align*}
+        For continuity of the first derivative, we have
+        \begin{align*}
+            \psi_1'(-a/2) &= \psi_2'(-a/2)&
+                \psi_2'(a/2) &= \psi_3'(a/2)\\
+            k(A\e[-ika/2]-B\e[ika/2]) &= k_2(F\e[-ik_2a/2]-G\e[ik_2a/2])&
+                k_2(F\e[ik_2a/2]-G\e[-ik_2a/2]) &= kC\e[ika/2]
+        \end{align*}
+        We now algebraically manipulate the above four equations until we arrive at the final answer.\par
+        To begin, adding the left two boundary conditions gives
+        \begin{equation*}
+            A\left( 1+\frac{k}{k_2} \right)\e[-ika/2]+B\left( 1-\frac{k}{k_2} \right)\e[ika/2] = 2F\e[-ik_2a/2]
+        \end{equation*}
+        while subtracting them gives
+        \begin{equation*}
+            A\left( 1-\frac{k}{k_2} \right)\e[-ika/2]+B\left( 1+\frac{k}{k_2} \right)\e[ika/2] = 2G\e[ik_2a/2]
+        \end{equation*}
+        Additionally, adding the right two boundary conditions gives
+        \begin{equation*}
+            C\left( 1+\frac{k}{k_2} \right)\e[ika/2] = 2F\e[ik_2a/2]
+        \end{equation*}
+        while subtracting them gives
+        \begin{equation*}
+            C\left( 1-\frac{k}{k_2} \right)\e[ika/2] = 2G\e[-ik_2a/2]
+        \end{equation*}
+        It follows by consecutive applications of the transitivity property that
+        \begin{equation*}
+            A\left( 1+\frac{k}{k_2} \right)\e[-ika/2]+B\left( 1-\frac{k}{k_2} \right)\e[ika/2] = C\left( 1+\frac{k}{k_2} \right)\e[ika/2]\e[-ik_2a]
+        \end{equation*}
+        and
+        \begin{equation*}
+            A\left( 1-\frac{k}{k_2} \right)\e[-ika/2]+B\left( 1+\frac{k}{k_2} \right)\e[ika/2] = C\left( 1-\frac{k}{k_2} \right)\e[ika/2]\e[ik_2a]
+        \end{equation*}
+        Now divide through both of the above equations by the first term to yield
+        \begin{align*}
+            1+\bigg( \underbrace{\frac{B\vphantom{/}}{A\vphantom{/}}}_r \bigg)\bigg( \underbrace{\frac{1-k/k_2}{1+k/k_2}}_\alpha \bigg)\e[ika] &= \bigg( \underbrace{\frac{C\vphantom{/}}{A\vphantom{/}}}_t \bigg)\e[i(k-k_2)a]\\
+            1+\bigg( \underbrace{\frac{B\vphantom{/}}{A\vphantom{/}}}_r \bigg)\bigg( \underbrace{\frac{1+k/k_2}{1-k/k_2}}_{\alpha^{-1}} \bigg)\e[ika] &= \bigg( \underbrace{\frac{C\vphantom{/}}{A\vphantom{/}}}_t \bigg)\e[i(k+k_2)a]
+        \end{align*}
+        Making the suggested substitutions for convenience, we obtain
+        \begin{align*}
+            1+r\alpha\e[ika] &= t\e[i(k-k_2)a]&
+            1+r\alpha^{-1}\e[ika] &= t\e[i(k+k_2)a]
+        \end{align*}
+        This system of two equations is linear in $r$ and $t$ and hence can easily be solved for these variables by formula. In particular, it is a fact of algebra that the solution to $1+xA=yB$ and $1+xC=yD$ is $x=(D-B)/(BC-AD)$ and $y=(C-A)/(BC-AD)$.\footnote{This fact can be readily verified by direct substitution. It can be derived via elimination of the original equations.} Thus,
+        \begin{align*}
+            r &= \frac{\e[i(k+k_2)a]-\e[i(k-k_2)a]}{[\e[i(k-k_2)a]][\alpha^{-1}\e[ika]]-[\alpha\e[ika]][\e[i(k+k_2)a]]}&
+                t &= \frac{\alpha^{-1}\e[ika]-\alpha\e[ika]}{[\e[i(k-k_2)a]][\alpha^{-1}\e[ika]]-[\alpha\e[ika]][\e[i(k+k_2)a]]}\\
+            &= \frac{\e[ika]\e[ik_2a]-\e[ika]\e[-ik_2a]}{\alpha^{-1}\e[ika]\e[-ik_2a]\e[ika]-\alpha\e[ika]\e[ika]\e[ik_2a]}&
+                &= \frac{\alpha^{-1}\e[ika]-\alpha\e[ika]}{\alpha^{-1}\e[ika]\e[-ik_2a]\e[ika]-\alpha\e[ika]\e[ika]\e[ik_2a]}\\
+            &= \frac{\e[ik_2a]-\e[-ik_2a]}{(\alpha^{-1}\e[-ik_2a]-\alpha\e[ik_2a])\e[ika]}&
+                &= \frac{\alpha^{-1}-\alpha}{(\alpha^{-1}\e[-ik_2a]-\alpha\e[ik_2a])\e[ika]}\\
+            &= \frac{2i\sin(k_2a)}{(\alpha^{-1}\e[-ik_2a]-\alpha\e[ik_2a])\e[ika]}&
+                &= \frac{1-\alpha^2}{(\e[-ik_2a]-\alpha^2\e[ik_2a])\e[ika]}
+        \end{align*}
+        Thus, we may finally obtain the reflection and transmission coefficients\footnote{Note that a good sanity check for the following answers is that they sum to 1.} via
+        \begin{align*}
+            |r|^2 &= r^*\cdot r\\
+            &= \frac{-2i\sin(k_2a)}{(\alpha^{-1}\e[ik_2a]-\alpha\e[-ik_2a])\e[-ika]}\cdot\frac{2i\sin(k_2a)}{(\alpha^{-1}\e[-ik_2a]-\alpha\e[ik_2a])\e[ika]}\\
+            &= \frac{4\sin^2(k_2a)}{(\alpha^{-1}\e[ik_2a]-\alpha\e[-ik_2a])\cdot(\alpha^{-1}\e[-ik_2a]-\alpha\e[ik_2a])}\\
+            &= \frac{4\sin^2(k_2a)}{\alpha^{-2}-\e[2ik_2a]-\e[-2ik_2a]+\alpha^2}\\
+            &= \frac{4\alpha^2\sin^2(k_2a)}{1+\alpha^4-\alpha^2(\e[2ik_2a]+\e[-2ik_2a])}\\
+            \Aboxed{|B/A|^2 &= \frac{4\alpha^2\sin^2(k_2a)}{1+\alpha^4-2\alpha^2\cos(2k_2a)}}
+        \end{align*}
+        and
+        \begin{align*}
+            |t|^2 &= t^*\cdot t\\
+            &= \frac{1-\alpha^2}{(\e[ik_2a]-\alpha^2\e[-ik_2a])\e[-ika]}\cdot\frac{1-\alpha^2}{(\e[-ik_2a]-\alpha^2\e[ik_2a])\e[ika]}\\
+            &= \frac{(1-\alpha^2)^2}{(\e[ik_2a]-\alpha^2\e[-ik_2a])\cdot(\e[-ik_2a]-\alpha^2\e[ik_2a])}\\
+            &= \frac{(1-\alpha^2)^2}{1-\alpha^2\e[2ik_2a]-\alpha^2\e[-2ik_2a]+\alpha^4}\\
+            &= \frac{(1-\alpha^2)^2}{1+\alpha^4-\alpha^2(\e[2ik_2a]+\e[-2ik_2a])}\\
+            \Aboxed{|C/A|^2 &= \frac{(1-\alpha^2)^2}{1+\alpha^4-2\alpha^2\cos(2k_2a)}}
+        \end{align*}
+        At this point, we will cease our agnosticism regarding the parity of $E-V_0$. The answers above correspond to the case that $E>V_0$. In the case that $E<V_0$, we fortunately need only make minor adjustments to the above. In particular, we define the real value $\kappa:=\sqrt{2m(V_0-E)}/\hbar$ so that we may write $k_2=i\kappa$ and use the imaginary hyperbolic sine and cosine functions from Q2b to yield
+        \begin{align*}
+            |B/A|^2 &= \frac{4\alpha^2[\sin(i\kappa a)]^2}{1+\alpha^4-2\alpha^2\cos(i2\kappa a)}&
+                |C/A|^2 &= \frac{(1-\alpha^2)^2}{1+\alpha^4-2\alpha^2\cos(i2\kappa a)}\\
+            &= \frac{4\alpha^2[i\sinh(\kappa a)]^2}{1+\alpha^4-2\alpha^2\cosh(2\kappa a)}&
+                \Aboxed{|C/A|^2 &= \frac{(1-\alpha^2)^2}{1+\alpha^4-2\alpha^2\cosh(2\kappa a)}}\\
+            \Aboxed{|B/A|^2 &= \frac{-4\alpha^2\sinh^2(\kappa a)}{1+\alpha^4-2\alpha^2\cosh(2\kappa a)}}
+        \end{align*}
+        Lastly, we consider the case where $V_0\to\infty$. In this case, $V_0$ will eventually exceed any value of $E$, so we will work with the second pair of equations defining the reflection and transmission coefficients. To begin, observe that by definition, $\kappa\propto V_0^{1/2}$. Thus, as $V_0\to\infty$, $\kappa\to\infty$ and, in particular,
+        \begin{equation*}
+            \alpha = \frac{1-k/i\kappa}{1+k/i\kappa}
+            = \frac{i-k/\kappa}{i+k/\kappa}
+            \to \frac{i-k/\infty}{i+k/\infty}
+            = \frac{i}{i}
+            = i\cdot(-i)
+            = 1
+        \end{equation*}
+        Thus, by the form of the numerator of $|C/A|^2$, \fbox{$|C/A|^2\to 0$.} But this must imply that \fbox{$|B/A|^2\to 1$.} That is, there is no tunneling and the particle is completely reflected.
+    \end{proof}
 \end{enumerate}
 
 
