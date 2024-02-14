@@ -65,23 +65,64 @@
             We worked out the solutions to this equation already in class. They are
             \begin{align*}
                 \psi_n(u) &= \psi_n^\text{HO}(u)&
-                E_n &= E_n^\text{HO}
+                E_n-C &= E_n^\text{HO}
             \end{align*}
             It follows by returning the substitution that
             \begin{align*}
                 \Aboxed{\psi_n(x) &= \psi_n^\text{HO}(x-x_\text{eq})}&
-                \Aboxed{E_n &= E_n^\text{HO}}
+                \Aboxed{E_n &= E_n^\text{HO}+C}
             \end{align*}
         \end{proof}
         \item What would be the mean value of $x$ and $p$ in this system (for a given energy eigenstate, not a generic state)? What would be the mean value of $x^2$ and $p^2$ in the ground state of the system? \emph{Hint}: Use properties of the wave functions under displacements from the equilibrium point, and write $x=x_\text{eq}+(x-x_\text{eq})$, where $x_\text{eq}$ is the equilibrium point.
         \begin{proof}
             Piggybacking off of the results from class, we will have
             \begin{align*}
-                \Aboxed{\ev{\hat{\vec{x}}}{\psi_n} &= x_\text{eq}}&
-                \Aboxed{\ev{\hat{\vec{p}}\,}{\psi_n} &= 0}
+                \Aboxed{\ev{\hat{x}}{\psi_n} &= x_\text{eq}}&
+                \Aboxed{\ev{\hat{p}}{\psi_n} &= 0}
             \end{align*}
+            In the ground state of the system, we have (taking the hint) that
+            \begin{align*}
+                \ev{\hat{x}^2}{\psi_0} ={}& \int\psi_0^*(x)x^2\psi_0(x)\dd{x}\\
+                ={}& \int[\psi_0^\text{HO}]^*(u)(x_\text{eq}+u)^2\psi_0^\text{HO}(u)\dd{u}\\
+                \begin{split}
+                    ={}& x_\text{eq}^2\int[\psi_0^\text{HO}]^*(u)\psi_0^\text{HO}(u)\dd{u}+2x_\text{eq}\int[\psi_0^\text{HO}]^*(u)u\psi_0^\text{HO}(u)\dd{u}\\
+                    & +\int[\psi_0^\text{HO}]^*(u)u^2\psi_0^\text{HO}(u)\dd{u}
+                \end{split}
+            \end{align*}
+            The leftmost integral above evaluates to 1. The middle integral above evaluates to zero because its integrand is an odd function (the product of an odd and even function). The right integral expands to
+            \begin{equation*}
+                \int_{-\infty}^\infty u^2\left( \frac{m\omega}{\hbar\pi} \right)^{1/2}\e[-m\omega u^2/\hbar]\dd{u} = \frac{\hbar}{2m\omega}
+            \end{equation*}
+            upon plugging in the harmonic oscillator's ground state wave function, and may be evaluated using computational software. Thus, altogether,
+            \begin{equation*}
+                \boxed{\ev{\hat{x}^2}{\psi_0} = x_\text{eq}^2+\frac{\hbar}{2m\omega}}
+            \end{equation*}
+            Similar explicit computations for the mean value of $p^2$ yield
+            \begin{equation*}
+                \boxed{\ev{\hat{p}^2}{\psi_0} = \frac{\hbar m\omega}{2}}
+            \end{equation*}
         \end{proof}
         \item Think about the uncertainty principle. What is the value of $\sigma_x\sigma_p$ in the ground state of this system? Does it differ from the value we obtained in the absence of gravity?
+        \begin{proof}
+            We have that
+            \begin{equation*}
+                \sigma_x^2 = \ev{\hat{x}^2}{\psi_0}-(\ev{\hat{x}}{\psi_0})^2
+                = x_\text{eq}^2+\frac{\hbar}{2m\omega}-x_\text{eq}^2
+                = \frac{\hbar}{2m\omega}
+            \end{equation*}
+            and
+            \begin{equation*}
+                \sigma_p^2 = \ev{\hat{p}^2}{\psi_0}-(\ev{\hat{p}}{\psi_0})^2
+                = \frac{\hbar m\omega}{2}
+            \end{equation*}
+            Therefore, the value of $\sigma_x\sigma_p$ in the ground state of this system is
+            \begin{align*}
+                \sigma_x^2\cdot\sigma_p^2 &= \frac{\hbar}{2m\omega}\cdot\frac{\hbar m\omega}{2}\\
+                &= \frac{\hbar^2}{4}\\
+                \Aboxed{\sigma_x\sigma_p &= \frac{\hbar}{2}}
+            \end{align*}
+            This \fbox{does not differ} from the value we obtained in the absence of gravity in class on 1/22.
+        \end{proof}
     \end{enumerate}
     \item Bouncing harmonic oscillator.\par
     Assume now that we add an infinite potential floor just at the equilibrium point, so that the particle can no longer go below it. Under this modification, the new potential is
@@ -95,10 +136,84 @@
     where $x_\text{eq}$ is the equilibrium point. Classically, every time the particle hits the floor, it will bounce back with the same modulus of the momentum, but in the upwards direction.
     \begin{enumerate}
         \item What is the mathematical description of $x(t)$ of the classical motion? \emph{Hint}: Think about the oscillator without a floor and the symmetry regarding displacements in the positive and negative directions from the equilibrium point.
+        \begin{proof}
+            The motion will be identical for $x\geq x_\text{eq}$, but instead of continuing past $x_\text{eq}$, the particle will elastically reflect back. Mathematically, if motion in Q1a was described by
+            \begin{equation*}
+                x(t) = A\sin(\omega t)+B\cos(\omega t)+x_\text{eq}
+            \end{equation*}
+            then motion now is described by
+            \begin{equation*}
+                \boxed{x(t) = |A\sin(\omega t)+B\cos(\omega t)|+x_\text{eq}}
+            \end{equation*}
+        \end{proof}
         \item Now go back to the quantum mechanical problem. Similarly to the infinite square well that we solved last week, what should happen to the wave functions at $x=x_\text{eq}$ and why?
+        \begin{proof}
+            At and below $x=x_\text{eq}$, the potential goes to infinity, so just like in the infinite square well, the particle no longer has a probability of existing there so the wave function \fbox{must go to zero.}
+        \end{proof}
         \item Now look at the Schr\"{o}dinger equation for positive values of the displacement with respect to the equilibrium point. Does it change from the one we had without the floor? Find the energy eigenvalues and the corresponding functions $\psi_n$ to this problem. \emph{Hint}: Observe that the boundary condition at $x=x_\text{eq}$ eliminates some solutions.
+        \begin{proof}
+            The Schr\"{o}dinger equation for positive values of the displacement with respect to the equilibrium point \fbox{does not} change from the one we had without the floor because the potential in that region has not changed.\par
+            Since the Schr\"{o}dinger equation does not change, we can solve it as in Q1b. However, taking the hint, only the odd solutions will be allowed by the boundary condition. Additionally, allowable space has halved from $(-\infty,\infty)$ to $[x_\text{eq},\infty)$, so we must renormalize the odd eigenstates. Fortunately, this is fairly straightforward since $|\psi_n|^2$ is even, so
+            \begin{align*}
+                1 &= \int_{x_\text{eq}}^\infty|\psi_n(x-x_\text{eq})|^2\dd{x}\\
+                &= \frac{1}{2}\int_{-\infty}^\infty|\psi_n(x-x_\text{eq})|^2\dd{x}\\
+                &= \frac{1}{2}\int_{-\infty}^\infty|A\psi_n^\text{HO}(x-x_\text{eq})|^2\dd{x}\\
+                2 &= A^2\\
+                A &= \sqrt{2}
+            \end{align*}
+            Thus, the energy eigenvalues and corresponding functions are
+            \begin{empheq}[box=\fbox]{align*}
+                \psi_n(x) &= \sqrt{2}\psi_n^\text{HO}(x-x_\text{eq})&
+                E_n &= E_n^\text{HO}+C&
+                n &= 1,3,5,\dots
+            \end{empheq}
+        \end{proof}
         \item What is the minimal energy solution once we add the floor to the system? Is it the same as the system without the floor? What is the corresponding eigenfunction of this solution?
+        \begin{proof}
+            The minimal energy is now that which corresponds to the new smallest eigenstate, i.e.,
+            \begin{equation*}
+                \boxed{E_1 = \frac{3\hbar\omega}{2}+C}
+            \end{equation*}
+            This is \fbox{not} the same as the system without the floor, which had minimal energy $\hbar\omega/2+C$. The corresponding eigenfunction is \fbox{$\psi_1(x)$.}
+        \end{proof}
         \item Find $\sigma_x$ and $\sigma_p$ for the minimum energy solution. Is $\sigma_x\sigma_p$ the same as in the system without the wall?
+        \begin{proof}
+            Per part (d), the minimum energy solution is the wave function
+            \begin{align*}
+                \psi_1(x) &= \sqrt{2}\psi_1^\text{HO}(x-x_\text{eq})\\
+                &= \sqrt{2}\left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\frac{H_1(\xi)}{\sqrt{2^11!}}\e[-\xi^2/2]\\
+                &= \left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\left[ (-1)^1\e[\xi^2]\cdot\dv{\xi}(\e[-\xi^2]) \right]\e[-\xi^2/2]\\
+                &= \left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\left[ -\e[\xi^2]\cdot -2\xi\e[-\xi^2] \right]\e[-\xi^2/2]\\
+                &= 2\left( \frac{m\omega}{\hbar\pi} \right)^{1/4}\xi\e[-\xi^2/2]\\
+                &= 2\left( \frac{m\omega}{\hbar\pi} \right)^{1/4}u\left( \frac{m\omega}{\hbar} \right)^{1/2}\e[-m\omega u^2/2\hbar]\\
+                &= \frac{2}{\pi^{1/4}}\left( \frac{m\omega}{\hbar} \right)^{3/4}(x-x_\text{eq})\e[-m\omega(x-x_\text{eq})^2/2\hbar]
+            \end{align*}
+            From here, we can use computational software to learn that
+            \begin{align*}
+                \ev{\hat{x}}{\psi_1} &= \int_{x_\text{eq}}^\infty x\psi_1^2(x)\dd{x}
+                    = \int_0^\infty (u+x_\text{eq})\psi_1^2(u+x_\text{eq})\dd{u}
+                    = 2\sqrt{\frac{\hbar}{m\omega\pi}}+x_\text{eq}\\
+                \ev{\hat{x}^2}{\psi_1} &= x_\text{eq}^2+\frac{3\hbar}{2m\omega}+4x_\text{eq}\sqrt{\frac{\hbar}{m\omega\pi}}\\
+                \ev{\hat{p}}{\psi_1} &= 0\\
+                \ev{\hat{p}^2}{\psi_1} &= \frac{3\hbar m\omega}{2}
+            \end{align*}
+            Thus,
+            \begin{equation*}
+                \sigma_x^2 = \left( x_\text{eq}^2+\frac{3\hbar}{2m\omega}+4x_\text{eq}\sqrt{\frac{\hbar}{m\omega\pi}} \right)-\left( 2\sqrt{\frac{\hbar}{m\omega\pi}}+x_\text{eq} \right)^2
+                    = \frac{3\hbar}{2m\omega}-\frac{4\hbar}{m\omega\pi}
+            \end{equation*}
+            and
+            \begin{equation*}
+                \sigma_p^2 = \frac{3\hbar m\omega}{2}
+            \end{equation*}
+            so
+            \begin{equation*}
+                \sigma_x\sigma_p = \sqrt{\left( \frac{3\hbar}{2m\omega}-\frac{4\hbar}{m\omega\pi} \right)\left( \frac{3\hbar m\omega}{2} \right)}
+                    = \hbar\sqrt{\frac{9}{4}-\frac{6}{\pi}}
+                    \approx 0.58\hbar
+            \end{equation*}
+            Since $0.58\hbar\neq\hbar/2$ (the answer to Q1d), \fbox{no,} $\sigma_x\sigma_p$ is not the same as in the system without the wall.
+        \end{proof}
     \end{enumerate}
     \item For the harmonic oscillator, consider the ladder operators $a_\pm=(\mp ip+m\omega x)/\sqrt{2\hbar m\omega}$. Recall that $[a_-,a_+]=1$, the Hamiltonian may be written as $\hat{H}=\hbar\omega(a_+a_-+1/2)$, and the eigenfunctions describing the eigenstates of energy $E_n=\hbar\omega(n+1/2)$ are related by $a_+\psi_n=\sqrt{n+1}\psi_{n+1}$ and $a_-\psi_n=\sqrt{n}\psi_{n-1}$.
     \begin{enumerate}
@@ -119,22 +234,22 @@
         \end{proof}
         \item Compute the mean value of $x^2$ and $p^2$ in these states.
         \begin{proof}
-            As derived in class, we have that
+            As derived in class,\footnote{For future reference, they would have liked me to show this derivation and I did lose points for just stating this result.} we have that
             \begin{align*}
-                \ev**{\frac{k\hat{\vec{x}}{\,}^2}{2}}{\psi_n} &= \frac{E_n}{2}&
-                \ev**{\frac{\hat{\vec{p}}{\,}^2}{2m}}{\psi_n} &= \frac{E_n}{2}
+                \ev**{\frac{k\hat{x}^2}{2}}{\psi_n} &= \frac{E_n}{2}&
+                \ev**{\frac{\hat{p}^2}{2m}}{\psi_n} &= \frac{E_n}{2}
             \end{align*}
             Therefore,
             \begin{align*}
-                \ev{\hat{\vec{x}}{\,}^2}{\psi_n} &= \frac{2}{k}\cdot\frac{E_n}{2}&
-                    \ev{\hat{\vec{p}}{\,}^2}{\psi_n} &= 2m\cdot\frac{E_n}{2}\\
-                \Aboxed{\ev{\hat{\vec{x}}{\,}^2}{\psi_n} &= \frac{\hbar\omega}{k}\left( n+\frac{1}{2} \right)}&
-                    \Aboxed{\ev{\hat{\vec{p}}{\,}^2}{\psi_n} &= \hbar\omega m\left( n+\frac{1}{2} \right)}
+                \ev{\hat{x}^2}{\psi_n} &= \frac{2}{k}\cdot\frac{E_n}{2}&
+                    \ev{\hat{p}^2}{\psi_n} &= 2m\cdot\frac{E_n}{2}\\
+                \Aboxed{\ev{\hat{x}^2}{\psi_n} &= \frac{\hbar\omega}{k}\left( n+\frac{1}{2} \right)}&
+                    \Aboxed{\ev{\hat{p}^2}{\psi_n} &= \hbar\omega m\left( n+\frac{1}{2} \right)}
             \end{align*}
         \end{proof}
         \item What would the uncertainty principle tell me about $\sigma_x\sigma_p$?
         \begin{proof}
-            Since
+            Since\footnote{There is an entirely different derivation of these facts in the solutions key; one that works directly from the formal commutator definition of the uncertainty principle. Pretty cool!}
             \begin{align*}
                 \sigma_x^2 &= \ev{\hat{\vec{x}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{x}}}{\psi_n})^2&
                 \sigma_p^2 &= \ev{\hat{\vec{p}}{\,}^2}{\psi_n}-(\ev{\hat{\vec{p}}\,}{\psi_n})^2
@@ -173,6 +288,9 @@
             \end{split}
         \end{align}
         Two useful cases, as follows from the above, are $\ev{a_+a_-}{\psi_n}=n$ and $\ev{a_-a_+}{\psi_n}=n+1$.
+        \begin{proof}
+            See Lecture 4.2.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
