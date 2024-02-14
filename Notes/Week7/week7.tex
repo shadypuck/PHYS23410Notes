@@ -241,5 +241,47 @@
 
 
 
+\section{Office Hours (Yunjia)}
+\begin{itemize}
+    \item \marginnote{2/13:}PSet 2, Q2c.
+    \begin{itemize}
+        \item If we can get up to Equation 12 in the answer key, that's full credit.
+        \item The thing with $\kappa_{II}^{-1}$ is the idea that if we have a value that's very large (like $\kappa_{II}$ will be as $V_0\to\infty$ since $\kappa_{II}\propto V_0^{1/2}$), then we can Taylor expand in its reciprocal.
+        \begin{itemize}
+            \item We cannot Taylor expand in the large values; we can only Taylor expand in small values.
+            \item This technique is called \textbf{perturbation theory} and will be a major topic of QMechII; Yunjia's use of it here was admittedly a bit extra.
+        \end{itemize}
+    \end{itemize}
+    \item A brief introduction to perturbation theory.
+    \begin{itemize}
+        \item Suppose we seek to solve an equation
+        \begin{equation*}
+            f(x,\epsilon) = 0
+        \end{equation*}
+        where $\epsilon$ is small.
+        \item We can approximate the solution in the form
+        \begin{equation*}
+            f^{(0)}(x)+f^{(1)}(x)\epsilon+f^{(2)}(x)\epsilon^2 = 0
+        \end{equation*}
+        where the digit superscripts in parentheses just denote different functions, not derivatives or anything like that. For example, we could equally well have used the notation $f,g,h$; it's just that this is less general.
+        \item To solve the original equation, we first solve
+        \begin{equation*}
+            f^{(0)}(x_0) = 0
+        \end{equation*}
+        for $x_0$.
+        \item Then we solve
+        \begin{equation*}
+            f^{(0)}(x_0+\epsilon x_1)+\epsilon f^{(1)}(x_0) = 0
+        \end{equation*}
+        for $x_1$.
+        \item Continuing in this fashion, our solution takes on the following form and is progressively refined as more terms are calculated.
+        \begin{equation*}
+            x = x_0+\epsilon x_1+\epsilon^2x_2+\cdots
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
