@@ -120,13 +120,18 @@
                 &= \frac{2}{m^2}\left[ \ev{\hat{p}^2}{\psi}-(\ev{\hat{p}}{\psi})^2 \right]\\
                 &= \frac{2\sigma_p^2}{m^2}
             \end{align*}
-            Additionally, we have that
-            \begin{equation*}
-                \dv[2]{t}\left[ \left( \frac{\sigma_pt}{m} \right)^2 \right] = \dv[2]{t}(\frac{\sigma_p^2t^2}{m^2})
-                = \dv{t}(\frac{2\sigma_p^2t}{m^2})
-                = \frac{2\sigma_p^2}{m^2}
-            \end{equation*}
-            Note that by requiring $t$ be "sufficiently large," we are eliminating consideration of the case $t=0$, in which we would have $\sigma_x=0$ which cannot happen by the Heisenberg uncertainty principle.\par
+            Since $\sigma_p$ is constant with respect to time --- as we may extrapolate from part (a) --- the solution to this ODE may be found via integration to be
+            \begin{align*}
+                \dv[2]{t}(\sigma_x^2) &= \frac{2\sigma_p^2}{m^2}\\
+                \dv{t}(\sigma_x^2) &= \frac{2\sigma_p^2}{m^2}t+c\\
+                \sigma_x^2 &= \frac{\sigma_p^2}{m^2}t^2+ct+d
+            \end{align*}
+            where $c,d$ are constants of integration. Moreover, when we make $t$ sufficiently large, the $ct+d$ terms are negligible and
+            \begin{align*}
+                \sigma_x^2 &\approx \frac{\sigma_p^2}{m^2}t^2\\
+                \sigma_x &\approx \frac{\sigma_p}{m}t
+            \end{align*}
+            as desired. Additionally, note that by requiring $t$ be "sufficiently large," we are eliminating consideration of the case $t=0$, in which we would have $\sigma_x=0$ which cannot happen by the Heisenberg uncertainty principle.\par
             We now discuss the implications of this result. In part (a), we proved that the $\ev{\hat{p}^n}{\psi}$ are fixed for all time, which means in particular that
             \begin{equation*}
                 \sigma_p^2 = \ev{\hat{p}^2}{\psi}-(\ev{\hat{p}}{\psi})^2
@@ -135,7 +140,6 @@
             The fact that the momentum is not well-defined is the \emph{reason} that the particle spreads out over time. Essentially, different "parts" of the particle will move with different momenta, so as the free particle "moves," some parts of it will move faster and some will move slower, causing it to spread out! This further justifies the linear relation, which in these terms essentially says that the greater the uncertainty in momenta, the greater the difference in speed of different parts of the particle, and the greater the spread in $x$ as time goes on.
         \end{proof}
     \end{enumerate}
-    \pagebreak
     \item \textbf{The power of completeness.} Imagine that I have a complete set $\{\psi_n\}$ of energy eigenstate functions and that any given wave function $\psi$ can be expressed as a linear combination of these functions via
     \begin{equation}\label{eqn:4.7}
         \psi(x) = \sum_{n=0}^\infty c_n\psi_n(x)
@@ -203,23 +207,44 @@
         \end{proof}
         \item Apply the above to compute the mean value of $x^4=x^2x^2$ for the harmonic oscillator in its energy eigenstate. \emph{Hint}: Use the ladder operators.
         \begin{proof}
-            By part (b), we have that
+            By part (c), we have that
+            \begin{equation*}
+                \ev{x^4}{\psi_n} = \sum_m\mel{n}{x^2}{m}\mel{m}{x^2}{n}
+            \end{equation*}
+            The left term expands as follows.
             \begin{align*}
-                \ev{x^4}{\psi_n} ={}& \sum_m\mel{n}{x^2}{m}\mel{m}{x^2}{n}\\
-                ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\mel{n}{(a_++a_-)^2}{m}\mel{m}{(a_++a_-)^2}{n}\\
+                \mel{n}{x^2}{m} &= \frac{\hbar}{2m\omega}\mel{n}{(a_++a_-)^2}{m}\\
+                &= \frac{\hbar}{2m\omega}\left[ \mel{n}{a_+^2}{m}+\mel{n}{a_-^2}{m}+2\mel{n}{a_+a_-}{m}+\mel{n}{1}{m} \right]\\
+                &= \frac{\hbar}{2m\omega}\left[ \sqrt{(m+1)(m+2)}\braket{n}{m+2}+\sqrt{m(m-1)}\braket{n}{m-2}+(2m+1)\braket{n}{m} \right]\\
+                &= \frac{\hbar}{2m\omega}\left[ \sqrt{(m+1)(m+2)}\delta_{n,m+2}+\sqrt{m(m-1)}\delta_{n,m-2}+(2m+1)\delta_{n,m} \right]
+            \end{align*}
+            Analogously, the right term expands to
+            \begin{equation*}
+                \mel{m}{x^2}{n} = \frac{\hbar}{2m\omega}\left[ \sqrt{(n+1)(n+2)}\delta_{m,n+2}+\sqrt{n(n-1)}\delta_{m,n-2}+(2n+1)\delta_{m,n} \right]
+            \end{equation*}
+            Now since
+            \begin{equation*}
+                (\delta_{n,m+2}+\delta_{n,m-2}+\delta_{n,m})(\delta_{m,n+2}+\delta_{m,n-2}+\delta_{m,n}) = \delta_{n,m+2}\delta_{m,n-2}+\delta_{n,m}\delta_{m,n}+\delta_{n,m-2}\delta_{m,n+2}
+            \end{equation*}
+            we have that
+            \begin{align*}
                 \begin{split}
-                    ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\Big( \mel{n}{a_+^2}{m}+\mel{n}{a_-^2}{m}+2\mel{n}{a_+a_-}{m}+\mel{n}{1}{m} \Big)\\
-                    & \cdot\Big( \mel{m}{a_+^2}{n}+\mel{m}{a_-^2}{n}+2\mel{m}{a_+a_-}{n}+\mel{m}{1}{n} \Big)
+                    \ev{x^4}{\psi_n} ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\left[ \sqrt{(m+1)(m+2)}\delta_{n,m+2}+\sqrt{m(m-1)}\delta_{n,m-2}+(2m+1)\delta_{n,m} \right]\\
+                    & \cdot\left[ \sqrt{(n+1)(n+2)}\delta_{m,n+2}+\sqrt{n(n-1)}\delta_{m,n-2}+(2n+1)\delta_{m,n} \right]
                 \end{split}\\
                 \begin{split}
-                    ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\Big( \sqrt{(m+1)(m+2)}\braket{n}{m+2}+\sqrt{m(m-1)}\braket{n}{m-2}+(2m+1)\braket{n}{m} \Big)\\
-                    & \cdot\Big( \sqrt{(n+1)(n+2)}\braket{m}{n+2}+\sqrt{n(n-1)}\braket{m}{n-2}+(2n+1)\braket{m}{n} \Big)
-                \end{split}\\
+                    ={}& \frac{\hbar^2}{4m^2\omega^2}\sum_m\left[ \sqrt{(m+1)(m+2)}\sqrt{n(n-1)}\delta_{n,m+2}\delta_{m,n-2} \right.\\
+                    & \left. +(2m+1)(2n+1)\delta_{n,m}\delta_{m,n}+\sqrt{m(m-1)}\sqrt{(n+1)(n+2)}\delta_{n,m-2}\delta_{m,n+2} \right]
+                \end{split}
+            \end{align*}
+            When $m=n-2$, the first term will be nonzero. When $m=n$, the second term will be nonzero. And when $m=n+2$, the third term will be nonzero. Taken together, this means that
+            \begin{align*}
                 \begin{split}
-                    ={}& \frac{\hbar^2}{4m^2\omega^2}\Big( \sqrt{(n-1)n}\braket{n}{n}+\sqrt{(n+2)(n+1)}\braket{n}{n}+(2n+1)\braket{n}{n} \Big)\\
-                    & \cdot\Big( \sqrt{(n+1)(n+2)}\braket{n+2}{n+2}+\sqrt{n(n-1)}\braket{n-2}{n-2}+(2n+1)\braket{n}{n} \Big)
+                    \ev{x^4}{\psi_n} ={}& \frac{\hbar^2}{4m^2\omega^2}\left[ \sqrt{(n-1)n}\sqrt{n(n-1)} \right.\\
+                    & \left. +(2n+1)(2n+1)+\sqrt{(n+2)(n+1)}\sqrt{(n+1)(n+2)} \right]
                 \end{split}\\
-                \Aboxed{\ev{x^4}{\psi_n} ={}& \frac{\hbar^2}{2m^2\omega^2}\left( \sqrt{n(n-1)}+\sqrt{(n+2)(n+1)}+2n+1 \right)}
+                ={}& \frac{\hbar^2}{4m^2\omega^2}\left[ n(n-1)+(2n+1)^2+(n+1)(n+2) \right]\\
+                \Aboxed{\ev{x^4}{\psi_n} ={}& \frac{\hbar^2}{4m^2\omega^2}(6n^2+6n+3)}
             \end{align*}
         \end{proof}
     \end{enumerate}
