@@ -9,7 +9,7 @@
 
 
 
-\chapter{Spin, Fermions, and Bosons}
+\chapter{Time-Independent Problems in 3D}
 \section{Three-Dimensional Harmonic Oscillator}
 \begin{itemize}
     \item \marginnote{2/12:}Last time.
@@ -590,7 +590,7 @@
         \end{itemize}
         \item Following the algebra in the notes, we obtain the following ODE determining $f_{n\ell}$.
         \begin{equation*}
-            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}-\frac{2m_e}{\hbar^2}\frac{e^2}{4\pi\epsilon_0r} \right] = 0
+            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2m_e}{\hbar^2}\frac{e^2}{4\pi\epsilon_0r} \right] = 0
         \end{equation*}
         \begin{itemize}
             \item Aside: The prefactor to the rightmost $1/r$ term above (excepting the 2 coefficient) is typically written as follows.
@@ -601,10 +601,10 @@
             \item Additionally, the other factor $\hbar/mc$ decomposes into $(h/m_ec)\cdot(1/2\pi)$ where we may recall from the first lecture that $h/m_ec$ is the \textbf{Compton wavelength} $\lambda_c$.
             \item The overall quantity is equal to the inverse of the \textbf{Bohr radius}.
         \end{itemize}
-        \item Thus, we can simplify the above equation to\footnote{The sign switch from $-$ to $+$ for the $a_\text{B}$ term from the last equation to this one??}
-        \begin{align*}
+        \item Thus, we can simplify the above equation to
+        \begin{equation*}
             f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2}{a_\text{B}r} \right] = 0
-        \end{align*}
+        \end{equation*}
         \item As per usual, we propose that
         \begin{equation*}
             f_{n\ell}(r) = \sum_ja_jr^j
@@ -664,9 +664,9 @@
             a_\text{B}^{-1} = \lambda_c^{-1}2\pi\alpha
         \end{equation*}
     \end{itemize}
-    \item \textbf{Rydberg constant}: The constant defined as follows. \emph{Given by}
+    \item \textbf{Rydberg constant}: The constant defined as follows. \emph{Denoted by} $\bm{\Ry}$. \emph{Given by}
     \begin{equation*}
-        \frac{\hbar^2}{2m_ea_\text{B}^2} = \SI{13.6}{\electronvolt}
+        \Ry = \frac{\hbar^2}{2m_ea_\text{B}^2} = \SI{13.6}{\electronvolt}
     \end{equation*}
     \item Wagner is Argentenian.
     \item We'll continue on Monday.

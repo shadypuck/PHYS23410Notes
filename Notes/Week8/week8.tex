@@ -1,0 +1,203 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{7}
+
+\begin{document}
+
+
+
+
+\chapter{The Hydrogen Atom}
+\section{Hydrogen Atom II}
+\begin{itemize}
+    \item \marginnote{2/19:}Review of the hydrogen atom.
+    \begin{itemize}
+        \item The potential is given by
+        \begin{equation*}
+            V(r) = -\frac{e^2}{4\pi\epsilon_0r}
+        \end{equation*}
+        \begin{itemize}
+            \item This is an important case of motion in a central potential in quantum mechanics.
+        \end{itemize}
+        \item We go to polar coordinates because they are most convenient for motion in a central potential.
+        \item We achieve separation of variables via
+        \begin{equation*}
+            \psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+        \end{equation*}
+        \item This leads into the spherical harmonics
+        \begin{align*}
+            \hat{\vec{L}}{\,}^2Y_{\ell m}(\theta,\phi) &= \hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi)\\
+            \hat{L}_zY_{\ell m}(\theta,\phi) &= \hbar mY_{\ell m}(\theta,\phi)
+        \end{align*}
+        \begin{itemize}
+            \item Additionally, the quantum number $m$ satisfies $-\ell\leq m\leq\ell$, giving us $2\ell+1$ solutions for each $\ell$.
+        \end{itemize}
+        \item With the spherical harmonics, the main question becomes how to find $R_{n\ell}$.
+        \begin{itemize}
+            \item We do this via the change of variables
+            \begin{equation*}
+                U_{n\ell}(r) = rR_{n\ell}(r)
+            \end{equation*}
+            yielding a function that satisfies the analogous one-dimensional effective system
+            \begin{equation*}
+                -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\underbrace{\left[ V(r)+\frac{\hbar^2\ell(\ell+1)}{2Mr^2} \right]}_{V_\text{eff}(r)}U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+            \end{equation*}
+        \end{itemize}
+        \item We analyze such systems using their asymptotic behavior as $r\to 0$ and $r\to\infty$.
+        \begin{itemize}
+            \item See Figure \ref{fig:1HV}. We are looking for bound states $E_{n\ell}$.
+            \item When the energy is positive, we have continuous solutions; it's only when the energy is negative that we have quantized bound states.
+        \end{itemize}
+        \item Performing such analyses, we propose an ansatz
+        \begin{equation*}
+            U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-k_{n\ell}r]
+        \end{equation*}
+        where
+        \begin{equation*}
+            E_{n\ell} = -\frac{\hbar^2k_{n\ell}^2}{2M}
+        \end{equation*}
+        \item We suppose that $f$ is a polynomial function
+        \begin{equation*}
+            f_{n\ell}(r) = \sum_ja_jr^j
+        \end{equation*}
+        and solve for it using the differential equation
+        \begin{equation*}
+            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2}{a_\text{B}r} \right] = 0
+        \end{equation*}
+        \item This analysis leads us to the recursion relation
+        \begin{equation*}
+            a_{j+1} = \frac{2k_{n\ell}(j+\ell+1)-\frac{2}{a_\text{B}}}{(j+1)(j+2\ell+2)}a_j
+        \end{equation*}
+        \item We then choose $j_\text{max}=N$, yielding
+        \begin{equation*}
+            k_{n\ell} = \frac{1}{a_\text{B}\underbrace{(N+\ell+1)}_n}
+        \end{equation*}
+        where we canonically call $n$ the \textbf{principal quantum number}.
+        \begin{itemize}
+            \item This is a divergence from last time's notation, but one made for good reason, as we will see shortly.
+            \item Note that we did not introduce this notation last time because we didn't want to have to discuss its subtleties then, as we will today.
+        \end{itemize}
+        \item Thus, the energy depends only on this value $n$ via
+        \begin{equation*}
+            E_{n\ell} = -\frac{\hbar^2}{2m_ea_\text{B}^2(N+\ell+1)^2} = -\frac{\Ry}{n^2}
+        \end{equation*}
+        where $\Ry$ is the Rydberg constant defined last time.
+        \begin{itemize}
+            \item Essentially, the energy depends on this value $n$ which in turn has a hidden dependence on $\ell$.
+        \end{itemize}
+    \end{itemize}
+    \item We now begin on new content, continuing from above however.
+    \item The energy spacing versus $n$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+    
+            \fill [grx] (0.5,0) rectangle (1.5,0.5);
+            \node [right] at (1.5,0.25) {Continuous};
+    
+            \draw [grx,very thick]
+                (0.5,-0.03125) -- ++(1,0)
+                (0.5,-0.0625) -- ++(1,0)
+                (0.5,-0.125) -- ++(1,0)
+                (0.5,-0.25) -- ++(1,0)
+                (0.5,-0.5) -- ++(1,0)
+                (0.5,-1) -- ++(1,0) node[right]{$E_2=E_1/4$}
+                (0.5,-2) -- ++(1,0) node[right]{$E_1=-\SI{13.6}{\electronvolt}$}
+            ;
+    
+            \draw [stealth-stealth] (-0.7,0) -- (3.5,0);
+            \draw [stealth-stealth] (0,0.6) -- (0,-2.5);
+            \node [above left] {$E_n$};
+    
+            \draw [semithick,decorate,decoration=brace] (-1,0) -- node[left=1mm]{$E>0$} (-1,0.5);
+            \draw [semithick,decorate,decoration=brace] (-1,-2.5) -- node[left=1mm]{$E<0$} (-1,0);
+        \end{tikzpicture}
+        \caption{\ce{{}^1H} energy spacing vs. $n$.}
+        \label{fig:1HEn}
+    \end{figure}
+    \begin{itemize}
+        \item The energies get closer and closer together as $n$ increases until they become continuous for positive values of energy.
+        \item The equations and figure imply that $-E_1=\Ry$ is the minimum energy necessary to remove the electron from the hydrogen atom.
+        \item If we don't have this much energy, a lesser amount will still affect the electron, just moving it to an \textbf{excited state}.
+        \begin{itemize}
+            \item In particular, $E_m-E_1$ is the amount of energy necessary to move the electron to an excited state $E_m$ of higher energy than $E_1$.
+        \end{itemize}
+        \item What is also interesting is that if the electron is in an excited state of energy $E_m$, then it will \emph{not} stay there forever.
+        \begin{itemize}
+            \item Experimentally, even in this time independent potential, the electron can jump back down to a lower state by emitting electromagnetic radiation of energy $E_\gamma=E_m-E_1$.
+            \item This is evidence that the vacuum in which we assume the hydrogen atom lies is not really \emph{vacuum}! Rather, the vacuum contains something called the EM field, and there are fluctuations in this EM field that can push the electron down energy states.
+            \item This is discussed more in Quantum Mechanics II, but is ignored in our present formalism of the hydrogen atom.
+        \end{itemize}
+    \end{itemize}
+    \item Now for every fixed $n$, the equation $n=N+\ell+1$ implies that $\ell=0,1,\dots,n-1$.
+    \begin{itemize}
+        \item But for every $\ell$, there are $2\ell+1$ solutions with the same energy.
+        \item Thus, for every $n$, there are
+        \begin{equation*}
+            \sum_{\ell=0}^{n-1}(2\ell+1) = 2\sum_{\ell=0}^{n-1}\ell+\sum_{\ell=0}^{n-1}1
+            = 2\cdot\frac{n(n-1)}{2}+n
+            = n^2
+        \end{equation*}
+        different states with the same energy.
+    \end{itemize}
+    \item Aside: A fun application of this stuff to cosmology.
+    \begin{itemize}
+        \item The universe started as a hot plasma that cooled down as the universe expanded.
+        \item The early universe contained a lot of crap, including photons.
+        \item When early protons and electrons tried to combine at hot temperatures, the huge amount of EM radiation would kick the electrons out.
+        \item Thus, stable atoms could not form.
+        \item The specific temperatures at which this would occur were
+        \begin{equation*}
+            k_\text{B}T > \SI{13.6}{\electronvolt}
+        \end{equation*}
+        \item At temperatures $k_\text{B}T<\SI{13.6}{\electronvolt}$, protons and electrons bind together, and the universe becomes transparent to radiation.
+        \item Evidence that this happened: Cosmic microwave background.
+        \begin{itemize}
+            \item When the universe became transparent, it was at microwave temperatures.
+            \item This was when the universe was about \num{13000} years old.
+        \end{itemize}
+    \end{itemize}
+    \item Now back to math.
+    \item Since we now have an explicit definition for $k_{n\ell}$, we may rewrite the solutions as
+    \begin{equation*}
+        U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-r/a_\text{B}n]
+    \end{equation*}
+    \begin{itemize}
+        \item Notationally, do remember that $n$ gives energy, $\ell$ gives angular momentum, and $N=n-\ell-1$ gives the polynomial degree of $f_{n\ell}(r)$.
+    \end{itemize}
+    \item Thus, if $N=0$, then $n=\ell+1$ and the radial probability density of finding the particle at a given $r$ is
+    \begin{equation*}
+        r^2|R_{n\ell}(r)|^2 = |U_{n\ell}(r)|^2 = r^{2n}\e[-2r/a_\text{B}n]
+    \end{equation*}
+    \item What is the maximum, i.e., the most probable distance from the nucleus?
+    \begin{itemize}
+        \item Differentiate the probability density with respect to $r$ and determine where it equals zero.
+        \begin{align*}
+            0 &= 2nr^{2n-1}\e[-2r/a_\text{B}n]-\frac{2r^{2n}}{a_\text{B}n}\e[-2r/a_\text{B}n]\\
+            \frac{2r^{2n}}{a_\text{B}n} &= 2nr^{2n-1}\\
+            r_\text{max} &= a_\text{B}n^2
+        \end{align*}
+    \end{itemize}
+    \item What happens if you have an ion of charge $Ze$?
+    \begin{itemize}
+        \item Then
+        \begin{equation*}
+            V(r) = -\frac{Ze^2}{4\pi\epsilon_0r}
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            E_n = -\frac{\Ry Z^2}{n^2}
+        \end{equation*}
+        and the Bohr radius halves.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
