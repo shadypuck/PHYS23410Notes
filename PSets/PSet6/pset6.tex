@@ -1,0 +1,117 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{5}
+
+\begin{document}
+
+
+
+
+\section{Time-Independent Problems in 3D}
+\begin{enumerate}
+    \item \marginnote{2/24:}\textbf{Infinite spherical well.} A particle of mass $M$ moves in the central potential
+    \begin{equation}
+        V(r) =
+        \begin{cases}
+            0 & r<a\\
+            \infty & r\geq a
+        \end{cases}
+    \end{equation}
+    We know that the generic solution is given by
+    \begin{equation}
+        \psi_{n\ell m} = R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+    \end{equation}
+    where $U_{n\ell}(r)=rR_{n\ell}(r)\to 0$ for $r=0,a$ is the solution for an effective one-dimensional problem with an effective potential
+    \begin{equation}
+        V_\text{eff}(r) = V(r)+\frac{\hbar^2\ell(\ell+1)}{2Mr^2}
+    \end{equation}
+    \begin{enumerate}
+        \item Write the solutions of the Schr\"{o}dinger equation for $\ell=0$. Observe that there are infinite possible solutions ($n=1,2,\dots$) for each value of $\ell$.
+        \item For $\ell=0$, what is the probability density of finding the particle for $r\to 0$?
+        \item For $\ell\neq 0$, go back to the equation for $R_{n\ell}$ and use your knowledge of the spherical Bessel equation
+        \begin{equation}
+            u^2\dv[2]{u}[J_\ell(u)]+2u\dv{u}[J_\ell(u)]+[u^2-\ell(\ell+1)]J_\ell(u) = 0
+        \end{equation}
+        to show that $R_{n\ell}(r)$ can be solved in terms of $J_\ell(u)$ if one makes the simple redefinition $u=k_{n\ell}r$, where $\hbar^2k_{n\ell}^2=2ME_{n\ell}$ is the square of the particle momentum.
+        \item The general form of $J_\ell(r)$ is
+        \begin{equation}
+            J_\ell(u) = (-u)^\ell\left( \frac{1}{u}\dv{u} \right)^\ell\left( \frac{\sin u}{u} \right)
+        \end{equation}
+        Find the first solutions of this equation, for $\ell=0,1$. Just like the regular sinusoidal functions, the spherical Bessel functions have infinite zeros. The energy of the particle is obviously
+        \begin{equation}
+            E_{n\ell} = \frac{\hbar^2k_{n\ell}^2}{2M}
+        \end{equation}
+        Show that $k_{n\ell}$ may be given in terms of the position of the zeros of the spherical Bessel function
+        \begin{equation}
+            J_\ell(k_{n\ell}a) = 0
+        \end{equation}
+        \item In the classical case, if the particle has $\hat{\vec{L}}{\,}^2=0$, it would move in paths that cross the origin and bounce back and forth against the wall. There are infinite paths depending on the direction of motion, with a common convergence point at $r=0$. Compare this result with the probability density in the quantum case.
+        \item In the classical motion at $\hat{\vec{L}}{\,}^2\neq 0$, the particle will never cross the origin, but the motion will be given by trajectories where the particle hits the wall periodically and continues moving until hitting the wall again, conserving the tangential momentum and changing the sign of the normal one. Compare this with the solution of the quantum case for $\ell=1$.
+    \end{enumerate}
+    \item In class, we solved the isotropic harmonic oscillator for a particle of mass $M$ moving in a potential
+    \begin{equation}
+        V(x,y,z) = \frac{M\omega^2}{2}(x^2+y^2+z^2)
+    \end{equation}
+    in Cartesian coordinates as well as in spherical coordinates. In Cartesian coordinates, it is better to use the method of separation of variables
+    \begin{equation}
+        \psi_{n_xn_yn_z}(x,y,z) = X_{n_x}(x)Y_{n_y}(y)Z_{n_z}(z)
+    \end{equation}
+    This results in harmonic oscillator equations for the three functions $X_{n_x},Y_{n_y},Z_{n_z}$. The total energy is given by
+    \begin{equation}
+        E_{n_xn_yn_z} = \hbar\omega\left( n_x+n_y+n_z+\frac{3}{2} \right)
+    \end{equation}
+    In spherical coordinates, one can take eigenfunctions $Y_{\ell m}(\theta,\phi)$ of $\hat{L}_z,\hat{\vec{L}}{\,}^2$ and solve for the radial function $U_{n\ell}(r)=rR_{n\ell}(r)$. Studying the asymptotic behavior at $r\to 0$ and $r\to\infty$ leads to a solution
+    \begin{equation}
+        U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-M\omega r^2/2\hbar]
+    \end{equation}
+    where $f_{n\ell}$ can be expressed in terms of a series expansion that must terminate at some order $n$ for the solution to be normalizable. The resulting energy is
+    \begin{equation}
+        E_{n\ell} = \hbar\omega\left( n+\ell+\frac{3}{2} \right)
+    \end{equation}
+    \begin{enumerate}
+        \item How do you relate the three-fold degeneracy of the energy solutions in the Cartesian case to the two-fold degeneracy in the spherical case? Write the first simple examples that establish this relationship.
+        \item Write the solution for $\bar{n}=n_x+n_y+n_z=1$ in Cartesian coordinates and for $\bar{n}=n+\ell=1$ in spherical coordinates. Demonstrate that the solutions in the spherical case are linear combinations of the ones found in the Cartesian case.
+        \item Discuss the behavior of the probability density for the different solutions for $\bar{n}=0$ and $\bar{n}=1$. \emph{Hint}: Concentrate on the overall behavior of the density, and not on the normalization factors.
+    \end{enumerate}
+    \item In class, we solved the hydrogen atom. One can imagine a more generic potential, namely
+    \begin{equation}
+        V(r) = \frac{A}{r^2}-\frac{B}{r}
+    \end{equation}
+    The effective one-dimensional problem for the function $U_{n\ell}(r)=rR_{n\ell}(r)$ would be given by
+    \begin{equation}
+        -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)]+\left[ V(r)+\frac{\hbar^2\ell(\ell+1)}{2m_er^2} \right]U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+    \end{equation}
+    where
+    \begin{equation}
+        \psi_{n\ell m}(\vec{r}) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+    \end{equation}
+    Assume that $A,B$ are real, positive, and carry the proper units to make the potential meaningful.
+    \begin{enumerate}
+        \item Redefine
+        \begin{equation}
+            A+\frac{\hbar^2\ell(\ell+1)}{2m_e} = \frac{\hbar^2w(w+1)}{2m_e}
+        \end{equation}
+        where $w$ is a real number and study the asymptotic behavior of $U_{n\ell}$ for $r\to\infty$ and $r\to 0$.
+        \item Consider only bound states (that is, those where $\hbar^2k_{n\ell}^2/2m_e=|E_{n\ell}|$) and --- looking at what was done in the case of the hydrogen atom --- obtain an equation for the function $f(z)$ such that
+        \begin{equation}
+            U_{n\ell}(r) = f_{n\ell}(z)r^{w+1}\e[-k_{n\ell}r]
+        \end{equation}
+        \emph{Hint}: You do not need to derive the equation. Just look at what happens in the hydrogen atom and proceed by analogy with that case.
+        \item Propose a series expansion for $f_{n\ell}(z)$ and assuming that it should terminate in order to obtain a normalizable solution, derive the value of the energies that one should obtain in this case. For this, call
+        \begin{equation}
+            B\sqrt{m_e/2|E_{n\ell}|} = q\hbar
+        \end{equation}
+        and demonstrate that $q-w-1=n$ must be a positive integer (or zero). Therefore, the energy is given by
+        \begin{equation}\label{eqn:6.19}
+            E_{n\ell} = -\frac{2B^2m_e}{\hbar^2}\left[ 2n+1+\sqrt{(2\ell+1)^2+8m_eA/\hbar^2} \right]^{-2}
+        \end{equation}
+        Show that this reduces to the hydrogen atom in the appropriate limit. \emph{Hint}: Observe that $4x(x+1)+1=(2x+1)^2$ and the square root in Eq. \ref{eqn:6.19} is nothing but $(2w+1)$.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
