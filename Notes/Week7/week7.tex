@@ -207,12 +207,12 @@
         \begin{itemize}
             \item In this case, the solution is proportional to
             \begin{equation*}
-                U_{n\ell} = C\e[-M\omega r^2/\hbar]
+                U_{n\ell} = C\e[-M\omega r^2/2\hbar]
             \end{equation*}
         \end{itemize}
         \item Thus, we combine the two partial solutions to propose the overall ansatz
         \begin{equation*}
-            U_{n\ell} = f_{n\ell}r^{\ell+1}\e[-M\omega r^2/\hbar]
+            U_{n\ell} = f_{n\ell}r^{\ell+1}\e[-M\omega r^2/2\hbar]
         \end{equation*}
         \item Substituting back into the original ODE, we obtain the differential equation
         \begin{equation*}
@@ -233,7 +233,7 @@
         \item Make a change of variables $j\to j+2$ so that we can start the sum from zero.
         \begin{multline*}
             \sum_{j=0}^\infty(j+2)(j+1)a_{j+2}r^j+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)\sum_{j=0}^\infty(j+2)a_{j+2}r^{j+1}\\
-            +\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_{j=0}^\infty a_{j+2}r^{j+2} = 0
+            +\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_{j=0}^\infty a_jr^j = 0
         \end{multline*}
         \item We will finish this derivation on Wednesday.
     \end{itemize}
@@ -278,6 +278,212 @@
         \begin{equation*}
             x = x_0+\epsilon x_1+\epsilon^2x_2+\cdots
         \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Spherically Symmetric Harmonic Oscillator}
+\begin{itemize}
+    \item \marginnote{2/14:}Review.
+    \begin{itemize}
+        \item Recall that the 3D case we're considering corresponds to the Hamiltonian
+        \begin{equation*}
+            \hat{H} = -\frac{\hbar^2}{2M}\left( \pdv[2]{x}+\pdv[2]{y}+\pdv[2]{z} \right)+\frac{M\omega^2}{2}(x^2+y^2+z^2)
+        \end{equation*}
+        \begin{itemize}
+            \item For this Hamiltonian, we are trying to solve the Eigenvalue equation
+            \begin{equation*}
+                \hat{H}\psi(x,y,z) = E\psi(x,y,z)
+            \end{equation*}
+            \item The solution may be obtained in Cartesian coordinates as a limiting case of the asymmetric harmonic oscillator, i.e., via the separation of variables
+            \begin{equation*}
+                \psi(x,y,z) = X(x)Y(y)Z(z)
+            \end{equation*}
+            \item This results in the solutions
+            \begin{align*}
+                \psi(x,y,z) &= \prod_{i=1}^3H_{n_i}(\xi_i)\e[-\xi_i^2/2]c_{n_i}&
+                E_{n_1n_2n_3} &= \hbar\omega\left( n_1+n_2+n_3+\frac{3}{2} \right)
+            \end{align*}
+            where $\xi_i=x_i\sqrt{m\omega/\hbar}$ and $x_1,x_2,x_3=x,y,z$, respectively.
+        \end{itemize}
+        \item Recall also the polar coordinates $r,\theta,\phi$. The solution may be obtained here as well.
+        \begin{itemize}
+            \item In polar coordinates, we can see that the potential described above is central.
+            \item Thus, we have that
+            \begin{equation*}
+                \hat{\vec{L}}{\,}^2Y_{\ell m}(\theta,\phi) = \hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi)
+            \end{equation*}
+            and
+            \begin{equation*}
+                \hat{L}_zY_{\ell m}(\theta,\phi) = \hbar mY_{\ell m}(\theta,\phi)
+            \end{equation*}
+            and
+            \begin{equation*}
+                -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\underbrace{\left[ V(r)+\frac{\hbar^2\ell(\ell+1)}{2Mr^2} \right]}_{V_\text{eff}(r)}U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+            \end{equation*}
+            where $-\ell\leq m\leq\ell$ and thus there is a $2\ell+1$ degeneracy of $E_{n\ell}$ associated with different $m$.
+            \begin{itemize}
+                \item Recall that
+                \begin{equation*}
+                    R_{n\ell}(r) = \frac{U_{n\ell}(r)}{r}
+                \end{equation*}
+            \end{itemize}
+            \item Substituting in
+            \begin{equation*}
+                V(r) = \frac{M\omega^2r^2}{2}
+            \end{equation*}
+            we obtain the effective potential described in Figure \ref{fig:sphrSymHOV}.
+            \item Limiting cases then lead us to construct the ansatz
+            \begin{equation*}
+                U_{n\ell} = f_{n\ell}r^{\ell+1}\e[-M\omega r^2/2\hbar]
+            \end{equation*}
+            \item Now propose that
+            \begin{equation*}
+                f_{n\ell}(r) = \sum_ja_jr^j
+            \end{equation*}
+            \item Recall that we may obtain the differential equation
+            \begin{equation*}
+                f_{n\ell}''+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)f_{n\ell}'+\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]f_{n\ell} = 0
+            \end{equation*}
+            \item We must set $a_1=0$.
+            \item Moving on, we obtain
+            \begin{equation*}
+                \sum_jj(j-1)a_jr^{j-2}+2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)\sum_jja_jr^{j-1}+\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_ja_jr^j = 0
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item We now begin on new content, continuing the same derivation from above.
+    \item We can further simplify the above equation by solving for $a_{j+2}$ in terms of $a_j$.
+    \begin{itemize}
+        \item Begin by bringing all $r$'s into the summations and running all sums from $0$ to $\infty$ with no terms that go to zero so that every term is in $r^j$.
+        \begin{multline*}
+            \sum_{j=0}^\infty(j+2)(j+1)a_{j+2}r^j+2(\ell+1)\sum_{j=0}^\infty(j+2)a_{j+2}r^j-\frac{2M\omega}{\hbar}\sum_{j=0}^\infty ja_jr^j\\
+            % +2\left( \frac{\ell+1}{r}-\frac{M\omega r}{\hbar} \right)\sum_{j=0}^\infty(j+2)a_{j+2}r^{j+1}\\
+            +\left[ \frac{2ME_{n\ell}}{\hbar^2}-\frac{(2\ell+3)M\omega}{\hbar} \right]\sum_{j=0}^\infty a_jr^j = 0
+        \end{multline*}
+        \item Combine the summations.
+        \begin{equation*}
+            \sum_{j=0}^\infty\left[ (j+1)(j+2)a_{j+2}+2(j+2)(\ell+1)a_{j+2}-\frac{2jM\omega}{\hbar}a_j+\frac{2ME_{n\ell}}{\hbar^2}a_j-\frac{(2\ell+3)M\omega}{\hbar}a_j \right]r^j = 0
+        \end{equation*}
+        \item Simplify and combine terms.
+        \begin{equation*}
+            \sum_{j=0}^\infty\left[ (j+2)(j+2\ell+3)a_{j+2}+\left( \frac{2ME_{n\ell}}{\hbar^2}-\frac{M\omega}{\hbar}(2j+2\ell+3) \right)a_j \right] = 0
+        \end{equation*}
+        \item Because each term in the above summation is affixed to a different power of $r$, meaning that no two terms can cancel, not only is the entire sum above equal to zero, but each individual term in it is equal to zero, too.
+        \item Thus, for all $j\in\Z_{\geq 0}$,
+        \begin{align*}
+            0 &= (j+2)(j+2\ell+3)a_{j+2}+\left( \frac{M\omega}{\hbar}(2j+2\ell+3)-\frac{2ME_{n\ell}}{\hbar^2} \right)a_j\\
+            a_{j+2} &= \frac{\frac{2ME_{n\ell}}{\hbar^2}-\frac{M\omega}{\hbar}(2j+2\ell+3)}{(j+2)(j+2\ell+3)}a_j
+        \end{align*}
+    \end{itemize}
+    \item This combined with the fact that $a_1=0$ means that \emph{all odd $a_j$ equal zero.}
+    \begin{itemize}
+        \item It follows that $f_{n\ell}$ can be viewed as a function of $r^2$, not just $r$, since this fact means that the power series will be of the form
+        \begin{equation*}
+            f_{n\ell}(r) = a_0+a_2r^2+a_4r^4+a_6r^6+\cdots+a_{2n}r^{2n}+\cdots
+        \end{equation*}
+    \end{itemize}
+    \item Now observe that in the limit of large $j$ (i.e., as $j\to\infty$),
+    \begin{equation*}
+        a_{j+2} \approx \frac{\frac{M\omega}{\hbar}(2j)}{j^2+2j}
+    \end{equation*}
+    and thus\footnote{How did we get this transformation to exponential growth??}
+    \begin{equation*}
+        f_{n\ell}(r) \approx \e[M\omega r^2/\hbar]
+    \end{equation*}
+    \begin{itemize}
+        \item This, in turn, would lead to an exponential growth of $U_{n\ell}$ as $r\to\infty$ and hence a non-renormalizable solution.
+        \item Consequently, there must be some maximum value of $j$ which we will denote by $n:=j_\text{max}$.
+        \item In particular, $n$ will be the value of $j$ such that the numerator of the expression above giving $a_{j+2}(a_j)$ equals zero. This will guarantee that $a_{n+2}=0$ and hence all $a_j=0$ for $j>n$.
+        \item Solving for this $n$, we have that
+        \begin{align*}
+            \frac{2ME_{n\ell}}{\hbar^2} &= \frac{M\omega}{\hbar}(2n+2\ell+3)\\
+            E_{n\ell} &= \hbar\omega\left( n+\ell+\frac{3}{2} \right)
+        \end{align*}
+        \begin{itemize}
+            \item Recall that $n$ is even; $n\geq 0$; $\ell\geq 0$; and for each $\ell$, we have $2\ell+1$ solutions with $-\ell\leq m\leq\ell$ where $\hbar m$ are the eigenvalues of $\hat{L}_z$.
+        \end{itemize}
+    \end{itemize}
+    \item Notice the remarkable similarity between the energy equations for the spherically symmetric harmonic oscillator in Cartesian coordinates (left below) and polar coordinates (right below).
+    \begin{align*}
+        E_{n_1n_2n_3} &= \hbar\omega\left( \bar{n}+\frac{3}{2} \right)&
+        E_{\bar{n}} &= \hbar\omega\left( \bar{n}+\frac{3}{2} \right)
+    \end{align*}
+    \begin{itemize}
+        \item On the left above, $\bar{n}=n_1+n_2+n_3$. On the right above, $\bar{n}=n+\ell$.
+    \end{itemize}
+    \item Now let's investigate some particular solutions in both cases.
+    \item $\bar{n}=0$.
+    \begin{itemize}
+        \item \underline{Cartesian}: The only possible values are $n_1=n_2=n_3=0$, corresponding to
+        \begin{equation*}
+            \e[-M\omega(x^2+y^2+z^2)/2\hbar]
+        \end{equation*}
+        \item \underline{Polar}: The only possible values are $n=\ell=0$, corresponding to
+        \begin{equation*}
+            \e[-M\omega r^2/2\hbar]
+        \end{equation*}
+        \item In both cases, there is only one solution, and the solutions are mathematically equivalent.
+    \end{itemize}
+    \item $\bar{n}=1$.
+    \begin{itemize}
+        \item \underline{Cartesian}: We could have $n_1=1$, $n_2=n_3=0$; $n_2=1$, $n_1=n_3=0$; or $n_3=1$, $n_2=n_3=0$; corresponding to
+        \begin{align*}
+            x\e[-M\omega r^2/2\hbar]&&
+            y\e[-M\omega r^2/2\hbar]&&
+            z\e[-M\omega r^2/2\hbar]
+        \end{align*}
+        \item \underline{Polar}: We have $n=0$; $\ell=1$; and $m=1$, $m=0$, or $m=-1$; corresponding to
+        \begin{align*}
+            r\e[-M\omega r^2/2\hbar]\underbrace{\sin\theta\e[i\phi]}_{(x+iy)/r}&&
+            r\e[-M\omega r^2/2\hbar]\cos\theta&&
+            r\e[-M\omega r^2/2\hbar]\underbrace{\sin\theta\e[-i\phi]}_{(x-iy)/r}
+        \end{align*}
+        \item In both cases, there are three solutions, and the solutions are mathematically equivalent (up to linear combinations).
+    \end{itemize}
+    \item A pattern is emerging: Naturally, it makes sense that the coordinate system chosen should not affect the solutions.
+    \item $\bar{n}=2$.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{subtable}{0.3\linewidth}
+            \centering
+            \begin{tabular}{c|c|c}
+                $n_1$ & $n_2$ & $n_3$\\
+                \hline
+                0 & 0 & 2\\
+                0 & 2 & 0\\
+                2 & 0 & 0\\
+                0 & 1 & 1\\
+                1 & 0 & 1\\
+                ${\color{white}-}1{\color{white}-}$ & ${\color{white}-}1{\color{white}-}$ & ${\color{white}-}0{\color{white}-}$\\
+            \end{tabular}
+            \caption{Cartesian coordinates.}
+            \label{tab:cartSphrHOa}
+        \end{subtable}
+        \begin{subtable}{0.3\linewidth}
+            \centering
+            \begin{tabular}{c|c|c}
+                ${\color{white}-}n{\color{white}-}$ & ${\color{white}-}\ell{\color{white}-}$ & $m$\\
+                \hline
+                0 & 2 & 2\\
+                0 & 2 & 1\\
+                0 & 2 & 0\\
+                0 & 2 & $-1{\color{white}-}$\\
+                0 & 2 & $-2{\color{white}-}$\\
+                2 & 0 & 0\\
+            \end{tabular}
+            \caption{Spherical coordinates.}
+            \label{tab:cartSphrHOb}
+        \end{subtable}
+        \caption{Spherically symmetric harmonic oscillator solutions ($\bar{n}=2$).}
+        \label{tab:cartSphrHO}
+    \end{table}
+    \begin{itemize}
+        \item In both cases, there are six solutions.
+        \item Note that we do not consider the case where $n=\ell=1$ in Table \ref{tab:cartSphrHOb} because this would mean that $j_\text{max}=n=1$ is an odd number, which is not allowed.
     \end{itemize}
 \end{itemize}
 
