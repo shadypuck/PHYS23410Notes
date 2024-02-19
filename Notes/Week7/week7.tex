@@ -489,5 +489,190 @@
 
 
 
+\section{Hydrogen Atom: Energy Eigenvalues and Eigenstates}
+\begin{itemize}
+    \item \marginnote{2/16:}Today: The hydrogen atom.
+    \item The central potential is
+    \begin{equation*}
+        V(r) = -\frac{e^2}{4\pi\epsilon_0r}
+    \end{equation*}
+    \item The problem is an electron revolving around a proton.
+    \item The proton and electron have very different masses.
+    \begin{align*}
+        M_pc^2 &\approx \SI{1}{\giga\electronvolt}&
+        m_ec^2 &\approx \SI{511}{\kilo\electronvolt}
+    \end{align*}
+    \begin{itemize}
+        \item The ratio is
+        \begin{equation*}
+            \frac{M_p}{m_e} \approx 2000
+        \end{equation*}
+        \item This justifies assuming that the proton is fixed (the Born-Oppenheimer approximation).
+    \end{itemize}
+    \item The relevant Schr\"{o}dinger equation is
+    \begin{equation*}
+        -\frac{\hbar^2}{2m_e}\vec{\nabla}^2\psi_{n\ell m}(r,\theta,\phi)-\frac{e^2}{4\pi\epsilon_0r}\psi_{n\ell m}(r,\theta,\phi) = E_{n\ell}\psi_{n\ell m}(\theta,\phi)
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $E$ does not depend on $m$ because $m$ corresponds to the $2\ell+1$ degeneracy in energy.
+        \begin{itemize}
+            \item Moreover, $m$ only specifies orientation in space, which should intuitively not affect energy because space is isotropic and affine.
+            \item This is something we should absolutely know!!
+        \end{itemize}
+        \item Recall that
+        \begin{align*}
+            \psi_{n\ell m}(r,\theta,\phi) &= R_{n\ell}(r)Y_{\ell m}(\theta,\phi)\\
+            \hat{\vec{L}}{\,}^2Y_{\ell m}(\theta,\phi) &= -\hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi)\\
+            \hat{L}_zY_{\ell m}(\theta,\phi) &= \hbar mY_{\ell m}(\theta,\phi)
+        \end{align*}
+        \item Recall also polar coordinates
+        \begin{align*}
+            z &= r\cos\theta\\
+            x &= r\sin\theta\cos\phi\\
+            y &= r\sin\theta\sin\phi
+        \end{align*}
+    \end{itemize}
+    \item Making the substitution
+    \begin{equation*}
+        U_{n\ell}(r) = rR_{n\ell}(r)
+    \end{equation*}
+    can simplify the Schr\"{o}dinger equation to the following equivalent effective potential and 1D problem.
+    \begin{equation*}
+        -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)]+\left[ \frac{\hbar^2\ell(\ell+1)}{2m_er^2}-\frac{e^2}{4\pi\epsilon_0r} \right]U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+    \end{equation*}
+    \begin{itemize}
+        \item This is the problem that started the whole game of quantum mechanics; it has enormous consequences in particle physics.
+    \end{itemize}
+    \item As with the discussion associated with Figure \ref{fig:sphrSymHOV}, we have two competing potentials here (see Figure \ref{fig:1HV}).
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \small
+            \draw [-stealth] (-1,0) -- (4,0) node[right]{$r$};
+            \draw [-stealth] (0,-2.5) -- (0,2.5);
+    
+            \footnotesize
+            \draw [blx,thick] plot[domain=0.318:3.95,samples=50,smooth] (\x,{1/(4*\x*\x)}) node[above left]{$\dfrac{\hbar^2\ell(\ell+1)}{2m_er^2}$};
+            \draw [rex,thick] plot[domain=0.4:3.95,smooth] (\x,{-1/\x}) node[below left]{$-\dfrac{e^2}{4\pi\epsilon_0r}$};
+            
+            \draw [grx,thick] plot[domain=0.1746:3.95,samples=100,smooth] (\x,{1/(4*\x*\x)-1/\x});
+            \draw [grx]
+                (0.293,-0.5) -- (1.707,-0.5)
+                (0.323,-0.7) -- (1.106,-0.7)
+                (0.380,-0.9) -- (0.731,-0.9)
+            ;
+            \node [grx,left] at (0,2) {$V_\text{eff}(r)$};
+            \node [grx] at (0.8,-0.3) {$E_{n\ell}$};
+        \end{tikzpicture}
+        \caption{Hydrogen atom potential.}
+        \label{fig:1HV}
+    \end{figure}
+    \begin{itemize}
+        \item We are interested in finding the \textbf{bound states}.
+        \item In the limiting case that $r$ is small ($r\to 0$), we can approximate the potential as with Figure \ref{fig:sphrSymHOV} and take
+        \begin{equation*}
+            U_{n\ell} \propto Cr^{\ell+1}
+        \end{equation*}
+        \item In the limiting case that $r$ is large ($r\to \infty$), we can approximate the potential as going to zero and take
+        \begin{equation*}
+            U_{n\ell} \propto A\e[\pm k_{n\ell}r]
+        \end{equation*}
+        where
+        \begin{equation*}
+            |E_{n\ell}| = \frac{\hbar^2k_{n\ell}^2}{2m_e}
+        \end{equation*}
+        \item Thus, we combine the two partial solutions to propose the overall ansatz
+        \begin{equation*}
+            U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-k_{n\ell}r]
+        \end{equation*}
+        \begin{itemize}
+            \item Note that we choose the negative exponent so the solution does not blow up at large $r$.
+        \end{itemize}
+        \item Following the algebra in the notes, we obtain the following ODE determining $f_{n\ell}$.
+        \begin{equation*}
+            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}-\frac{2m_e}{\hbar^2}\frac{e^2}{4\pi\epsilon_0r} \right] = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Aside: The prefactor to the rightmost $1/r$ term above (excepting the 2 coefficient) is typically written as follows.
+            \begin{equation*}
+                \frac{m_ec}{\hbar}\frac{e^2}{4\pi\epsilon_0\hbar c}
+            \end{equation*}
+            \item The right fraction is the \textbf{electromagnetic fine structure constant}.
+            \item Additionally, the other factor $\hbar/mc$ decomposes into $(h/m_ec)\cdot(1/2\pi)$ where we may recall from the first lecture that $h/m_ec$ is the \textbf{Compton wavelength} $\lambda_c$.
+            \item The overall quantity is equal to the inverse of the \textbf{Bohr radius}.
+        \end{itemize}
+        \item Thus, we can simplify the above equation to\footnote{The sign switch from $-$ to $+$ for the $a_\text{B}$ term from the last equation to this one??}
+        \begin{align*}
+            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2}{a_\text{B}r} \right] = 0
+        \end{align*}
+        \item As per usual, we propose that
+        \begin{equation*}
+            f_{n\ell}(r) = \sum_ja_jr^j
+        \end{equation*}
+        and collapse functions that diverge.
+        \item Substituting this power series into the differential equation, we obtain
+        \begin{align*}
+            0 &= \sum_ja_jr^{j-2}j(j-1)+\sum_ja_jjr^{j-1}\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+\sum_ja_jr^j\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2}{a_\text{B}r} \right]\\
+            &= \sum_ja_jr^{j-1}j(j-1)+\sum_ja_jjr^{j-1}[2(\ell+1)-2k_{n\ell}r]+\sum_ja_jr^j\left[ -2k_{n\ell}(\ell+1)+\frac{2}{a_\text{B}} \right]\\
+            &= \sum_ja_{j+1}r^jj(j+1)+\sum_ja_{j+1}(j+1)r^j2(\ell+1)-\sum_ja_jjr^jk_{n\ell}2+\sum_ja_jr^j\left[ -2k_{n\ell}(\ell+1)+\frac{2}{a_\text{B}} \right]
+        \end{align*}
+        \begin{itemize}
+            \item From line 1 to line 2, we multiplied through this function equal to zero by $r$.
+            \item From line 2 to line 3, we reindex some terms on the left from $j\to j+1$.
+        \end{itemize}
+        \item It follows just like last class that
+        \begin{equation*}
+            a_{j+1}(j+1)[j+2(\ell+1)] = a_j\left[ 2k_{n\ell}j+2k_{n\ell}(\ell+1)-\frac{2}{a_\text{B}} \right]
+        \end{equation*}
+        \item Thus, we get that
+        \begin{equation*}
+            a_{j+1} = \frac{k_{n\ell}(2j+2\ell+2)-\frac{2}{a_\text{B}}}{(j+1)[j+2(\ell+1)]}a_j
+        \end{equation*}
+        \item Once again, for similar reasons, there will also be some $j_\text{max}=n$.
+        \item Then
+        \begin{equation*}
+            (n+\ell+1)k_{n\ell} = \frac{1}{a_\text{B}}
+        \end{equation*}
+        which means that
+        \begin{equation*}
+            k_{n\ell} = \frac{1}{a_\text{B}(n+\ell+1)}
+        \end{equation*}
+        \item Then we get that
+        \begin{equation*}
+            E_{n\ell} = -\frac{\hbar^2}{2m_ea_\text{B}^2(n+\ell+1)^2}
+        \end{equation*}
+        where everything except the quantum numbers is the \textbf{Rydberg constant}.
+        \item Consequently, in this case, we may define $\bar{n}=n+\ell+1$.
+    \end{itemize}
+    \item \textbf{Bound state}: A state in which the electron can escape to $\infty$.
+    \begin{itemize}
+        \item We tend to suppress bound states so that the wave function does not have probability at $\infty$.
+    \end{itemize}
+    \item \textbf{Electromagnetic fine structure constant}: The constant defined as follows. \emph{Denoted by} $\bm{\alpha}$. \emph{Given by}
+    \begin{equation*}
+        \alpha = \frac{e^2}{4\pi\epsilon_0\hbar c} \approx \frac{1}{137}
+    \end{equation*}
+    \item \textbf{Bohr radius}: The most probable distance from the nucleus of a hydrogen atom for its electron to exist. \emph{Denoted by} $\bm{a_\textbf{B}}$. \emph{Given by}
+    \begin{equation*}
+        a_\text{B} = \frac{4\pi\epsilon_0\hbar^2}{m_ee^2}
+        \approx \frac{137}{2\pi}\lambda_c
+        = \SI{5.3e-11}{\meter}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that we get the approximation from the aside's note that
+        \begin{equation*}
+            a_\text{B}^{-1} = \lambda_c^{-1}2\pi\alpha
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Rydberg constant}: The constant defined as follows. \emph{Given by}
+    \begin{equation*}
+        \frac{\hbar^2}{2m_ea_\text{B}^2} = \SI{13.6}{\electronvolt}
+    \end{equation*}
+    \item Wagner is Argentenian.
+    \item We'll continue on Monday.
+\end{itemize}
+
+
+
 
 \end{document}
