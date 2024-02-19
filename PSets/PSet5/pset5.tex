@@ -26,9 +26,207 @@
     This means that the potential is zero inside the box that extends from $x=-a$ to $x=a$ in the $x$-direction, $y=-b$ to $y=b$ in the $y$-direction, and $z=-c$ to $z=c$ in the $z$-direction and increases in steps otherwise.
     \begin{enumerate}
         \item Analyze first the case wherein all of $V_1,V_2,V_3\to\infty$. This is the infinite square well in three dimensions. What is the general solution for $\psi(x,y,z)$? \emph{Hint}: Use the method of separation of variables and write $\psi(x,y,z)=X(x)Y(y)Z(z)$.
+        \begin{proof}
+            The Schr\"{o}dinger equation for this case is
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi &= E\psi\\
+                -\frac{\hbar^2}{2m}\left( \pdv[2]{\psi}{x}+\pdv[2]{\psi}{y}+\pdv[2]{\psi}{z} \right) &= E\psi
+            \end{align*}
+            along with the boundary conditions
+            \begin{align*}
+                \psi(\pm a,y,z) &= 0&
+                \psi(x,\pm b,z) &= 0&
+                \psi(x,y,\pm c) &= 0
+            \end{align*}
+            Taking the hint and writing $\psi=XYZ$, we can rearrange the above equation into the form
+            \begin{equation*}
+                \frac{1}{X}\left[ -\frac{\hbar^2}{2m}\dv[2]{X}{x} \right]+\frac{1}{Y}\left[ -\frac{\hbar^2}{2m}\dv[2]{Y}{y} \right]+\frac{1}{Z}\left[ -\frac{\hbar^2}{2m}\dv[2]{Z}{z} \right] = E
+            \end{equation*}
+            Note that we switch from partial to total derivatives here because now each function is only a function of one variable (e.g., $X(x)$ depends only on $x$).\par
+            Moving on, since the sum of these three independent terms is constant, each term must be equal to a constant, too. Thus, we can split the above equation into the following three.
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv[2]{X}{x} &= E_{n_1}X&
+                -\frac{\hbar^2}{2m}\dv[2]{Y}{y} &= E_{n_1}Y&
+                -\frac{\hbar^2}{2m}\dv[2]{Z}{z} &= E_{n_1}Z
+            \end{align*}
+            As to the boundary conditions, the rewrite in the hint gives us, for example,
+            \begin{equation*}
+                0 = \psi(\pm a,y,z) = X(\pm a)Y(y)Z(z)
+            \end{equation*}
+            Since $Y,Z$ may both be nonzero for some $y,z$, the zero product property tells us that we must have
+            \begin{equation*}
+                X(\pm a) = 0
+            \end{equation*}
+            Doing the same for the other two boundary conditions, we obtain the following three new boundary conditions.
+            \begin{align*}
+                X(\pm a) &= 0&
+                Y(\pm b) &= 0&
+                Z(\pm c) &= 0
+            \end{align*}
+            We will now solve the three independent boundary-value problems. Since they are all directly analogous, we will concentrate on the $X$-case and know that the other solutions may be observed from there via a change of variables.\par
+            To begin, it will be useful to define
+            \begin{align*}
+                u(x) &:= x+a&
+                L &:= 2a
+            \end{align*}
+            Observe that under this definition, $\dv*{u}{x}=1$. Changing variables in the ODE, we get
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv{x}\left[ \dv{x}[X(u(x))] \right] &= E_{n_1}X(u(x))\\
+                -\frac{\hbar^2}{2m}\dv{x}\left[ \dv{u}[X(u)]\cdot\dv{u}{x} \right] &= E_{n_1}X(u)\\
+                -\frac{\hbar^2}{2m}\dv{u}\left[ \dv{u}[X(u)]\cdot 1 \right]\cdot\dv{u}{x} &= E_{n_1}X(u)\\
+                -\frac{\hbar^2}{2m}\dv[2]{u}[X(u)] &= E_{n_1}X(u)
+            \end{align*}
+            Additionally, since $u(-a)=0$ and $u(a)=2a=L$, the relevant boundary condition with respect to $u$ is
+            \begin{equation*}
+                X(u=0) = X(u=L) = 0
+            \end{equation*}
+            Altogether, the first ODE and boundary condition in terms of $u$ become
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv[2]{X}{u} &= E_{n_1}X&
+                X(0) &= X(L) = 0
+            \end{align*}
+            which is entirely analogous to the infinite square well ODE we solved in class on 1/17. Thus, the solutions are
+            \begin{equation*}
+                X_{n_1}(u) = \sqrt{\frac{2}{L}}\sin(\frac{\pi n_1u}{L})
+            \end{equation*}
+            Returning the $u$-substitution to obtain the solutions in terms of $x$, we get
+            \begin{equation*}
+                X_{n_1}(x) = \sqrt{\frac{1}{a}}\sin\left[ \frac{\pi n_1(x+a)}{2a} \right]
+            \end{equation*}
+            As mentioned above, we can do something analogous in the other two directions. Therefore, the general solution is
+            \begin{equation*}
+                \boxed{\psi_{n_1n_2n_3}(x,y,z) = \sqrt{\frac{1}{abc}}\sin\left[ \frac{\pi n_1(x+a)}{2a} \right]\sin\left[ \frac{\pi n_2(y+b)}{2b} \right]\sin\left[ \frac{\pi n_3(z+c)}{2c} \right]}
+            \end{equation*}
+        \end{proof}
         \item Give an expression for the total energy of the system in terms of the energies associated with the propagation in the three space directions.
-        \item What happens when one of the three $V_i$'s becomes finite? What would be the possible solutions in such a case?
+        \begin{proof}
+            Return to the step in part (a) at which we had finally obtained an ODE fully analogous to the one solved in class on 1/17. We did not state it in part (a) because it was not relevant, but just as we obtained $X_{n_1}(u)$, our work in class on 1/17 gives us the corresponding energy expression
+            \begin{equation*}
+                E_{n_1} = \frac{\hbar^2\pi^2n_1^2}{2mL^2} = \frac{\hbar^2\pi^2n_1^2}{8ma^2}
+            \end{equation*}
+            Analogous results exist in the other two directions. Additionally, as in class on 2/12, setting all of our ODEs equal to constants in the separation of variables step \emph{also} gives us the equation
+            \begin{equation*}
+                E = E_{n_1}+E_{n_2}+E_{n_3}
+            \end{equation*}
+            Thus, the expression for the total energy of the system in terms of the energies associated with the propagation in the three space directions is
+            \begin{equation*}
+                \boxed{E_{n_1n_2n_3} = \frac{\hbar^2\pi^2}{8m}\left( \frac{n_1^2}{a^2}+\frac{n_2^2}{b^2}+\frac{n_3^2}{c^2} \right)}
+            \end{equation*}
+        \end{proof}
+        \pagebreak
+        \item What happens when one of the three $V_i$'s becomes finite, and we are in a bounded state such that $E<V_i$? What would be the possible energies in such a case?
+        \begin{proof}
+            % This is the step function, not a linear slope.
+
+            % From the boundary conditions, we learn that
+            % \begin{align*}
+            %     -S_\text{I}\sin(k_\text{I}a)+C_\text{I}\cos(k_\text{I}a) &= -S_\text{II}\sin(k_\text{II}a)+C_\text{II}\cos(k_\text{II}a)\\
+            %     k_\text{I}S_\text{I}\cos(k_\text{I}a)+k_\text{I}C_\text{I}\sin(k_\text{I}a) &= k_\text{II}S_\text{II}\cos(k_\text{II}a)+k_\text{II}C_\text{II}\sin(k_\text{II}a)\\
+            %     S_\text{II}\sin(k_\text{II}a)+C_\text{II}\cos(k_\text{II}a) &= S_\text{III}\sin(k_\text{I}a)+C_\text{III}\cos(k_\text{I}a)\\
+            %     k_\text{II}S_\text{II}\cos(k_\text{II}a)-k_\text{II}C_\text{II}\sin(k_\text{II}a) &= k_\text{I}S_\text{III}\cos(k_\text{I}a)-k_\text{I}C_\text{III}\sin(k_\text{I}a)
+            % \end{align*}
+
+            % We now divide into two cases: $E_{n_1}>V_1$ and $E_{n_1}<V_1$. If $E_{n_1}>V_1$, then the solutions will be
+            % \begin{align*}
+            %     X_\text{I}(x) &= S_\text{I}\sin(k_\text{I}x)+C_\text{I}\cos(k_\text{I}x)\\
+            %     X_\text{II}(x) &= S_\text{II}\sin(k_\text{II}x)+C_\text{II}\cos(k_\text{II}x)\\
+            %     X_\text{III}(x) &= S_\text{III}\sin(k_\text{I}x)+C_\text{III}\cos(k_\text{I}x)
+            % \end{align*}
+            % Since all of these solutions are oscillatory over all space, the full wave function $X$ will not be square-integrable and \fbox{we will not obtain any well-defined solutions for $E_{n_1}>V_1$.}\par
+
+            % From here, we may obtain a couple of important results. In particular, transitivity between the first and third equations above followed by algebraic simplification yields the left equation below. Dividing the second equation above by the first equation above gives the middle equation below. And applying the middle equation below to the first equation above and rearranging yields the right equation below.
+            % \begin{align*}
+            %     A &= G&
+            %     \kappa_\text{I} &= k_\text{II}\tan(k_\text{II}a)&
+            %     A &= C_\text{II}\cos(k_\text{II}a)\e[k_\text{II}\tan(k_\text{II}a)a]
+            % \end{align*}
+            % With these relations, we may obtain the full final eigenstate
+            % \begin{equation*}
+            %     X_{n_1}(x) =
+            %     \begin{cases}
+            %         C_\text{II}\cos(k_\text{II}a)\e[k_\text{II}(a+x)\tan(k_\text{II}a)] & x<-a\\
+            %         C_\text{II}\cos(k_\text{II}x) & -a\leq x\leq a\\
+            %         C_\text{II}\cos(k_\text{II}a)\e[k_\text{II}(a-x)\tan(k_\text{II}a)a]& a<x
+            %     \end{cases}
+            % \end{equation*}
+
+
+            Suppose WLOG that $V_1$ becomes finite. The Schr\"{o}dinger equation for this case is
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\vec{\nabla}^2\psi+V(x,y,z)\psi &= E\psi\\
+                -\frac{\hbar^2}{2m}\left( \pdv[2]{\psi}{x}+\pdv[2]{\psi}{y}+\pdv[2]{\psi}{z} \right)+V_1\theta(|x|-a)\psi &= E\psi
+            \end{align*}
+            along with the boundary conditions
+            \begin{align*}
+                \psi(x,\pm b,c) &= 0&
+                \psi(x,y,\pm c) &= 0
+            \end{align*}
+            Writing $\psi=XYZ$, we can rearrange the above equation into the form
+            \begin{equation*}
+                \frac{1}{X}\left[ -\frac{\hbar^2}{2m}\dv[2]{X}{x}+V_1\theta(|x|-a)X \right]+\frac{1}{Y}\left[ -\frac{\hbar^2}{2m}\dv[2]{Y}{y} \right]+\frac{1}{Z}\left[ -\frac{\hbar^2}{2m}\dv[2]{Z}{z} \right] = E
+            \end{equation*}
+            Separating variables, we obtain two ODEs familiar from part (a) and one new one. We will focus on the new one from here on out. If we let Region I span $(-\infty,-a)$, Region II span $[-a,a]$, and Region III span $(a,\infty)$, then this new ODE can be written as
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv[2]{X_\text{I}}{x}+V_1X_\text{I} &= E_{n_1}X_\text{I}\\
+                -\frac{\hbar^2}{2m}\dv[2]{X_\text{II}}{x} &= E_{n_1}X_\text{II}\\
+                -\frac{\hbar^2}{2m}\dv[2]{X_\text{III}}{x}+V_1X_\text{I} &= E_{n_1}X_\text{III}
+            \end{align*}
+            along with the four boundary conditions
+            \begin{align*}
+                X_\text{I}(-a) &= X_\text{II}(-a)&
+                    X_\text{II}(a) &= X_\text{III}(a)\\
+                X_\text{I}'(-a) &= X_\text{II}'(-a)&
+                    X_\text{II}'(a) &= X_\text{III}'(a)
+            \end{align*}
+            Define
+            \begin{align*}
+                k_\text{I} &= \frac{\sqrt{2m(E_{n_1}-V_1)}}{\hbar}&
+                k_\text{II} &= \frac{\sqrt{2mE_{n_1}}}{\hbar}
+            \end{align*}
+            Given that $E_{n_1}<V_1$, then per PSet 2, Q2b, the solutions will be
+            \begin{align*}
+                X_\text{I}(x) &= A\e[\kappa_\text{I}x]+B\e[-\kappa_\text{I}x]\\
+                X_\text{II}(x) &= S_\text{II}\sin(k_\text{II}x)+C_\text{II}\cos(k_\text{II}x)\\
+                X_\text{III}(x) &= F\e[\kappa_\text{I}x]+G\e[-\kappa_\text{I}x]
+            \end{align*}
+            where $i\kappa_\text{I}=k_\text{I}$. Now just like in PSet 2, Q2c, some of the exponential terms diverge. In particular, $B\e[-\kappa_\text{I}x]$ diverges as $x\to -\infty$ and $F\e[\kappa_\text{I}x]$ diverges as $x\to\infty$. Thus, to keep the solution from blowing up, we must set
+            \begin{equation*}
+                B = F = 0
+            \end{equation*}
+            to get
+            \begin{align*}
+                X_\text{I}(x) &= A\e[\kappa_\text{I}x]\\
+                X_\text{II}(x) &= S_\text{II}\sin(k_\text{II}x)+C_\text{II}\cos(k_\text{II}x)\\
+                X_\text{III}(x) &= G\e[-\kappa_\text{I}x]
+            \end{align*}
+            Before we apply the boundary conditions, there is one more thing we can do to simplify the above solutions. Let $X_{n_1}(x)$ be a full, piecewise eigenstate of the relevant Schr\"{o}dinger equation. Then since this potential is symmetric about the origin --- that is, $V(x)=V(-x)$ --- $X_{n_1}(-x)$ will also be an eigenstate of the relevant Schr\"{o}dinger equation:
+            \begin{align*}
+                -\frac{\hbar^2}{2m}\dv[2]{X_\text{I}(-x)}{x}+V(x)X_\text{I}(-x) &= -\frac{\hbar^2}{2m}(-1)^2\dv[2]{X_\text{I}(-x)}{(-x)}+V(-x)X_\text{I}(-x)\\
+                &= -\frac{\hbar^2}{2m}\dv[2]{X_\text{I}(-x)}{(-x)}+V(-x)X_\text{I}(-x)\\
+                &= E_{n_1}X_\text{I}(-x)
+            \end{align*}
+            It follows by the linearity of the Schr\"{o}dinger equation that $X_{n_1}(x)+X_{n_1}(-x)$ and $X_{n_1}(x)-X_{n_1}(-x)$ are also eigenstates of with energy $E_{n_1}$. Essentially, this means that we can always choose our eigenstates to be even or odd functions of $x$. Going back to our solutions $X_\text{I},X_\text{II},X_\text{III}$, this means that we need not consider $X_\text{II}$ in full generality but can rather divide the solutions up into those with $S_\text{II}=0$ (even) and those with $C_\text{II}=0$ (odd). For the even solutions, the boundary conditions tell us that
+            \begin{align*}
+                A\e[-\kappa_\text{I}a] &= C_\text{II}\cos(k_\text{II}a)\\
+                \kappa_\text{I}A\e[-\kappa_\text{I}a] &= k_\text{II}C_\text{II}\sin(k_\text{II}a)\\
+                C_\text{II}\cos(k_\text{II}a) &= G\e[-\kappa_\text{I}a]\\
+                -k_\text{II}C_\text{II}\sin(k_\text{II}a) &= -\kappa_\text{I}G\e[-\kappa_\text{I}a]
+            \end{align*}
+            From here, we may obtain the important result that
+            \begin{align*}
+                \kappa_\text{I} &= k_\text{II}\tan(k_\text{II}a)\\
+                \Aboxed{\frac{\sqrt{2m(V_1-E_{n_1})}}{\hbar} &= \frac{\sqrt{2mE_{n_1}}}{\hbar}\tan(\frac{\sqrt{2mE_{n_1}}}{\hbar}a)}
+            \end{align*}
+            Similarly, for the odd solutions, we may obtain that
+            \begin{equation*}
+                \boxed{\frac{\sqrt{2m(V_1-E_{n_1})}}{\hbar} = -\frac{\sqrt{2mE_{n_1}}}{\hbar}\cot(\frac{\sqrt{2mE_{n_1}}}{\hbar}a)}
+            \end{equation*}
+            Energies may be obtained by solving either of these equations. This energy may then be added onto the other two as in part (b).
+        \end{proof}
         \item What happens when the three $V_i$'s become finite?
+        \begin{proof}
+            We will obtain three energies of the form in part (c), all of which may be added together as in part (b).
+        \end{proof}
     \end{enumerate}
     \item In the presence of a central force, the potential depends only on the radial distance and not on the direction, i.e.,
     \begin{equation}
@@ -36,23 +234,186 @@
     \end{equation}
     \begin{enumerate}
         \item Show that in such a potential, the momentum is not conserved (that is, its mean value is not independent of time), but the angular momentum $\vec{L}=\vec{r}\times\vec{p}$ is conserved. \emph{Hint}: Use commutation relations with $\hat{H}$. Test this for each component of $\vec{L}$ separately.
+        \begin{proof}
+            Taking the hint, recall from the 1/29 lecture that
+            \begin{equation*}
+                \hat{L}_x = \hat{y}\hat{p}_z-\hat{p}_y\hat{z}
+            \end{equation*}
+            Additionally, recall that
+            \begin{equation*}
+                \hat{H} = \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+\hat{V}(r)
+            \end{equation*}
+            Thus, we have that
+            \begin{align*}
+                [\hat{H},\hat{L}_x] ={}& \left[ \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+\hat{V}(r),\hat{y}\hat{p}_z-\hat{z}\hat{p}_y \right]\\
+                \begin{split}
+                    ={}& \Bigg[ \frac{\hat{p}_x^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},\hat{y}\hat{p}_z \Bigg]\\
+                    & +\Bigg[ \frac{\hat{p}_x^2}{2m},-\hat{z}\hat{p}_y \Bigg]+\Bigg[ \frac{\hat{p}_y^2}{2m},-\hat{z}\hat{p}_y \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},-\hat{z}\hat{p}_y \Bigg]\\
+                    & +[\hat{V}(r),\hat{y}\hat{p}_z]+[\hat{V}(r),-\hat{z}\hat{p}_y]
+                \end{split}\\
+                ={}& \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]+\Bigg[ \frac{\hat{p}_z^2}{2m},-\hat{z}\hat{p}_y \Bigg]+i\hbar\left( \hat{y}\pdv{V}{z}-\hat{z}\pdv{V}{y} \right)\\
+                ={}& -\frac{i\hbar\hat{p}_y\hat{p}_z}{m}+\frac{i\hbar\hat{p}_y\hat{p}_z}{m}+i\hbar\pdv{V}{r}\left( y\pdv{r}{z}-z\pdv{r}{y} \right)\\
+                ={}& 0
+            \end{align*}
+            Now let's investigate some of the above substitutions a bit more closely. From line 1 to line 2, we split the commutator into $4\cdot 2=8$ terms using its bilinearity. From line 2 to line 3, we eliminated all commutators that go to zero among the first six, and evaluated the last two commutators using a combination of Rule 3 and properties mentioned at the beginning of the lecture.
+            \par Notice that the only two of the first six commutators that did \emph{not} go to zero were those for which the variable in the squared momentum operator matched the position operator, i.e., in
+            \begin{equation*}
+                \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg]
+            \end{equation*}
+            we may observe that $\hat{p}_y^2$ and $\hat{y}$ both concern $y$.
+            Example evaluation:
+            \begin{align*}
+                \Bigg[ \frac{\hat{p}_x^2}{2m},\hat{y}\hat{p}_z \Bigg] &= \frac{1}{2m}[\hat{p}_x^2,\hat{y}\hat{p}_z]\\
+                &= \frac{1}{2m}(\hat{p}_x[\hat{p}_x,\hat{y}\hat{p}_z]+[\hat{p}_x,\hat{y}\hat{p}_z]\hat{p}_x)\\
+                &= \frac{1}{2m}(\hat{p}_x(\hat{y}\underbrace{[\hat{p}_x,\hat{p}_z]}_0+\underbrace{[\hat{p}_x,\hat{y}]}_0\hat{p}_z)+(\hat{y}\underbrace{[\hat{p}_x,\hat{p}_z]}_0+\underbrace{[\hat{p}_x,\hat{y}]}_0\hat{p}_z)\hat{p}_x)\\
+                &= 0
+            \end{align*}
+            Example evaluation:
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                \Bigg[ \frac{\hat{p}_y^2}{2m},\hat{y}\hat{p}_z \Bigg] &= \frac{1}{2m}[\hat{p}_y^2,\hat{y}\hat{p}_z]\\
+                &= \frac{1}{2m}(\hat{p}_y[\hat{p}_y,\hat{y}\hat{p}_z]+[\hat{p}_y,\hat{y}\hat{p}_z]\hat{p}_y)\\
+                &= \frac{1}{2m}(\hat{p}_y(\hat{y}\underbrace{[\hat{p}_y,\hat{p}_z]}_0+\underbrace{[\hat{p}_y,\hat{y}]}_{-i\hbar}\hat{p}_z)+(\hat{y}\underbrace{[\hat{p}_y,\hat{p}_z]}_0+\underbrace{[\hat{p}_y,\hat{y}]}_{-i\hbar}\hat{p}_z)\hat{p}_y)\\
+                &= \frac{1}{2m}(\hat{p}_y(-i\hbar\hat{p}_z)+(-i\hbar\hat{p}_z)\hat{p}_y)\\
+                &= -\frac{i\hbar}{2m}(\hat{p}_y\hat{p}_z+\hat{p}_z\hat{p}_y)\\
+                &= -\frac{i\hbar}{2m}(\hat{p}_y\hat{p}_z+\hat{p}_y\hat{p}_z)\\
+                &= -\frac{i\hbar\hat{p}_y\hat{p}_z}{m}
+            \end{align*}
+            \endgroup
+            Note that $\hat{p}_z\hat{p}_y=\hat{p}_y\hat{p}_z$ because $[\hat{p}_y,\hat{p}_z]=0$.\par
+            Example evaluation:
+            \begin{align*}
+                [\hat{V}(r),\hat{y}\hat{p}_z] &= \hat{y}\underbrace{[\hat{V}(r),\hat{p}_z]}_{i\hbar\pdv*{V}{z}}+\underbrace{[\hat{V}(r),\hat{y}]}_0\hat{p}_z\\
+                &= i\hbar\hat{y}\pdv{V}{z}
+            \end{align*}
+            Returning to the original set of equations, from line 3 to line 4, we evaluated the last two commutators and applied the chain rule. From line 4 to line 5, we algebraically expanded and cancelled everything (using $r=\sqrt{x^2+y^2+z^2}$ for the partial derivatives).\par
+            Moving on, similar to the above, we obtain that
+            \begin{equation*}
+                [\hat{H},\hat{L}_y] = [\hat{H},\hat{L}_z] = 0
+            \end{equation*}
+            Thus, by bilinearity once more,
+            \begin{equation*}
+                [\hat{H},\hat{\vec{L}}] = [\hat{H},\hat{L}_x+\hat{L}_y+\hat{L}_z] = 0
+            \end{equation*}
+        \end{proof}
         \item What happens if the system has a translational invariance in the $z$-direction and
         \begin{equation}
             V(\vec{r}) = V(\sqrt{x^2+y^2})
         \end{equation}
         for all $z$? Is any component of the momentum or angular momentum preserved?
-        \item For part (b), what would be the mean value $\Exp{\hat{z}}(t)$ of the $z$-coordinate if the mean value $\Exp{\hat{p}_z}$ of the momentum in the $z$-direction is constant at $p_0$ while $\Exp{\hat{z}}=0$ at time $t=0$?
+        \begin{proof}
+            First, observe that
+            \begin{equation*}
+                \left[ \hat{V}(\sqrt{x^2+y^2}),\hat{x} \right] = V(\sqrt{x^2+y^2})x-xV(\sqrt{x^2+y^2})
+                = V(\sqrt{x^2+y^2})x-V(\sqrt{x^2+y^2})x
+                = 0
+            \end{equation*}
+            and
+            \begin{equation*}
+                \left[ \hat{V}(\sqrt{x^2+y^2}),\hat{p}_y \right]f = -i\hbar V(\sqrt{x^2+y^2})\pdv{f}{y}+i\hbar\pdv{y}(V(\sqrt{x^2+y^2})f) = i\hbar\pdv{y}[V(\sqrt{x^2+y^2})]f
+            \end{equation*}
+            Therefore,
+            \begin{align*}
+                [\hat{H},\hat{L}_z] &= \left[ \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+\hat{V}(\sqrt{x^2+y^2}),\hat{x}\hat{p}_y-\hat{y}\hat{p}_x \right]\\
+                &= \Bigg[ \frac{\hat{p}_x^2}{2m},\hat{x}\hat{p}_y \Bigg]+\left[ \frac{\hat{p}_y^2}{2m},-\hat{y}\hat{p}_x \right]+\left[ \hat{V}(\sqrt{x^2+y^2}),\hat{x}\hat{p}_y \right]+\left[ \hat{V}(\sqrt{x^2+y^2}),-\hat{y}\hat{p}_x \right]\\
+                &= -\frac{i\hbar\hat{p}_x\hat{p}_y}{m}+\frac{i\hbar\hat{p}_x\hat{p}_y}{m}+i\hbar\dv{V(u)}{u}\left[ x\pdv{y}(\sqrt{x^2+y^2})-y\pdv{x}(\sqrt{x^2+y^2}) \right]\\
+                &= 0
+            \end{align*}
+            so \fbox{$\hat{L}_z$ is conserved.} None of the other angular momentum directions are conserved because we need the cross partial derivatives to cancel as they do above, and that doesn't occur anywhere else.\par
+            Additionally, observe that
+            \begin{equation*}
+                \left[ \hat{V}(\sqrt{x^2+y^2}),\hat{p}_z \right]f = -i\hbar V(\sqrt{x^2+y^2})\pdv{f}{z}+i\hbar\pdv{z}(V(\sqrt{x^2+y^2})f) = 0
+            \end{equation*}
+            Therefore,
+            \begin{align*}
+                [\hat{H},\hat{p}_z] &= \left[ \frac{\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2}{2m}+\hat{V}(\sqrt{x^2+y^2}),\hat{p}_z \right]\\
+                &= \left[ \frac{\hat{p}_z^2}{2m},\hat{p}_z \right]+\left[ \hat{V}(\sqrt{x^2+y^2}),\hat{p}_z \right]\\
+                &= 0
+            \end{align*}
+            so \fbox{$\hat{p}_z$ is conserved.} None of the other momentum directions are conserved either because we need the right commutator in line 2 to cancel as proven above, and it does not in any other case as proven above with the representative example of $\hat{p}_y$.
+        \end{proof}
+        % \item For part (b), what would be the mean value $\Exp{\hat{z}}(t)$ of the $z$-coordinate if the mean value $\Exp{\hat{p}_z}$ of the momentum in the $z$-direction is constant at $p_0$ while $\Exp{\hat{z}}=0$ at time $t=0$?
     \end{enumerate}
     \item Imagine I have a potential such that I can find simultaneous eigenstates of $\hat{\vec{L}}{\,}^2$, $\hat{L}_z$, and $\hat{H}$ with respective eigenvalues $\hbar^2\ell(\ell+1)$, $\hbar m$, and $E_{n\ell}$. Suppose that $[\hat{L}_i,\hat{L}_j]=i\hbar\epsilon_{ijk}\hat{L}_k$, $[\hat{\vec{L}}{\,}^2,\hat{L}_i]=[\hat{H},\hat{L}_i]=0$, and $\hat{L}_\pm=\hat{L}_x\pm i\hat{L}_y$.
     \begin{enumerate}
         \item Show that $[\hat{L}_\pm,\hat{L}_z]=\mp\hbar\hat{L}_\pm$.
+        \begin{proof}
+            We have by the the commutator relations among the $\hat{L}_i$ that
+            \begin{equation*}
+                [\hat{L}_\pm,\hat{L}_z] = [\hat{L}_x\pm i\hat{L}_y,\hat{L}_z]
+                = -i\hbar\hat{L}_y\pm i(i\hbar\hat{L}_x)
+                = -i\hbar\hat{L}_y\mp\hbar\hat{L}_x
+                = \mp\hbar(\hat{L}_x\pm i\hat{L}_y)
+                = \mp\hbar\hat{L}_\pm
+            \end{equation*}
+            as desired.
+        \end{proof}
         \item Show also that this implies that, given an eigenfunction $Y_{\ell m}$ of $\hat{\vec{L}}{\,}^2$ and $\hat{L}_z$,
         \begin{equation}
             \hat{L}_\pm Y_{\ell m} \propto Y_{\ell(m\pm 1)}
         \end{equation}
+        \begin{proof}
+            Let $Y_{\ell m}$ be an eigenstate of $\hat{\vec{L}}{\,}^2,\hat{L}_z$. Then we have the following by hypothesis.
+            \begin{align*}
+                \hat{\vec{L}}{\,}^2Y_{\ell m} &= \hbar^2\ell(\ell+1)Y_{\ell m}&
+                \hat{L}_zY_{\ell m} &= \hbar mY_{\ell m}
+            \end{align*}
+            When we apply $\hat{L}_z$ to $\hat{L}_+Y_{\ell m}$, we get
+            \begin{align*}
+                \hat{L}_z(\hat{L}_+Y_{\ell m}) &= \left[ \hat{L}_+\hat{L}_z-(\hat{L}_+\hat{L}_z-\hat{L}_z\hat{L}_+) \right]Y_{\ell m}\\
+                &= \hat{L}_+\hbar mY_{\ell m}+\hbar\hat{L}_+Y_{\ell m}\\
+                &= \hbar(m+1)(\hat{L}_+Y_{\ell m})
+            \end{align*}
+            Thus,
+            \begin{equation*}
+                \hat{L}_+Y_{\ell m} \propto Y_{\ell(m+1)}
+            \end{equation*}
+            We can prove in a similar fashion that
+            \begin{equation*}
+                \hat{L}_-Y_{\ell m} \propto Y_{\ell(m-1)}
+            \end{equation*}
+        \end{proof}
         \item Show that $\hat{\vec{L}}{\,}^2=\hat{L}_-\hat{L}_++\hbar\hat{L}_z+\hat{L}_z^2$.
-        \item With the above information, use the ladder operators $\hat{L}_\pm$ to compute the mean value of $\hat{L}_z$, $\hat{L}_y$, $\hat{L}_x^2$, and $\hat{L}_y^2$ in an eigenstate of $\hat{\vec{L}}{\,}^2$ and $\hat{L}_z$.
-        \item Discuss the uncertainty principle for the incompatible variables $\hat{L}_x$ and $\hat{L}_y$. In which way does this differ from the case of $\hat{x}$ and $\hat{p}_x$?
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \hat{L}_-\hat{L}_+ &= (\hat{L}_x-i\hat{L}_y)(\hat{L}_x+i\hat{L}_y)\\
+                &= \hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2-i[\hat{L}_y,\hat{L}_x]-\hat{L}_z^2\\
+                &= \hat{\vec{L}}{\,}^2-\hat{L}_z^2-\hbar\hat{L}_z\\
+                \hat{\vec{L}}{\,}^2 &= \hat{L}_-\hat{L}_++\hbar\hat{L}_z+\hat{L}_z^2
+            \end{align*}
+        \end{proof}
+        \item With the above information, use the ladder operators $\hat{L}_\pm$ to compute the mean value of $\hat{L}_x$, $\hat{L}_y$, $\hat{L}_x^2$, and $\hat{L}_y^2$ in an eigenstate of $\hat{\vec{L}}{\,}^2$ and $\hat{L}_z$.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \ev{\hat{L}_x}{n\ell m} &= \ev{\frac{1}{2}(\hat{L}_++\hat{L}_-)}{n\ell m}\\
+                \Aboxed{\ev{\hat{L}_x}{n\ell m} &= 0}
+            \end{align*}
+            Similarly,
+            \begin{equation*}
+                \boxed{\ev{\hat{L}_y}{n\ell m} = 0}
+            \end{equation*}
+            Additionally, we have that
+            \begin{equation*}
+                \ev{(\hat{L}_x^2+\hat{L}_y^2)}{n\ell m} = \ev{(\hat{\vec{L}}{\,}^2-\hat{L}_z^2)}{n\ell m} = \hbar^2[\ell(\ell+1)-m^2]
+            \end{equation*}
+            Since the above eigenvalue must be greater than or equal to zero, $|m|\leq\ell$.
+            Recall that $\hat{L}_x,\hat{L}_y$ are incompatible with $\hat{L}_z$.
+            This is why we have an uncertainty associated with the quantity $\hbar^2[\ell(\ell+1)-m^2]$.
+            This is also why we have
+            \begin{equation*}
+                \ev{(\hat{L}_x^2+\hat{L}_y^2)}{n\ell m} = 2\ev{\hat{L}_x^2}{n\ell m}
+                = 2\ev{\hat{L}_y^2}{n\ell m}
+            \end{equation*}
+            so
+            \begin{equation*}
+                \boxed{\ev{\hat{L}_x^2}{n\ell m} = \ev{\hat{L}_y^2}{n\ell m}
+                = \frac{\hbar^2}{2}[\ell(\ell+1)-m^2]}
+            \end{equation*}
+        \end{proof}
+        % \item Discuss the uncertainty principle for the incompatible variables $\hat{L}_x$ and $\hat{L}_y$. In which way does this differ from the case of $\hat{x}$ and $\hat{p}_x$?
     \end{enumerate}
 \end{enumerate}
 
