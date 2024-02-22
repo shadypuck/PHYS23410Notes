@@ -253,5 +253,379 @@
 
 
 
+\section{Spin}
+\begin{itemize}
+    \item \marginnote{2/21:}We've probably all heard of spin, but today, we'll give it the mathematical treatment that it deserves.
+    \item What is spin?
+    \begin{itemize}
+        \item Spin is an \emph{intrinsic} property.
+        \item It is possessed by every particle in nature save one.
+        \item We may think of it as rotation about a characteristic axis, even though this is not a proper description for a point particle.
+    \end{itemize}
+    \item Since spin is an observable, we want to associate it with a Hermitian operator.
+    \begin{itemize}
+        \item Call this operator $\hat{\vec{S}}$.
+        \item Since spin is intuitively associated with rotation, we demand that $\hat{\vec{S}}$ satisfies the angular momentum algebra.
+        \item In particular, this means that the operator has three components.
+        \begin{equation*}
+            \hat{\vec{S}} = \hat{S}_x\hat{x}+\hat{S}_y\hat{y}+\hat{S}_z\hat{z}
+        \end{equation*}
+        \item We also expect that this operator obeys the following analogous commutativity relations
+        \begin{align*}
+            [\hat{S}_x,\hat{S}_y] &= i\hbar\hat{S}_z&
+            [\hat{S}_y,\hat{S}_z] &= i\hbar\hat{S}_x&
+            [\hat{S}_z,\hat{S}_x] &= i\hbar\hat{S}_y
+        \end{align*}
+    \end{itemize}
+    \item Now recall that the angular momentum operator had the property that
+    \begin{equation*}
+        \hat{L}_z = -i\hbar\pdv{\phi}
+    \end{equation*}
+    \begin{itemize}
+        \item This meant that
+        \begin{equation*}
+            \hat{L}_zY_{\ell m}(\theta,\phi) = \hat{L}_z\ket{\ell,m}
+            = \hbar m\ket{\ell,m}
+        \end{equation*}
+        \item Additionally, we knew that the form of the spherical harmonics was $P_{\ell m}(\theta)\e[im\phi]$. Substituting into the above equality, this meant that
+        \begin{equation*}
+            \hat{L}_zP_{\ell m}(\theta)\e[im\phi] = \hbar mP_{\ell m}(\theta)\e[im\phi]
+        \end{equation*}
+        \item It followed by the boundary condition
+        \begin{align*}
+            \e[im(\phi+2\pi)] &= \e[im\phi]\\
+            \e[2\pi im] &= 1
+        \end{align*}
+        that $m$ is an integer.
+        \item Later today, we will put an analogous constraint on a quantum number, but in a different way since we don't have such a convenient definition of $\hat{S}_z$.
+    \end{itemize}
+    \item Let the eigenvalues of $\hat{\vec{S}}{\,}^2,\hat{S}_z$ be given by
+    \begin{align*}
+        \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}&
+        \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}&
+    \end{align*}
+    \item Similarly to the angular momentum case, we can define ladder operators
+    \begin{equation*}
+        \hat{S}_\pm = \hat{S}_x\pm i\hat{S}_y
+    \end{equation*}
+    \begin{itemize}
+        \item We inherit the commutativity relation
+        \begin{align*}
+            [\hat{S}_z,\hat{S}_\pm] &= [\hat{S}_z,\hat{S}_x\pm i\hat{S}_y]\\
+            % &= \hat{S}_z(\hat{S}_x\pm i\hat{S}_y)-(\hat{S}_x\pm i\hat{S}_y)\hat{S}_z\\
+            % &= (\hat{S}_z\hat{S}_x\pm i\hat{S}_z\hat{S}_y)-(\hat{S}_x\hat{S}_z\pm i\hat{S}_y\hat{S}_z)\\
+            &= [\hat{S}_z,\hat{S}_x]\pm i[\hat{S}_z,\hat{S}_y]\tag*{Rule 4}\\
+            &= i\hbar\hat{S}_y\pm i(-i\hbar\hat{S}_x)\\
+            &= \pm\hbar(\hat{S}_x\pm i\hat{S}_y)\\
+            &= \pm\hbar\hat{S}_\pm
+        \end{align*}
+        \item We can also demonstrate that $\hat{S}_+$ is a \emph{raising} operator.
+        \begin{itemize}
+            \item First, observe that
+            \begin{align*}
+                \hat{S}_z\hat{S}_+\ket{s,m_s} &= (\hat{S}_z\hat{S}_+-\hat{S}_+\hat{S}_z)\ket{s,m_s}+\hat{S}_+\hat{S}_z\ket{s,m_s}\\
+                &= \hbar\hat{S}_+\ket{s,m_s}+\hbar m_s\hat{S}_+\ket{s,m_s}\\
+                &= \hbar(m_s+1)\hat{S}_+\ket{s,m_s}
+            \end{align*}
+            \item Then it follows that
+            \begin{equation*}
+                \hat{S}_+\ket{s,m_s} \propto \ket{s,m_s+1}
+            \end{equation*}
+        \end{itemize}
+        \item Analogously for $\hat{S}_-$,
+        \begin{equation*}
+            \hat{S}_-\ket{s,m_s} \propto \ket{s,m_s-1}
+        \end{equation*}
+    \end{itemize}
+    \item We now build up to proving that there are maximum and minimum values of $m_s$.
+    \begin{itemize}
+        \item First off, notice that
+        \begin{equation*}
+            \hat{\vec{S}}{\,}^2 = \hat{S}_x^2+\hat{S}_y^2+\hat{S}_z^2
+        \end{equation*}
+        \item It is also useful to (re)state here that
+        \begin{align*}
+            \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}&
+            \hat{S}_z^2\ket{s,m_s} &= \hbar^2m_s^2\ket{s,m_s}
+        \end{align*}
+        \item Observe that the value of $\hat{S}_z^2$ cannot exceed that of $\hat{\vec{S}}{\,}^2$ because of the first equality above, even though the ladder operator appears to be able to keep raising it indefinitely.
+        \item Thus, there must exist an $m_s^\text{max}$ such that
+        \begin{equation*}
+            \hat{S}_+\ket{s,m_s^\text{max}} = 0
+        \end{equation*}
+        \item Separately, observe that
+        \begin{align*}
+            \hat{S}_-\hat{S}_+ &= (\hat{S}_x-i\hat{S}_y)(\hat{S}_x+i\hat{S}_y)\\
+            &= \hat{S}_x^2+\hat{S}_y^2+i(\underbrace{\hat{S}_x\hat{S}_y-\hat{S}_y\hat{S}_x}_{i\hbar\hat{S}_z})\\
+            &= \hat{S}_x^2+\hat{S}_y^2-\hbar\hat{S}_z+\hat{S}_z^2-\hat{S}_z^2\\
+            &= \hat{\vec{S}}{\,}^2-\hbar\hat{S}_z-\hat{S}_z^2
+        \end{align*}
+        \item Combining the last two results, we obtain that
+        \begin{align*}
+            \hbar^2s(s+1)-\hbar^2m_s^\text{max}-\hbar^2(m_s^\text{max})^2 &= 0\\
+            \hbar^2m_s^\text{max}+\hbar^2(m_s^\text{max})^2 &= \hbar^2s(s+1)\\
+            \hbar^2m_s^\text{max}(m_s^\text{max}+1) &= \hbar^2s(s+1)\\
+            m_s^\text{max} = s
+        \end{align*}
+    \end{itemize}
+    \item Similarly, we have that
+    \begin{equation*}
+        \hat{S}_-\ket{s,m_s^\text{min}} = 0
+    \end{equation*}
+    \begin{itemize}
+        \item Thus,
+        \begin{align*}
+            \hat{S}_+\hat{S}_-\ket{s,m_s^\text{min}} &= (\hat{\vec{S}}{\,}^2+\hbar\hat{S}_z-\hat{S}_z^2)\ket{s,m_s^\text{min}}\\
+            &= \hbar^2[s(s+1)-(m_s^\text{min})^2+m_s^\text{min}]\ket{s,m_s^\text{min}}\\
+            &= 0
+        \end{align*}
+        \item We conclude from this that
+        \begin{equation*}
+            m_s^\text{min} = -s
+        \end{equation*}
+    \end{itemize}
+    \item Taken together, these two results mean that the ladder stops at both ends, i.e.,
+    \begin{equation*}
+        -s \leq m_s \leq s
+    \end{equation*}
+    \item It follows that there are $2s+1$ possible solutions/states for each $s$.
+    \item But since there will clearly be a natural/positive integer number of solutions/states for $\hat{\vec{S}}{\,}^2$, this means that
+    \begin{align*}
+        2s+1 &= 1,2,3,\dots\\
+        2s &= 0,1,2,3,\dots\\
+        s &= 0,\frac{1}{2},1,\frac{3}{2},2,\dots
+    \end{align*}
+    \begin{itemize}
+        \item Implication: Spin can take half-integer values!
+    \end{itemize}
+    \item Aside: Spins of some elementary particles.
+    \begin{itemize}
+        \item Photons have spin 1.
+        \item Gravitons have spin 2.
+        \item A particle discovered in 2012 has spin 0.
+        \item Electron, proton, neutron all have spin $1/2$.
+    \end{itemize}
+    \item For now, we will concentrate on spin $1/2$ particles.
+    \item \textbf{Dirac equation}: The relativistic equation for spin $1/2$ particles.
+    \item We have that
+    \begin{equation*}
+        \hat{S}_z\ket{\tfrac{1}{2},\pm\tfrac{1}{2}} = \pm\frac{\hbar}{2}\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}
+    \end{equation*}
+    \item A mathematical representation of this spin uses matrices.
+    \begin{itemize}
+        \item We say that
+        \begin{equation*}
+            \hat{S}_z = \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+        \end{equation*}
+        \item We map
+        \begin{equation*}
+            \ket{\tfrac{1}{2},\pm\tfrac{1}{2}} \mapsto
+            \left\{
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix},
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}
+            \right\}
+        \end{equation*}
+        so that
+        \begin{align*}
+            \ket{\tfrac{1}{2},\tfrac{1}{2}} &\mapsto
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \ket{\tfrac{1}{2},-\tfrac{1}{2}} &\mapsto
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Thus, we can see that the relations among the matrices exactly match the properties of the spin operator:
+        \begin{align*}
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+    \end{itemize}
+    \item Other operators have matrix representations, too.
+    \begin{itemize}
+        \item Let's investigate $\hat{S}_\pm$, starting with $\hat{S}_+$.
+        \item Since $\hat{S}_+\ket{s,m_s}\propto\ket{s,m_s+1}$, we have in the particular case of spin $1/2$ particles that
+        \begin{align*}
+            \hat{S}_+\ket{s,-\tfrac{1}{2}} &\propto \ket{s,-\tfrac{1}{2}+1} = \ket{s,\tfrac{1}{2}}&
+            \hat{S}_+\ket{s,\tfrac{1}{2}} &= \hat{S}_+\ket{s,m_s^\text{max}} = 0
+        \end{align*}
+        \item To determine the normalization constant, first observe that since $\hat{S}_-\hat{S}_+=\hat{\vec{S}}{\,}^2-\hbar\hat{S}_z-\hat{S}_z^2$, we have that
+        \begin{equation*}
+            \ev{\hat{S}_-\hat{S}_+}{s,m_s} = \hbar^2[s(s+1)-m_s^2-m_s]
+        \end{equation*}
+        \item Thus, in the specific case that $s=1/2$ and $m_s=-1/2$, we have that 
+        \begin{equation*}
+            \ev{\hat{S}_-\hat{S}_+}{\tfrac{1}{2},-\tfrac{1}{2}} = \hbar^2[\tfrac{1}{2}(\tfrac{1}{2}+1)-(-\tfrac{1}{2})^2-(-\tfrac{1}{2})]
+            = \hbar^2
+        \end{equation*}
+        \item Additionally, if $N_+\in\C$ and
+        \begin{equation*}
+            \hat{S}_+\ket{s,m_s} = N_+\ket{s,m_s+1}
+        \end{equation*}
+        then we have that
+        \begin{align*}
+            \ev{\hat{S}_-\hat{S}_+}{s,m_s} &= N_+\mel{s,m_s}{\hat{S}_-}{s,m_s+1}\\
+            &= N_+\braket*{\hat{S}_-^\dagger s,m_s}{s,m_s+1}\\
+            &= N_+\braket*{\hat{S}_+s,m_s}{s,m_s+1}\\
+            &= N_+^2\braket{s,m_s+1}\\
+            &= N_+^2
+        \end{align*}
+        \item Combining the last two results by transitivity, we have that
+        \begin{align*}
+            N_+^2 &= \hbar^2
+            N_+ = \hbar
+        \end{align*}
+        \item Hence,
+        \begin{equation*}
+            \hat{S}_+\ket{\tfrac{1}{2},-\tfrac{1}{2}} = \hbar\ket{\tfrac{1}{2},\tfrac{1}{2}}
+        \end{equation*}
+        \item Therefore, altogether, we have that
+        \begin{align*}
+            \hat{S}_+\ket{\tfrac{1}{2},-\tfrac{1}{2}} &= \hbar\ket{\tfrac{1}{2},\tfrac{1}{2}}&
+            \hat{S}_+\ket{\tfrac{1}{2},\tfrac{1}{2}} &= 0
+        \end{align*}
+        so we must define
+        \begin{equation*}
+            \hat{S}_+ = \hbar
+            \begin{pmatrix}
+                0 & 1\\
+                0 & 0\\
+            \end{pmatrix}
+        \end{equation*}
+        \item Analogously, we can derive that
+        \begin{equation*}
+            \hat{S}_- = \hbar
+            \begin{pmatrix}
+                0 & 0\\
+                1 & 0\\
+            \end{pmatrix}
+        \end{equation*}
+        \item This means that the ladder operators act on the spins as follows.
+        \begin{align*}
+            \hbar
+            \begin{pmatrix}
+                0 & 1\\
+                0 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+            &= \hbar
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \hbar
+            \begin{pmatrix}
+                0 & 0\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}
+            &= \hbar
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+    \end{itemize}
+    \item Now since
+    \begin{align*}
+        \hat{S}_+ &= \hat{S}_x+i\hat{S}_y&
+        \hat{S}_- &= \hat{S}_x-i\hat{S}_y
+    \end{align*}
+    we have that
+    \begin{align*}
+        \hat{S}_x &= \frac{\hat{S}_++\hat{S}_-}{2}&
+            \hat{S}_y &= -i\frac{\hat{S}_+-\hat{S}_-}{2}\\
+        &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}
+    \end{align*}
+    \item \textbf{Pauli matrices}: The three matrices associated with the components of $\hat{\vec{S}}$. \emph{Denoted by} $\bm{\sigma_1},\bm{\sigma_2},\bm{\sigma_3}$. \emph{Given by}
+    \begin{align*}
+        \sigma_1 &=
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+        \sigma_2 &=
+        \begin{pmatrix}
+            0 & -i\\
+            i & 0\\
+        \end{pmatrix}&
+        \sigma_3 &=
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+    \end{align*}
+    \begin{itemize}
+        \item Related to the generators of the group $SU(2)$.
+    \end{itemize}
+    \item Based on the above, we can compute that that
+    \begin{equation*}
+        \ev{\hat{S}_x}{s,m_s} = \ev{\hat{S}_y}{s,m_s} = 0
+    \end{equation*}
+    \item We also have
+    \begin{equation*}
+        \ev{\hat{S}_x^2}{s,m_s} = \ev{\hat{S}_y^2}{s,m_s}
+        = \ev{\hat{S}_z^2}{s,m_s}
+        = \frac{\hbar^2}{4}\\
+    \end{equation*}
+    \item We'll continue next time.
+\end{itemize}
+
+
+
 
 \end{document}
