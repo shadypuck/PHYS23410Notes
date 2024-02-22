@@ -29,13 +29,65 @@
     \end{equation}
     \begin{enumerate}
         \item Write the solutions of the Schr\"{o}dinger equation for $\ell=0$. Observe that there are infinite possible solutions ($n=1,2,\dots$) for each value of $\ell$.
+        \begin{proof}
+            If $\ell=0$, then 
+            \begin{equation*}
+                V_\text{eff}(r) = 0+\frac{\hbar^20(0+1)}{2Mr^2}
+                = 0
+            \end{equation*}
+            for all $0\leq r\leq a$. Thus, the relevant effective Schr\"{o}dinger equation is
+            \begin{equation*}
+                -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)] = E_{n\ell}U_{n\ell}(r)
+            \end{equation*}
+            along with the boundary conditions
+            \begin{equation*}
+                U_{n\ell}(0) = U_{n\ell}(a) = 0
+            \end{equation*}
+            This setup is entirely analogous to the infinite square well ODE we solved in class on 1/17. Thus, the solutions for $\ell=0$ are
+            \begin{equation*}
+                \boxed{U_{n\ell}(r) = \sqrt{\frac{2}{a}}\sin(\frac{\pi nr}{a})}
+            \end{equation*}
+            As noted in the problem statement, we can indeed see that that there are infinite possible solutions ($n=1,2,\dots$) for the value $\ell=0$.\footnote{Yunjia said in his 2/20 office hours that $\ell=0$ is the only value of $\ell$ we need to discuss in this part of this problem, despite the "for each value of $\ell$" wording in the problem statement.}
+        \end{proof}
         \item For $\ell=0$, what is the probability density of finding the particle for $r\to 0$?
+        \begin{proof}
+            The probability density of finding the particle for $r\to 0$ is given by
+            \begin{align*}
+                \lim_{r\to 0}|U_{n\ell}(r)|^2 &= \lim_{r\to 0}\frac{2}{a}\sin^2\left( \frac{\pi nr}{a} \right)\\
+                \Aboxed{\lim_{r\to 0}|U_{n\ell}(r)|^2 &= 0}
+            \end{align*}
+        \end{proof}
         \item For $\ell\neq 0$, go back to the equation for $R_{n\ell}$ and use your knowledge of the spherical Bessel equation
         \begin{equation}
             u^2\dv[2]{u}[J_\ell(u)]+2u\dv{u}[J_\ell(u)]+[u^2-\ell(\ell+1)]J_\ell(u) = 0
         \end{equation}
         to show that $R_{n\ell}(r)$ can be solved in terms of $J_\ell(u)$ if one makes the simple redefinition $u=k_{n\ell}r$, where $\hbar^2k_{n\ell}^2=2ME_{n\ell}$ is the square of the particle momentum.
-        \item The general form of $J_\ell(r)$ is
+        \begin{proof}
+            In class on 2/2, we derived the following equation for $R_{n\ell}$, which will be our starting point herein.
+            \begin{equation*}
+                \dv{r}(r^2\dv{r}[R_{n\ell}(r)])-\frac{2Mr^2}{\hbar^2}[V(r)-E_{n\ell}]R_{n\ell}(r) = \ell(\ell+1)R_{n\ell}(r)
+            \end{equation*}
+            As in part (a), we know that $V(r)=0$ for $0\leq r\leq a$. Additionally, recall from the problem statement that $E_{n\ell}=\hbar^2k_{n\ell}^2/2M$. These facts allows us to algebraically rearrange the above equation as follows.
+            \begin{align*}
+                0 &= \dv{r}(r^2\dv{r}[R_{n\ell}(r)])-\frac{2Mr^2}{\hbar^2}[0-E_{n\ell}]R_{n\ell}(r)-\ell(\ell+1)R_{n\ell}(r)\\
+                &= r^2\dv[2]{r}[R_{n\ell}(r)]+2r\dv{r}[R_{n\ell}(r)]+k_{n\ell}^2r^2R_{n\ell}(r)-\ell(\ell+1)R_{n\ell}(r)
+            \end{align*}
+            Now define $u:=k_{n\ell}r$ as suggested in the problem statement and initiate a change of variables in the above differential equation.
+            \begin{align*}
+                \begin{split}
+                    0 ={}& \left( \frac{u}{k_{n\ell}} \right)^2\dv{r}(\dv{u}[R_{n\ell}(u(r))]\cdot\dv{u}{r})+\frac{2u}{k_{n\ell}}\dv{u}[R_{n\ell}(u(r))]\cdot\dv{u}{r}\\
+                    & +k_{n\ell}^2\left( \frac{u}{k_{n\ell}} \right)^2R_{n\ell}(u(r))-\ell(\ell+1)R_{n\ell}(u(r))
+                \end{split}\\
+                ={}& \frac{u^2}{k_{n\ell}^2}\dv{u}(\dv{u}[R_{n\ell}(u)]\cdot k_{n\ell})\cdot\dv{u}{r}+\frac{2u}{k_{n\ell}}\dv{u}[R_{n\ell}(u)]\cdot k_{n\ell}+u^2R_{n\ell}(u)-\ell(\ell+1)R_{n\ell}(u)\\
+                ={}& u^2\dv[2]{u}[R_{n\ell}(u)]+2u\dv{u}[R_{n\ell}(u)]+[u^2-\ell(\ell+1)]R_{n\ell}(u)
+            \end{align*}
+            This leads us to derive the spherical Bessel equation exactly. Thus, the solutions for $\ell\neq 0$ are
+            \begin{align*}
+                R_{n\ell}(u) &= J_\ell(u)\\
+                \Aboxed{R_{n\ell}(r) &= J_\ell(k_{n\ell}r)}
+            \end{align*}
+        \end{proof}
+        \item The general form of $J_\ell(u)$ is
         \begin{equation}
             J_\ell(u) = (-u)^\ell\left( \frac{1}{u}\dv{u} \right)^\ell\left( \frac{\sin u}{u} \right)
         \end{equation}
@@ -47,8 +99,47 @@
         \begin{equation}
             J_\ell(k_{n\ell}a) = 0
         \end{equation}
-        \item In the classical case, if the particle has $\hat{\vec{L}}{\,}^2=0$, it would move in paths that cross the origin and bounce back and forth against the wall. There are infinite paths depending on the direction of motion, with a common convergence point at $r=0$. Compare this result with the probability density in the quantum case.
+        \begin{proof}
+            For $\ell=0$, we have that
+            \begin{align*}
+                R_{n0}(r) &= J_0(k_{n0}r)\\
+                &= (-k_{n0}r)^0\left( \frac{1}{k_{n0}r}\dv{(k_{n0}r)} \right)^0\left( \frac{\sin(k_{n0}r)}{k_{n0}r} \right)\\
+                \Aboxed{R_{n0}(r) &= \frac{\sin(k_{n0}r)}{k_{n0}r}}
+            \end{align*}
+            while for $\ell=1$, we have that
+            \begin{align*}
+                R_{n1}(r) &= J_1(k_{n1}r)\\
+                &= (-k_{n1}r)^1\frac{1}{k_{n1}r}\dv{(k_{n1}r)}(\frac{\sin(k_{n1}r)}{k_{n1}r})\\
+                &= -\frac{k_{n1}r\cos(k_{n1}r)-\sin(k_{n1}r)}{(k_{n1}r)^2}\\
+                \Aboxed{R_{n1}(r) &= \frac{\sin(k_{n1}r)-k_{n1}r\cos(k_{n1}r)}{k_{n1}^2r^2}}
+            \end{align*}
+            Additionally, since this differential equation was solved in concert with the boundary condition
+            \begin{equation*}
+                R_{n\ell}(a) = 0
+            \end{equation*}
+            we must have that
+            \begin{equation*}
+                J_\ell(k_{n\ell}a) = R_{n\ell}(a) = 0
+            \end{equation*}
+            as desired. Since $k_{n\ell}$ is the only unknown in the above equation, this equation can indeed be used to solve for $k_{n\ell}$, i.e., $k_{n\ell}$ may be given in terms of the position of the zeros of the spherical Bessel function.
+        \end{proof}
+        \item In the classical case, if the particle has $\vec{L}^2=0$, it would move in paths that cross the origin and bounce back and forth against the wall. There are infinite paths depending on the direction of motion, with a common convergence point at $r=0$. Compare this result with the probability density in the quantum case.
+        \begin{proof}
+            $\vec{L}^2$ is the eigenvalue of $\hat{\vec{L}}{\,}^2$, so if $\vec{L}^2=0$, then $\hbar^2\ell(\ell+1)=0$ and hence $\ell=0$. Thus, as in part (b), the probability density\footnote{Both Yunjia and Matt said in office hours that this interpretation of "probability density" --- i.e., as \emph{radial} probability density --- is the correct way to address this problem. This interpretation is also consistent with how Wagner used the phrase "probability density" in the 2/19 lecture to refer to $|U_{n\ell}|^2$. However, Nick said in office hours that the correct interpretation of "probability density" is as $|\psi|^2$, but to go with what the other two TAs and Wagner said because he's not grading this week.} is given by
+            \begin{equation*}
+                |U_{n\ell}(r)|^2 = \frac{2}{a}\sin^2\left( \frac{\pi nr}{a} \right)
+            \end{equation*}
+            One thing that this equation implies is that the probability density is always spherically symmetric, very similar to how the classical particle can move along any of the infinitely many paths through the origin. One place where the interpretations differ is that in the quantum case, the probability goes to zero near the origin while in the classical case, the probability is greatest at the origin (since every particle passes through it, regardless of which linear path it is on).
+        \end{proof}
         \item In the classical motion at $\hat{\vec{L}}{\,}^2\neq 0$, the particle will never cross the origin, but the motion will be given by trajectories where the particle hits the wall periodically and continues moving until hitting the wall again, conserving the tangential momentum and changing the sign of the normal one. Compare this with the solution of the quantum case for $\ell=1$.
+        \begin{proof}
+            Using the result from part (d), we can write that for $\ell=1$, the probability density is given by
+            \begin{equation*}
+                |U_{n\ell}(r)|^2 = r^2|R_{n1}(r)|^2
+                = \frac{[\sin(k_{n1}r)-k_{n1}r\cos(k_{n1}r)]^2}{k_{n1}^4r^2}
+            \end{equation*}
+            Thus, although the distribution is different, the probability density is still radially symmetric in the quantum case, unlike in the classical case. Additionally, note that the probability density does still go to zero at the origin, so just like in the classical case, this quantum particle cannot pass through the origin.
+        \end{proof}
     \end{enumerate}
     \item In class, we solved the isotropic harmonic oscillator for a particle of mass $M$ moving in a potential
     \begin{equation}
@@ -72,8 +163,92 @@
     \end{equation}
     \begin{enumerate}
         \item How do you relate the three-fold degeneracy of the energy solutions in the Cartesian case to the two-fold degeneracy in the spherical case? Write the first simple examples that establish this relationship.
+        \begin{proof}
+            The varying degeneracies are reconciled in the fact that different rules govern the possible values such that the variables always produce an identical number of possible values and mathematically equivalent solutions up to a change in coordinates.\par
+            For example, for $\bar{n}=0$, the only possible Cartesian values are $n_1=n_2=n_3=0$ and the only possible spherical values are $n=\ell=0$, so we have one solution in both cases.\par
+            For $\bar{n}=1$, things get slightly more complicated. In Cartesian coordinates, we could have $n_1=1$, $n_2=n_3=0$; $n_2=1$, $n_1=n_3=0$; or $n_3=1$, $n_2=n_3=0$. These are the only possible values because of the constraints that $n_1+n_2+n_3=\bar{n}$ and $n_i\in\Z_{\geq 0}$ ($i=1,2,3$). In spherical coordinates, we have $n=0$; $\ell=1$; and $m=1$, $m=0$, or $m=-1$. Note that no $n=1$ and $\ell=0$ case exists because of the constraint that $n\in(2\N-2)$. Thus, we see once again that we have an equal number of solutions (3) in both cases.\par
+            Using the same constraints as above, we have for $\bar{n}=2$ that
+            \begin{table}[H]
+                \centering
+                \small
+                \renewcommand{\arraystretch}{1.2}
+                \begin{subtable}{0.3\linewidth}
+                    \centering
+                    \begin{tabular}{c|c|c}
+                        $n_1$ & $n_2$ & $n_3$\\
+                        \hline
+                        0 & 0 & 2\\
+                        0 & 2 & 0\\
+                        2 & 0 & 0\\
+                        0 & 1 & 1\\
+                        1 & 0 & 1\\
+                        ${\color{white}-}1{\color{white}-}$ & ${\color{white}-}1{\color{white}-}$ & ${\color{white}-}0{\color{white}-}$\\
+                    \end{tabular}
+                    \caption{Cartesian coordinates.}
+                \end{subtable}
+                \begin{subtable}{0.3\linewidth}
+                    \centering
+                    \begin{tabular}{c|c|c}
+                        ${\color{white}-}n{\color{white}-}$ & ${\color{white}-}\ell{\color{white}-}$ & $m$\\
+                        \hline
+                        0 & 2 & 2\\
+                        0 & 2 & 1\\
+                        0 & 2 & 0\\
+                        0 & 2 & $-1{\color{white}-}$\\
+                        0 & 2 & $-2{\color{white}-}$\\
+                        2 & 0 & 0\\
+                    \end{tabular}
+                    \caption{Spherical coordinates.}
+                \end{subtable}
+            \end{table}
+            Thus, we see one more time that there is an equal number of solutions (6) in both cases. This pattern continues.
+        \end{proof}
         \item Write the solution for $\bar{n}=n_x+n_y+n_z=1$ in Cartesian coordinates and for $\bar{n}=n+\ell=1$ in spherical coordinates. Demonstrate that the solutions in the spherical case are linear combinations of the ones found in the Cartesian case.
+        \begin{proof}
+            As given in class on 2/14, the three Cartesian solutions for $\bar{n}=1$ are
+            \begin{empheq}[box=\fbox]{align*}
+                x\e[-M\omega r^2/2\hbar]&&
+                y\e[-M\omega r^2/2\hbar]&&
+                z\e[-M\omega r^2/2\hbar]
+            \end{empheq}
+            and the three corresponding spherical solutions are
+            \begin{empheq}[box=\fbox]{align*}
+                r\e[-M\omega r^2/2\hbar]\sin\theta\e[i\phi]&&
+                r\e[-M\omega r^2/2\hbar]\cos\theta&&
+                r\e[-M\omega r^2/2\hbar]\sin\theta\e[-i\phi]
+            \end{empheq}
+            We may write the three spherical solutions as linear combinations of the Cartesian ones as follows.
+            \begin{align*}
+                r\e[-M\omega r^2/2\hbar]\sin\theta\e[i\phi] &= [r\sin\theta(\cos\phi+i\sin\phi)]\e[-M\omega r^2/2\hbar]\\
+                &= [r\sin\theta\cos\phi+ir\sin\theta\sin\phi]\e[-M\omega r^2/2\hbar]\\
+                &= [x+iy]\e[-M\omega r^2/2\hbar]\\
+                \Aboxed{r\e[-M\omega r^2/2\hbar]\sin\theta\e[i\phi] &= (x\e[-M\omega r^2/2\hbar])+i(y\e[-M\omega r^2/2\hbar])}
+            \end{align*}
+            \begin{align*}
+                r\e[-M\omega r^2/2\hbar]\cos\theta &= [r\cos\theta]\e[-M\omega r^2/2\hbar]\\
+                \Aboxed{r\e[-M\omega r^2/2\hbar]\cos\theta &= z\e[-M\omega r^2/2\hbar]}
+            \end{align*}
+            \begin{align*}
+                r\e[-M\omega r^2/2\hbar]\sin\theta\e[-i\phi] &= [r\sin\theta(\cos\phi-i\sin\phi)]\e[-M\omega r^2/2\hbar]\\
+                &= [r\sin\theta\cos\phi-ir\sin\theta\sin\phi]\e[-M\omega r^2/2\hbar]\\
+                &= [x-iy]\e[-M\omega r^2/2\hbar]\\
+                \Aboxed{r\e[-M\omega r^2/2\hbar]\sin\theta\e[-i\phi] &= (x\e[-M\omega r^2/2\hbar])-i(y\e[-M\omega r^2/2\hbar])}
+            \end{align*}
+        \end{proof}
         \item Discuss the behavior of the probability density for the different solutions for $\bar{n}=0$ and $\bar{n}=1$. \emph{Hint}: Concentrate on the overall behavior of the density, and not on the normalization factors.
+        \begin{proof}
+            For $\bar{n}=0$, the probability density is
+            \begin{equation*}
+                |U_{00}(r)|^2 = r^2|R_{00}(r)|^2
+                = r^2\e[-M\omega r^2/\hbar]
+            \end{equation*}
+            This means that the probability density is spherically symmetric, zero at the origin, increases until it peaks at a distance $r=\sqrt{\hbar/M\omega}$ from the origin, and then tends back toward zero as $r\to\infty$.\par
+            For $\bar{n}=1$, one example of the probability density is
+            \begin{equation*}
+                |\psi|^2 = x^2\e[-M\omega r^2/\hbar]
+            \end{equation*}
+            This means that the probability density is \emph{not} spherically symmetric. It will still be zero at the origin and peak at $(\pm\sqrt{\hbar/M\omega},0,0)$. But then the probability density will be concentrated at those two maxima and fall off as we move away from them in any direction. This yields the typical $p_x$-orbital density distribution. Analogously, the other two spherical harmonics will produce $p_y$- and $p_z$-orbital type distributions oriented along the other two Cartesian axes.
+        \end{proof}
     \end{enumerate}
     \item In class, we solved the hydrogen atom. One can imagine a more generic potential, namely
     \begin{equation}
@@ -94,13 +269,111 @@
             A+\frac{\hbar^2\ell(\ell+1)}{2m_e} = \frac{\hbar^2w(w+1)}{2m_e}
         \end{equation}
         where $w$ is a real number and study the asymptotic behavior of $U_{n\ell}$ for $r\to\infty$ and $r\to 0$.
+        \begin{proof}
+            In the limiting case that $r$ is large ($r\to\infty$), we can approximate the potential as going to zero and giving us
+            \begin{equation*}
+                -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)] = E_{n\ell}U_{n\ell}(r)
+            \end{equation*}
+            Thus, since the ansatz $\e[-k_{n\ell}r]$ satisfies the above ODE (where $E_{n\ell}=-\hbar^2k_{n\ell}^2/2m_e$), we have that
+            \begin{equation*}
+                U_{n\ell} \propto \e[-k_{n\ell}r]
+            \end{equation*}
+            % Note that it follows that
+            % \begin{equation*}
+            %     -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)]+0\cdot U_{n\ell}(r) &= E_{n\ell}U_{n\ell}(r)\\
+            %     -\frac{\hbar^2}{2m_e}k_{n\ell}^2\e[-k_{n\ell}r] &= E_{n\ell}\e[-k_{n\ell}r]\\
+            %     E_{n\ell} = -\frac{\hbar^2k_{n\ell}^2}{2m_e}
+            % \end{equation*}
+            In the limiting case that $r$ is small ($r\to 0$), we can approximate the potential as giving us
+            \begin{align*}
+                0 &= -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)]+\left[ \frac{\hbar^2w(w+1)}{2m_er^2} \right]U_{n\ell}(r)\\
+                \dv[2]{r}[U_{n\ell}(r)] &= \left[ \frac{w(w+1)}{r^2} \right]U_{n\ell}(r)
+            \end{align*}
+            Thus, since the ansatz $r^{w+1}$ satisfies the above ODE, we also have that
+            \begin{equation*}
+                U_{n\ell}(r) \propto r^{w+1}
+            \end{equation*}
+            Therefore, we have overall that
+            \begin{equation*}
+                U_{n\ell}(r) \propto r^{w+1}\e[-k_{n\ell}r]
+            \end{equation*}
+            and hence
+            \begin{equation*}
+                U_{n\ell}(r) = f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]
+            \end{equation*}
+            where $f_{n\ell}(r)$ is some function.
+        \end{proof}
         \item Consider only bound states (that is, those where $\hbar^2k_{n\ell}^2/2m_e=|E_{n\ell}|$) and --- looking at what was done in the case of the hydrogen atom --- obtain an equation for the function $f(z)$ such that
         \begin{equation}
             U_{n\ell}(r) = f_{n\ell}(z)r^{w+1}\e[-k_{n\ell}r]
         \end{equation}
         \emph{Hint}: You do not need to derive the equation. Just look at what happens in the hydrogen atom and proceed by analogy with that case.
+        \begin{proof}
+            Taking the hint, we can develop an analogy between this potential and the hydrogen atom potential as follows. Essentially, we want
+            \begin{equation*}
+                V(r) = \left[ \frac{A}{r^2}+\frac{\hbar^2\ell(\ell+1)}{2m_er^2} \right]-\left[ \frac{B}{r} \right]
+                = \left[ \frac{\hbar^2w(w+1)}{2m_er^2} \right]-\left[ \frac{e^2}{4\pi\epsilon_0r} \right]
+                = V_{\ce{{}^1H}}(r)
+            \end{equation*}
+            \newpage
+            
+            Thus, we must change
+            \begin{align*}
+                \ell &\to w&
+                \frac{e^2}{4\pi\epsilon_0} &\to B
+            \end{align*}
+            in the relevant ODE from the 2/16 lecture. In particular,
+            \begin{equation*}
+                f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2m_e}{\hbar^2}\frac{e^2}{4\pi\epsilon_0r} \right] = 0
+            \end{equation*}
+            becomes
+            \begin{equation*}
+                \boxed{f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(w+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(w+1)}{r}+\frac{2m_eB}{\hbar^2r} \right] = 0}
+            \end{equation*}
+            Alternatively, here is the full derivation. To obtain an ODE constraining the values of $f_{n\ell}$, substitute the version of $U_{n\ell}$ obtained in part (a) back into the original differential equation and simplify as follows.
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                0 ={}& -\frac{\hbar^2}{2m_e}\dv[2]{r}[U_{n\ell}(r)]+\left[ \frac{A}{r^2}-\frac{B}{r}+\frac{\hbar^2\ell(\ell+1)}{2m_er^2} \right]U_{n\ell}(r)-E_{n\ell}U_{n\ell}(r)\\
+                ={}& -\frac{\hbar^2}{2m_e}\dv[2]{r}[f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]]+\left[ \frac{A}{r^2}-\frac{B}{r}+\frac{\hbar^2\ell(\ell+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]\\
+                ={}& \dv[2]{r}[f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]]-\frac{2m_e}{\hbar^2}\left[ \frac{A}{r^2}-\frac{B}{r}+\frac{\hbar^2\ell(\ell+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]\\
+                \begin{split}
+                    ={}& \dv{r}[f_{n\ell}'(r)r^{w+1}\e[-k_{n\ell}r]+(w+1)f_{n\ell}(r)r^w\e[-k_{n\ell}r]-k_{n\ell}f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]]\\
+                    & -\frac{2m_e}{\hbar^2}\left[ \frac{A}{r^2}-\frac{B}{r}+\frac{\hbar^2\ell(\ell+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]
+                \end{split}\\
+                \begin{split}
+                    ={}& [f_{n\ell}''(r)r^{w+1}\e[-k_{n\ell}r]+(w+1)f_{n\ell}'(r)r^w\e[-k_{n\ell}r]-k_{n\ell}f_{n\ell}'(r)r^{w+1}\e[-k_{n\ell}r]\\
+                    & +(w+1)f_{n\ell}'(r)r^w\e[-k_{n\ell}r]+w(w+1)f_{n\ell}(r)r^{w-1}\e[-k_{n\ell}r]-k_{n\ell}(w+1)f_{n\ell}(r)r^w\e[-k_{n\ell}r]\\
+                    & -k_{n\ell}f_{n\ell}'(r)r^{w+1}\e[-k_{n\ell}r]-k_{n\ell}(w+1)f_{n\ell}(r)r^w\e[-k_{n\ell}r]+k_{n\ell}^2f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]]\\
+                    & -\frac{2m_e}{\hbar^2}\left[ -\frac{B}{r}+\frac{\hbar^2w(w+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)r^{w+1}\e[-k_{n\ell}r]
+                \end{split}\\
+                \begin{split}
+                    ={}& [f_{n\ell}''(r)r^{w+1}+(w+1)f_{n\ell}'(r)r^w-k_{n\ell}f_{n\ell}'(r)r^{w+1}\\
+                    & +(w+1)f_{n\ell}'(r)r^w+w(w+1)f_{n\ell}(r)r^{w-1}-k_{n\ell}(w+1)f_{n\ell}(r)r^w\\
+                    & -k_{n\ell}f_{n\ell}'(r)r^{w+1}-k_{n\ell}(w+1)f_{n\ell}(r)r^w+k_{n\ell}^2f_{n\ell}(r)r^{w+1}]\\
+                    & -\frac{2m_e}{\hbar^2}\left[ -\frac{B}{r}+\frac{\hbar^2w(w+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)r^{w+1}
+                \end{split}\\
+                \begin{split}
+                    ={}& \left[ f_{n\ell}''(r)+\frac{w+1}{r}f_{n\ell}'(r)-k_{n\ell}f_{n\ell}'(r) \right.\\
+                    & +\frac{w+1}{r}f_{n\ell}'(r)+\frac{w(w+1)}{r^2}f_{n\ell}(r)-\frac{k_{n\ell}(w+1)}{r}f_{n\ell}(r)\\
+                    & \left. -k_{n\ell}f_{n\ell}'(r)-\frac{k_{n\ell}(w+1)}{r}f_{n\ell}(r)+k_{n\ell}^2f_{n\ell}(r) \right]\\
+                    & -\frac{2m_e}{\hbar^2}\left[ -\frac{B}{r}+\frac{\hbar^2w(w+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)
+                \end{split}\\
+                \begin{split}
+                    ={}& f_{n\ell}''(r)+\left[ \frac{2(w+1)}{r}-2k_{n\ell} \right]f_{n\ell}'(r)+\left[ \frac{w(w+1)}{r^2}-\frac{2k_{n\ell}(w+1)}{r}+k_{n\ell}^2 \right]f_{n\ell}(r)\\
+                    & -\frac{2m_e}{\hbar^2}\left[ -\frac{B}{r}+\frac{\hbar^2w(w+1)}{2m_er^2}-E_{n\ell} \right]f_{n\ell}(r)
+                \end{split}\\
+                \begin{split}
+                    ={}& f_{n\ell}''(r)+\left[ \frac{2(w+1)}{r}-2k_{n\ell} \right]f_{n\ell}'(r)+\left[ -\frac{2k_{n\ell}(w+1)}{r}+k_{n\ell}^2 \right]f_{n\ell}(r)\\
+                    & +\frac{2m_e}{\hbar^2}\left[ \frac{B}{r}+E_{n\ell} \right]f_{n\ell}(r)
+                \end{split}\\
+                ={}& f_{n\ell}''(r)+2\left[ \frac{w+1}{r}-k_{n\ell} \right]f_{n\ell}'(r)+\left[ \frac{2m_eB}{\hbar^2r}-\frac{2k_{n\ell}(w+1)}{r}+\frac{2m_eE_{n\ell}}{\hbar^2}+k_{n\ell}^2 \right]f_{n\ell}(r)\\
+                ={}& f_{n\ell}''(r)+2\left[ \frac{w+1}{r}-k_{n\ell} \right]f_{n\ell}'(r)+2\left[ \frac{m_eB}{\hbar^2r}-\frac{k_{n\ell}(w+1)}{r} \right]f_{n\ell}(r)
+            \end{align*}
+            \endgroup
+        \end{proof}
         \item Propose a series expansion for $f_{n\ell}(z)$ and assuming that it should terminate in order to obtain a normalizable solution, derive the value of the energies that one should obtain in this case. For this, call
-        \begin{equation}
+        \begin{equation}\label{eqn:6.18}
             B\sqrt{m_e/2|E_{n\ell}|} = q\hbar
         \end{equation}
         and demonstrate that $q-w-1=n$ must be a positive integer (or zero). Therefore, the energy is given by
@@ -108,6 +381,73 @@
             E_{n\ell} = -\frac{2B^2m_e}{\hbar^2}\left[ 2n+1+\sqrt{(2\ell+1)^2+8m_eA/\hbar^2} \right]^{-2}
         \end{equation}
         Show that this reduces to the hydrogen atom in the appropriate limit. \emph{Hint}: Observe that $4x(x+1)+1=(2x+1)^2$ and the square root in Eq. \ref{eqn:6.19} is nothing but $(2w+1)$.
+        \begin{proof}
+            Postulate that
+            \begin{equation*}
+                f_{n\ell}(r) = \sum_ja_jr^j
+            \end{equation*}
+            Substituting this power series into the ODE from part (b), we obtain
+            \begin{align*}
+                0 ={}& f_{n\ell}''(r)+2\left[ \frac{w+1}{r}-k_{n\ell} \right]f_{n\ell}'(r)+2\left[ \frac{m_eB}{\hbar^2r}-\frac{k_{n\ell}(w+1)}{r} \right]f_{n\ell}(r)\\
+                ={}& \sum_jj(j-1)a_jr^{j-2}+2\left[ \frac{w+1}{r}-k_{n\ell} \right]\sum_jja_jr^{j-1}+2\left[ \frac{m_eB}{\hbar^2r}-\frac{k_{n\ell}(w+1)}{r} \right]\sum_ja_jr^j
+                \intertext{Multiply through this expression that's equal to zero by $r$.}
+                ={}& \sum_jj(j-1)a_jr^{j-1}+2(w+1-k_{n\ell}r)\sum_jja_jr^{j-1}+2\left[ \frac{m_eB}{\hbar^2}-k_{n\ell}(w+1) \right]\sum_ja_jr^j
+                \intertext{Rearrange and reindex select terms.}
+                \begin{split}
+                    ={}& \sum_jj(j-1)a_jr^{j-1}+2(w+1)\sum_jja_jr^{j-1}\\
+                    & -2k_{n\ell}\sum_jja_jr^j+2\left[ \frac{m_eB}{\hbar^2}-k_{n\ell}(w+1) \right]\sum_ja_jr^j
+                \end{split}\\
+                \begin{split}
+                    ={}& \sum_{j=0}^\infty j(j+1)a_{j+1}r^j+2(w+1)\sum_{j=0}^\infty(j+1)a_{j+1}r^j\\
+                    & -2k_{n\ell}\sum_{j=0}^\infty ja_jr^j+2\left[ \frac{m_eB}{\hbar^2}-k_{n\ell}(w+1) \right]\sum_{j=0}^\infty a_jr^j
+                \end{split}\\
+                ={}& \sum_{j=0}^\infty\left[ j(j+1)a_{j+1}+2(w+1)(j+1)a_{j+1}-2k_{n\ell}ja_j+\frac{2m_eBa_j}{\hbar^2}-2k_{n\ell}(w+1)a_j \right]r^j\\
+                ={}& \sum_{j=0}^\infty\left[ (j+2w+2)(j+1)a_{j+1}+2\left( \frac{m_eB}{\hbar^2}-k_{n\ell}(j+w+1) \right)a_j \right]r^j
+            \end{align*}
+            Because each term in the above summation is affixed to a different power of $r$, meaning that no two terms can cancel, not only is the entire sum above equal to zero, but each individual term in it is equal to zero, too. Thus, for all $j\in\Z_{\geq 0}$,
+            \begin{align*}
+                0 &= (j+2w+2)(j+1)a_{j+1}+2\left[ \frac{m_eB}{\hbar^2}-k_{n\ell}(j+w+1) \right]a_j\\
+                a_{j+1} &= \frac{2[k_{n\ell}(j+w+1)-m_eB/\hbar^2]}{(j+2w+2)(j+1)}a_j
+            \end{align*}
+            Per the problem statement, assume that the series expansion should terminate at some $n:=j_\text{max}$ in order to obtain a normalizable solution. Then if we are to have $a_{n+1}=0$, the numerator of the above expression must equal zero. This yields
+            \begin{align*}
+                0 &= 2\left[ k_{n\ell}(n+w+1)-\frac{m_eB}{\hbar^2} \right]\\
+                k_{n\ell}(n+w+1) &= \frac{m_eB}{\hbar^2}\\
+                k_{n\ell} &= \frac{m_eB}{\hbar^2(n+w+1)}
+            \end{align*}
+            Before we plug this into the energy equation, take the hint to learn that
+            \begin{align*}
+                \frac{\hbar^2w(w+1)}{2m_e} &= \frac{\hbar^2\ell(\ell+1)}{2m_e}+A\\
+                w(w+1) &= \ell(\ell+1)+\frac{2m_eA}{\hbar^2}\\
+                4w(w+1)+1 &= 4\ell(\ell+1)+1+\frac{8m_eA}{\hbar^2}\\
+                (2w+1)^2 &= (2\ell+1)^2+\frac{8m_eA}{\hbar^2}\\
+                2w+1 &= \sqrt{(2\ell+1)^2+8m_eA/\hbar^2}
+            \end{align*}
+            Therefore, combining the last two results, we have that
+            \begin{align*}
+                E_{n\ell} &= -\frac{\hbar^2k_{n\ell}^2}{2m_e}\\
+                &= -\frac{m_eB^2}{2\hbar^2(n+w+1)^2}\\
+                &= -\frac{4m_eB^2}{2\hbar^2(2n+2w+2)^2}\\
+                &= -\frac{2m_eB^2}{\hbar^2}\left[ 2n+1+2w+1 \right]^{-2}\\
+                &= -\frac{2m_eB^2}{\hbar^2}\left[ 2n+1+\sqrt{(2\ell+1)^2+8m_eA/\hbar^2} \right]^{-2}
+            \end{align*}
+            as desired.\par
+            Note that line 2 above is of a form directly analogous to Eq. \ref{eqn:6.18} if we identify $q:=n+w+1$:
+            \begin{align*}
+                B\sqrt{m_e/2|E_{n\ell}|} &= q\hbar\\
+                \frac{B^2m_e}{2|E_{n\ell}|} &= q^2\hbar^2\\
+                |E_{n\ell}| &= \frac{m_eB^2}{2\hbar^2q^2}
+            \end{align*}
+            By this identification, we also have the related equality $q-w-1=n$, as desired. And by the definition of $n$ as the maximum value $j_\text{max}$ of a counter that starts at zero (that is to say, $j$), we know that $n$ must be a positive integer (or zero), as desired.\par
+            As to the second part of the question, the limit that reduces $V$ to the hydrogen atom is $A\to 0$ and $B\to e^2/4\pi\epsilon_0$. Substituting these values into the above energy function, we obtain
+            \begin{align*}
+                E_{n\ell} &= -\frac{2m_e}{\hbar^2}\cdot\left( \frac{e^2}{4\pi\epsilon_0} \right)^2\cdot\left[ 2n+1+\sqrt{(2\ell+1)^2+8m_e(0)/\hbar^2} \right]^{-2}\\
+                &= -\frac{2\hbar^2}{m_e}\cdot\left( \frac{m_ee^2}{4\pi\epsilon_0\hbar^2} \right)^2\cdot\left[ 2n+1+2\ell+1 \right]^{-2}\\
+                &= -\frac{2\hbar^2}{m_e(2n+2\ell+2)^2}\cdot\left( \frac{1}{a_\text{B}} \right)^2\\
+                &= -\frac{\hbar^2}{2m_ea_\text{B}^2(n+\ell+1)^2}
+            \end{align*}
+            as desired.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
