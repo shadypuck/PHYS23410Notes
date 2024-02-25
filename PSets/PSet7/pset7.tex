@@ -1,0 +1,70 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{6}
+
+\begin{document}
+
+
+
+
+\section{Spin}
+\begin{enumerate}
+    \item \marginnote{3/2:}In class, we showed that one can find a matrix representation for the components of the spin operator given by
+    \begin{align}
+        \hat{S}_x &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+        \hat{S}_y &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & -i\\
+            i & 0\\
+        \end{pmatrix}&
+        \hat{S}_z &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+    \end{align}
+    \begin{enumerate}
+        \item Use matrix multiplication to show that they fulfill the proper commutator algebra associated with angular momentum components.
+        \item Compute $\hat{S}_i^2$ ($i=x,y,z$). If you perform a measurement, what possible values of the components of angular momentum can you get? \emph{Hint}: There are 2 possible values.
+        \item Take a generic, well-normalized spin state
+        \begin{equation}
+            \chi =
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+        \end{equation}
+        with $|c_+|^2+|c_-|^2=1$. What is the probability of measuring a value of $\hat{S}_z=\hbar/2$? \emph{Hint}: Express $\chi$ as a linear combination of eigenstates of $\hat{S}_z$ with eigenvalues $\pm 1/2$.
+        \item What are the mean values of $\hat{S}_x,\hat{S}_y,\hat{S}_z$ in the state $\chi$? \emph{Hint}: Use the vector notation to compute the mean values.
+        \item Use the result of part (d), together with the values of $\hat{S}_i^2$, to show that the uncertainty principle is fulfilled, i.e., that
+        \begin{equation}
+            \sigma_{\hat{S}_x}\sigma_{\hat{S}_y} \geq \frac{1}{2}|\ev{[\hat{S}_x,\hat{S}_y]}{\chi}|
+        \end{equation}
+        \emph{Hint}: WLOG, let $c_+=\cos(\theta_s/2)\e[i\alpha]$ and $c_-=\sin(\theta_s/2)\e[i\beta]$. Hence, $c_+c_-^*+c_-c_+^*=\sin(\theta_s)\cos(\alpha-\beta)$, $c_+c_-^*-c_-c_+^*=i\sin(\theta_s)\sin(\alpha-\beta)$, and $|c_+|^2-|c_-|^2=\cos(\theta_s)$.
+        \item What are the results of part (d) if you take an eigenstate of $\hat{S}_z$ with eigenvalue $\hbar/2$ ($\theta_s=\alpha=0$)?
+    \end{enumerate}
+    \item Consider the interaction of the magnetic moment induced by the spin of a particle with a magnetic field. The Hamiltonian is given by
+    \begin{equation}
+        \hat{H} = -\gamma\hat{\vec{S}}\hat{\vec{B}}
+    \end{equation}
+    with corresponding Schr\"{o}dinger equation
+    \begin{equation}
+        \hat{H}\chi = i\hbar\pdv{\chi}{t}
+    \end{equation}
+    \begin{enumerate}
+        \item Re-derive the solution for $\chi(t)$ we presented in class.
+        \item Compute the probabilities of finding the particle with spin up and down in the $x$- and $y$-directions. \emph{Hint}: The probability can be computed as the modulus square of the component of $\chi(t)$ on eigenstates of spin up and down in the $x$- and $y$-directions. These components may be determined by computing the inner product of $\chi(t)$ with these particular eigenstates.
+        \item Based on these probabilities, compute the mean values of the spin in the $x$- and $y$-directions and discuss their behavior in time.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
