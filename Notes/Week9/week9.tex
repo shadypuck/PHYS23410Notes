@@ -426,5 +426,336 @@
 
 
 
+\section{Stern-Gerlach Experiment}
+\begin{itemize}
+    \item \marginnote{2/28:}Reminder that the final is next Thursday (unless you need it earlier, like me).
+    \item Today: Finish discussing spin in a magnetic field and discuss the amazing Stern-Gerlach experiment.
+    \item Review.
+    \begin{itemize}
+        \item We have a Hamiltonian that ignores kinetic and potential energy.
+        \begin{equation*}
+            \hat{H} = -\vec{\mu}\cdot\vec{B}
+        \end{equation*}
+        \begin{itemize}
+            \item $\vec{\mu}=\gamma\vec{S}$ is the magnetic moment.
+        \end{itemize}
+        \item Thus, we have to solve the following Schr\"{o}dinger equation.
+        \begin{equation*}
+            \hat{H}\chi(t) = i\hbar\pdv{t}[\chi(t)]
+        \end{equation*}
+        \begin{itemize}
+            \item Recall that
+            \begin{equation*}
+                \chi(t) =
+                \begin{pmatrix}
+                    \chi_+(t)\\
+                    \chi_-(t)\\
+                \end{pmatrix}
+            \end{equation*}
+        \end{itemize}
+        \item We also have the following representation of the components of the spin operator.
+        \begin{align*}
+            \hat{S}_x &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}&
+            \hat{S}_y &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}&
+            \hat{S}_z &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Picking $\vec{B}=B\hat{z}$, the Schr\"{o}dinger equation expands to
+        \begin{equation*}
+            -\frac{\gamma B\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+            = i\hbar\pdv{t}
+            \begin{pNiceMatrix}
+                \pdv{\chi_+}{t}\\
+                \pdv{\chi_-}{t}\\
+            \end{pNiceMatrix}
+        \end{equation*}
+        \item This vector differential equation then separates (because the matrix is diagonal) into the following two scalar differential equations.
+        \begin{align*}
+            -\frac{\gamma B\hbar}{2}\chi_+ &= i\hbar\pdv{\chi_+}{t}&
+            \frac{\gamma B\hbar}{2}\chi_- &= i\hbar\pdv{\chi_-}{t}
+        \end{align*}
+        \item These ODEs can be solved for the following solutions.
+        \begin{align*}
+            \chi_+ &= \chi_+(0)\e[i\gamma Bt/2]&
+            \chi_- &= \chi_-(0)\e[-i\gamma Bt/2]
+        \end{align*}
+        \item Then we can compute the mean value of the spin in the three different directions in arbitrary configurations
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+        \end{equation*}
+        \item One example of doing this is
+        \begin{align*}
+            \ev{\hat{S}_z}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}(|\chi_+|^2-|\chi_-|^2)\\
+            &= \frac{\hbar}{2}(|\chi_+(0)|^2-|\chi_-(0)|^2)
+        \end{align*}
+        \begin{itemize}
+            \item Then recall that $|\chi_+|^2,|\chi_-|^2$ are the probabilities of finding the particle with spin up or down, so that together,
+            \begin{equation*}
+                |\chi_+|^2+|\chi_-|^2 = 1
+            \end{equation*}
+        \end{itemize}
+        \item We can also compute the mean value of spin in the $x$-direction.
+        \begin{align*}
+            \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_-\\
+                \chi_+\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}(\chi_+^*\chi_-+\chi_-^*\chi_+)\\
+            &= \frac{\hbar}{2}\cdot 2\re(\chi_+^*\chi_-)\\
+            &= \frac{\hbar}{2}\cdot 2\re\left[ |\chi_+|(0)|\chi_-|(0)\e[-i(\gamma Bt+\chi_+-\chi_-)] \right]\\
+            &= \frac{\hbar}{2}\cdot 2|\chi_+|(0)|\chi_-|(0)\cos(\gamma Bt+\phi_+-\phi_-)
+        \end{align*}
+        \item Note that to get the next-to-last line above, we used the substitutions
+        \begin{align*}
+            \chi_+(0) &= |\chi_+(0)|\e[i\phi_+]&
+            \chi_-(0) &= |\chi_-(0)|\e[i\phi_-]
+        \end{align*}
+        \item With some algebraic manipulation, we can derive that
+        \begin{align*}
+            |\chi_+|(0) &= \cos(\frac{\theta_s}{2})&
+            |\chi_-|(0) &= \sin(\frac{\theta_s}{2})
+        \end{align*}
+        \item In particular, these equations come from (or imply) the results that
+        \begin{align*}
+            \ev{\hat{S}_z}{\chi} &= \frac{\hbar}{2}\left[ \cos^2\left( \frac{\theta_s}{2} \right)-\sin^2\left( \frac{\theta_s}{2} \right) \right]
+                = \frac{\hbar}{2}\cos(\theta_s)\\
+            \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)
+        \end{align*}
+        \begin{itemize}
+            \item Should it be $\hbar/4$ in the second expression above because of the "2" factor in the following trigonometric identity from which the relevant result is derived??
+            \begin{equation*}
+                2\sin(\frac{\theta_s}{2})\cos(\frac{\theta_s}{2}) = \sin(\theta_s)
+            \end{equation*}
+            \item We can relate these results to Figure \ref{fig:polarSpinor}.
+            \item The quantity $\gamma B$ is known as the \textbf{Larmor frequency} or \textbf{spin precession}.
+        \end{itemize}
+        \item If we pay attention to the following, the problem set will be much, much easier!
+        \item Let's evaluate the mean value of spin in the $y$-direction again.
+        \begin{align*}
+            \ev{\hat{S}_y}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                -i\chi_-\\
+                i\chi_+\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}\cdot\frac{1}{i}\cdot(\chi_+^*\chi_--\chi_-^*\chi_+)\\
+            &= \frac{\hbar}{2}\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)
+        \end{align*}
+        \item Note that the previous results imply that
+        \begin{align*}
+            [\hat{H},\hat{S}_z] &= 0&
+            [\hat{H},\hat{S}_x] &\neq 0&
+            [\hat{H},\hat{S}_y] &\neq 0
+        \end{align*}
+        \item What if we take the eigenstate of the spin in the upwards $x$-direction? The probability of finding the particle with spin up in the $x$-direction is
+        \begin{equation*}
+            \left|
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 & 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \chi_+\\
+                    \chi_-\\
+                \end{pmatrix}
+            \right|^2
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, this is $|d_+|^2$ where
+            \begin{equation*}
+                \chi = d_+\chi_+^x+d_-\chi_-^x
+            \end{equation*}
+        \end{itemize}
+        \item Recall that
+        \begin{align*}
+            \chi_+^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                1\\
+            \end{pmatrix}&
+            \chi_-^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                -1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Essentially, the computation we have done inside the absolute value bars above is
+        \begin{equation*}
+            (\chi_+^x)^\dagger\chi = d_+
+        \end{equation*}
+        \item Thus, we can get all the way to
+        \begin{align*}
+            |d_+|^2 ={}& \frac{1}{2}(|\chi_++\chi_-|^2)\\
+            ={}& \frac{1}{2}\left| \chi_+(0)\e[i\gamma Bt/2]+\chi_-(0)\e[-i\gamma Bt/2] \right|^2\\
+            ={}& \frac{1}{2}\left| |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right|^2\\
+            \begin{split}
+                ={}& \frac{1}{2}\left[ |\chi_+(0)|\e[-i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[i(\gamma Bt/2-\phi_-)] \right]\\
+                & \cdot\left[ |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right]
+            \end{split}\\
+            ={}& \frac{1}{2}\left[ |\chi_+|^2+|\chi_-|^2+|\chi_+(0)||\chi_-(0)|\cdot 2\cos(\gamma Bt+\phi_+-\phi_-) \right]\\
+            ={}& \frac{1}{2}[1+\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]
+        \end{align*}
+        and
+        \begin{equation*}
+            |d_-|^2 = \frac{1}{2}[1-\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]
+        \end{equation*}
+    \end{itemize}
+    \item We will now cover the Stern-Gerlach very fast, omitting certain details in Wagner's notes.
+    \item The setup.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [rex,thick,-latex] (-1.5,0.5) -- node[black,above]{$\Exp{p_x}$} ++(1,0);
+            \draw [rex,semithick]
+                (-0.6,0.5) -- (0,0.5)
+                (0,0.5) to[out=0,in=-150] (2,0.9) -- node[above]{$+$} node[below=2mm,black]{$(p_x,p_z)$} ++(30:1)
+                (0,0.5) to[out=0,in=150] (2,0.1) -- node[below]{$-$} ++(-30:1)
+            ;
+    
+            \draw [white,ultra thick] (0.5,0) -- ++(0,1);
+            \draw [white,ultra thick] (1.5,0) -- ++(0,1);
+            \draw [orx,->,shorten <=2pt,shorten >=2pt] (0.5,0) -- ++(0,1);
+            \node [fill=white,inner sep=1pt] at (1,0.5) {${\color{orx}B\hat{z}}$};
+            \draw [orx,->,shorten <=2pt,shorten >=2pt] (1.5,0) -- ++(0,1);
+    
+            \draw [yey,ultra thick]
+                (0,1) -- (2,1)
+                (0,0) -- (2,0)
+            ;
+            \draw [|-|] (0,-0.5) -- node[below]{$\dd{x}$} ++(2,0);
+    
+            \draw (3,-1) -- node[right]{Screen} (3,2);
+            \draw [stealth-stealth] (-1.4,1.6) node[above]{$z$} -- ++(0,-0.3) -- ++(0.3,0) node[right]{$x$};
+        \end{tikzpicture}
+        \caption{Stern-Gerlach experiment.}
+        \label{fig:sternGerlach}
+    \end{figure}
+    \begin{itemize}
+        \item A particle enters the setup with mean momentum $\Exp{p_x}$.
+        \item If we're trying to keep the particle straight in the magnetic field, it will be difficult because it will experience a Lorentz force that directs it out of the page.
+        \item The magnetic field is given by
+        \begin{equation*}
+            \vec{B} = (B_0+\alpha z)\hat{z}
+        \end{equation*}
+        \item The change (??) in the magnetic field is zero.
+        \begin{equation*}
+            \vec{\nabla}\vec{B} = 0
+        \end{equation*}
+        \item We assume that $B_0\gg\alpha z$.
+    \end{itemize}
+    \item The Schr\"{o}dinger equation to solve here is
+    \begin{equation*}
+        -\vec{\mu}\cdot\vec{B}\chi = i\hbar\pdv{\chi}{t}
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that
+        \begin{equation*}
+            \chi_\pm = \chi_\pm(0)\e[\mp(i\gamma/2)(B_0+\alpha z)t]
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            \ev{\hat{p}_z}{\chi} = \int\dd{z}
+            \begin{pmatrix}
+                \chi_+(z) & \chi_-(z)\\
+            \end{pmatrix}
+            \left( -i\hbar\pdv{z} \right)
+            \begin{pmatrix}
+                \chi_+(z)\\
+                \chi_-(z)\\
+            \end{pmatrix}
+        \end{equation*}
+        where
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+        \end{equation*}
+        \item The above equation simplifies to
+        \begin{equation*}
+            \ev{\hat{p}_z}{\chi} = \int\dd{z}(|\chi_+(z)|^2+|\chi_-(z)|^2)
+            = 1
+        \end{equation*}
+        \item Additionally, we have that
+        \begin{equation*}
+            \ev{p_z}{\chi_\pm} = \pm|\chi_+(0)|^2\frac{\gamma Bt}{2}
+        \end{equation*}
+    \end{itemize}
+    \item If we run three consecutive Stern-Gerlach experiments in series, we can split spins in the $x$, $y$, and $z$ directions.
+    \begin{itemize}
+        \item See picture from class.
+    \end{itemize}
+    \item Note that spin is a completely quantum phenomenon; there is \emph{no} classical analogy.
+\end{itemize}
+
+
+
 
 \end{document}
