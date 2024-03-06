@@ -31,7 +31,225 @@
     \end{align}
     \begin{enumerate}
         \item Use matrix multiplication to show that they fulfill the proper commutator algebra associated with angular momentum components.
+        \begin{proof}
+            We will proceed one relation at a time through all three relations. Let's begin.\par
+            \underline{$[\hat{S}_x,\hat{S}_y]=i\hbar\hat{S}_z$}:
+            \begin{align*}
+                [\hat{S}_x,\hat{S}_y] &= \hat{S}_x\hat{S}_y-\hat{S}_y\hat{S}_x\\
+                &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                -\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}\\
+                &= \frac{\hbar^2}{4}\left[
+                    \begin{pmatrix}
+                        i & 0\\
+                        0 & -i\\
+                    \end{pmatrix}
+                    -
+                    \begin{pmatrix}
+                        -i & 0\\
+                        0 & i\\
+                    \end{pmatrix}
+                \right]\\
+                &= \frac{\hbar^2}{4}
+                \begin{pmatrix}
+                    2i & 0\\
+                    0 & -2i\\
+                \end{pmatrix}\\
+                &= i\hbar\cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}\\
+                &= i\hbar\hat{S}_z
+            \end{align*}
+            \underline{$[\hat{S}_y,\hat{S}_z]=i\hbar\hat{S}_x$}:
+            \begin{align*}
+                [\hat{S}_y,\hat{S}_z] &= \hat{S}_y\hat{S}_z-\hat{S}_z\hat{S}_y\\
+                &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                -\frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}\\
+                &= \frac{\hbar^2}{4}\left[
+                    \begin{pmatrix}
+                        0 & i\\
+                        i & 0\\
+                    \end{pmatrix}
+                    -
+                    \begin{pmatrix}
+                        0 & -i\\
+                        -i & 0\\
+                    \end{pmatrix}
+                \right]\\
+                &= \frac{\hbar^2}{4}
+                \begin{pmatrix}
+                    0 & 2i\\
+                    2i & 0\\
+                \end{pmatrix}\\
+                &= i\hbar\cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}\\
+                &= i\hbar\hat{S}_x
+            \end{align*}
+            \underline{$[\hat{S}_z,\hat{S}_x]=i\hbar\hat{S}_y$}:
+            \begin{align*}
+                [\hat{S}_z,\hat{S}_x] &= \hat{S}_z\hat{S}_x-\hat{S}_x\hat{S}_z\\
+                &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}
+                -\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}
+                \cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}\\
+                &= \frac{\hbar^2}{4}\left[
+                    \begin{pmatrix}
+                        0 & 1\\
+                        -1 & 0\\
+                    \end{pmatrix}
+                    -
+                    \begin{pmatrix}
+                        0 & -1\\
+                        1 & 0\\
+                    \end{pmatrix}
+                \right]\\
+                &= \frac{\hbar^2}{4}
+                \begin{pmatrix}
+                    0 & 2\\
+                    -2 & 0\\
+                \end{pmatrix}\\
+                &= i\hbar\cdot\frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}\\
+                &= i\hbar\hat{S}_y
+            \end{align*}
+        \end{proof}
         \item Compute $\hat{S}_i^2$ ($i=x,y,z$). If you perform a measurement, what possible values of the components of angular momentum can you get? \emph{Hint}: There are 2 possible values.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \hat{S}_x^2 &= \frac{\hbar^2}{4}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}&
+                    \hat{S}_y^2 &= \frac{\hbar^2}{4}
+                    \begin{pmatrix}
+                        0 & -i\\
+                        i & 0\\
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        0 & -i\\
+                        i & 0\\
+                    \end{pmatrix}&
+                        \hat{S}_z^2 &= \frac{\hbar^2}{4}
+                        \begin{pmatrix}
+                            1 & 0\\
+                            0 & -1\\
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                            1 & 0\\
+                            0 & -1\\
+                        \end{pmatrix}\\
+                \Aboxed{\hat{S}_x^2 &= \frac{\hbar^2}{4}I}&
+                    \Aboxed{\hat{S}_y^2 &= \frac{\hbar^2}{4}I}&
+                        \Aboxed{\hat{S}_z^2 &= \frac{\hbar^2}{4}I}
+            \end{align*}
+            As to the second part of the question, note that the possible values of the components of angular momentum correspond to the possible eigenvalues of $\hat{S}_i$.\par
+            First, let's look at $\hat{S}_z$. For a particle with $s=1/2$, we have by definition that
+            \begin{align*}
+                \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}\\
+                \hat{S}_z\ket{\tfrac{1}{2},\pm\tfrac{1}{2}} &= \hbar\cdot\pm\frac{1}{2}\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}
+            \end{align*}
+            where $\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}$ represents both possible eigenstates of a spin $1/2$ particle. Thus, the possible eigenvalues are only
+            \begin{equation*}
+                \boxed{\pm\frac{\hbar}{2}}
+            \end{equation*}
+            We now verify that this result holds for $\hat{S}_x,\hat{S}_y$ as well. To begin, observe that the matrices for $\hat{S}_x,\hat{S}_y$ are\dots
+            \begin{enumerate}
+                \item Hermitian;
+                \item Traceless;
+                \item Have determinant $-\hbar^2/4$.
+            \end{enumerate}
+            These three properties give us everything we need to find the eigenvalues. To set a notation, let $\lambda_1,\lambda_2$ denote the eigenvalues of $\hat{S}_i$ ($i=x,y$). Now, it is a theorem of linear algebra that the sum of the eigenvalues equals the trace. Hence, property (ii) tells us that
+            \begin{equation*}
+                \lambda_1+\lambda_2 = {\tr}(\hat{S}_x)
+                = {\tr}(\hat{S}_y)
+                = 0
+            \end{equation*}
+            Similarly, it is a theorem of linear algebra that the product of the eigenvalues equals the determinant. Hence, property (iii) tells us that
+            \begin{equation*}
+                \lambda_1\lambda_2 = {\det}(\hat{S}_x)
+                = {\det}(\hat{S}_y)
+                = -\frac{\hbar^2}{4}
+            \end{equation*}
+            Lastly, it is a theorem of linear algebra that Hermitian matrices have real eigenvalues. Thus, property (iii) tells us that we can solve the two-equation, two-variable system
+            \begin{equation*}
+                \begin{cases}
+                    \lambda_1+\lambda_2 = 0\\
+                    \lambda_1\lambda_2 = -\frac{\hbar^2}{4}
+                \end{cases}
+            \end{equation*}
+            over the real numbers $\R$ to obtain, WLOG, that
+            \begin{align*}
+                \lambda_1 &= \frac{\hbar}{2}&
+                \lambda_2 &= -\frac{\hbar}{2}
+            \end{align*}
+            This provides the desired verification.
+        \end{proof}
+        \pagebreak
         \item Take a generic, well-normalized spin state
         \begin{equation}
             \chi =
@@ -41,13 +259,152 @@
             \end{pmatrix}
         \end{equation}
         with $|c_+|^2+|c_-|^2=1$. What is the probability of measuring a value of $\hat{S}_z=\hbar/2$? \emph{Hint}: Express $\chi$ as a linear combination of eigenstates of $\hat{S}_z$ with eigenvalues $\pm 1/2$.
+        \begin{proof}
+            Taking the hint, let
+            \begin{equation*}
+                \ket{\chi} = c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+            \end{equation*}
+            Then, as in other quantum systems, the probability of measuring a certain eigenvalue of $\hat{S}_z$ when it is in the well-normalized spin state $\chi$ can be determined from the expression for the expected value of $\hat{S}_z$ in $\chi$. In particular, we have that
+            \begin{align*}
+                \ev{\hat{S}_z}{\chi} &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\hat{S}_z(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+                &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\frac{\hbar}{2}(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}-c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+                &= \left( \frac{\hbar}{2} \right)|c_+|^2+\left( -\frac{\hbar}{2} \right)|c_-|^2
+            \end{align*}
+            Thus, the expected value of $\hat{S}_z$ is a weighted average of $\pm\hbar/2$. More specifically, we can expect to measure a value of $\hbar/2$ (for instance) every $|c_+|^2/1$ times. In other words, the probability of measuring a value of $\hat{S}_z=\hbar/2$ is
+            \begin{equation*}
+                \boxed{|c_+|^2}
+            \end{equation*}
+        \end{proof}
         \item What are the mean values of $\hat{S}_x,\hat{S}_y,\hat{S}_z$ in the state $\chi$? \emph{Hint}: Use the vector notation to compute the mean values.
+        \begin{proof}
+            We just computed the mean value of $\hat{S}_z$ in part (c). To reiterate, though,
+            \begin{equation*}
+                \boxed{\ev{\hat{S}_z}{\chi} = \left( \frac{\hbar}{2} \right)|c_+|^2+\left( -\frac{\hbar}{2} \right)|c_-|^2}
+            \end{equation*}
+            For $\hat{S}_x,\hat{S}_y$, we could follow a similar approach to part (c). Alternatively, we can take the hint and use vector notation as follows.\par
+            For $\hat{S}_x$, we have
+            \begin{align*}
+                \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    c_+^* & c_-^*\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    c_+\\
+                    c_-\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{2}(c_+^*c_-+c_-^*c_+)\\
+                \Aboxed{\ev{\hat{S}_x}{\chi} &= \hbar\re(c_+^*c_-)}
+            \end{align*}
+            For $\hat{S}_y$, we have
+            \begin{align*}
+                \ev{\hat{S}_y}{\chi} &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    c_+^* & c_-^*\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    c_+\\
+                    c_-\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{2}\cdot\frac{c_+^*c_--c_-^*c_+}{2i}\cdot 2\\
+                \Aboxed{\ev{\hat{S}_y}{\chi} &= \hbar\im(c_+^*c_-)}
+            \end{align*}
+        \end{proof}
         \item Use the result of part (d), together with the values of $\hat{S}_i^2$, to show that the uncertainty principle is fulfilled, i.e., that
         \begin{equation}
             \sigma_{\hat{S}_x}\sigma_{\hat{S}_y} \geq \frac{1}{2}|\ev{[\hat{S}_x,\hat{S}_y]}{\chi}|
         \end{equation}
         \emph{Hint}: WLOG, let $c_+=\cos(\theta_s/2)\e[i\alpha]$ and $c_-=\sin(\theta_s/2)\e[i\beta]$. Hence, $c_+c_-^*+c_-c_+^*=\sin(\theta_s)\cos(\alpha-\beta)$, $c_+c_-^*-c_-c_+^*=i\sin(\theta_s)\sin(\alpha-\beta)$, and $|c_+|^2-|c_-|^2=\cos(\theta_s)$.
+        \begin{proof}
+            As we computed in part (b),
+            \begin{equation*}
+                \hat{S}_x^2 = \hat{S}_y^2
+                = \hat{S}_z^2
+                = \frac{\hbar^2}{4}I
+            \end{equation*}
+            Thus, we have that
+            \begin{align*}
+                \ev{\hat{S}_x^2}{\chi} &= \frac{\hbar^2}{4}\braket{\chi} = \frac{\hbar^2}{4}&
+                \ev{\hat{S}_y^2}{\chi} &= \frac{\hbar^2}{4}\braket{\chi} = \frac{\hbar^2}{4}
+            \end{align*}
+            Additionally, recall from part (d) that
+            \begin{align*}
+                \ev{\hat{S}_x}{\chi} &= \hbar\re(c_+^*c_-)&
+                \ev{\hat{S}_y}{\chi} &= \hbar\im(c_+^*c_-)
+            \end{align*}
+            Now taking the hint, let
+            \begin{align*}
+                c_+ &= \cos(\frac{\theta_s}{2})\e[i\alpha]&
+                c_- &= \sin(\frac{\theta_s}{2})\e[i\beta]
+            \end{align*}
+            Then substituting into the results from part (d), we obtain (\emph{taking the hint and going back a step in the part (d) derivation})
+            \begin{align*}
+                \ev{\hat{S}_x}{\chi} &= \hbar\re[\cos(\frac{\theta_s}{2})\e[-i\alpha]\sin(\frac{\theta_s}{2})\e[i\beta]]\\
+                &= \frac{\hbar}{2}\cdot 2\sin(\frac{\theta_s}{2})\cos(\frac{\theta_s}{2})\cdot\re[\e[i(\beta-\alpha)]]\\
+                &= \frac{\hbar}{2}\sin(\theta_s)\cos(\beta-\alpha)\\
+                &= \frac{\hbar}{2}\sin(\theta_s)\cos(\alpha-\beta)
+            \end{align*}
+            and
+            \begin{align*}
+                \ev{\hat{S}_y}{\chi} &= \hbar\im(c_+^*c_-)\\
+                &= \frac{\hbar}{2}\cdot\frac{c_+^*c_--c_-^*c_+}{2i}\cdot 2\\
+                &= \frac{\hbar}{2}\cdot -\frac{i\sin(\theta_s)\sin(\alpha-\beta)}{2i}\cdot 2\\
+                &= -\frac{\hbar}{2}\sin(\theta_s)\sin(\alpha-\beta)
+            \end{align*}
+            It follows that
+            \begin{align*}
+                \sigma_{\hat{S}_x}^2 &= \ev{\hat{S}_x^2}{\chi}-(\ev{\hat{S}_x}{\chi})^2\\
+                &= \frac{\hbar^2}{4}-\frac{\hbar^2}{4}\sin^2(\theta_s)\cos^2(\alpha-\beta)\\
+                &= \frac{\hbar^2}{4}\left[ 1-\sin^2(\theta_s)\cos^2(\alpha-\beta) \right]
+            \end{align*}
+            and
+            \begin{align*}
+                \sigma_{\hat{S}_y}^2 &= \ev{\hat{S}_y^2}{\chi}-(\ev{\hat{S}_y}{\chi})^2\\
+                &= \frac{\hbar^2}{4}-\frac{\hbar^2}{4}\sin^2(\theta_s)\sin^2(\alpha-\beta)\\
+                &= \frac{\hbar^2}{4}\left[ 1-\sin^2(\theta_s)\sin^2(\alpha-\beta) \right]
+            \end{align*}
+            On the other side of the equality, we have that
+            \begin{align*}
+                \frac{1}{2}|\ev{[\hat{S}_x,\hat{S}_y]}{\chi}| &= \frac{1}{2}|i\hbar\ev{\hat{S}_z}{\chi}|\\
+                &= \frac{\hbar}{2}\left| \left( \frac{\hbar}{2} \right)|c_+|^2+\left( -\frac{\hbar}{2} \right)|c_-|^2 \right|\\
+                &= \frac{\hbar^2}{4}(|c_+|^2-|c_-|^2)\\
+                &= \frac{\hbar^2}{4}\cos(\theta_s)
+            \end{align*}
+            Thus, we have that
+            \begin{align*}
+                \sigma_{\hat{S}_x}^2\cdot\sigma_{\hat{S}_y}^2 &\stackrel{?}{\geq} \frac{1}{4}|\ev{[\hat{S}_x,\hat{S}_y]}{\chi}|^2\\
+                \frac{\hbar^2}{4}\left[ 1-\sin^2(\theta_s)\cos^2(\alpha-\beta) \right]\cdot\frac{\hbar^2}{4}\left[ 1-\sin^2(\theta_s)\sin^2(\alpha-\beta) \right] &\stackrel{?}{\geq} \frac{\hbar^4}{16}\cos^2(\theta_s)\\
+                \left[ 1-\sin^2(\theta_s)\cos^2(\alpha-\beta) \right]\left[ 1-\sin^2(\theta_s)\sin^2(\alpha-\beta) \right] &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                1-\sin^2(\theta_s)\cos^2(\alpha-\beta)-\sin^2(\theta_s)\sin^2(\alpha-\beta)+\sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                1-\sin^2(\theta_s)[\cos^2(\alpha-\beta)+\sin^2(\alpha-\beta)]+\sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                1-\sin^2(\theta_s)\cdot 1+\sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                [1-\sin^2(\theta_s)]+\sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                \cos^2(\theta_s)+\sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} \cos^2(\theta_s)\\
+                \sin^4(\theta_s)\cos^2(\alpha-\beta)\sin^2(\alpha-\beta) &\stackrel{?}{\geq} 0\\
+                [\sin^2(\theta_s)\cos(\alpha-\beta)\sin(\alpha-\beta)]^2 &\stackrel{\checkmark}{\geq} 0
+            \end{align*}
+        \end{proof}
         \item What are the results of part (d) if you take an eigenstate of $\hat{S}_z$ with eigenvalue $\hbar/2$ ($\theta_s=\alpha=0$)?
+        \begin{proof}
+            Using the coordinate changes in the hint for part (e), we know that $\theta_s=\alpha=0$ implies that
+            \begin{align*}
+                c_+ &= \cos(\frac{0}{2})\e[i\cdot 0] = 1&
+                c_- &= \sin(\frac{0}{2})\e[i\cdot\beta] = 0
+            \end{align*}
+            Thus, substituting into the results from part (d) and algebraically simplifying, we obtain
+            \begin{align*}
+                \Aboxed{\ev{\hat{S}_z}{\chi} &= \frac{\hbar}{2}}&
+                \Aboxed{\ev{\hat{S}_x}{\chi} &= 0}&
+                \Aboxed{\ev{\hat{S}_y}{\chi} &= 0}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Consider the interaction of the magnetic moment induced by the spin of a particle with a magnetic field. The Hamiltonian is given by
     \begin{equation}
@@ -59,8 +416,11 @@
     \end{equation}
     \begin{enumerate}
         \item Re-derive the solution for $\chi(t)$ we presented in class.
-        \item Compute the probabilities of finding the particle with spin up and down in the $x$- and $y$-directions. \emph{Hint}: The probability can be computed as the modulus square of the component of $\chi(t)$ on eigenstates of spin up and down in the $x$- and $y$-directions. These components may be determined by computing the inner product of $\chi(t)$ with these particular eigenstates.
-        \item Based on these probabilities, compute the mean values of the spin in the $x$- and $y$-directions and discuss their behavior in time.
+        \begin{proof}
+            
+        \end{proof}
+        % \item Compute the probabilities of finding the particle with spin up and down in the $x$- and $y$-directions. \emph{Hint}: The probability can be computed as the modulus square of the component of $\chi(t)$ on eigenstates of spin up and down in the $x$- and $y$-directions. These components may be determined by computing the inner product of $\chi(t)$ with these particular eigenstates.
+        % \item Based on these probabilities, compute the mean values of the spin in the $x$- and $y$-directions and discuss their behavior in time.
     \end{enumerate}
 \end{enumerate}
 
