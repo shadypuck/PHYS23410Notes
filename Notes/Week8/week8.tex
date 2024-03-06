@@ -473,7 +473,7 @@
                 0\\
                 1\\
             \end{pmatrix}
-            &= \frac{\hbar}{2}
+            &= -\frac{\hbar}{2}
             \begin{pmatrix}
                 0\\
                 1\\
@@ -649,6 +649,543 @@
     \item PSet 6, Q3c: Do I need to do anything else with respect to my comment on Eq. 6.18?
     \begin{itemize}
         \item Nope! A quick comment is perfect.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Spin II}
+\begin{itemize}
+    \item \marginnote{2/23:}\textbf{Spinor}: One of the two-component vectors representing a spin state. \emph{Denoted by} $\bm{\chi_\pm}$. \emph{Given by}
+    \begin{align*}
+        \chi_+ &=
+        \begin{pmatrix}
+            1\\
+            0\\
+        \end{pmatrix}
+        := \ket{\tfrac{1}{2},\tfrac{1}{2}}&
+        \chi_- &=
+        \begin{pmatrix}
+            0\\
+            1\\
+        \end{pmatrix}
+        := \ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{align*}
+    \item The Pauli matrices satisfy the characteristic properties
+    \begin{align*}
+        \sigma_i^2 &= I&
+        [\sigma_i,\sigma_j] = \epsilon_{ijk}i\hbar\sigma_k
+    \end{align*}
+    \begin{itemize}
+        \item Note: $\epsilon_{ijk}$ gives the sign of the permutation of $1,2,3$ given in its argument.
+        \item For example, $\epsilon_{123}=1$ and $\epsilon_{213}=-1$.
+        \item Formally,
+        \begin{equation*}
+            \epsilon_{ijk} = \epsilon_{\sigma(123)}
+            = (-1)^\sigma
+        \end{equation*}
+    \end{itemize}
+    \item Thus altogether, we have that
+    \begin{align*}
+        \hat{S}_x &= \frac{\hbar}{2}\sigma_1&
+        \hat{S}_y &= \frac{\hbar}{2}\sigma_2&
+        \hat{S}_z &= \frac{\hbar}{2}\sigma_3
+    \end{align*}
+    \item What are the eigenvalues of spin in the $x$- and $y$-directions?
+    \begin{itemize}
+        \item Observe that the Pauli matrices are all \textbf{Hermitian} and traceless.
+        \item Also observe that $\hat{S}_x,\hat{S}_y$ are have determinant $-\hbar^2/4$.
+        \item Let the eigenvalues of $\hat{S}_x$ be denoted by $\lambda_1,\lambda_2$. Since $\hat{S}_x$ is Hermitian, $\lambda_i\in\R$ ($i=1,2$). Then the trace and determinant constraints yield the system of equations
+        \begin{align*}
+            \lambda_1+\lambda_2 &= 0\\
+            \lambda_1\lambda_2 &= -\frac{\hbar^2}{4}
+        \end{align*}
+        which WLOG has the following solutions over $\R$:
+        \begin{align*}
+            \lambda_1 &= \frac{\hbar}{2}&
+            \lambda_2 &= -\frac{\hbar}{2}
+        \end{align*}
+        \item It follows by a symmetric argument that the above eigenvalues are also the eigenvalues of $\hat{S}_y$.
+        \item This should be of no surprise since $z$ is not a special direction (the universe is isotropic) and hence the eigenvalues should be the same for the three directions.
+    \end{itemize}
+    \item \textbf{Hermitian} (matrix): A matrix that is equal to its conjugate transpose. \emph{Constraint}
+    \begin{equation*}
+        (\hat{S}_i)_{ij} = (\hat{S}_i)_{ji}^*
+    \end{equation*}
+    \item What are the eigenvectors of spin in the $x$-direction?
+    \begin{itemize}
+        \item As in linear algebra class, we can compute that the eigenvectors of $\hat{S}_x$ are
+        \begin{align*}
+            \chi_+^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                1\\
+            \end{pmatrix}&
+            \chi_-^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                -1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Indeed,
+        \begin{align*}
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pNiceMatrix}
+                \frac{1}{\sqrt{2}}\\
+                \pm\frac{1}{\sqrt{2}}\\
+            \end{pNiceMatrix}
+            = \pm\frac{\hbar}{2}
+            \begin{pNiceMatrix}
+                \frac{1}{\sqrt{2}}\\
+                \pm\frac{1}{\sqrt{2}}\\
+            \end{pNiceMatrix}
+        \end{align*}
+    \end{itemize}
+    \item Now observe that we can take
+    \begin{equation*}
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1\\
+            \pm 1\\
+        \end{pmatrix}
+        = \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1\\
+            0\\
+        \end{pmatrix}
+        \pm\frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            0\\
+            1\\
+        \end{pmatrix}
+    \end{equation*}
+    \item To investigate this decomposition, let's fist look at a more general case. In particular, let $\ket{\chi}$ be a spin state that can be represented as a superposition of the eigenstates of $\hat{S}_z$:
+    \begin{equation*}
+        \ket{\chi} = c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, the mean value of $\hat{S}_z$ for a general eigenstate is given by
+        \begin{align*}
+            \ev{\hat{S}_z}{\chi} &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\hat{S}_z(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+            &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\frac{\hbar}{2}(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}-c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+            &= \left( \frac{\hbar}{2} \right)|c_+|^2+\left( -\frac{\hbar}{2} \right)|c_-|^2
+        \end{align*}
+        \item Additionally, note that normalizing the state $\chi$ yields
+        \begin{equation*}
+            1 = \braket{\chi}
+            = |c_+|^2+|c_-|^2
+        \end{equation*}
+        \begin{itemize}
+            \item Hence, $|c_+|^2$ and $|c_-|^2$ are the probabilities of finding the particle with spin up and spin down, respectively.
+        \end{itemize}
+        \item Essentially, taking this altogether, we have shown that an observer will always measure either $+\hbar/2$ or $-\hbar/2$ for $\hat{S}_z$, with probabilities $|c_+|^2$ and $|c_-|^2$.
+    \end{itemize}
+    \item With these general results in hand, let's return to the specific case of a spin eigenstate in the $x$-direction:
+    \begin{equation*}
+        \ket{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} = \frac{1}{\sqrt{2}}\ket{\tfrac{1}{2},\tfrac{1}{2}}\pm\frac{1}{\sqrt{2}}\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item We can immediately see that there are equal probabilities of finding the particle as either spin up or spin down.
+        \item Thus, the mean value of $\hat{S}_z$ in these eigenstates is zero:
+        \begin{equation*}
+            \ev{\hat{S}_z}{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} = 0
+        \end{equation*}
+        \item Note that we can also obtain this result directly using vector algebra.
+        \begin{itemize}
+            \item We have that
+            \begin{align*}
+                \bra{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}&
+                \hat{S}_z &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}&
+                \ket{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1\\
+                    \pm 1\\
+                \end{pmatrix}
+            \end{align*}
+            \item Therefore,
+            \begin{align*}
+                \ev{\hat{S}_z}{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{\hbar}{4}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1\\
+                    \pm 1\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{4}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1\\
+                    \mp 1\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{4}\cdot 0\\
+                &= 0
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item Many of the results stated above are directly analogous to the case of the $y$-direction.
+    \begin{itemize}
+        \item For example, here, the eigenvectors are given by
+        \begin{align*}
+            \chi_+^y &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                i\\
+            \end{pmatrix}&
+            \chi_-^y &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                -i\\
+            \end{pmatrix}
+        \end{align*}
+        \item Verifying once again, we have that
+        \begin{equation*}
+            \underbrace{
+                \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                \vphantom{
+                    \begin{pNiceMatrix}
+                        \frac{1}{\sqrt{2}}\\
+                        \pm\frac{i}{\sqrt{2}}\\
+                    \end{pNiceMatrix}
+                }
+            }_{\hat{S}_y}\underbrace{
+                \begin{pNiceMatrix}
+                    \frac{1}{\sqrt{2}}\\
+                    \pm\frac{i}{\sqrt{2}}\\
+                \end{pNiceMatrix}
+            }_{\chi_\pm^y} = \pm\frac{\hbar}{2}\underbrace{
+                \begin{pNiceMatrix}
+                    \frac{1}{\sqrt{2}}\\
+                    \pm\frac{i}{\sqrt{2}}\\
+                \end{pNiceMatrix}
+            }_{\chi_\pm^y}
+        \end{equation*}
+        \item It also follows once again that there are equal probabilities of finding the particle as either spin up or spin down in a spin eigenstate in the $y$-direction. Mathematically, this means that
+        \begin{align*}
+            |c_+|^2 &= |c_-|^2 = \frac{1}{2}&
+            \ev{\hat{S}_z}{\tfrac{1}{2},m_y=\pm\tfrac{1}{2}} &= 0
+        \end{align*}
+    \end{itemize}
+    \item What are the mean values of $\hat{S}_x,\hat{S}_y$ in eigenstates of $\hat{S}_z$?
+    \begin{itemize}
+        \item The answer is always the same: zero.
+        \item Here's how we prove it.
+        \begin{itemize}
+            \item For $\hat{S}_x$.
+            \begin{align*}
+                \underbrace{
+                    \begin{pmatrix}
+                        1 & 0\\
+                    \end{pmatrix}
+                    \vphantom{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & 1\\
+                            1 & 0\\
+                        \end{pmatrix}
+                    }
+                }_{\bra{\tfrac{1}{2},\tfrac{1}{2}}}\cdot\underbrace{
+                    \frac{\hbar}{2}
+                    \begin{pmatrix}
+                        0 & 1\\
+                        1 & 0\\
+                    \end{pmatrix}
+                }_{\hat{S}_x}\cdot\underbrace{
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}
+                }_{\ket{\tfrac{1}{2},\tfrac{1}{2}}} &= 0&
+                    \underbrace{
+                        \begin{pmatrix}
+                            1 & 0\\
+                        \end{pmatrix}
+                        \vphantom{
+                            \frac{\hbar}{2}
+                            \begin{pmatrix}
+                                0 & -i\\
+                                i & 0\\
+                            \end{pmatrix}
+                        }
+                    }_{\bra{\tfrac{1}{2},\tfrac{1}{2}}}\cdot\underbrace{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & -i\\
+                            i & 0\\
+                        \end{pmatrix}
+                    }_{\hat{S}_y}\cdot\underbrace{
+                        \begin{pmatrix}
+                            1\\
+                            0\\
+                        \end{pmatrix}
+                    }_{\ket{\tfrac{1}{2},\tfrac{1}{2}}} &= 0
+            \end{align*}
+            \item For $\hat{S}_y$.
+            \begin{align*}
+                \underbrace{
+                    \begin{pmatrix}
+                        0 & 1\\
+                    \end{pmatrix}
+                    \vphantom{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & 1\\
+                            1 & 0\\
+                        \end{pmatrix}
+                    }
+                }_{\bra{\tfrac{1}{2},-\tfrac{1}{2}}}\cdot\underbrace{
+                    \frac{\hbar}{2}
+                    \begin{pmatrix}
+                        0 & 1\\
+                        1 & 0\\
+                    \end{pmatrix}
+                }_{\hat{S}_x}\cdot\underbrace{
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}
+                }_{\ket{\tfrac{1}{2},-\tfrac{1}{2}}} &= 0&
+                    \underbrace{
+                        \begin{pmatrix}
+                            0 & 1\\
+                        \end{pmatrix}
+                        \vphantom{
+                            \frac{\hbar}{2}
+                            \begin{pmatrix}
+                                0 & -i\\
+                                i & 0\\
+                            \end{pmatrix}
+                        }
+                    }_{\bra{\tfrac{1}{2},-\tfrac{1}{2}}}\cdot\underbrace{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & -i\\
+                            i & 0\\
+                        \end{pmatrix}
+                    }_{\hat{S}_y}\cdot\underbrace{
+                        \begin{pmatrix}
+                            0\\
+                            1\\
+                        \end{pmatrix}
+                    }_{\ket{\tfrac{1}{2},-\tfrac{1}{2}}} &= 0
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item What this means is that in general, if you are in an eigenstate of spin in one direction, then there are equal probabilities of finding the particle with spin up and spin down in an orthogonal direction. Hence, the mean value of the spin in these orthogonal directions is zero.
+    \item The uncertainty principle.
+    \begin{itemize}
+        \item Observe that
+        \begin{equation*}
+            \hat{S}_x^2 = \hat{S}_y^2
+            = \hat{S}_z^2
+            = \frac{\hbar^2}{4}I
+        \end{equation*}
+        \item Because of the above equality, we know that if we are in an eigenstate of $\hat{S}_z$, then
+        \begin{align*}
+            \ev{\hat{S}_x^2}{\chi_\pm^z} &= \frac{\hbar^2}{4}\braket{\chi_\pm^z}
+                = \frac{\hbar^2}{4}&
+            \ev{\hat{S}_y^2}{\chi_\pm^z} &= \frac{\hbar^2}{4}\braket{\chi_\pm^z}
+                = \frac{\hbar^2}{4}&
+        \end{align*}
+        \item Thus,
+        \begin{align*}
+            (\Delta\hat{S}_x)^2 &= \Exp{\hat{S}_x^2}-\Exp{\hat{S}_x}^2 = \frac{\hbar^2}{4}&
+            (\Delta\hat{S}_y)^2 &= \Exp{\hat{S}_y^2}-\Exp{\hat{S}_y}^2 = \frac{\hbar^2}{4}
+        \end{align*}
+        \item It follows that $\hat{S}_x,\hat{S}_y$ satisfy the uncertainty principle and are incompatible.
+        \begin{equation*}
+            \Delta\hat{S}_x\cdot\Delta\hat{S}_y = \frac{\hbar^2}{4}
+            = \frac{\hbar}{2}|\Exp{\hat{S}_z}|
+            = \frac{\hbar}{2}\left| \frac{1}{i\hbar}\Exp{[\hat{S}_x,\hat{S}_y]} \right|
+            = \frac{1}{2}|\Exp{[\hat{S}_x,\hat{S}_y]}|
+        \end{equation*}
+        \item Physically, this means that the axis about which a particle is spinning is ill-defined and that a measurement of the $z$-component of spin destroys any information about the $x$- and $y$-components that might previously have been obtained.
+    \end{itemize}
+    \item Early on, we investigated the mean value of $\hat{S}_z$ for a general spinor. Now we do the same for $\hat{S}_x,\hat{S}_y$.
+    \begin{itemize}
+        \item $\hat{S}_x$:
+        \begin{align*}
+            \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                c_+^* & c_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}(c_+^*c_-+c_-^*c_+)\\
+            &= \hbar\re(c_+^*c_-)
+        \end{align*}
+        \item $\hat{S}_y$:
+        \begin{align*}
+            \ev{\hat{S}_y}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                c_+^* & c_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}\cdot\frac{c_+^*c_--c_-^*c_+}{2i}\cdot 2\\
+            &= \hbar\im(c_+^*c_-)
+        \end{align*}
+        \item The above two results offer a more general way to see that if the system is in an eigenstate of $\hat{S}_z$ (i.e., either $c_+$ or $c_-$ is 0), then
+        \begin{equation*}
+            \ev{\hat{S}_x}{\chi} = \ev{\hat{S}_y}{\chi}
+            = 0
+        \end{equation*}
+    \end{itemize}
+    \item All of these results suggest that the mean value of the spin acts like a vector of modulus $\hbar/2$.
+    \begin{itemize}
+        \item For example, if the mean value of the spin is in an eigenstate in a particular direction, it is zero in the orthogonal ones.
+    \end{itemize}
+    \item Suppose that we have a generic spinor $\ev{\hat{\vec{S}}}{\chi}$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [-stealth] (0,0,0) -- (0,0,2) node[below left=-1pt]{$x$};
+            \draw [-stealth] (0,0,0) -- (2,0,0) node[right]{$y$};
+            \draw [-stealth] (0,0,0) -- (0,2,0) node[above]{$z$};
+    
+            \footnotesize
+            \draw [orx,semithick,densely dashed]
+                (1.5,0,0) -- (1.5,0,1.5)
+                (0,0,1.5) -- (1.5,0,1.5)
+                (1.5,0,1.5) -- (1.5,1.8,1.5)
+                (0,0,0) -- (1.5,0,1.5)
+            ;
+            \draw [yex,semithick,densely dashed] (0,1.8,0) -- (1.5,1.8,1.5);
+            
+            \draw [orx,semithick,decoration={markings,mark=at position 0.5 with {\node[below right=-3pt]{$\phi_s$};}},postaction={decorate}] plot[domain=0:45] ({0.7*sin(\x)},0,{0.7*cos(\x)});
+            \draw [yex,semithick,decoration={markings,mark=at position 0.25 with {\node[above right=-3pt]{$\theta_s$};}},postaction={decorate}] plot[domain=0:40] ({0.7*sin(\x)},{0.7*cos(\x)},{0.7*sin(\x)});
+    
+            \draw [rex,thick,-latex] (0,0,0) -- (1.5,1.8,1.5) node[above right=-2pt]{$\ev{\hat{\vec{S}}}{\chi}$};
+        \end{tikzpicture}
+        \caption{Polar spinor.}
+        \label{fig:polarSpinor}
+    \end{figure}
+    \begin{itemize}
+        \item We would like to find the spin eigenvectors in terms of the polar coordinates $(\theta_s,\phi_s)$ instead of in terms of the Cartesian coordinates $(c_+,c_-)$.
+        \item For this, we demand that
+        \begin{equation*}
+            \ev{\hat{S}_z}{\chi} = \frac{\hbar}{2}\cos\theta_s
+        \end{equation*}
+        so as to recover $\pm\hbar/2$ when the spinor is "pointing up or down" in the $z$-direction.
+        \item It follows by transitivity with the previous expression for $\ev{\hat{S}_z}{\chi}$ that
+        \begin{equation*}
+            \cos\theta_s = |c_+|^2-|c_-|^2
+        \end{equation*}
+        \begin{itemize}
+            \item As a corollary, we can add a "clever form of zero" to the right side of the above expression to obtain another equivalence.
+            \begin{equation*}
+                \cos\theta_s = |c_+|^2+|c_-|^2-2|c_-|^2
+                = 1-2|c_-|^2
+            \end{equation*}
+            \item From here, we can solve for $|c_-|$ in terms of $\theta_s$.
+            \begin{align*}
+                |c_-|^2 &= \frac{1-\cos\theta_s}{2}\\
+                &= \sin^2\left( \frac{\theta_s}{2} \right)\\
+                |c_-| &= \sin(\frac{\theta_s}{2})
+            \end{align*}
+            \item We can then solve for $|c_+|$ in terms of $\theta_s$ using the normalization relation.
+            \begin{align*}
+                |c_+|^2+|c_-|^2 &= 1\\
+                |c_+|^2 &= 1-\sin^2\left( \frac{\theta_s}{2} \right)\\
+                |c_+|^2 &= \cos^2\left( \frac{\theta_s}{2} \right)\\
+                |c_+| &= \cos(\frac{\theta_s}{2})
+            \end{align*}
+        \end{itemize}
+        \item Now, we demand that
+        \begin{equation*}
+            \ev{\hat{S}_x}{\chi} = \frac{\hbar}{2}\sin\theta_s\cos\phi_s
+        \end{equation*}
+        \begin{itemize}
+            \item Observe that since $c_\pm$ are complex numbers, there exist $\phi_\pm$ such that
+            \begin{equation*}
+                c_\pm = |c_\pm|\e[i\phi_\pm]
+            \end{equation*}
+            \item This result combined with the previous expression for $\ev{\hat{S}_x}{\chi}$ implies that
+            \begin{equation*}
+                \ev{\hat{S}_x}{\chi} = \hbar|c_+||c_-|\re[\e[i(\phi_--\phi_+)]]
+            \end{equation*}
+            \item This is the last piece we need to derive an expression for $\phi_s$ in terms of $\phi_\pm$.
+            \begin{align*}
+                \frac{\hbar}{2}\sin\theta_s\cos\phi_s &= \hbar\cdot|c_+|\cdot|c_-|\cdot\re[\e[i(\phi_--\phi_+)]]\\
+                \frac{1}{2}\sin\theta_s\cos\phi_s &= 1\cdot\cos(\frac{\theta_s}{2})\cdot\sin(\frac{\theta_s}{2})\cdot\cos(\phi_--\phi_+)\\
+                \sin\theta_s\cos\phi_s &= \sin\theta_s\cdot\cos(\phi_--\phi_+)\\
+                \cos\phi_s &= \cos(\phi_--\phi_+)\\
+                \phi_s &= \phi_--\phi_+
+            \end{align*}
+        \end{itemize}
+        \item Similarly, we have that
+        \begin{equation*}
+            \ev{\hat{S}_y}{\chi} = \frac{\hbar}{2}\sin\theta_s\sin\phi_s
+            = \hbar|c_+||c_-|\im[\e[i(\phi_--\phi_+)]]
+        \end{equation*}
+        \begin{itemize}
+            \item Note that we can also derive the above relation between $\phi_s$ and $\phi_\pm$ from here.
+        \end{itemize}
+        \item It follows from the relation $\phi_s=\phi_--\phi_+$ that
+        \begin{align*}
+            \phi_- &= \frac{\phi_s}{2}+\gamma&
+            \phi_+ &= -\frac{\phi_s}{2}+\gamma
+        \end{align*}
+        for some constant $\gamma\in\R$.
+        \item Thus, putting everything together, we have the following expression for the spinor eigenstate in the direction $(\theta_s,\phi_s)$.
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                |c_+|\e[i\phi_+]\\
+                |c_-|\e[i\phi_-]\\
+            \end{pmatrix}
+            =
+            \begin{pNiceMatrix}
+                \cos(\frac{\theta_s}{2})\e[i(-\phi_s/2+\gamma)]\\
+                \sin(\frac{\theta_s}{2})\e[i(\phi_s/2+\gamma)]\\
+            \end{pNiceMatrix}
+            = \e[i\gamma]
+            \begin{pNiceMatrix}
+                \cos(\frac{\theta_s}{2})\e[-i\phi_s/2]\\
+                \sin(\frac{\theta_s}{2})\e[i\phi_s/2]\\
+            \end{pNiceMatrix}
+        \end{equation*}
     \end{itemize}
 \end{itemize}
 

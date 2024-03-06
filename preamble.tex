@@ -11,7 +11,7 @@
 \usepackage{tikz,graphicx}
 \usepackage{subcaption,float}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{bm,physics,mathtools,empheq}
+\usepackage{bm,physics,mathtools,empheq,nicematrix}
 \usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subfiles}
@@ -45,18 +45,21 @@
 
 \sisetup{range-phrase=-,range-units=single}
 
-\usetikzlibrary{decorations.pathmorphing,angles,backgrounds,decorations.pathreplacing,intersections}
+\usetikzlibrary{decorations.pathmorphing,angles,backgrounds,decorations.pathreplacing,intersections,decorations.markings}
 \colorlet{blx}{blue!90!green!80}
 \colorlet{rex}{red!80!black!90!orange!80}
 \colorlet{rey}{red!80!black!90!orange!40}
 \colorlet{grx}{green!50!black!90!yellow!80}
 \colorlet{orx}{orange!80!black!90!yellow!80}
+\colorlet{yex}{yellow!50!orange}
 
 \graphicspath{{../ExtFiles/}}
 
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\Ry}{Ry}
+
+\NiceMatrixOptions{cell-space-limits=2pt}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
