@@ -767,5 +767,333 @@
 
 
 
+\section{Systems of Many Particles}
+\begin{itemize}
+    \item \marginnote{3/1:}The final exam will be next Thursday (3/7) from 5:30-7:30 PM.
+    \begin{itemize}
+        \item The PSets were supposed to be like 60\% of your grade, but if you do very well on the final, that will carry some weight.
+        \item So try your best, and I'll weight the grades accordingly to show that you tried.
+        \item The final exam is open-laptop and open-note exactly like the midterm. You have to work alone, but you can have whatever you want.
+        \item The content and style will be similar to the midterm, but covering everything (i.e., cumulative).
+        \item The exam might be released one hour early or something.
+        \item Conceptual true/false will be similar.
+        \item We will have some kind of review before the exam.
+    \end{itemize}
+    \item We now move on to today's lecture content.
+    \item Today: Systems of many particles.
+    \begin{itemize}
+        \item Like two particles instead of one.
+        \item Something of a preview for QMech II.
+        \item Many-particle systems are of course very important, e.g., for atoms (which often contain not just one electron but many).
+    \end{itemize}
+    \item The probability density for a many-particle system contains information about all particles' position and spin.
+    \item Consider a 2-particle system.
+    \begin{itemize}
+        \item The wave function depends on all particles' position and spin, and is thus of the form
+        \begin{equation*}
+            \psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2,t)
+        \end{equation*}
+        \item Integrating over all positions $\vec{r}_1,\vec{r}_2$ and all summing over all spins $\vec{s}_1,\vec{s}_2$, we obtain
+        \begin{equation*}
+            \sum_\text{spins}\int\dd^3\vec{r}_1\dd^3\vec{r}_2\ |\psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2)|^2 = 1
+        \end{equation*}
+        \item Note that we integrate over positions because there are infinitely many whereas we sum over spin states because there are only finitely many (e.g., the two states indexed by $m_s=\pm 1/2$).
+    \end{itemize}
+    \item This shows us that the theory of many particles is just an extension of the theory of single particles (with \emph{some} subtext, hence today's lecture).
+    \item If you \emph{first} sum over particle 2's spin and integrate over its position, as follows, you get the total probability density of particle 1! Mathematically,
+    \begin{equation*}
+        \sum_{\text{spin}_2}\int\dd^3\vec{r}_2\ |\psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2)|^2 = |\psi(\vec{r}_1,\vec{s}_1)|^2
+    \end{equation*}
+    \item Let's look a bit more closely at the form of the composite wave function $\psi(\vec{r},\vec{s})$.
+    \begin{itemize}
+        \item In particular, it will be described by its position and spin wave functions independently, so
+        \begin{equation*}
+            \psi(\vec{r},\vec{s}) = \psi_{n\ell m}(\vec{r})\chi(\vec{s})
+        \end{equation*}
+        \item More specifically, the wave function is separable because we choose a Hamiltonian that is diagonalizable, i.e., that avoids self-interactions of the system of particles.
+    \end{itemize}
+    \item Implications of the fact that the two electrons are identical.
+    \begin{itemize}
+        \item When you take a measurement, you have no idea which electron you're measuring. Thus, in principle, all electrons should have the same probability of being in the same place.
+        \item Mathematically, we should have
+        \begin{equation*}
+            |\psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2)|^2 = |\psi(\vec{r}_2,\vec{s}_2,\vec{r}_1,\vec{s}_1)|^2
+        \end{equation*}
+        or
+        \begin{equation*}
+            \psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2) = \pm\psi(\vec{r}_2,\vec{s}_2,\vec{r}_1,\vec{s}_1)
+        \end{equation*}
+        \item This implies that the interchange is either \textbf{symmetric} or \textbf{antisymmetric}.
+    \end{itemize}
+    \item But when is a particle symmetric or antisymmetric?
+    \begin{itemize}
+        \item We know that a particle can have spin $s=0,1/2,1,3/2,\dots$.
+        \item It turns out that when the spin is a half integer, you \emph{always} get a minus sign and an antisymmetric particle.
+    \end{itemize}
+    \item Then for a particle with spin $1/2$, what happens when we try to separate variables in the wave function $\psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2)$?
+    \begin{itemize}
+        \item We can enforce the sign convention via an exterior/symmetric algebra-type linear combination of separated variables, as follows.
+        \begin{equation*}
+            \psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2) = \psi_1(\vec{r}_1,\vec{s}_1)\psi_2(\vec{r}_2,\vec{s}_2)\pm\psi_1(\vec{r}_2,\vec{s}_2)\psi_2(\vec{r}_1,\vec{s}_1)
+        \end{equation*}
+        \item Notice how now the right side flips sign under an interchange of variables (when we have a minus sign).
+        \item Implication of this: We cannot have $\psi_1=\psi_2$ because if we do, the wave function will equal zero in the antisymmetric states. So therefore, the $\psi$'s are different. So the particles should be in different states. This is the \textbf{Pauli exclusion principle}!
+        \begin{itemize}
+            \item Indeed, an important example of a multi-particle system is a set of particle which interact very weakly with each other but interact with an external potential.
+            \item This applies to the electrons in an atom.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Fermion}: A half-integer spin, antisymmetric quantum particle of the type described above.
+    \item \textbf{Pauli exclusion principle}: Two identical fermions cannot share the same state.
+    \item Implications of the Pauli exclusion principle.
+    \begin{itemize}
+        \item Two fermions cannot simultaneously be in the ground state with spin up.
+        \item They can share the ground state, but if one is spin up, the other must be spin down.
+        \begin{itemize}
+            \item Mathematically, we write this as
+            \begin{equation*}
+                \psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2) = \psi_{000}(\vec{r}_1)\psi_{000}(\vec{r}_2)\left[
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_1
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_2
+                    -
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_2
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_1
+                \right]
+            \end{equation*}
+            \item Consider the vector notation above to still represent a multiplication of two wave functions.
+            \item We can see that both fermions are in the ground state $000$, but the spin of the spinors is different and antisymmetric.
+            \item The multiplied spinors act in two different spaces, so only their respective operators in each space act upon them, i.e., there are no cross terms.
+            \begin{align*}
+                \hat{S}_{z_1}
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix}_1
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}_2
+                &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix}_1
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}_2\\
+                \hat{S}_{z_2}
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix}_1
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}_2
+                &= -\frac{\hbar}{2}
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix}_1
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}_2
+            \end{align*}
+            \item Note that if we apply $\hat{S}_z$ to the whole thing, we get zero.
+            \item This is because we define
+            \begin{equation*}
+                \hat{S}_z := \hat{S}_{z_1}+\hat{S}_{z_2}
+            \end{equation*}
+            \item Explicitly, applying $\hat{S}_z$ to the spin terms of $\psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2)$ yields
+            \begin{equation*}
+                \underbrace{
+                    \hat{S}_{z_1}
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_1
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_2
+                }_{
+                    +\frac{\hbar}{2}\binom{1}{0}_1\binom{0}{1}_2
+                }-\underbrace{
+                    \hat{S}_{z_1}
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_2
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_1
+                }_{
+                    +\frac{\hbar}{2}\binom{1}{0}_2\binom{0}{1}_1
+                }+\underbrace{
+                    \hat{S}_{z_2}
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_1
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_2
+                }_{
+                    -\frac{\hbar}{2}\binom{1}{0}_1\binom{0}{1}_2
+                }-\underbrace{
+                    \hat{S}_{z_2}
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}_2
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}_1
+                }_{
+                    -\frac{\hbar}{2}\binom{1}{0}_2\binom{0}{1}_1
+                }
+            \end{equation*}
+            \begin{itemize}
+                \item Note that we're accounting for the coefficient signs as well when determining the sign in each underbracket above.
+            \end{itemize}
+        \end{itemize}
+        \item Additionally, once you put two electrons in the ground state, the fact that there are only two possible spin states implies that no third electron may enter the ground state.
+        \begin{itemize}
+            \item In other words, the next electron will have to go to the next excited state (namely, $n=2$) because it will not be able to spontaneously emit a photon and go to the state with $n=1$ since the states with $n=0$ are occupied.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Boson}: An integer spin, symmetric quantum particle.
+    \begin{itemize}
+        \item Bosons do \emph{not} follow the Pauli exclusion principle.
+        \item Identical bosons \emph{can} occupy the same state.
+    \end{itemize}
+    \item Now more on fermions again.
+    \item The fact that fermions cannot occupy the same energy state explains the structure of atoms.
+    \item Recapping the number of atomic states.
+    \begin{itemize}
+        \item Recall that in an atom you can have three indices.
+        \begin{equation*}
+            \psi_{n\ell m\tfrac{1}{2}\pm\tfrac{1}{2}}
+        \end{equation*}
+        \begin{itemize}
+            \item $n$: The energy quantum number.
+            \item $\ell$: The orbital angular momentum quantum number.
+            \item $m$: The other one.
+        \end{itemize}
+        \item For every $n$ we have $n^2$ states, which encompass all the values of angular momentum, i.e., $l$ bounded by $0$ to $n-1$.
+        \begin{equation*}
+            \sum_{\ell=0}^{n-1}(2\ell+1) = n^2
+        \end{equation*}
+        \begin{itemize}
+            \item So given an energy quantum number $n$ and an angular momentum quantum number $\ell$, you have $2\ell+1$ projections.
+            \item Summing over all the values yields $n^2$.
+        \end{itemize}
+        \item Now that we have discussed spin, we know that there are also two spin quantum numbers: $1/2$ and $\pm 1/2$.
+        \begin{itemize}
+            \item So for every $n$, there really are $2n^2$ states once you consider the quantum number for spin.
+        \end{itemize}
+        \item Let's now look at some specific instances.
+        \begin{itemize}
+            \item For $n=1$, we have 2 states: $\ell=m=0$ and $m_s=\pm 1/2$.
+            \begin{itemize}
+                \item The corresponding atoms are \ce{H} and \ce{He}.
+            \end{itemize}
+            \item For $n=2$, we have 4 states without spin and 8 states with spin: $\ell=0$ ($m=0$ and $m_s=\pm 1/2$) and $\ell=1$ ($m=-1,0,1$ and $m_s=\pm 1/2$).
+            \begin{itemize}
+                \item The corresponding atoms are \ce{Li} through \ce{Ne}.
+            \end{itemize}
+            \item For $n=3$, we have 18 states.
+        \end{itemize}
+    \end{itemize}
+    \item At some point, some screening of the charge of the nuclei by other electrons will begin to take place.
+    \begin{itemize}
+        \item It happens that this is more efficient for particles with larger values of $\ell$.
+        \item So something breaks down and $n=3$ doesn't follow the logic.
+    \end{itemize}
+    \item At $n=4$, we get an entirely new trend.
+    \begin{itemize}
+        \item So they don't follow the same logic because of this interaction and entanglement.
+    \end{itemize}
+    \item The trends described above are what yield the periodic table.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{periodicTable.png}
+        \caption{Higher quantum states and the periodic table.}
+        \label{fig:periodicTable}
+    \end{figure}
+    \begin{itemize}
+        \item This is why the second row has the 8 states.
+        \item But third row you think 18, but only 8 due to the interaction/shielding of the electrons.
+        \item And then in fourth you get the 10 states there
+        \item And then we get the additional states with the bottom bar (lanthanides and actinides).
+        \item So we see a great interaction between spin quantum numbers and experimental periodic trends.
+        \item Surprisingly and amazingly, the periodic table was constructed before quantum mechanics! We will discuss this more in three weeks.
+    \end{itemize}
+    \item Last thing for today: What happens if we separate the spin \emph{and} the position in the wave function as follows?
+    \begin{equation*}
+        \psi(\vec{r}_1,\vec{s}_1,\vec{r}_2,\vec{s}_2) = \left[ \psi_1(\vec{r}_1)\psi_2(\vec{r}_2)-\psi_1(\vec{r}_2)\psi_2(\vec{r}_1) \right]\left[
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}_1
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}_2
+            -
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}_2
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}_1
+        \right]
+    \end{equation*}
+    \begin{itemize}
+        \item First off, note that there should be a $1/\sqrt{2}$ or something in there to normalize the wave function, so we're gonna talk about it as if it's normalized.
+        \item What does this equation tell us?
+        \item Well, imagine that $\psi_1$ is a wave packet localized somewhere in the universe, and $\psi_2$ is localized somewhere else.
+        \begin{itemize}
+            \item These two wave packets would have been constructed together somewhere, but they have since moved apart.
+            \item This can happen with quantum particles of any spin $s$.
+        \end{itemize}
+        \item Takeaway: If we measure particle 1 with spin up, then particle 2 should have spin down and vice versa.
+        \item We can measure such opposite spins via Stern-Gerlach experiments at different locations.
+        \item Before we take a measurement, the wave function doesn't tell us anything.
+        \begin{itemize}
+            \item In fact, the particles have an equal probability of being spin up or spin down before measurement.
+            \item However, as soon as we take a measurement of one, the state of the other snaps to the opposite of whatever we find in the original.
+        \end{itemize}
+        \item This is the so-called \textbf{spooky action at a distance}.
+        \item You can measure in any order and in different reference frames; same result.
+        \item Such systems are called \textbf{entangled states}.
+    \end{itemize}
+    \item \textbf{Entangled states}: Two states with some correlation of information between the properties of first and second.
+    \begin{itemize}
+        \item We will play with these more next quarter.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
