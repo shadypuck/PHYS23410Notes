@@ -1,0 +1,411 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{8}
+
+\begin{document}
+
+
+
+
+\chapter{Particle Physics}
+\section{Spin in a Magnetic Field}
+\begin{itemize}
+    \item \marginnote{2/26:}Today's goal: Spin in a magnetic field.
+    \item Review.
+    \begin{itemize}
+        \item We describe spin as an intrinsic angular momentum.
+        \item It has three components $\hat{S}_x,\hat{S}_y,\hat{S}_z$ that don't commute with each other:
+        \begin{equation*}
+            [\hat{S}_x,\hat{S}_y] = i\hbar\hat{S}_z
+        \end{equation*}
+        \item The spin operators obey the usual rules of angular momentum, i.e., we can define a state with a definite value of spin squared and direction.
+        \begin{align*}
+            \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}\\
+            \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}
+        \end{align*}
+        \item We discovered that the values of $s$ can take half-integer values.
+        \begin{itemize}
+            \item There are $2s+1$ states for a given $s$, related to the fact that we can have differnt projections of the spin in the $z$-direction indexed by values $-s\leq m_s\leq s$.
+        \end{itemize}
+        \item A particle moving in the hydrogen atom can only have $\pm 1/2$ states, called "spin up" or "spin down."
+        \begin{itemize}
+            \item This comes from the fact that in this space, a good representation of the spin operator is in terms of the Pauli matrices:
+            \begin{align*}
+                \hat{S}_z &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}&
+                \hat{S}_x &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & 1\\
+                    1 & 0\\
+                \end{pmatrix}&
+                \hat{S}_y &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+            \end{align*}
+            \begin{itemize}
+                \item Observe that these are Hermitian matrices.
+            \end{itemize}
+        \end{itemize}
+        \item It follows from the matrix definition that
+        \begin{equation*}
+            \hat{S}_i^2 = \frac{\hbar^2}{4}I
+        \end{equation*}
+        for $i=x,y,z$ and hence
+        \begin{equation*}
+            \hat{\vec{S}}{\,}^2 = \hat{S}_x^2+\hat{S}_y^2+\hat{S}_z^2
+            = \frac{3\hbar^2}{4}I
+        \end{equation*}
+        \item If we perform a measurement of the spin in any direction, we always obtain $\pm\hbar/2$.
+        \begin{itemize}
+            \item This is because these are the eigenvalues of the spin operator (the observables).
+        \end{itemize}
+        \item An additional layer of formalism: Spinors.
+        \item We defined $\chi_\pm$, which have the properties that
+        \begin{align*}
+            \hat{S}_z\chi_+ &= \frac{\hbar}{2}\chi_+&
+            \hat{S}_z\chi_- &= -\frac{\hbar}{2}\chi_-
+        \end{align*}
+        \begin{itemize}
+            \item We sometimes denote these eigenstates as $\chi_\pm^z$.
+        \end{itemize}
+        \item In the $x$-direction, we have
+        \begin{align*}
+            \chi_+^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                1\\
+            \end{pmatrix}&
+                \chi_-^x &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1\\
+                    -1\\
+                \end{pmatrix}\\
+            \hat{S}_z\chi_+^x &= \frac{\hbar}{2}\chi_+^x&
+                \hat{S}_z\chi_-^x &= -\frac{\hbar}{2}\chi_-^x
+        \end{align*}
+        \item In the $y$-direction, we have
+        \begin{align*}
+            \chi_+^y &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                i\\
+            \end{pmatrix}&
+                \chi_-^y &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1\\
+                    -i\\
+                \end{pmatrix}\\
+            \hat{S}_z\chi_+^y &= \frac{\hbar}{2}\chi_+^y&
+                \hat{S}_z\chi_-^y &= -\frac{\hbar}{2}\chi_-^y
+        \end{align*}
+        \item It follows from the normalization that
+        \begin{equation*}
+            |\chi_+|^2+|\chi_-|^2 = 1
+        \end{equation*}
+        and hence that $|\chi_+|^2$ is the probability of finding the part with spin up in $z$.
+        \item We define the state
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+        \end{equation*}
+        and can find that
+        \begin{equation*}
+            \ev{\hat{S}_z}{\chi} = \frac{\hbar}{2}
+            \begin{pmatrix}
+                \chi_+^* & \chi_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+            = \frac{\hbar}{2}\left( |\chi_+|^2-|\chi_-|^2 \right)
+        \end{equation*}
+        \item We can introduce coefficients such that
+        \begin{equation*}
+            \chi = c_+\chi_+^z+c_-\chi_-^z
+            =
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+            =:
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+        \end{equation*}
+        and
+        \begin{equation*}
+            \chi = d_+\chi_+^x+d_-\chi_-^x
+            =:
+            \begin{pmatrix}
+                \chi_+\\
+                \chi_-\\
+            \end{pmatrix}
+        \end{equation*}
+        \item Then herein, $|d_\pm|^2$ is the probability of finding the particle with spin up or down in the $x$-direction.
+        \item To find one of the two components of the spin eigenstate in a certain direction, take the inner product with the desired eigenstate.
+        \begin{itemize}
+            \item Examples:
+            \begin{align*}
+                \begin{pmatrix}
+                    1 & 0\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \chi_+^z\\
+                    \chi_-^z\\
+                \end{pmatrix}
+                &= c_+&
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 & 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \chi_+^x\\
+                    \chi_-^x\\
+                \end{pmatrix}
+                &= d_+
+            \end{align*}
+            \item Essentially, we are making use of the following orthogonality relation.
+            \begin{equation*}
+                \chi_+^\dagger\chi = \chi_+^\dagger(d_+\chi_+^x+d_-\chi_-^x)
+                = d_+\chi_+^\dagger\chi_++d_-\chi_+^\dagger\chi_-
+                = d_+\cdot 1+d_-\cdot 0
+                = d_+
+            \end{equation*}
+            \item This orthogonality relation is a specific case of the following, more general one.
+            \begin{equation*}
+                (\chi_+^i)^\dagger\chi_-^i = 0
+            \end{equation*}
+        \end{itemize}
+        \item An explanation of the spinor entries.
+        \begin{itemize}
+            \item Since
+            \begin{equation*}
+                \ev{\hat{S}_z}{\tfrac{1}{2},\tfrac{1}{2}} = \frac{\hbar}{2}
+            \end{equation*}
+            and
+            \begin{equation*}
+                \ev{\hat{S}_x}{\tfrac{1}{2},\tfrac{1}{2}} = \frac{1}{2}\ev{(\hat{S}_++\hat{S}_-)}{\tfrac{1}{2},\tfrac{1}{2}}
+                = 0
+            \end{equation*}
+            we have that the probability has to be spin up or down; it can't be side to side.
+        \end{itemize}
+    \end{itemize}
+    \item We now begin on new content: A spin in a magnetic field.
+    \begin{itemize}
+        \item This is related to the interaction between two magnetic fields.
+    \end{itemize}
+    \item Recall that when a charged particle spins, it acquires a magnetic moment
+    \begin{equation*}
+        \vec{\mu} = \underbrace{\frac{qe}{2M}\cdot g}_\gamma\vec{S}
+    \end{equation*}
+    \begin{itemize}
+        \item $g$ is called the \textbf{gyromagnetic factor}.
+        \item At Fermilab, it was measured/computed to be
+        \begin{equation*}
+            g = 2+\frac{\alpha}{2\pi}+\cdots
+        \end{equation*}
+        where $\alpha$ is electromagnetic fine structure constant from the 2/16 lecture.
+        \item Compute $g$ to $5^5$ decimal places via experiment, Dirac equation/relativity, quantum corrections.
+        \item Kinoshita was a god of computation that made an error in this field and there's some politically incorrect story about that.
+    \end{itemize}
+    \item From here, we define the Hamiltonian
+    \begin{equation*}
+        \hat{H} = -\vec{\mu}\cdot\vec{B}-\frac{\hbar^2}{2M}\vec{\nabla}^2+V(\vec{r},t)
+    \end{equation*}
+    \item Now here, the eigenfunction is a spinor with two components, so we need to solve the following problem.
+    \begin{equation*}
+        \hat{H}
+        \begin{pmatrix}
+            \psi_+(x,y,z)\\
+            \psi_-(x,y,z)\\
+        \end{pmatrix}
+        = i\hbar\pdv{t}
+        \begin{pmatrix}
+            \psi_+(x,y,z)\\
+            \psi_-(x,y,z)\\
+        \end{pmatrix}
+    \end{equation*}
+    \item In general, $\hat{H}$ need not be diagonal, and we may have to consider how $\psi_+,\psi_-$ couple.
+    \begin{itemize}
+        \item However, most commonly, we assume that
+        \begin{equation*}
+            \frac{\Exp{\hat{\vec{p}}{\,}^2}}{2M},\Exp{V} \ll \Exp{-\vec{\mu}\cdot\vec{B}}
+        \end{equation*}
+    \end{itemize}
+    \item Thus, we will ignore the other terms and solve instead the following problem.
+    \begin{equation*}
+        -\gamma\vec{B}\vec{S}
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+        = i\hbar\pdv{t}
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+    \end{equation*}
+    \item Choose
+    \begin{equation*}
+        \vec{B} = B\hat{z}
+    \end{equation*}
+    \item Observe that
+    \begin{equation*}
+        \vec{B}\vec{S} = B\hat{z}\cdot\vec{S}
+        = B\hat{S}_z
+        = \frac{B\hbar}{2}
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+    \end{equation*}
+    \begin{itemize}
+        \item What is an operator and what is not?? Is $\vec{B}$ an operator? Is $\vec{S}$?
+    \end{itemize}
+    \pagebreak
+    \item Thus, the problem becomes
+    \begin{equation*}
+        -\frac{\gamma B\hbar}{2}
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+        = i\hbar\pdv{t}
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+    \end{equation*}
+    \item Fortunately, this problem is not that hard to solve. To begin, the above equation splits into the two following ones (technically as components in equal vectors) after a matrix multiplication.
+    \begin{align*}
+        -\frac{\gamma B\hbar}{2}\chi_+ &= i\hbar\pdv{\chi_+}{t}&
+        \frac{\gamma B\hbar}{2}\chi_- &= i\hbar\pdv{\chi_-}{t}
+    \end{align*}
+    \item The solutions are then
+    \begin{align*}
+        \chi_+ &= \chi_+(0)\e[i\gamma Bt/2]&
+        \chi_- &= \chi_-(0)\e[-i\gamma Bt/2]
+    \end{align*}
+    \item Therefore,
+    \begin{equation*}
+        \ev{\hat{S}_z}{\chi}(0) = \frac{\hbar}{2}\left( |\chi_+(0)|^2-|\chi_-(0)|^2 \right)
+    \end{equation*}
+    \item Additionally, we can solve for the time dependence of the mean value of $\hat{S}_x$.
+    \begin{itemize}
+        \item To begin, we have that
+        \begin{align*}
+            \ev{\hat{S}_x}{\chi}(t) &= \frac{\hbar}{4}
+            \begin{pmatrix}
+                \chi_+^*(0)\e[-i\gamma Bt/2] & \chi_-^*(0)\e[i\gamma Bt/2]\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \chi_+(0)\e[i\gamma Bt/2]\\
+                \chi_-(0)\e[-i\gamma Bt/2]\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{4}\left[ \chi_+^*(0)\chi_-(0)\e[-i\gamma Bt]+\chi_-^*(0)\chi_+(0)\e[i\gamma Bt] \right]
+        \end{align*}
+        \item Now observe that $\chi_\pm(0)$ are just complex numbers that may be written in the form
+        \begin{equation*}
+            \chi_\pm(0) = |\chi_\pm(0)|\e[i\phi_\pm]
+        \end{equation*}
+        \item Thus, continuing from the above,
+        \begin{align*}
+            \ev{\hat{S}_x}{\chi}(t) &= \frac{\hbar}{4}|\chi_+(0)||\chi_-(0)|\left[ \e[-i\gamma Bt+i\phi_--i\phi_+]+\e[i\gamma Bt-i\phi_-+i\phi_+] \right]\\
+            &= \frac{\hbar}{2}|\chi_+(0)||\chi_-(0)|\cos(-\gamma Bt+\phi_--\phi_+)
+        \end{align*}
+    \end{itemize}
+    \item Analogously, we have that
+    \begin{equation*}
+        \ev{\hat{S}_y}{\chi}(t) = \frac{\hbar}{2}|\chi_+(0)||\chi_-(0)|\sin(-\gamma Bt+\phi_--\phi_+)
+    \end{equation*}
+    \item Together, these last two major results lead to \textbf{spin precession}.
+    \item \textbf{Spin precession}: The oscillation of the mean values of $\hat{S}_x,\hat{S}_y$ in time.
+    \item Thus, the spin keeps its component in the same direction, but rotates.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [-stealth] (0,0,0) -- (0,0,2) node[below left=-1pt]{$x$};
+            \draw [-stealth] (0,0,0) -- (2,0,0) node[right]{$y$};
+            \draw [-stealth] (0,0,0) -- (0,2,0) node[above]{$\vec{B}$};
+    
+            \draw [yex,semithick,densely dashed] (0,1.8,0) -- ({1.5*cos(30)},1.8,{1.5*sin(30)});
+            \draw [orx,semithick,->] plot[domain=30:135] ({1.5*cos(\x)},1.8,{1.5*sin(\x)});
+            \draw [rex,thick,-latex] (0,0,0) -- ({1.5*cos(30)},1.8,{1.5*sin(30)});
+        \end{tikzpicture}
+        \caption{Rotating spinor.}
+        \label{fig:rotatingSpinor}
+    \end{figure}
+    \item Calculating the probability of a generic particle being spin up in the $x$-direction.
+    \begin{itemize}
+        \item Suppose the particle is in the state
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+        \end{equation*}
+        \item Then --- as stated earlier --- the probability that the particle is spin up in the $x$-direction is the modulus square of
+        \begin{equation*}
+            d_+ = (\chi_+^x)^\dagger\chi = \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1 & 1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+            = \frac{1}{\sqrt{2}}(c_++c_-)
+        \end{equation*}
+        \item The modulus square of the above is
+        \begin{equation*}
+            |d_+|^2 = \frac{1}{2}(c_+^*+c_-^*)(c_++c_-)
+        \end{equation*}
+        \item Using the polar form of the spin eigenstate derived last lecture, it follows that
+        \begin{align*}
+            |d_+|^2 &= \frac{1}{2}\left[ \cos(\frac{\theta_s}{2})\e[i\phi_s/2]+\sin(\frac{\theta_s}{2})\e[-i\phi_s/2] \right]\left[ \cos(\frac{\theta_s}{2})\e[-i\phi_s/2]+\sin(\frac{\theta_s}{2})\e[i\phi_s/2] \right]\\
+            &= \frac{1}{2}\left[ \cos^2(\frac{\theta_s}{2})+\sin^2(\frac{\theta_s}{2})+\sin(\frac{\theta_s}{2})\cos(\frac{\theta_s}{2})(\e[i\phi_s]+\e[-i\phi_s]) \right]\\
+            &= \frac{1}{2}\left[ 1+2\sin(\frac{\theta_s}{2})\cos(\frac{\theta_s}{2})\cos(\phi_s) \right]\\
+            &= \frac{1}{2}\left[ 1+\sin(\theta_s)\cos(\phi_s) \right]\\
+            &= \frac{1}{2}\left[ 1+\frac{2}{\hbar}\ev{\hat{S}_x}{\chi} \right]\\
+            &= \frac{1}{2}\left[ 1+\frac{2}{\hbar}\cdot\frac{\hbar}{2}|\chi_+(0)||\chi_-(0)|\cos(-\gamma Bt+\phi_--\phi_+) \right]\\
+            &= \frac{1}{2}+\frac{|\chi_+(0)||\chi_-(0)|}{2}\cos(-\gamma Bt+\phi_--\phi_+)
+        \end{align*}
+    \end{itemize}
+    \item Combining this with the analogous result for the probability of a generic particle being spin down in the $x$-direction, we have that
+    \begin{equation*}
+        |d_\pm|^2 = \frac{1}{2}\pm\frac{|\chi_+(0)||\chi_-(0)|}{2}\cos(-\gamma Bt+\phi_--\phi_+)
+    \end{equation*}
+\end{itemize}
+
+
+
+
+\end{document}
