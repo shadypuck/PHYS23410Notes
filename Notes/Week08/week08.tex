@@ -1,0 +1,1195 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{7}
+
+\begin{document}
+
+
+
+
+\chapter{Electronic Phenomena}
+\section{Hydrogen Atom II}
+\begin{itemize}
+    \item \marginnote{2/19:}Review of the hydrogen atom.
+    \begin{itemize}
+        \item The potential is given by
+        \begin{equation*}
+            V(r) = -\frac{e^2}{4\pi\epsilon_0r}
+        \end{equation*}
+        \begin{itemize}
+            \item This is an important case of motion in a central potential in quantum mechanics.
+        \end{itemize}
+        \item We go to polar coordinates because they are most convenient for motion in a central potential.
+        \item We achieve separation of variables via
+        \begin{equation*}
+            \psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+        \end{equation*}
+        \item This leads into the spherical harmonics
+        \begin{align*}
+            \hat{\vec{L}}{\,}^2Y_{\ell m}(\theta,\phi) &= \hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi)\\
+            \hat{L}_zY_{\ell m}(\theta,\phi) &= \hbar mY_{\ell m}(\theta,\phi)
+        \end{align*}
+        \begin{itemize}
+            \item Additionally, the quantum number $m$ satisfies $-\ell\leq m\leq\ell$, giving us $2\ell+1$ solutions for each $\ell$.
+        \end{itemize}
+        \item With the spherical harmonics, the main question becomes how to find $R_{n\ell}$.
+        \begin{itemize}
+            \item We do this via the change of variables
+            \begin{equation*}
+                U_{n\ell}(r) = rR_{n\ell}(r)
+            \end{equation*}
+            yielding a function that satisfies the analogous one-dimensional effective system
+            \begin{equation*}
+                -\frac{\hbar^2}{2M}\dv[2]{r}[U_{n\ell}(r)]+\underbrace{\left[ V(r)+\frac{\hbar^2\ell(\ell+1)}{2Mr^2} \right]}_{V_\text{eff}(r)}U_{n\ell}(r) = E_{n\ell}U_{n\ell}(r)
+            \end{equation*}
+        \end{itemize}
+        \item We analyze such systems using their asymptotic behavior as $r\to 0$ and $r\to\infty$.
+        \begin{itemize}
+            \item See Figure \ref{fig:1HV}. We are looking for bound states $E_{n\ell}$.
+            \item When the energy is positive, we have continuous solutions; it's only when the energy is negative that we have quantized bound states.
+        \end{itemize}
+        \item Performing such analyses, we propose an ansatz
+        \begin{equation*}
+            U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-k_{n\ell}r]
+        \end{equation*}
+        where
+        \begin{equation*}
+            E_{n\ell} = -\frac{\hbar^2k_{n\ell}^2}{2M}
+        \end{equation*}
+        \item We suppose that $f$ is a polynomial function
+        \begin{equation*}
+            f_{n\ell}(r) = \sum_ja_jr^j
+        \end{equation*}
+        and solve for it using the differential equation
+        \begin{equation*}
+            f_{n\ell}''(r)+f_{n\ell}'(r)\left[ \frac{2(\ell+1)}{r}-2k_{n\ell} \right]+f_{n\ell}(r)\left[ -\frac{2k_{n\ell}(\ell+1)}{r}+\frac{2}{a_\text{B}r} \right] = 0
+        \end{equation*}
+        \item This analysis leads us to the recursion relation
+        \begin{equation*}
+            a_{j+1} = \frac{2k_{n\ell}(j+\ell+1)-\frac{2}{a_\text{B}}}{(j+1)(j+2\ell+2)}a_j
+        \end{equation*}
+        \item We then choose $j_\text{max}=N$, yielding
+        \begin{equation*}
+            k_{n\ell} = \frac{1}{a_\text{B}\underbrace{(N+\ell+1)}_n}
+        \end{equation*}
+        where we canonically call $n$ the \textbf{principal quantum number}.
+        \begin{itemize}
+            \item This is a divergence from last time's notation, but one made for good reason, as we will see shortly.
+            \item Note that we did not introduce this notation last time because we didn't want to have to discuss its subtleties then, as we will today.
+        \end{itemize}
+        \item Thus, the energy depends only on this value $n$ via
+        \begin{equation*}
+            E_{n\ell} = -\frac{\hbar^2}{2m_ea_\text{B}^2(N+\ell+1)^2} = -\frac{\Ry}{n^2}
+        \end{equation*}
+        where $\Ry$ is the Rydberg constant defined last time.
+        \begin{itemize}
+            \item Essentially, the energy depends on this value $n$ which in turn has a hidden dependence on $\ell$.
+        \end{itemize}
+    \end{itemize}
+    \item We now begin on new content, continuing from above however.
+    \item The energy spacing versus $n$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+    
+            \fill [grx] (0.5,0) rectangle (1.5,0.5);
+            \node [right] at (1.5,0.25) {Continuous};
+    
+            \draw [grx,very thick]
+                (0.5,-0.03125) -- ++(1,0)
+                (0.5,-0.0625) -- ++(1,0)
+                (0.5,-0.125) -- ++(1,0)
+                (0.5,-0.25) -- ++(1,0)
+                (0.5,-0.5) -- ++(1,0)
+                (0.5,-1) -- ++(1,0) node[right]{$E_2=E_1/4$}
+                (0.5,-2) -- ++(1,0) node[right]{$E_1=-\SI{13.6}{\electronvolt}$}
+            ;
+    
+            \draw [stealth-stealth] (-0.7,0) -- (3.5,0);
+            \draw [stealth-stealth] (0,0.6) -- (0,-2.5);
+            \node [above left] {$E_n$};
+    
+            \draw [semithick,decorate,decoration=brace] (-1,0) -- node[left=1mm]{$E>0$} (-1,0.5);
+            \draw [semithick,decorate,decoration=brace] (-1,-2.5) -- node[left=1mm]{$E<0$} (-1,0);
+        \end{tikzpicture}
+        \caption{\ce{{}^1H} energy spacing vs. $n$.}
+        \label{fig:1HEn}
+    \end{figure}
+    \begin{itemize}
+        \item The energies get closer and closer together as $n$ increases until they become continuous for positive values of energy.
+        \item The equations and figure imply that $-E_1=\Ry$ is the minimum energy necessary to remove the electron from the hydrogen atom.
+        \item If we don't have this much energy, a lesser amount will still affect the electron, just moving it to an \textbf{excited state}.
+        \begin{itemize}
+            \item In particular, $E_m-E_1$ is the amount of energy necessary to move the electron to an excited state $E_m$ of higher energy than $E_1$.
+        \end{itemize}
+        \item What is also interesting is that if the electron is in an excited state of energy $E_m$, then it will \emph{not} stay there forever.
+        \begin{itemize}
+            \item Experimentally, even in this time independent potential, the electron can jump back down to a lower state by emitting electromagnetic radiation of energy $E_\gamma=E_m-E_1$.
+            \item This is evidence that the vacuum in which we assume the hydrogen atom lies is not really \emph{vacuum}! Rather, the vacuum contains something called the EM field, and there are fluctuations in this EM field that can push the electron down energy states.
+            \item This is discussed more in Quantum Mechanics II, but is ignored in our present formalism of the hydrogen atom.
+        \end{itemize}
+    \end{itemize}
+    \item Now for every fixed $n$, the equation $n=N+\ell+1$ implies that $\ell=0,1,\dots,n-1$.
+    \begin{itemize}
+        \item But for every $\ell$, there are $2\ell+1$ solutions with the same energy.
+        \item Thus, for every $n$, there are
+        \begin{equation*}
+            \sum_{\ell=0}^{n-1}(2\ell+1) = 2\sum_{\ell=0}^{n-1}\ell+\sum_{\ell=0}^{n-1}1
+            = 2\cdot\frac{n(n-1)}{2}+n
+            = n^2
+        \end{equation*}
+        different states with the same energy.
+    \end{itemize}
+    \item Aside: A fun application of this stuff to cosmology.
+    \begin{itemize}
+        \item The universe started as a hot plasma that cooled down as the universe expanded.
+        \item The early universe contained a lot of crap, including photons.
+        \item When early protons and electrons tried to combine at hot temperatures, the huge amount of EM radiation would kick the electrons out.
+        \item Thus, stable atoms could not form.
+        \item The specific temperatures at which this would occur were
+        \begin{equation*}
+            k_\text{B}T > \SI{13.6}{\electronvolt}
+        \end{equation*}
+        \item At temperatures $k_\text{B}T<\SI{13.6}{\electronvolt}$, protons and electrons bind together, and the universe becomes transparent to radiation.
+        \item Evidence that this happened: Cosmic microwave background.
+        \begin{itemize}
+            \item When the universe became transparent, it was at microwave temperatures.
+            \item This was when the universe was about \num{13000} years old.
+        \end{itemize}
+    \end{itemize}
+    \item Now back to math.
+    \item Since we now have an explicit definition for $k_{n\ell}$, we may rewrite the solutions as
+    \begin{equation*}
+        U_{n\ell}(r) = f_{n\ell}(r)r^{\ell+1}\e[-r/a_\text{B}n]
+    \end{equation*}
+    \begin{itemize}
+        \item Notationally, do remember that $n$ gives energy, $\ell$ gives angular momentum, and $N=n-\ell-1$ gives the polynomial degree of $f_{n\ell}(r)$.
+    \end{itemize}
+    \item Thus, if $N=0$, then $n=\ell+1$ and the radial probability density of finding the particle at a given $r$ is
+    \begin{equation*}
+        r^2|R_{n\ell}(r)|^2 = |U_{n\ell}(r)|^2 = r^{2n}\e[-2r/a_\text{B}n]
+    \end{equation*}
+    \item What is the maximum, i.e., the most probable distance from the nucleus?
+    \begin{itemize}
+        \item Differentiate the probability density with respect to $r$ and determine where it equals zero.
+        \begin{align*}
+            0 &= 2nr^{2n-1}\e[-2r/a_\text{B}n]-\frac{2r^{2n}}{a_\text{B}n}\e[-2r/a_\text{B}n]\\
+            \frac{2r^{2n}}{a_\text{B}n} &= 2nr^{2n-1}\\
+            r_\text{max} &= a_\text{B}n^2
+        \end{align*}
+    \end{itemize}
+    \item What happens if you have an ion of charge $Ze$?
+    \begin{itemize}
+        \item Then
+        \begin{equation*}
+            V(r) = -\frac{Ze^2}{4\pi\epsilon_0r}
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            E_n = -\frac{\Ry Z^2}{n^2}
+        \end{equation*}
+        and the Bohr radius halves.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Office Hours (Yunjia)}
+\begin{itemize}
+    \item \marginnote{2/20:}PSet 6, Q1a: Can I leave the solutions in terms of $U_{n\ell}$, or do I need to further manipulate them?
+    \begin{itemize}
+        \item Since $U_{n\ell}$ is defined in the question, it's perfectly fine to leave the answer in terms of it.
+    \end{itemize}
+    \item PSet 6, Q1a: Do I need to do anything for the "observe\dots" part of the question? It almost sounds like I need to consider some nonzero values of $\ell$ here; if not, what else could "each value of $\ell$" refer to?
+    \begin{itemize}
+        \item $\ell=0$ is the only value of $\ell$ we need to discuss in this part of this problem.
+    \end{itemize}
+    \item PSet 6, Q1c: Is all we have to do start with the radial equation, turn it into the spherical Bessel equation, and do the variable substitution?
+    \begin{itemize}
+        \item Yes.
+    \end{itemize}
+    \item PSet 6, Q1d: Can you differentiate with respect to $k_{n1}r$, or do we need to do a $u$-substitution type thing and introduce a $\dv*{u}{r}$ term?
+    \begin{itemize}
+        \item We can differentiate with respect to $k_{n1}r$.
+        \item This yields the function we see on Wikipedia.
+    \end{itemize}
+    \item PSet 6, Q1d: Do I need to do anything else with the boundary condition other than just commenting on it?
+    \begin{itemize}
+        \item No.
+    \end{itemize}
+    \item PSet 6, Q1e: Do I need to do anything else here?
+    \begin{itemize}
+        \item Say something about the probability density getting larger at the origin vs. going to zero at the origin.
+    \end{itemize}
+    \item PSet 6, Q2a: Do you want the $\bar{n}=0$ solutions or what else?
+    \begin{itemize}
+        \item Give the first few examples ($\bar{n}=0,1,2$) and then say that the pattern continues.
+        \item There is a proof that the pattern continues for all $\bar{n}$, but we are neither expected to produce it nor research/learn it.
+    \end{itemize}
+    \item PSet 6, Q2b: Just copy what he wrote on 2/14 for the $\bar{n}=1$ case and do a bit of algebra to prove linear combinations?
+    \begin{itemize}
+        \item Yes.
+    \end{itemize}
+    \item PSet 6, Q2c: Just describe quantitatively the shape of the functions in 3D?
+    \begin{itemize}
+        \item Yes.
+    \end{itemize}
+    \item PSet 6, Q3b: What is this variable $z$ and why does the $n\ell$ subscript on $f$ sometimes disappear?
+    \begin{itemize}
+        \item $z:=k_{n\ell}r$ is a variable defined to be unitless. It rigorously justifies the fact that we can do all of our differential equation manipulations abstractly in the context of pure mathematics without having to worry about units.
+        \item The $n\ell$ subscript's occasional disappearance is just an abuse of notation (and another indication that we can treat $f$ purely as a mathematical function).
+    \end{itemize}
+    \item PSet 6, Q3c: How do I "demonstrate that $q-w-1=n$ must be a positive integer (or zero)" and how does this help imply the final energy equation?
+    \begin{itemize}
+        \item The relevant note is included in the problem statement purely to make it clear that the group of numbers $n+w+1$ can be treated as a single quantity and does not have to be binomially expanded.
+        \item Include some note about this in your answer, and you'll be all good to go!
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Spin}
+\begin{itemize}
+    \item \marginnote{2/21:}We've probably all heard of spin, but today, we'll give it the mathematical treatment that it deserves.
+    \item What is spin?
+    \begin{itemize}
+        \item Spin is an \emph{intrinsic} property.
+        \item It is possessed by every particle in nature save one.
+        \item We may think of it as rotation about a characteristic axis, even though this is not a proper description for a point particle.
+    \end{itemize}
+    \item Since spin is an observable, we want to associate it with a Hermitian operator.
+    \begin{itemize}
+        \item Call this operator $\hat{\vec{S}}$.
+        \item Since spin is intuitively associated with rotation, we demand that $\hat{\vec{S}}$ satisfies the angular momentum algebra.
+        \item In particular, this means that the operator has three components.
+        \begin{equation*}
+            \hat{\vec{S}} = \hat{S}_x\hat{x}+\hat{S}_y\hat{y}+\hat{S}_z\hat{z}
+        \end{equation*}
+        \item We also expect that this operator obeys the following analogous commutativity relations
+        \begin{align*}
+            [\hat{S}_x,\hat{S}_y] &= i\hbar\hat{S}_z&
+            [\hat{S}_y,\hat{S}_z] &= i\hbar\hat{S}_x&
+            [\hat{S}_z,\hat{S}_x] &= i\hbar\hat{S}_y
+        \end{align*}
+    \end{itemize}
+    \item Now recall that the angular momentum operator had the property that
+    \begin{equation*}
+        \hat{L}_z = -i\hbar\pdv{\phi}
+    \end{equation*}
+    \begin{itemize}
+        \item This meant that
+        \begin{equation*}
+            \hat{L}_zY_{\ell m}(\theta,\phi) = \hat{L}_z\ket{\ell,m}
+            = \hbar m\ket{\ell,m}
+        \end{equation*}
+        \item Additionally, we knew that the form of the spherical harmonics was $P_{\ell m}(\theta)\e[im\phi]$. Substituting into the above equality, this meant that
+        \begin{equation*}
+            \hat{L}_zP_{\ell m}(\theta)\e[im\phi] = \hbar mP_{\ell m}(\theta)\e[im\phi]
+        \end{equation*}
+        \item It followed by the boundary condition
+        \begin{align*}
+            \e[im(\phi+2\pi)] &= \e[im\phi]\\
+            \e[2\pi im] &= 1
+        \end{align*}
+        that $m$ is an integer.
+        \item Later today, we will put an analogous constraint on a quantum number, but in a different way since we don't have such a convenient definition of $\hat{S}_z$.
+    \end{itemize}
+    \item Let the eigenvalues of $\hat{\vec{S}}{\,}^2,\hat{S}_z$ be given by
+    \begin{align*}
+        \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}&
+        \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}&
+    \end{align*}
+    \item Similarly to the angular momentum case, we can define ladder operators
+    \begin{equation*}
+        \hat{S}_\pm = \hat{S}_x\pm i\hat{S}_y
+    \end{equation*}
+    \begin{itemize}
+        \item We inherit the commutativity relation
+        \begin{align*}
+            [\hat{S}_z,\hat{S}_\pm] &= [\hat{S}_z,\hat{S}_x\pm i\hat{S}_y]\\
+            % &= \hat{S}_z(\hat{S}_x\pm i\hat{S}_y)-(\hat{S}_x\pm i\hat{S}_y)\hat{S}_z\\
+            % &= (\hat{S}_z\hat{S}_x\pm i\hat{S}_z\hat{S}_y)-(\hat{S}_x\hat{S}_z\pm i\hat{S}_y\hat{S}_z)\\
+            &= [\hat{S}_z,\hat{S}_x]\pm i[\hat{S}_z,\hat{S}_y]\tag*{Rule 4}\\
+            &= i\hbar\hat{S}_y\pm i(-i\hbar\hat{S}_x)\\
+            &= \pm\hbar(\hat{S}_x\pm i\hat{S}_y)\\
+            &= \pm\hbar\hat{S}_\pm
+        \end{align*}
+        \item We can also demonstrate that $\hat{S}_+$ is a \emph{raising} operator.
+        \begin{itemize}
+            \item First, observe that
+            \begin{align*}
+                \hat{S}_z\hat{S}_+\ket{s,m_s} &= (\hat{S}_z\hat{S}_+-\hat{S}_+\hat{S}_z)\ket{s,m_s}+\hat{S}_+\hat{S}_z\ket{s,m_s}\\
+                &= \hbar\hat{S}_+\ket{s,m_s}+\hbar m_s\hat{S}_+\ket{s,m_s}\\
+                &= \hbar(m_s+1)\hat{S}_+\ket{s,m_s}
+            \end{align*}
+            \item Then it follows that
+            \begin{equation*}
+                \hat{S}_+\ket{s,m_s} \propto \ket{s,m_s+1}
+            \end{equation*}
+        \end{itemize}
+        \item Analogously for $\hat{S}_-$,
+        \begin{equation*}
+            \hat{S}_-\ket{s,m_s} \propto \ket{s,m_s-1}
+        \end{equation*}
+    \end{itemize}
+    \item We now build up to proving that there are maximum and minimum values of $m_s$.
+    \begin{itemize}
+        \item First off, notice that
+        \begin{equation*}
+            \hat{\vec{S}}{\,}^2 = \hat{S}_x^2+\hat{S}_y^2+\hat{S}_z^2
+        \end{equation*}
+        \item It is also useful to (re)state here that
+        \begin{align*}
+            \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}&
+            \hat{S}_z^2\ket{s,m_s} &= \hbar^2m_s^2\ket{s,m_s}
+        \end{align*}
+        \item Observe that the value of $\hat{S}_z^2$ cannot exceed that of $\hat{\vec{S}}{\,}^2$ because of the first equality above, even though the ladder operator appears to be able to keep raising it indefinitely.
+        \item Thus, there must exist an $m_s^\text{max}$ such that
+        \begin{equation*}
+            \hat{S}_+\ket{s,m_s^\text{max}} = 0
+        \end{equation*}
+        \item Separately, observe that
+        \begin{align*}
+            \hat{S}_-\hat{S}_+ &= (\hat{S}_x-i\hat{S}_y)(\hat{S}_x+i\hat{S}_y)\\
+            &= \hat{S}_x^2+\hat{S}_y^2+i(\underbrace{\hat{S}_x\hat{S}_y-\hat{S}_y\hat{S}_x}_{i\hbar\hat{S}_z})\\
+            &= \hat{S}_x^2+\hat{S}_y^2-\hbar\hat{S}_z+\hat{S}_z^2-\hat{S}_z^2\\
+            &= \hat{\vec{S}}{\,}^2-\hbar\hat{S}_z-\hat{S}_z^2
+        \end{align*}
+        \item Combining the last two results, we obtain that
+        \begin{align*}
+            \hbar^2s(s+1)-\hbar^2m_s^\text{max}-\hbar^2(m_s^\text{max})^2 &= 0\\
+            \hbar^2m_s^\text{max}+\hbar^2(m_s^\text{max})^2 &= \hbar^2s(s+1)\\
+            \hbar^2m_s^\text{max}(m_s^\text{max}+1) &= \hbar^2s(s+1)\\
+            m_s^\text{max} = s
+        \end{align*}
+    \end{itemize}
+    \item Similarly, we have that
+    \begin{equation*}
+        \hat{S}_-\ket{s,m_s^\text{min}} = 0
+    \end{equation*}
+    \begin{itemize}
+        \item Thus,
+        \begin{align*}
+            \hat{S}_+\hat{S}_-\ket{s,m_s^\text{min}} &= (\hat{\vec{S}}{\,}^2+\hbar\hat{S}_z-\hat{S}_z^2)\ket{s,m_s^\text{min}}\\
+            &= \hbar^2[s(s+1)-(m_s^\text{min})^2+m_s^\text{min}]\ket{s,m_s^\text{min}}\\
+            &= 0
+        \end{align*}
+        \item We conclude from this that
+        \begin{equation*}
+            m_s^\text{min} = -s
+        \end{equation*}
+    \end{itemize}
+    \item Taken together, these two results mean that the ladder stops at both ends, i.e.,
+    \begin{equation*}
+        -s \leq m_s \leq s
+    \end{equation*}
+    \item It follows that there are $2s+1$ possible solutions/states for each $s$.
+    \item But since there will clearly be a natural/positive integer number of solutions/states for $\hat{\vec{S}}{\,}^2$, this means that
+    \begin{align*}
+        2s+1 &= 1,2,3,\dots\\
+        2s &= 0,1,2,3,\dots\\
+        s &= 0,\frac{1}{2},1,\frac{3}{2},2,\dots
+    \end{align*}
+    \begin{itemize}
+        \item Implication: Spin can take half-integer values!
+    \end{itemize}
+    \item Aside: Spins of some elementary particles.
+    \begin{itemize}
+        \item Photons have spin 1.
+        \item Gravitons have spin 2.
+        \item A particle discovered in 2012 has spin 0.
+        \item Electron, proton, neutron all have spin $1/2$.
+    \end{itemize}
+    \item For now, we will concentrate on spin $1/2$ particles.
+    \item \textbf{Dirac equation}: The relativistic equation for spin $1/2$ particles.
+    \item We have that
+    \begin{equation*}
+        \hat{S}_z\ket{\tfrac{1}{2},\pm\tfrac{1}{2}} = \pm\frac{\hbar}{2}\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}
+    \end{equation*}
+    \item A mathematical representation of this spin uses matrices.
+    \begin{itemize}
+        \item We say that
+        \begin{equation*}
+            \hat{S}_z = \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+        \end{equation*}
+        \item We map
+        \begin{equation*}
+            \ket{\tfrac{1}{2},\pm\tfrac{1}{2}} \mapsto
+            \left\{
+                \begin{pmatrix}
+                    1\\
+                    0\\
+                \end{pmatrix},
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                \end{pmatrix}
+            \right\}
+        \end{equation*}
+        so that
+        \begin{align*}
+            \ket{\tfrac{1}{2},\tfrac{1}{2}} &\mapsto
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \ket{\tfrac{1}{2},-\tfrac{1}{2}} &\mapsto
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Thus, we can see that the relations among the matrices exactly match the properties of the spin operator:
+        \begin{align*}
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                1 & 0\\
+                0 & -1\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+            &= -\frac{\hbar}{2}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+    \end{itemize}
+    \item Other operators have matrix representations, too.
+    \begin{itemize}
+        \item Let's investigate $\hat{S}_\pm$, starting with $\hat{S}_+$.
+        \item Since $\hat{S}_+\ket{s,m_s}\propto\ket{s,m_s+1}$, we have in the particular case of spin $1/2$ particles that
+        \begin{align*}
+            \hat{S}_+\ket{s,-\tfrac{1}{2}} &\propto \ket{s,-\tfrac{1}{2}+1} = \ket{s,\tfrac{1}{2}}&
+            \hat{S}_+\ket{s,\tfrac{1}{2}} &= \hat{S}_+\ket{s,m_s^\text{max}} = 0
+        \end{align*}
+        \item To determine the normalization constant, first observe that since $\hat{S}_-\hat{S}_+=\hat{\vec{S}}{\,}^2-\hbar\hat{S}_z-\hat{S}_z^2$, we have that
+        \begin{equation*}
+            \ev{\hat{S}_-\hat{S}_+}{s,m_s} = \hbar^2[s(s+1)-m_s^2-m_s]
+        \end{equation*}
+        \item Thus, in the specific case that $s=1/2$ and $m_s=-1/2$, we have that 
+        \begin{equation*}
+            \ev{\hat{S}_-\hat{S}_+}{\tfrac{1}{2},-\tfrac{1}{2}} = \hbar^2[\tfrac{1}{2}(\tfrac{1}{2}+1)-(-\tfrac{1}{2})^2-(-\tfrac{1}{2})]
+            = \hbar^2
+        \end{equation*}
+        \item Additionally, if $N_+\in\C$ and
+        \begin{equation*}
+            \hat{S}_+\ket{s,m_s} = N_+\ket{s,m_s+1}
+        \end{equation*}
+        then we have that
+        \begin{align*}
+            \ev{\hat{S}_-\hat{S}_+}{s,m_s} &= N_+\mel{s,m_s}{\hat{S}_-}{s,m_s+1}\\
+            &= N_+\braket*{\hat{S}_-^\dagger s,m_s}{s,m_s+1}\\
+            &= N_+\braket*{\hat{S}_+s,m_s}{s,m_s+1}\\
+            &= N_+^2\braket{s,m_s+1}\\
+            &= N_+^2
+        \end{align*}
+        \item Combining the last two results by transitivity, we have that
+        \begin{align*}
+            N_+^2 &= \hbar^2
+            N_+ = \hbar
+        \end{align*}
+        \item Hence,
+        \begin{equation*}
+            \hat{S}_+\ket{\tfrac{1}{2},-\tfrac{1}{2}} = \hbar\ket{\tfrac{1}{2},\tfrac{1}{2}}
+        \end{equation*}
+        \item Therefore, altogether, we have that
+        \begin{align*}
+            \hat{S}_+\ket{\tfrac{1}{2},-\tfrac{1}{2}} &= \hbar\ket{\tfrac{1}{2},\tfrac{1}{2}}&
+            \hat{S}_+\ket{\tfrac{1}{2},\tfrac{1}{2}} &= 0
+        \end{align*}
+        so we must define
+        \begin{equation*}
+            \hat{S}_+ = \hbar
+            \begin{pmatrix}
+                0 & 1\\
+                0 & 0\\
+            \end{pmatrix}
+        \end{equation*}
+        \item Analogously, we can derive that
+        \begin{equation*}
+            \hat{S}_- = \hbar
+            \begin{pmatrix}
+                0 & 0\\
+                1 & 0\\
+            \end{pmatrix}
+        \end{equation*}
+        \item This means that the ladder operators act on the spins as follows.
+        \begin{align*}
+            \hbar
+            \begin{pmatrix}
+                0 & 1\\
+                0 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+            &= \hbar
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}&
+            \hbar
+            \begin{pmatrix}
+                0 & 0\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                1\\
+                0\\
+            \end{pmatrix}
+            &= \hbar
+            \begin{pmatrix}
+                0\\
+                1\\
+            \end{pmatrix}
+        \end{align*}
+    \end{itemize}
+    \item Now since
+    \begin{align*}
+        \hat{S}_+ &= \hat{S}_x+i\hat{S}_y&
+        \hat{S}_- &= \hat{S}_x-i\hat{S}_y
+    \end{align*}
+    we have that
+    \begin{align*}
+        \hat{S}_x &= \frac{\hat{S}_++\hat{S}_-}{2}&
+            \hat{S}_y &= -i\frac{\hat{S}_+-\hat{S}_-}{2}\\
+        &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+            &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}
+    \end{align*}
+    \item \textbf{Pauli matrices}: The three matrices associated with the components of $\hat{\vec{S}}$. \emph{Denoted by} $\bm{\sigma_1},\bm{\sigma_2},\bm{\sigma_3}$. \emph{Given by}
+    \begin{align*}
+        \sigma_1 &=
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+        \sigma_2 &=
+        \begin{pmatrix}
+            0 & -i\\
+            i & 0\\
+        \end{pmatrix}&
+        \sigma_3 &=
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+    \end{align*}
+    \begin{itemize}
+        \item Related to the generators of the group $SU(2)$.
+    \end{itemize}
+    \item Based on the above, we can compute that that
+    \begin{equation*}
+        \ev{\hat{S}_x}{s,m_s} = \ev{\hat{S}_y}{s,m_s} = 0
+    \end{equation*}
+    \item We also have
+    \begin{equation*}
+        \ev{\hat{S}_x^2}{s,m_s} = \ev{\hat{S}_y^2}{s,m_s}
+        = \ev{\hat{S}_z^2}{s,m_s}
+        = \frac{\hbar^2}{4}\\
+    \end{equation*}
+    \item We'll continue next time.
+\end{itemize}
+
+
+
+\section{Office Hours (Matt)}
+\begin{itemize}
+    \item PSet 6, Q1d: Should the problem statement begin, "The general form of $J_\ell(u)$ is\dots" with "$u$" insted of "$r$?"
+    \begin{itemize}
+        \item Yes.
+    \end{itemize}
+    \item PSet 6, Q1e: Do I need anything else here? Is this the right definition of probability density (radial), or should we include the spherical harmonics, too?
+    \begin{itemize}
+        \item No, I do not need to do anything else besides commenting on conserved spherical symmetry and diverging interpretations of what can happen at zero.
+        \item By "probability density," we do only mean "radial probability density." So we do not need to worry about spherical harmonics. So I'm good.
+    \end{itemize}
+    \item PSet 6, Q1f: Do I only need to comment on the difference in radial symmetry?
+    \begin{itemize}
+        \item Also comment on diverging interpretations of what happens at zero.
+    \end{itemize}
+    \item PSet 6, Q2a: Do I need to include the functions/solutions, too, or are the values enough?
+    \begin{itemize}
+        \item The values are enough.
+    \end{itemize}
+    \item PSet 6, Q3c: Do I need to do anything else with respect to my comment on Eq. 6.18?
+    \begin{itemize}
+        \item Nope! A quick comment is perfect.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Spin II}
+\begin{itemize}
+    \item \marginnote{2/23:}\textbf{Spinor}: One of the two-component vectors representing a spin state. \emph{Denoted by} $\bm{\chi_\pm}$. \emph{Given by}
+    \begin{align*}
+        \chi_+ &=
+        \begin{pmatrix}
+            1\\
+            0\\
+        \end{pmatrix}
+        := \ket{\tfrac{1}{2},\tfrac{1}{2}}&
+        \chi_- &=
+        \begin{pmatrix}
+            0\\
+            1\\
+        \end{pmatrix}
+        := \ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{align*}
+    \item The Pauli matrices satisfy the characteristic properties
+    \begin{align*}
+        \sigma_i^2 &= I&
+        [\sigma_i,\sigma_j] = \epsilon_{ijk}i\hbar\sigma_k
+    \end{align*}
+    \begin{itemize}
+        \item Note: $\epsilon_{ijk}$ gives the sign of the permutation of $1,2,3$ given in its argument.
+        \item For example, $\epsilon_{123}=1$ and $\epsilon_{213}=-1$.
+        \item Formally,
+        \begin{equation*}
+            \epsilon_{ijk} = \epsilon_{\sigma(123)}
+            = (-1)^\sigma
+        \end{equation*}
+    \end{itemize}
+    \item Thus altogether, we have that
+    \begin{align*}
+        \hat{S}_x &= \frac{\hbar}{2}\sigma_1&
+        \hat{S}_y &= \frac{\hbar}{2}\sigma_2&
+        \hat{S}_z &= \frac{\hbar}{2}\sigma_3
+    \end{align*}
+    \item What are the eigenvalues of spin in the $x$- and $y$-directions?
+    \begin{itemize}
+        \item Observe that the Pauli matrices are all \textbf{Hermitian} and traceless.
+        \item Also observe that $\hat{S}_x,\hat{S}_y$ are have determinant $-\hbar^2/4$.
+        \item Let the eigenvalues of $\hat{S}_x$ be denoted by $\lambda_1,\lambda_2$. Since $\hat{S}_x$ is Hermitian, $\lambda_i\in\R$ ($i=1,2$). Then the trace and determinant constraints yield the system of equations
+        \begin{align*}
+            \lambda_1+\lambda_2 &= 0\\
+            \lambda_1\lambda_2 &= -\frac{\hbar^2}{4}
+        \end{align*}
+        which WLOG has the following solutions over $\R$:
+        \begin{align*}
+            \lambda_1 &= \frac{\hbar}{2}&
+            \lambda_2 &= -\frac{\hbar}{2}
+        \end{align*}
+        \item It follows by a symmetric argument that the above eigenvalues are also the eigenvalues of $\hat{S}_y$.
+        \item This should be of no surprise since $z$ is not a special direction (the universe is isotropic) and hence the eigenvalues should be the same for the three directions.
+    \end{itemize}
+    \item \textbf{Hermitian} (matrix): A matrix that is equal to its conjugate transpose. \emph{Constraint}
+    \begin{equation*}
+        (\hat{S}_i)_{ij} = (\hat{S}_i)_{ji}^*
+    \end{equation*}
+    \item What are the eigenvectors of spin in the $x$-direction?
+    \begin{itemize}
+        \item As in linear algebra class, we can compute that the eigenvectors of $\hat{S}_x$ are
+        \begin{align*}
+            \chi_+^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                1\\
+            \end{pmatrix}&
+            \chi_-^x &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                -1\\
+            \end{pmatrix}
+        \end{align*}
+        \item Indeed,
+        \begin{align*}
+            \frac{\hbar}{2}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pNiceMatrix}
+                \frac{1}{\sqrt{2}}\\
+                \pm\frac{1}{\sqrt{2}}\\
+            \end{pNiceMatrix}
+            = \pm\frac{\hbar}{2}
+            \begin{pNiceMatrix}
+                \frac{1}{\sqrt{2}}\\
+                \pm\frac{1}{\sqrt{2}}\\
+            \end{pNiceMatrix}
+        \end{align*}
+    \end{itemize}
+    \item Now observe that we can take
+    \begin{equation*}
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1\\
+            \pm 1\\
+        \end{pmatrix}
+        = \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1\\
+            0\\
+        \end{pmatrix}
+        \pm\frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            0\\
+            1\\
+        \end{pmatrix}
+    \end{equation*}
+    \item To investigate this decomposition, let's fist look at a more general case. In particular, let $\ket{\chi}$ be a spin state that can be represented as a superposition of the eigenstates of $\hat{S}_z$:
+    \begin{equation*}
+        \ket{\chi} = c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, the mean value of $\hat{S}_z$ for a general eigenstate is given by
+        \begin{align*}
+            \ev{\hat{S}_z}{\chi} &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\hat{S}_z(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}+c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+            &= (c_+^*\bra{\tfrac{1}{2},\tfrac{1}{2}}+c_-^*\bra{\tfrac{1}{2},-\tfrac{1}{2}})\frac{\hbar}{2}(c_+\ket{\tfrac{1}{2},\tfrac{1}{2}}-c_-\ket{\tfrac{1}{2},-\tfrac{1}{2}})\\
+            &= \left( \frac{\hbar}{2} \right)|c_+|^2+\left( -\frac{\hbar}{2} \right)|c_-|^2
+        \end{align*}
+        \item Additionally, note that normalizing the state $\chi$ yields
+        \begin{equation*}
+            1 = \braket{\chi}
+            = |c_+|^2+|c_-|^2
+        \end{equation*}
+        \begin{itemize}
+            \item Hence, $|c_+|^2$ and $|c_-|^2$ are the probabilities of finding the particle with spin up and spin down, respectively.
+        \end{itemize}
+        \item Essentially, taking this altogether, we have shown that an observer will always measure either $+\hbar/2$ or $-\hbar/2$ for $\hat{S}_z$, with probabilities $|c_+|^2$ and $|c_-|^2$.
+    \end{itemize}
+    \item With these general results in hand, let's return to the specific case of a spin eigenstate in the $x$-direction:
+    \begin{equation*}
+        \ket{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} = \frac{1}{\sqrt{2}}\ket{\tfrac{1}{2},\tfrac{1}{2}}\pm\frac{1}{\sqrt{2}}\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item We can immediately see that there are equal probabilities of finding the particle as either spin up or spin down.
+        \item Thus, the mean value of $\hat{S}_z$ in these eigenstates is zero:
+        \begin{equation*}
+            \ev{\hat{S}_z}{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} = 0
+        \end{equation*}
+        \item Note that we can also obtain this result directly using vector algebra.
+        \begin{itemize}
+            \item We have that
+            \begin{align*}
+                \bra{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}&
+                \hat{S}_z &= \frac{\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}&
+                \ket{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1\\
+                    \pm 1\\
+                \end{pmatrix}
+            \end{align*}
+            \item Therefore,
+            \begin{align*}
+                \ev{\hat{S}_z}{\tfrac{1}{2},m_x=\pm\tfrac{1}{2}} &= \frac{\hbar}{4}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1\\
+                    \pm 1\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{4}
+                \begin{pmatrix}
+                    1 & \pm 1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1\\
+                    \mp 1\\
+                \end{pmatrix}\\
+                &= \frac{\hbar}{4}\cdot 0\\
+                &= 0
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item Many of the results stated above are directly analogous to the case of the $y$-direction.
+    \begin{itemize}
+        \item For example, here, the eigenvectors are given by
+        \begin{align*}
+            \chi_+^y &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                i\\
+            \end{pmatrix}&
+            \chi_-^y &= \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1\\
+                -i\\
+            \end{pmatrix}
+        \end{align*}
+        \item Verifying once again, we have that
+        \begin{equation*}
+            \underbrace{
+                \frac{\hbar}{2}
+                \begin{pmatrix}
+                    0 & -i\\
+                    i & 0\\
+                \end{pmatrix}
+                \vphantom{
+                    \begin{pNiceMatrix}
+                        \frac{1}{\sqrt{2}}\\
+                        \pm\frac{i}{\sqrt{2}}\\
+                    \end{pNiceMatrix}
+                }
+            }_{\hat{S}_y}\underbrace{
+                \begin{pNiceMatrix}
+                    \frac{1}{\sqrt{2}}\\
+                    \pm\frac{i}{\sqrt{2}}\\
+                \end{pNiceMatrix}
+            }_{\chi_\pm^y} = \pm\frac{\hbar}{2}\underbrace{
+                \begin{pNiceMatrix}
+                    \frac{1}{\sqrt{2}}\\
+                    \pm\frac{i}{\sqrt{2}}\\
+                \end{pNiceMatrix}
+            }_{\chi_\pm^y}
+        \end{equation*}
+        \item It also follows once again that there are equal probabilities of finding the particle as either spin up or spin down in a spin eigenstate in the $y$-direction. Mathematically, this means that
+        \begin{align*}
+            |c_+|^2 &= |c_-|^2 = \frac{1}{2}&
+            \ev{\hat{S}_z}{\tfrac{1}{2},m_y=\pm\tfrac{1}{2}} &= 0
+        \end{align*}
+    \end{itemize}
+    \item What are the mean values of $\hat{S}_x,\hat{S}_y$ in eigenstates of $\hat{S}_z$?
+    \begin{itemize}
+        \item The answer is always the same: zero.
+        \item Here's how we prove it.
+        \begin{itemize}
+            \item For $\hat{S}_x$.
+            \begin{align*}
+                \underbrace{
+                    \begin{pmatrix}
+                        1 & 0\\
+                    \end{pmatrix}
+                    \vphantom{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & 1\\
+                            1 & 0\\
+                        \end{pmatrix}
+                    }
+                }_{\bra{\tfrac{1}{2},\tfrac{1}{2}}}\cdot\underbrace{
+                    \frac{\hbar}{2}
+                    \begin{pmatrix}
+                        0 & 1\\
+                        1 & 0\\
+                    \end{pmatrix}
+                }_{\hat{S}_x}\cdot\underbrace{
+                    \begin{pmatrix}
+                        1\\
+                        0\\
+                    \end{pmatrix}
+                }_{\ket{\tfrac{1}{2},\tfrac{1}{2}}} &= 0&
+                    \underbrace{
+                        \begin{pmatrix}
+                            1 & 0\\
+                        \end{pmatrix}
+                        \vphantom{
+                            \frac{\hbar}{2}
+                            \begin{pmatrix}
+                                0 & -i\\
+                                i & 0\\
+                            \end{pmatrix}
+                        }
+                    }_{\bra{\tfrac{1}{2},\tfrac{1}{2}}}\cdot\underbrace{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & -i\\
+                            i & 0\\
+                        \end{pmatrix}
+                    }_{\hat{S}_y}\cdot\underbrace{
+                        \begin{pmatrix}
+                            1\\
+                            0\\
+                        \end{pmatrix}
+                    }_{\ket{\tfrac{1}{2},\tfrac{1}{2}}} &= 0
+            \end{align*}
+            \item For $\hat{S}_y$.
+            \begin{align*}
+                \underbrace{
+                    \begin{pmatrix}
+                        0 & 1\\
+                    \end{pmatrix}
+                    \vphantom{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & 1\\
+                            1 & 0\\
+                        \end{pmatrix}
+                    }
+                }_{\bra{\tfrac{1}{2},-\tfrac{1}{2}}}\cdot\underbrace{
+                    \frac{\hbar}{2}
+                    \begin{pmatrix}
+                        0 & 1\\
+                        1 & 0\\
+                    \end{pmatrix}
+                }_{\hat{S}_x}\cdot\underbrace{
+                    \begin{pmatrix}
+                        0\\
+                        1\\
+                    \end{pmatrix}
+                }_{\ket{\tfrac{1}{2},-\tfrac{1}{2}}} &= 0&
+                    \underbrace{
+                        \begin{pmatrix}
+                            0 & 1\\
+                        \end{pmatrix}
+                        \vphantom{
+                            \frac{\hbar}{2}
+                            \begin{pmatrix}
+                                0 & -i\\
+                                i & 0\\
+                            \end{pmatrix}
+                        }
+                    }_{\bra{\tfrac{1}{2},-\tfrac{1}{2}}}\cdot\underbrace{
+                        \frac{\hbar}{2}
+                        \begin{pmatrix}
+                            0 & -i\\
+                            i & 0\\
+                        \end{pmatrix}
+                    }_{\hat{S}_y}\cdot\underbrace{
+                        \begin{pmatrix}
+                            0\\
+                            1\\
+                        \end{pmatrix}
+                    }_{\ket{\tfrac{1}{2},-\tfrac{1}{2}}} &= 0
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item What this means is that in general, if you are in an eigenstate of spin in one direction, then there are equal probabilities of finding the particle with spin up and spin down in an orthogonal direction. Hence, the mean value of the spin in these orthogonal directions is zero.
+    \item The uncertainty principle.
+    \begin{itemize}
+        \item Observe that
+        \begin{equation*}
+            \hat{S}_x^2 = \hat{S}_y^2
+            = \hat{S}_z^2
+            = \frac{\hbar^2}{4}I
+        \end{equation*}
+        \item Because of the above equality, we know that if we are in an eigenstate of $\hat{S}_z$, then
+        \begin{align*}
+            \ev{\hat{S}_x^2}{\chi_\pm^z} &= \frac{\hbar^2}{4}\braket{\chi_\pm^z}
+                = \frac{\hbar^2}{4}&
+            \ev{\hat{S}_y^2}{\chi_\pm^z} &= \frac{\hbar^2}{4}\braket{\chi_\pm^z}
+                = \frac{\hbar^2}{4}&
+        \end{align*}
+        \item Thus,
+        \begin{align*}
+            (\Delta\hat{S}_x)^2 &= \Exp{\hat{S}_x^2}-\Exp{\hat{S}_x}^2 = \frac{\hbar^2}{4}&
+            (\Delta\hat{S}_y)^2 &= \Exp{\hat{S}_y^2}-\Exp{\hat{S}_y}^2 = \frac{\hbar^2}{4}
+        \end{align*}
+        \item It follows that $\hat{S}_x,\hat{S}_y$ satisfy the uncertainty principle and are incompatible.
+        \begin{equation*}
+            \Delta\hat{S}_x\cdot\Delta\hat{S}_y = \frac{\hbar^2}{4}
+            = \frac{\hbar}{2}|\Exp{\hat{S}_z}|
+            = \frac{\hbar}{2}\left| \frac{1}{i\hbar}\Exp{[\hat{S}_x,\hat{S}_y]} \right|
+            = \frac{1}{2}|\Exp{[\hat{S}_x,\hat{S}_y]}|
+        \end{equation*}
+        \item Physically, this means that the axis about which a particle is spinning is ill-defined and that a measurement of the $z$-component of spin destroys any information about the $x$- and $y$-components that might previously have been obtained.
+    \end{itemize}
+    \item Early on, we investigated the mean value of $\hat{S}_z$ for a general spinor. Now we do the same for $\hat{S}_x,\hat{S}_y$.
+    \begin{itemize}
+        \item $\hat{S}_x$:
+        \begin{align*}
+            \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                c_+^* & c_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}(c_+^*c_-+c_-^*c_+)\\
+            &= \hbar\re(c_+^*c_-)
+        \end{align*}
+        \item $\hat{S}_y$:
+        \begin{align*}
+            \ev{\hat{S}_y}{\chi} &= \frac{\hbar}{2}
+            \begin{pmatrix}
+                c_+^* & c_-^*\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & -i\\
+                i & 0\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}\\
+            &= \frac{\hbar}{2}\cdot\frac{c_+^*c_--c_-^*c_+}{2i}\cdot 2\\
+            &= \hbar\im(c_+^*c_-)
+        \end{align*}
+        \item The above two results offer a more general way to see that if the system is in an eigenstate of $\hat{S}_z$ (i.e., either $c_+$ or $c_-$ is 0), then
+        \begin{equation*}
+            \ev{\hat{S}_x}{\chi} = \ev{\hat{S}_y}{\chi}
+            = 0
+        \end{equation*}
+    \end{itemize}
+    \item All of these results suggest that the mean value of the spin acts like a vector of modulus $\hbar/2$.
+    \begin{itemize}
+        \item For example, if the mean value of the spin is in an eigenstate in a particular direction, it is zero in the orthogonal ones.
+    \end{itemize}
+    \item Suppose that we have a generic spinor $\ev{\hat{\vec{S}}}{\chi}$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [-stealth] (0,0,0) -- (0,0,2) node[below left=-1pt]{$x$};
+            \draw [-stealth] (0,0,0) -- (2,0,0) node[right]{$y$};
+            \draw [-stealth] (0,0,0) -- (0,2,0) node[above]{$z$};
+    
+            \footnotesize
+            \draw [orx,semithick,densely dashed]
+                (1.5,0,0) -- (1.5,0,1.5)
+                (0,0,1.5) -- (1.5,0,1.5)
+                (1.5,0,1.5) -- (1.5,1.8,1.5)
+                (0,0,0) -- (1.5,0,1.5)
+            ;
+            \draw [yex,semithick,densely dashed] (0,1.8,0) -- (1.5,1.8,1.5);
+            
+            \draw [orx,semithick,decoration={markings,mark=at position 0.5 with {\node[below right=-3pt]{$\phi_s$};}},postaction={decorate}] plot[domain=0:45] ({0.7*sin(\x)},0,{0.7*cos(\x)});
+            \draw [yex,semithick,decoration={markings,mark=at position 0.25 with {\node[above right=-3pt]{$\theta_s$};}},postaction={decorate}] plot[domain=0:40] ({0.7*sin(\x)},{0.7*cos(\x)},{0.7*sin(\x)});
+    
+            \draw [rex,thick,-latex] (0,0,0) -- (1.5,1.8,1.5) node[above right=-2pt]{$\ev{\hat{\vec{S}}}{\chi}$};
+        \end{tikzpicture}
+        \caption{Polar spinor.}
+        \label{fig:polarSpinor}
+    \end{figure}
+    \begin{itemize}
+        \item We would like to find the spin eigenvectors in terms of the polar coordinates $(\theta_s,\phi_s)$ instead of in terms of the Cartesian coordinates $(c_+,c_-)$.
+        \item For this, we demand that
+        \begin{equation*}
+            \ev{\hat{S}_z}{\chi} = \frac{\hbar}{2}\cos\theta_s
+        \end{equation*}
+        so as to recover $\pm\hbar/2$ when the spinor is "pointing up or down" in the $z$-direction.
+        \item It follows by transitivity with the previous expression for $\ev{\hat{S}_z}{\chi}$ that
+        \begin{equation*}
+            \cos\theta_s = |c_+|^2-|c_-|^2
+        \end{equation*}
+        \begin{itemize}
+            \item As a corollary, we can add a "clever form of zero" to the right side of the above expression to obtain another equivalence.
+            \begin{equation*}
+                \cos\theta_s = |c_+|^2+|c_-|^2-2|c_-|^2
+                = 1-2|c_-|^2
+            \end{equation*}
+            \item From here, we can solve for $|c_-|$ in terms of $\theta_s$.
+            \begin{align*}
+                |c_-|^2 &= \frac{1-\cos\theta_s}{2}\\
+                &= \sin^2\left( \frac{\theta_s}{2} \right)\\
+                |c_-| &= \sin(\frac{\theta_s}{2})
+            \end{align*}
+            \item We can then solve for $|c_+|$ in terms of $\theta_s$ using the normalization relation.
+            \begin{align*}
+                |c_+|^2+|c_-|^2 &= 1\\
+                |c_+|^2 &= 1-\sin^2\left( \frac{\theta_s}{2} \right)\\
+                |c_+|^2 &= \cos^2\left( \frac{\theta_s}{2} \right)\\
+                |c_+| &= \cos(\frac{\theta_s}{2})
+            \end{align*}
+        \end{itemize}
+        \item Now, we demand that
+        \begin{equation*}
+            \ev{\hat{S}_x}{\chi} = \frac{\hbar}{2}\sin\theta_s\cos\phi_s
+        \end{equation*}
+        \begin{itemize}
+            \item Observe that since $c_\pm$ are complex numbers, there exist $\phi_\pm$ such that
+            \begin{equation*}
+                c_\pm = |c_\pm|\e[i\phi_\pm]
+            \end{equation*}
+            \item This result combined with the previous expression for $\ev{\hat{S}_x}{\chi}$ implies that
+            \begin{equation*}
+                \ev{\hat{S}_x}{\chi} = \hbar|c_+||c_-|\re[\e[i(\phi_--\phi_+)]]
+            \end{equation*}
+            \item This is the last piece we need to derive an expression for $\phi_s$ in terms of $\phi_\pm$.
+            \begin{align*}
+                \frac{\hbar}{2}\sin\theta_s\cos\phi_s &= \hbar\cdot|c_+|\cdot|c_-|\cdot\re[\e[i(\phi_--\phi_+)]]\\
+                \frac{1}{2}\sin\theta_s\cos\phi_s &= 1\cdot\cos(\frac{\theta_s}{2})\cdot\sin(\frac{\theta_s}{2})\cdot\cos(\phi_--\phi_+)\\
+                \sin\theta_s\cos\phi_s &= \sin\theta_s\cdot\cos(\phi_--\phi_+)\\
+                \cos\phi_s &= \cos(\phi_--\phi_+)\\
+                \phi_s &= \phi_--\phi_+
+            \end{align*}
+        \end{itemize}
+        \item Similarly, we have that
+        \begin{equation*}
+            \ev{\hat{S}_y}{\chi} = \frac{\hbar}{2}\sin\theta_s\sin\phi_s
+            = \hbar|c_+||c_-|\im[\e[i(\phi_--\phi_+)]]
+        \end{equation*}
+        \begin{itemize}
+            \item Note that we can also derive the above relation between $\phi_s$ and $\phi_\pm$ from here.
+        \end{itemize}
+        \item It follows from the relation $\phi_s=\phi_--\phi_+$ that
+        \begin{align*}
+            \phi_- &= \frac{\phi_s}{2}+\gamma&
+            \phi_+ &= -\frac{\phi_s}{2}+\gamma
+        \end{align*}
+        for some constant $\gamma\in\R$.
+        \item Thus, putting everything together, we have the following expression for the spinor eigenstate in the direction $(\theta_s,\phi_s)$.
+        \begin{equation*}
+            \chi =
+            \begin{pmatrix}
+                c_+\\
+                c_-\\
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                |c_+|\e[i\phi_+]\\
+                |c_-|\e[i\phi_-]\\
+            \end{pmatrix}
+            =
+            \begin{pNiceMatrix}
+                \cos(\frac{\theta_s}{2})\e[i(-\phi_s/2+\gamma)]\\
+                \sin(\frac{\theta_s}{2})\e[i(\phi_s/2+\gamma)]\\
+            \end{pNiceMatrix}
+            = \e[i\gamma]
+            \begin{pNiceMatrix}
+                \cos(\frac{\theta_s}{2})\e[-i\phi_s/2]\\
+                \sin(\frac{\theta_s}{2})\e[i\phi_s/2]\\
+            \end{pNiceMatrix}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}

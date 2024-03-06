@@ -1,0 +1,344 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{9}
+
+\begin{document}
+
+
+
+
+\chapter{Finals Week}
+\section{Final Exam Review}
+\begin{itemize}
+    \item \marginnote{3/4:}Final.
+    \begin{itemize}
+        \item Thursday, 5:30pm-7:30pm.
+        \begin{itemize}
+            \item May release before 5:30, but it should be returned at 7:30 \emph{sharp} so they can grade in the evening.
+        \end{itemize}
+        \item Doable in 2 hours (he believes).
+        \item Open book.
+        \item Largely conceptual; minimal calculation required.
+        \begin{itemize}
+            \item No tricky questions.
+        \end{itemize}
+        \item Heavily based on problem sets and the midterm.
+        \begin{itemize}
+            \item Simply a test of what we've learned in the course.
+        \end{itemize}
+        \item For those who have poor PSet grades, the final will acquire more relevance.
+        \begin{itemize}
+            \item He will try to have a rule along the lines of "If you do better in the final than the problem sets, then we'll boost you're grade by some amount."
+        \end{itemize}
+        \item For the multiple choice questions, be sure to read \emph{all} of the answer choices before selecting one because they're looking for the \emph{best} answer even when multiple may be partially correct.
+        \item Will the final focus more on the topics covered since the midterm?
+    \end{itemize}
+    \item There are notes for a review class posted on Canvas.
+    \begin{itemize}
+        \item We'll go for 40-45 minutes today.
+    \end{itemize}
+    \item We now begin the review.
+    \item In this course, we've looked at a particle that satisfies the equation
+    \begin{equation*}
+        \left[ -\frac{\hbar^2}{2M}\vec{\nabla}^2+V(\vec{r},t) \right]\psi = i\hbar\pdv{\psi}{t}
+    \end{equation*}
+    \begin{itemize}
+        \item Specifically, we've focused on time-independent potentials
+        \begin{equation*}
+            V(\vec{r},t) = V(\vec{r})
+        \end{equation*}
+    \end{itemize}
+    \item For time-independent potentials, we do not have the possibility that the expected value of the energy is zero.
+    \begin{itemize}
+        \item Additionally, energy is conserved.
+        \begin{equation*}
+            \dv{t}(\ev{\hat{H}}{\psi}) = \frac{i}{\hbar}\ev{[\hat{H},\hat{H}]}{\psi}+0 = 0
+        \end{equation*}
+    \end{itemize}
+    \item For generic Hermitian operators, if we have the following, then we know that the corresponding quantity is conserved.
+    \begin{equation*}
+        \dv{t}(\ev{\hat{O}}{\psi}) = \frac{i}{\hbar}\underbrace{\ev{[\hat{H},\hat{O}]}{\psi}}_0+\underbrace{\ev{\pdv{\hat{O}}{t}}{\psi}}_0
+        = 0
+    \end{equation*}
+    \item There are certain operators to be aware of.
+    \begin{itemize}
+        \item The Hamiltonian operator gives energy.
+        \begin{equation*}
+            \hat{H}\ket{\psi_n} = E_n\ket{\psi_n}
+        \end{equation*}
+        \item Other operators: Momentum ($\hat{\vec{p}}$), position ($\hat{\vec{r}}$), and potential ($\hat{V}(\vec{r})$).
+        \item Every operator can be expressed as a function $F(\hat{\vec{p}},\hat{\vec{r}})$ of the momentum and position operators.
+        \begin{itemize}
+            \item Thus, you can also determine if an operator is conserved using its decomposition in terms of position and momentum operators:
+            \begin{equation*}
+                \dv{t}(\ev{F(\hat{\vec{p}},\hat{\vec{r}})}{\psi_n}) = 0
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item A generic wave function can be expressed as a linear combination of a basis of eigenfunctions.
+    \begin{equation*}
+        \ket{\psi}(t) = \sum_nc_n\ket{\psi_n}\e[-iE_nt/\hbar]
+    \end{equation*}
+    \item Using such a decomposition, we can calculate the expected energy as follows.
+    \begin{equation*}
+        \ev{\hat{H}}{\psi} = \sum_n|c_n|^2E_n
+    \end{equation*}
+    \begin{itemize}
+        \item Note that each $|c_n|^2$ is the probability of finding $E_n$ when you take a measurement of the particle.
+    \end{itemize}
+    \item Another important decomposition is that of the expected position.
+    \begin{equation*}
+        \ev{\hat{\vec{r}}}{\psi} = \sum_{m,n}c_m^*c_n\mel{\psi_m}{\hat{\vec{r}}}{\psi_n}\e[i(E_m-E_n)t/\hbar]
+    \end{equation*}
+    \item The quantity $|\psi(\vec{r},t)|^2$ is the probability density of the particle.
+    \begin{itemize}
+        \item The probability that the particle will be \emph{somewhere} in space is certain.
+        \begin{equation*}
+            \int\dd^3\vec{r}\ |\psi|^2 = 1
+        \end{equation*}
+    \end{itemize}
+    \item If we have a potential, the energy of the particle should always be greater than the minimum of the potential.
+    \begin{itemize}
+        \item Additionally, quantum particles can penetrate somewhat into regions where the potential is greater than their energy.
+        \item Quantum particles can also \textbf{tunnel} through finitely long regions of high potential.
+    \end{itemize}
+    \item In this course, we spent a lot of time trying to find the bound states of energy.
+    \item The only normalizable states are those for which the energy is quantized.
+    \item A very important case into which we looked is the harmonic oscillator.
+    \begin{equation*}
+        V(x) = \frac{m\omega^2x^2}{2}
+    \end{equation*}
+    \begin{itemize}
+        \item The energy eigenvalues are
+        \begin{equation*}
+            E_n = \hbar\omega\left( n+\frac{1}{2} \right)
+        \end{equation*}
+        \item The uncertainty principle is what requires that $1/2$ term, since it implies we must have
+        \begin{equation*}
+            \sigma_x\sigma_p \geq \frac{\hbar}{2}
+        \end{equation*}
+        because
+        \begin{equation*}
+            \sigma_A\cdot\sigma_B \geq \frac{1}{2}|\ev{[\hat{A},\hat{B}]}{\psi}|
+        \end{equation*}
+        and
+        \begin{equation*}
+            |[\hat{x},\hat{p}]| = \hbar
+        \end{equation*}
+        \item Diving deeper into the harmonic oscillator, we defined the raising and lowering operators
+        \begin{equation*}
+            a_\pm = \frac{1}{\sqrt{2\hbar M\omega}}[\mp i\hat{p}+M\omega\hat{x}]
+        \end{equation*}
+        \begin{itemize}
+            \item These operators have the properties that
+            \begin{align*}
+                a_+\ket{n} &\propto \ket{n+1}&
+                a_-\ket{n} &\propto \ket{n-1}
+            \end{align*}
+            \item We can also use these to prove that
+            \begin{align*}
+                \ev{\hat{x}}{n} &= 0&
+                \ev{\hat{p}}{n} &= 0
+            \end{align*}
+        \end{itemize}
+        \item The eigenfunctions of the harmonic oscillator form an orthonormal basis of the function space.
+        \begin{equation*}
+            \braket{n}{m} = \int\dd{x}\psi_n^*\psi_m
+            = \delta_{nm}
+        \end{equation*}
+        \item Energy is shared between the kinetic and potential.
+        \begin{align*}
+            \ev**{\frac{M\omega\hat{x}^2}{2}}{n} &= \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right)&
+            \ev**{\frac{\hat{p}^2}{2M}}{n} &= \frac{\hbar\omega}{2}\left( n+\frac{1}{2} \right)
+        \end{align*}
+    \end{itemize}
+    \item This is what we needed to know for the midterm.
+    \item After that, we went into three dimensions.
+    \item In particular, we looked at central potentials, which have the form
+    \begin{equation*}
+        V(\vec{r}) = V(r)
+    \end{equation*}
+    \item We introduced the angular momentum operators $\hat{L}_z,\hat{\vec{L}}{\,}^2$.
+    \item We look at these operators in spherical coordinates $(r,\theta,\phi)$.
+    \item For the component operators, we have the commutativity relation
+    \begin{equation*}
+        [\hat{L}_i,\hat{L}_j] = i\hbar\epsilon_{ijk}\hat{L}_k
+    \end{equation*}
+    \item The $z$-direction angular momentum operator has the special property that
+    \begin{equation*}
+        \hat{L}_z = -i\hbar\pdv{\phi}
+    \end{equation*}
+    \item The two main operators introduced above satisfy the eigenvalue equations
+    \begin{align*}
+        \hat{L}_zY_{\ell m} &= \hbar mY_{\ell m}&
+        \hat{\vec{L}}{\,}^2Y_{\ell m} = \hbar^2\ell(\ell+1)Y_{\ell m}
+    \end{align*}
+    \begin{itemize}
+        \item The solutions are of the form
+        \begin{equation*}
+            Y_{\ell m}(\theta,\phi) = P_{\ell,m}(\theta)\e[im\phi]
+        \end{equation*}
+        where $m$ takes on the $2\ell+1$ values from $-\ell\leq m\leq\ell$.
+    \end{itemize}
+    \item The overall wave function has the angular components from above and also a radial component so that
+    \begin{equation*}
+        \psi_{n\ell m}(\vec{r}) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+    \end{equation*}
+    \item If we define
+    \begin{equation*}
+        U_{n\ell}(r) = rR_{n\ell}(r)
+    \end{equation*}
+    then we obtain the effective 1D Schr\"{o}dinger equation
+    \begin{equation*}
+        \bigg[ -\frac{\hbar^2}{2M}\dv[2]{r}+\underbrace{\frac{\hbar^2\ell(\ell+1)}{2Mr^2}+V(r)}_{V_\text{eff}(r)} \bigg]U_{n\ell} = E_{n\ell}U_{n\ell}
+    \end{equation*}
+    \item We then used these techniques to address the harmonic oscillator in three dimensions.
+    \begin{itemize}
+        \item We found the energies to be
+        \begin{equation*}
+            E_{n\ell} = \hbar\omega\bigg( \underbrace{N+\ell}_n+\frac{3}{2} \bigg)
+            = \hbar\omega\bigg( \underbrace{n_1+n_2+n_3}_n+\frac{3}{2} \bigg)
+        \end{equation*}
+        \begin{itemize}
+            \item $N$ is the degree of the polynomial.
+            \item $N$ is even.
+        \end{itemize}
+        \item The bound states are a battle between the two terms in the effective potential energy, as summarized in Figure \ref{fig:sphrSymHOV}.
+    \end{itemize}
+    \item We also used 3D central potential techniques to tackle the hydrogen atom.
+    \begin{itemize}
+        \item We found the energies to be
+        \begin{equation*}
+            E_{n\ell} = -\frac{\Ry}{\underbrace{(N+\ell+1)}_n{}^2}
+        \end{equation*}
+        \item There are $n^2$ solutions for each each $n$, which we determine by summing the $2\ell+1$ degeneracy over $\ell=0,\dots,n-1$.
+        \item Note that
+        \begin{equation*}
+            \Ry = \SI{13.6}{\electronvolt}
+        \end{equation*}
+        is a very important number.
+    \end{itemize}
+    \item Brief review of emitting electromagnetic radiation.
+    \item Last thing: Spin.
+    \begin{itemize}
+        \item Every particle has it; we don't know why.
+    \end{itemize}
+    \item The quantity
+    \begin{equation*}
+        \hat{\vec{S}} = \hat{S}_x\hat{x}+\hat{S}_y\hat{y}+\hat{S}_z\hat{z}
+    \end{equation*}
+    is an angular momentum that has nothing to do with angular direction. It has nothing to do with any direction in spacetime; rather, it is an \emph{intrinsic} property of the particle.
+    \item We have the commutation relation
+    \begin{equation*}
+        [\hat{S}_x,\hat{S}_y] = i\hbar\hat{S}_z
+    \end{equation*}
+    \item We can introduce ladder operators
+    \begin{equation*}
+        \hat{S}_\pm = \hat{S}_x\pm i\hat{S}_y
+    \end{equation*}
+    \item As in real angular momentum, we have analogous eigenvalue expressions
+    \begin{align*}
+        \hat{\vec{S}}{\,}^2\ket{s,m_s} &= \hbar^2s(s+1)\ket{s,m_s}\\
+        \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}
+    \end{align*}
+    \item $2s+1$ states implies that $s=0,1/2,1,3/2,2,\dots$ can take on half-integer values.
+    \begin{itemize}
+        \item Almost all elementary particles have spin $1/2$ (protons, neutrons, the quarks that make them up, electrons, leptons).
+        \item Force carriers (photon, gluon) have spin 1.
+        \item The graviton (if it exists; "it exists") has spin 2.
+        \item Higgs has spin 0.
+    \end{itemize}
+    \item In the hydrogen atom, there are $2n^2$ states for each $n$ given by
+    \begin{equation*}
+        \ket{n,\ell,m,\tfrac{1}{2},\pm\tfrac{1}{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item This is the 2 $s$-orbital positions, 8 $s+p$-orbital positions, and on and on.
+    \end{itemize}
+    \item We can modify the total degeneracy of the spin with a magnetic field. Use the Hamiltonian
+    \begin{equation*}
+        -\hat{\vec{\mu}}\cdot\vec{B} = -\gamma\cdot\hat{\vec{S}}\cdot\vec{B}
+    \end{equation*}
+    \begin{itemize}
+        \item If $\vec{B}=B\hat{z}$, then the above also equals $-\gamma B\hat{S}_z$.
+    \end{itemize}
+    \item In a generic state, we can introduce spinors
+    \begin{equation*}
+        \chi =
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+    \end{equation*}
+    \item The probability of finding the particle with spin up or spin down in the $z$-direction must be certain.
+    \begin{equation*}
+        |\chi_+|^2+|\chi_-|^2 = 1
+    \end{equation*}
+    \begin{itemize}
+        \item $|\chi_+|^2$ is the probability of spin up.
+        \item $|\chi_-|^2$ is the probability of spin down.
+    \end{itemize}
+    \item In the magnetic field case, we have to solve the Schr\"{o}dinger equation
+    \begin{equation*}
+        -\gamma B\hat{S}_z
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+        = i\hbar\pdv{t}
+        \begin{pmatrix}
+            \chi_+\\
+            \chi_-\\
+        \end{pmatrix}
+    \end{equation*}
+    \item The three spin components can be represented by the matrices
+    \begin{align*}
+        \hat{S}_x &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & 1\\
+            1 & 0\\
+        \end{pmatrix}&
+        \hat{S}_y &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            0 & -i\\
+            i & 0\\
+        \end{pmatrix}&
+        \hat{S}_z &= \frac{\hbar}{2}
+        \begin{pmatrix}
+            1 & 0\\
+            0 & -1\\
+        \end{pmatrix}
+    \end{align*}
+    \begin{itemize}
+        \item The matrices are called the Pauli matrices $\sigma_i$.
+        \item These matrices have the properties that
+        \begin{align*}
+            \sigma_i^2 &= I&
+            \hat{S}_i &= \frac{\hbar}{2}\sigma_i&
+            \hat{S}_i^2 &= \frac{\hbar^2}{4}I
+        \end{align*}
+    \end{itemize}
+    \item Now suppose we let
+    \begin{align*}
+        |\chi_+|(0) &= \cos(\frac{\theta_s}{2})&
+        |\chi_-|(0) &= \sin(\frac{\theta_s}{2})
+    \end{align*}
+    \begin{itemize}
+        \item It then follows that
+        \begin{align*}
+            \ev{\hat{S}_z}{\chi} &= \frac{\hbar}{2}\cos(\theta_s)\\
+            \ev{\hat{S}_x}{\chi} &= \frac{\hbar}{2}\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)
+        \end{align*}
+        \item Then the probability of spin up or spin down is
+        \begin{equation*}
+            P_\pm = \frac{1}{2}[1\pm\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
