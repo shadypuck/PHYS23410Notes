@@ -207,17 +207,7 @@
                     \Aboxed{\hat{S}_y^2 &= \frac{\hbar^2}{4}I}&
                         \Aboxed{\hat{S}_z^2 &= \frac{\hbar^2}{4}I}
             \end{align*}
-            As to the second part of the question, note that the possible values of the components of angular momentum correspond to the possible eigenvalues of $\hat{S}_i$.\par
-            First, let's look at $\hat{S}_z$. For a particle with $s=1/2$, we have by definition that
-            \begin{align*}
-                \hat{S}_z\ket{s,m_s} &= \hbar m_s\ket{s,m_s}\\
-                \hat{S}_z\ket{\tfrac{1}{2},\pm\tfrac{1}{2}} &= \hbar\cdot\pm\frac{1}{2}\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}
-            \end{align*}
-            where $\ket{\tfrac{1}{2},\pm\tfrac{1}{2}}$ represents both possible eigenstates of a spin $1/2$ particle. Thus, the possible eigenvalues are only
-            \begin{equation*}
-                \boxed{\pm\frac{\hbar}{2}}
-            \end{equation*}
-            We now verify that this result holds for $\hat{S}_x,\hat{S}_y$ as well. To begin, observe that the matrices for $\hat{S}_x,\hat{S}_y$ are\dots
+            As to the second part of the question, note that the possible values of the components of angular momentum correspond to the possible eigenvalues of $\hat{S}_i$. Observe that the matrices for $\hat{S}_i$ are\dots
             \begin{enumerate}
                 \item Hermitian;
                 \item Traceless;
@@ -247,7 +237,11 @@
                 \lambda_1 &= \frac{\hbar}{2}&
                 \lambda_2 &= -\frac{\hbar}{2}
             \end{align*}
-            This provides the desired verification.
+            This provides the desired verification.\par
+            \underline{Alternate, simpler method of solving the second half of the question}: Since each $\hat{S}_i^2$ has eigenvalue $\hbar^2/4$, it follows that every $\hat{S}_i$ has eigenvalue\footnote{Is this implication well-supported mathematically?? What constraints do we need? Is it important that the $\hat{S}_i$ are operators on a \emph{complex} vector space? Do we still need the traceless and/or Hermitian conditions somewhere, or are we already using them implicitly? Which theorem allows us to do this? I'm thinking the answer might lie somewhere in Chapter 7 of \emph{Linear Algebra Done Right}...}
+            \begin{equation*}
+                \sqrt{\frac{\hbar^2}{4}} = \pm\frac{\hbar}{2}
+            \end{equation*}
         \end{proof}
         \pagebreak
         \item Take a generic, well-normalized spin state
@@ -344,7 +338,7 @@
                 c_+ &= \cos(\frac{\theta_s}{2})\e[i\alpha]&
                 c_- &= \sin(\frac{\theta_s}{2})\e[i\beta]
             \end{align*}
-            Then substituting into the results from part (d), we obtain (\emph{taking the hint and going back a step in the part (d) derivation})
+            Then taking the hint and going back a step in the part (d) derivation, we obtain
             \begin{align*}
                 \ev{\hat{S}_x}{\chi} &= \hbar\re[\cos(\frac{\theta_s}{2})\e[-i\alpha]\sin(\frac{\theta_s}{2})\e[i\beta]]\\
                 &= \frac{\hbar}{2}\cdot 2\sin(\frac{\theta_s}{2})\cos(\frac{\theta_s}{2})\cdot\re[\e[i(\beta-\alpha)]]\\
@@ -417,10 +411,195 @@
     \begin{enumerate}
         \item Re-derive the solution for $\chi(t)$ we presented in class.
         \begin{proof}
-            
+            Combining the various parts of the question, we see that we are seeking to solve
+            \begin{equation*}
+                -\gamma\vec{B}\vec{S}
+                \begin{pmatrix}
+                    \chi_+\\
+                    \chi_-\\
+                \end{pmatrix}
+                = i\hbar\pdv{t}
+                \begin{pmatrix}
+                    \chi_+\\
+                    \chi_-\\
+                \end{pmatrix}
+            \end{equation*}
+            Choose
+            \begin{equation*}
+                \vec{B} = B\hat{z}
+            \end{equation*}
+            Observe that under this choice
+            \begin{equation*}
+                \vec{B}\vec{S} = B\hat{z}\cdot\vec{S}
+                = B\hat{S}_z
+                = \frac{B\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+            \end{equation*}
+            \item Thus, the problem becomes
+            \begin{equation*}
+                -\frac{\gamma B\hbar}{2}
+                \begin{pmatrix}
+                    1 & 0\\
+                    0 & -1\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \chi_+\\
+                    \chi_-\\
+                \end{pmatrix}
+                = i\hbar\pdv{t}
+                \begin{pmatrix}
+                    \chi_+\\
+                    \chi_-\\
+                \end{pmatrix}
+            \end{equation*}
+            Fortunately, this problem is not that hard to solve. To begin, the above equation splits into the two following ones (technically as components in equal vectors) after a matrix multiplication.
+            \begin{align*}
+                -\frac{\gamma B\hbar}{2}\chi_+ &= i\hbar\pdv{\chi_+}{t}&
+                \frac{\gamma B\hbar}{2}\chi_- &= i\hbar\pdv{\chi_-}{t}
+            \end{align*}
+            The solutions are then
+            \begin{align*}
+                \chi_+ &= \chi_+(0)\e[i\gamma Bt/2]&
+                \chi_- &= \chi_-(0)\e[-i\gamma Bt/2]
+            \end{align*}
+            Combining components, the overall solution is
+            \begin{equation*}
+                \boxed{
+                    \chi(t) =
+                    \begin{pmatrix}
+                        \chi_+(0)\e[i\gamma Bt/2]\\
+                        \chi_-(0)\e[-i\gamma Bt/2]\\
+                    \end{pmatrix}
+                }
+            \end{equation*}
         \end{proof}
-        % \item Compute the probabilities of finding the particle with spin up and down in the $x$- and $y$-directions. \emph{Hint}: The probability can be computed as the modulus square of the component of $\chi(t)$ on eigenstates of spin up and down in the $x$- and $y$-directions. These components may be determined by computing the inner product of $\chi(t)$ with these particular eigenstates.
-        % \item Based on these probabilities, compute the mean values of the spin in the $x$- and $y$-directions and discuss their behavior in time.
+        \item Compute the probabilities of finding the particle with spin up and down in the $x$- and $y$-directions. \emph{Hint}: The probability can be computed as the modulus square of the component of $\chi(t)$ on eigenstates of spin up and down in the $x$- and $y$-directions. These components may be determined by computing the inner product of $\chi(t)$ with these particular eigenstates.
+        \begin{proof}
+            Taking the hint, we have in the $x$-direction that
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                |d_+|^2 ={}& \left|
+                    \frac{1}{\sqrt{2}}
+                    \begin{pmatrix}
+                        1 & 1\\
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        \chi_+\\
+                        \chi_-\\
+                    \end{pmatrix}
+                \right|^2\\
+                ={}& \frac{1}{2}(|\chi_++\chi_-|^2)\\
+                ={}& \frac{1}{2}\left| \chi_+(0)\e[i\gamma Bt/2]+\chi_-(0)\e[-i\gamma Bt/2] \right|^2\\
+                ={}& \frac{1}{2}\left| |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right|^2\\
+                \begin{split}
+                    ={}& \frac{1}{2}\left[ |\chi_+(0)|\e[-i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[i(\gamma Bt/2-\phi_-)] \right]\\
+                    & \cdot\left[ |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right]
+                \end{split}\\
+                ={}& \frac{1}{2}\left[ |\chi_+|^2+|\chi_-|^2+|\chi_+(0)||\chi_-(0)|\cdot 2\cos(\gamma Bt+\phi_+-\phi_-) \right]\\
+                \Aboxed{|d_+|^2 ={}& \frac{1}{2}[1+\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]}
+            \end{align*}
+            \endgroup
+            and
+            \begin{align*}
+                |d_-|^2 ={}& \left|
+                    \frac{1}{\sqrt{2}}
+                    \begin{pmatrix}
+                        1 & -1\\
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        \chi_+\\
+                        \chi_-\\
+                    \end{pmatrix}
+                \right|^2\\
+                ={}& \frac{1}{2}(|\chi_+-\chi_-|^2)\\
+                ={}& \frac{1}{2}\left| \chi_+(0)\e[i\gamma Bt/2]-\chi_-(0)\e[-i\gamma Bt/2] \right|^2\\
+                ={}& \frac{1}{2}\left| |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]-|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right|^2\\
+                \begin{split}
+                    ={}& \frac{1}{2}\left[ |\chi_+(0)|\e[-i(\gamma Bt/2+\phi_+)]-|\chi_-(0)|\e[i(\gamma Bt/2-\phi_-)] \right]\\
+                    & \cdot\left[ |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]-|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right]
+                \end{split}\\
+                ={}& \frac{1}{2}\left[ |\chi_+|^2+|\chi_-|^2-|\chi_+(0)||\chi_-(0)|\cdot 2\cos(\gamma Bt+\phi_+-\phi_-) \right]\\
+                \Aboxed{|d_-|^2 ={}& \frac{1}{2}[1-\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]}
+            \end{align*}
+            Analogously, we have in the $y$-direction that\footnote{The key has the first plus sign below flipped to a minus sign. Is it right, or am I?? I do believe I conjugated correctly...}
+            \begin{align*}
+                |e_+|^2 ={}& \left|
+                    \frac{1}{\sqrt{2}}
+                    \begin{pmatrix}
+                        1 & i\\
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        \chi_+\\
+                        \chi_-\\
+                    \end{pmatrix}
+                \right|^2\\
+                ={}& \frac{1}{2}(|\chi_++i\chi_-|^2)\\
+                ={}& \frac{1}{2}\left| \chi_+(0)\e[i\gamma Bt/2]+i\chi_-(0)\e[-i\gamma Bt/2] \right|^2\\
+                ={}& \frac{1}{2}\left| |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+i|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right|^2\\
+                \begin{split}
+                    ={}& \frac{1}{2}\left[ |\chi_+(0)|\e[-i(\gamma Bt/2+\phi_+)]-i|\chi_-(0)|\e[i(\gamma Bt/2-\phi_-)] \right]\\
+                    & \cdot\left[ |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]+i|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right]
+                \end{split}\\
+                ={}& \frac{1}{2}\left[ |\chi_+|^2+|\chi_-|^2-|\chi_+(0)||\chi_-(0)|\cdot 2\sin(\gamma Bt+\phi_+-\phi_-) \right]\\
+                \Aboxed{|e_+|^2 ={}& \frac{1}{2}[1-\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)]}
+            \end{align*}
+            and
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                |e_-|^2 ={}& \left|
+                    \frac{1}{\sqrt{2}}
+                    \begin{pmatrix}
+                        1 & -i\\
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        \chi_+\\
+                        \chi_-\\
+                    \end{pmatrix}
+                \right|^2\\
+                ={}& \frac{1}{2}(|\chi_+-i\chi_-|^2)\\
+                ={}& \frac{1}{2}\left| \chi_+(0)\e[i\gamma Bt/2]-i\chi_-(0)\e[-i\gamma Bt/2] \right|^2\\
+                ={}& \frac{1}{2}\left| |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]-i|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right|^2\\
+                \begin{split}
+                    ={}& \frac{1}{2}\left[ |\chi_+(0)|\e[-i(\gamma Bt/2+\phi_+)]+i|\chi_-(0)|\e[i(\gamma Bt/2-\phi_-)] \right]\\
+                    & \cdot\left[ |\chi_+(0)|\e[i(\gamma Bt/2+\phi_+)]-i|\chi_-(0)|\e[-i(\gamma Bt/2-\phi_-)] \right]
+                \end{split}\\
+                ={}& \frac{1}{2}\left[ |\chi_+|^2+|\chi_-|^2+|\chi_+(0)||\chi_-(0)|\cdot 2\sin(\gamma Bt+\phi_+-\phi_-) \right]\\
+                \Aboxed{|e_-|^2 ={}& \frac{1}{2}[1+\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)]}
+            \end{align*}
+            \endgroup
+        \end{proof}
+        \item Based on these probabilities, compute the mean values of the spin in the $x$- and $y$-directions and discuss their behavior in time.
+        \begin{proof}
+            % It would just be
+            % \begin{equation*}
+            %     \frac{\hbar}{2}(|d_+|^2-|d_-|^2)
+            % \end{equation*}
+            % See Lectures 9.1-9.2.
+
+            By the definition of the mean value in terms of eigenvalues and their probabilities, we have that
+            \begin{align*}
+                \ev{\hat{S}_x}{\chi} ={}& \left( \frac{\hbar}{2} \right)|d_+|^2+\left( -\frac{\hbar}{2} \right)|d_-|^2\\
+                \begin{split}
+                    ={}& \left( \frac{\hbar}{2} \right)\cdot\frac{1}{2}[1+\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]\\
+                    & +\left( -\frac{\hbar}{2} \right)\cdot\frac{1}{2}[1-\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)]
+                \end{split}\\
+                \Aboxed{\ev{\hat{S}_x}{\chi} ={}& \frac{\hbar}{2}\sin(\theta_s)\cos(\gamma Bt+\phi_+-\phi_-)}
+            \end{align*}
+            and
+            \begin{align*}
+                \ev{\hat{S}_y}{\chi} ={}& \left( \frac{\hbar}{2} \right)|e_+|^2+\left( -\frac{\hbar}{2} \right)|e_-|^2\\
+                \begin{split}
+                    ={}& \left( \frac{\hbar}{2} \right)\cdot\frac{1}{2}[1+\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)]\\
+                    & +\left( -\frac{\hbar}{2} \right)\cdot\frac{1}{2}[1-\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)]
+                \end{split}\\
+                \Aboxed{\ev{\hat{S}_y}{\chi} ={}& -\frac{\hbar}{2}\sin(\theta_s)\sin(\gamma Bt+\phi_+-\phi_-)}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
